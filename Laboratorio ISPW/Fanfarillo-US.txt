@@ -1,0 +1,6 @@
+1.	As a tourist with high demands, I want to be able to look for restaurants in a specific range of quality (I), so I can eat the typical food only in the best rated places.
+2.	As a tourist, I want to be able to find the restaurant with the highest number of reviews, so I can go to eat the typical food only in the most popular places.
+3.	As a restaurant owner, I want to be able to sponsor my restaurant, so many people can discover our traditional cuisine.
+
+Dictionary
+(I) Quality: vote based on the reviews.
