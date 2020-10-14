@@ -1,3 +1,3 @@
-1.	The system shall provide a list of restaurants based in the defined range of ratings.
+1.	The system shall provide a list of restaurants based on the defined range of ratings.
 2.	The system shall provide the restaurant with the highest number of reviews.
 3.	The system shall provide a geolocation system that shows the distance of each restaurant from the current position.
