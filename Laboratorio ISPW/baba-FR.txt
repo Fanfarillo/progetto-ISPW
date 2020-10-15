@@ -1,0 +1,7 @@
+The system shall provide an area which is useful to: 
+        -add some ingredients of a dish to a shopping list; 
+        -remove some ingredients from the shopping list. 
+
+The system shall provide the info of the sponsored restaurants.** 
+
+The system shall provide a list of the restaurants that stick to the user budget. 

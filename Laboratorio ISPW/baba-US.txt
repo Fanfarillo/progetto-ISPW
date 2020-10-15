@@ -1,0 +1,5 @@
+As a user, I want to add some ingredients of a recipe to a shopping list, so that I can remember what I have to buy to cook the dish. (NEW!) 
+
+As a tourist, I want to look for the restaurants in a city where I can enjoy a typical dish so that I will have an amazing experience with food. 
+
+As a user with low economic possibilities, I want to choose the cheapest restaurant, so I can eat the local typical food spending as little money as possible.
