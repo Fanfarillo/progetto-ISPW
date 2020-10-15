@@ -1,0 +1,3 @@
+1)	As a tourist that never visited the place, I want to know what's the typical food, so that I can taste it.
+2)	As a user, I want to read the recipe of all the dishes, so that I can cook them at home.
+3)	As a registered user, I want to add a variant of an existing recipe, so that the tourists can choose their favourite way to cook it.
