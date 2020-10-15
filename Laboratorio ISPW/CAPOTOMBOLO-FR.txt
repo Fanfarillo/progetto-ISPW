@@ -1,0 +1,7 @@
+1)	The system shall provide the name of the typical food of the place searched by the user.
+2)	The system shall provide the dishes added by the user with:
+	
+	1.	Their backgrounds.
+	2.	Their recipes.
+	3.	The restaurants placed in the city where these dishes are typical.
+3)	The system shall provide the writing of a variant of a recipe.
