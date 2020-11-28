@@ -1510,11 +1510,11 @@
 								"$ref": "AAAAAAF1zNOLUACfSxs="
 							},
 							"font": "Arial;13;0",
-							"left": 576,
+							"left": 584,
 							"top": 208,
 							"width": 225,
 							"height": 38,
-							"text": "[selection == \"search by ingredients\"]"
+							"text": "[selection==\"search by ingredients\"]"
 						},
 						{
 							"_type": "UMLTextView",
