@@ -8256,19 +8256,6 @@
 						},
 						{
 							"_type": "UMLNoteView",
-							"_id": "AAAAAAF2BsGeSZuHdK4=",
-							"_parent": {
-								"$ref": "AAAAAAF2Brd1bplzypQ="
-							},
-							"font": "Arial;13;0",
-							"left": 472,
-							"top": 480,
-							"width": 121.17529296875,
-							"height": 41,
-							"text": "Ma che cazzo hai inserito,coglione?"
-						},
-						{
-							"_type": "UMLNoteView",
 							"_id": "AAAAAAF2BsIdppuLcT4=",
 							"_parent": {
 								"$ref": "AAAAAAF2Brd1bplzypQ="
