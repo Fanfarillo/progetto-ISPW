@@ -12201,7 +12201,7 @@
 											"top": 152,
 											"width": 230.4072265625,
 											"height": 13,
-											"text": "+gotoHomaPageTourist()",
+											"text": "+gotoHomePageTourist()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -18764,7 +18764,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF2NRH8N21JoiM="
 							},
-							"name": "gotoHomaPageTourist"
+							"name": "gotoHomePageTourist"
 						}
 					]
 				},
