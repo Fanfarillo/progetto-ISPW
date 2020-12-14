@@ -432,7 +432,7 @@
 											"top": 253,
 											"width": 603.7255859375,
 											"height": 13,
-											"text": "+modifyDish(recipe: String, restaurant: Restaurant, , forVegan: Boolean, forCeliac: Boolean, price: Float)",
+											"text": "+modifyDish(recipe: String, restaurant: String, forVegan: Boolean, forCeliac: Boolean, price: Float)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -501,7 +501,7 @@
 											"top": 298,
 											"width": 603.7255859375,
 											"height": 13,
-											"text": "+addDish()",
+											"text": "+addDish(recipe: String, restaurant: String, forVegan: Boolean, forCeliac: Boolean, price: Float)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1083,11 +1083,12 @@
 											"_parent": {
 												"$ref": "AAAAAAF2Mw2+BcZvLss="
 											},
-											"visible": false,
 											"font": "Arial;13;0",
-											"left": 1552,
-											"top": -624,
-											"height": 13
+											"left": 1181,
+											"top": 29,
+											"width": 46.97265625,
+											"height": 13,
+											"text": "«Entity»"
 										},
 										{
 											"_type": "LabelView",
@@ -1096,9 +1097,9 @@
 												"$ref": "AAAAAAF2Mw2+BcZvLss="
 											},
 											"font": "Arial;13;1",
-											"left": 1197,
-											"top": 39,
-											"width": 42.630859375,
+											"left": 1181,
+											"top": 44,
+											"width": 46.97265625,
 											"height": 13,
 											"text": "Recipe"
 										},
@@ -1110,8 +1111,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 1552,
-											"top": -624,
+											"left": 1520,
+											"top": -640,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -1124,17 +1125,17 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 1552,
-											"top": -624,
+											"left": 1520,
+											"top": -640,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 1192,
-									"top": 32,
-									"width": 52.630859375,
-									"height": 25,
+									"left": 1176,
+									"top": 24,
+									"width": 56.97265625,
+									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF2Mw2+BcZwPkA="
 									},
@@ -1158,9 +1159,9 @@
 										"$ref": "AAAAAAF2Mw2+BcZs4/Q="
 									},
 									"font": "Arial;13;0",
-									"left": 1192,
-									"top": 57,
-									"width": 52.630859375,
+									"left": 1176,
+									"top": 62,
+									"width": 56.97265625,
 									"height": 10
 								},
 								{
@@ -1173,9 +1174,9 @@
 										"$ref": "AAAAAAF2Mw2+BcZs4/Q="
 									},
 									"font": "Arial;13;0",
-									"left": 1192,
-									"top": 67,
-									"width": 52.630859375,
+									"left": 1176,
+									"top": 72,
+									"width": 56.97265625,
 									"height": 10
 								},
 								{
@@ -1189,8 +1190,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 776,
-									"top": -312,
+									"left": 760,
+									"top": -320,
 									"width": 10,
 									"height": 10
 								},
@@ -1205,18 +1206,18 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 776,
-									"top": -312,
+									"left": 760,
+									"top": -320,
 									"width": 10,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 1192,
-							"top": 32,
-							"width": 52.630859375,
-							"height": 45,
+							"left": 1176,
+							"top": 24,
+							"width": 56.97265625,
+							"height": 58,
 							"nameCompartment": {
 								"$ref": "AAAAAAF2Mw2+BcZvLss="
 							},
@@ -10989,10 +10990,10 @@
 								"$ref": "AAAAAAFF+qBtyKM79qY="
 							},
 							"font": "Arial;13;0",
-							"left": 1464,
-							"top": 288,
+							"left": 1608,
+							"top": 312,
 							"width": 98.75537109375,
-							"height": 64,
+							"height": 51,
 							"text": "Ci serve la classe controllerDB?"
 						},
 						{
@@ -13996,8 +13997,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1246,
-									"top": 98,
+									"left": 1242,
+									"top": 99,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -14017,8 +14018,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1235,
-									"top": 109,
+									"left": 1232,
+									"top": 110,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -14038,8 +14039,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1267,
-									"top": 77,
+									"left": 1261,
+									"top": 76,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -14059,8 +14060,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1245,
-									"top": 97,
+									"left": 1241,
+									"top": 99,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -14080,8 +14081,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1234,
-									"top": 105,
+									"left": 1231,
+									"top": 107,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -14101,8 +14102,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1267,
-									"top": 80,
+									"left": 1262,
+									"top": 81,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -14122,8 +14123,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1247,
-									"top": 99,
+									"left": 1242,
+									"top": 100,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -14142,8 +14143,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1240,
-									"top": 110,
+									"left": 1235,
+									"top": 111,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -14162,8 +14163,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1264,
-									"top": 77,
+									"left": 1257,
+									"top": 76,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -14208,7 +14209,7 @@
 								"$ref": "AAAAAAF2NRnqpdq7Y1o="
 							},
 							"lineStyle": 1,
-							"points": "1274:111;1240:77",
+							"points": "1271:111;1233:78",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF2NRqLP/dTmgI="
@@ -16798,17 +16799,7 @@
 										"$ref": "AAAAAAF2MwneH8WdqhE="
 									},
 									"name": "restaurant",
-									"type": {
-										"$ref": "AAAAAAF2Mw3V0saW9yw="
-									}
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF2NAn+f2+FzZY=",
-									"_parent": {
-										"$ref": "AAAAAAF2MwneH8WdqhE="
-									},
-									"type": ""
+									"type": "String"
 								},
 								{
 									"_type": "UMLParameter",
@@ -16920,7 +16911,54 @@
 							"_parent": {
 								"$ref": "AAAAAAF2MwShV8T36p0="
 							},
-							"name": "addDish"
+							"name": "addDish",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF2Y5eww2gX/Hc=",
+									"_parent": {
+										"$ref": "AAAAAAF2M5/eG9jn/Gg="
+									},
+									"name": "recipe",
+									"type": "String"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF2Y5e7TmrGjjU=",
+									"_parent": {
+										"$ref": "AAAAAAF2M5/eG9jn/Gg="
+									},
+									"name": "restaurant",
+									"type": "String"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF2Y5fQ3m7L6/0=",
+									"_parent": {
+										"$ref": "AAAAAAF2M5/eG9jn/Gg="
+									},
+									"name": "forVegan",
+									"type": "Boolean"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF2Y5flyHF6NiE=",
+									"_parent": {
+										"$ref": "AAAAAAF2M5/eG9jn/Gg="
+									},
+									"name": "forCeliac",
+									"type": "Boolean"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF2Y5f0GnQppdY=",
+									"_parent": {
+										"$ref": "AAAAAAF2M5/eG9jn/Gg="
+									},
+									"name": "price",
+									"type": "Float"
+								}
+							]
 						},
 						{
 							"_type": "UMLOperation",
@@ -17244,7 +17282,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Recipe"
+					"name": "Recipe",
+					"stereotype": "Entity"
 				},
 				{
 					"_type": "UMLClass",

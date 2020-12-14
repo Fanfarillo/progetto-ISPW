@@ -301,7 +301,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 256,
+											"left": 192,
 											"top": -288,
 											"height": 13
 										},
@@ -312,11 +312,11 @@
 												"$ref": "AAAAAAF2M1KnpUWKpP0="
 											},
 											"font": "Arial;13;1",
-											"left": 565,
+											"left": 533,
 											"top": 215,
-											"width": 93.90087890625,
+											"width": 150.97900390625,
 											"height": 13,
-											"text": "On TripAdvisor"
+											"text": "On Restaurant Selection"
 										},
 										{
 											"_type": "LabelView",
@@ -326,7 +326,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 256,
+											"left": 192,
 											"top": -288,
 											"width": 38.27001953125,
 											"height": 13,
@@ -340,16 +340,16 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 256,
+											"left": 192,
 											"top": -288,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 560,
+									"left": 528,
 									"top": 208,
-									"width": 103.90087890625,
+									"width": 160.97900390625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF2M1KnpUWLQtY="
@@ -375,7 +375,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 120,
+									"left": 88,
 									"top": -72,
 									"width": 10,
 									"height": 10
@@ -391,7 +391,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 120,
+									"left": 88,
 									"top": -72,
 									"width": 10,
 									"height": 10
@@ -406,16 +406,16 @@
 										"$ref": "AAAAAAF2M1KnpEWI29c="
 									},
 									"font": "Arial;13;0",
-									"left": 560,
+									"left": 528,
 									"top": 233,
-									"width": 103.90087890625
+									"width": 160.97900390625
 								}
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 560,
+							"left": 528,
 							"top": 208,
-							"width": 103.90087890625,
+							"width": 160.97900390625,
 							"height": 40,
 							"nameCompartment": {
 								"$ref": "AAAAAAF2M1KnpUWKpP0="
@@ -1031,7 +1031,7 @@
 										"$ref": "AAAAAAF2M1qJpkZW/BQ="
 									},
 									"font": "Arial;13;0",
-									"left": 339,
+									"left": 323,
 									"top": 199,
 									"width": 166,
 									"height": 26,
@@ -1055,7 +1055,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 422,
+									"left": 406,
 									"top": 191,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1076,7 +1076,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 422,
+									"left": 406,
 									"top": 236,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -1095,7 +1095,7 @@
 								"$ref": "AAAAAAF2M1JESEVibdc="
 							},
 							"lineStyle": 1,
-							"points": "286:227;559:227",
+							"points": "286:227;527:227",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF2M1qJp0ZYkYI="
@@ -1127,17 +1127,17 @@
 										"$ref": "AAAAAAF2M1qXgkZnSIg="
 									},
 									"font": "Arial;13;0",
-									"left": 182,
-									"top": 326,
+									"left": 214,
+									"top": 324,
 									"width": 294,
 									"height": 26,
-									"alpha": -0.6193223731365536,
-									"distance": 161.5239920259526,
+									"alpha": -0.6239961139123738,
+									"distance": 127.47548783981962,
 									"hostEdge": {
 										"$ref": "AAAAAAF2M1qXgkZodkg="
 									},
 									"edgePosition": 1,
-									"text": "click [clickedOnARestaurant==true && restaurantInSystem==true] / close TripAdvisor",
+									"text": "click [button==\"Continue\" && restaurantInSystem==true] / null",
 									"wordWrap": true
 								},
 								{
@@ -1151,7 +1151,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 510,
+									"left": 508,
 									"top": 343,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1172,7 +1172,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 481,
+									"left": 479,
 									"top": 309,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -1191,7 +1191,7 @@
 								"$ref": "AAAAAAF2M1KnpEWJ75Y="
 							},
 							"lineStyle": 1,
-							"points": "586:248;396:407",
+							"points": "582:248;396:407",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF2M1qXg0ZphUo="
@@ -1223,17 +1223,17 @@
 										"$ref": "AAAAAAF2M1qhZUZ4Vm0="
 									},
 									"font": "Arial;13;0",
-									"left": 718,
-									"top": 318,
+									"left": 686,
+									"top": 319,
 									"width": 316,
 									"height": 26,
-									"alpha": 0.7062257424658716,
-									"distance": 154.0519392932137,
+									"alpha": 0.6863415404520761,
+									"distance": 124.10076550932311,
 									"hostEdge": {
 										"$ref": "AAAAAAF2M1qhZUZ5tes="
 									},
 									"edgePosition": 1,
-									"text": "click [clickedOnARestaurant==true && restaurantInSystem==false] / close TripAdvisor",
+									"text": "click [button==\"Continue\" && restaurantInSystem==false] / null",
 									"wordWrap": true
 								},
 								{
@@ -1247,7 +1247,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 743,
+									"left": 740,
 									"top": 298,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -1268,7 +1268,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 712,
+									"left": 711,
 									"top": 332,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -1287,7 +1287,7 @@
 								"$ref": "AAAAAAF2M1KnpEWJ75Y="
 							},
 							"lineStyle": 1,
-							"points": "634:248;812:407",
+							"points": "631:248;811:407",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF2M1qhZUZ6AVQ="
@@ -1667,7 +1667,7 @@
 								"$ref": "AAAAAAF2M1KnpEWJ75Y="
 							},
 							"lineStyle": 1,
-							"points": "611:207;608:88;224:88;226:207",
+							"points": "607:207;608:88;224:88;226:207",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF2M1wVA0bIBVI="
@@ -1712,7 +1712,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF2M07goEVKFII="
 							},
-							"name": "On TripAdvisor"
+							"name": "On Restaurant Selection"
 						},
 						{
 							"_type": "UMLState",
@@ -1806,7 +1806,7 @@
 							"target": {
 								"$ref": "AAAAAAF2M1TBYEWu8cA="
 							},
-							"guard": "clickedOnARestaurant==true && restaurantInSystem==true",
+							"guard": "button==\"Continue\" && restaurantInSystem==true",
 							"triggers": [
 								{
 									"_type": "UMLEvent",
@@ -1824,7 +1824,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF2M1qXgkZnSIg="
 									},
-									"name": "close TripAdvisor"
+									"name": "null"
 								}
 							]
 						},
@@ -1840,7 +1840,7 @@
 							"target": {
 								"$ref": "AAAAAAF2M1Xey0XU9j4="
 							},
-							"guard": "clickedOnARestaurant==true && restaurantInSystem==false",
+							"guard": "button==\"Continue\" && restaurantInSystem==false",
 							"triggers": [
 								{
 									"_type": "UMLEvent",
@@ -1858,7 +1858,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF2M1qhZUZ4Vm0="
 									},
-									"name": "close TripAdvisor"
+									"name": "null"
 								}
 							]
 						},
