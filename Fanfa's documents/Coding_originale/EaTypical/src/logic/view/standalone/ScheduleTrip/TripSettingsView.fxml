@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.ControllerGuiTripSettings">
+   <children>
+      <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../Work%20in%20progress/Progetto%20ISPW/trunk/Fanfa's%20documents/Coding/EaTypical_versione1/src/logic/view/standalone/restaurant-mural-wallpaper_23-2148707022.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="backButton" layoutX="30.0" layoutY="92.0" mnemonicParsing="false" text="Back">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="chooseRestButton" layoutX="440.0" layoutY="47.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="230.0" text="Choose Restaurant">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="scheduleButton" layoutX="190.0" layoutY="47.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="230.0" text="Schedule Trip">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="homeButton" layoutX="30.0" layoutY="47.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="140.0" text="Home">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="51.0" fitWidth="86.0" layoutX="584.0" layoutY="92.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../Work%20in%20progress/Progetto%20ISPW/trunk/Fanfa's%20documents/Coding/EaTypical_versione1/src/logic/view/standalone/utente.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="nomeUtenteLabel" layoutX="591.0" layoutY="150.0" text="NomeUtente" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="205.0" layoutX="30.0" layoutY="190.0" opacity="0.5" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="305.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="205.0" layoutX="365.0" layoutY="190.0" opacity="0.5" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="305.0" />
+      <ChoiceBox fx:id="firstDay" layoutX="45.0" layoutY="250.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="firstMonth" layoutX="45.0" layoutY="300.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="firstYear" layoutX="45.0" layoutY="350.0" prefWidth="150.0" />
+      <RadioButton fx:id="radioLunch1" layoutX="240.0" layoutY="275.0" mnemonicParsing="false" selected="true" text="Lunch" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="firstMeal" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="radioDinner1" layoutX="240.0" layoutY="325.0" mnemonicParsing="false" text="Dinner" textFill="WHITE" toggleGroup="$firstMeal">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Text fill="WHITE" layoutX="45.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the first day of your trip:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="lastDay" layoutX="380.0" layoutY="250.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="lastMonth" layoutX="380.0" layoutY="300.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="lastYear" layoutX="380.0" layoutY="350.0" prefWidth="150.0" />
+      <RadioButton fx:id="radioLunch2" layoutX="575.0" layoutY="275.0" mnemonicParsing="false" selected="true" text="Lunch" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="lastMeal" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="radioDinner2" layoutX="575.0" layoutY="325.0" mnemonicParsing="false" text="Dinner" textFill="WHITE" toggleGroup="$lastMeal">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Text fill="WHITE" layoutX="380.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the last day of your trip:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="veganCheckbox" layoutX="103.0" layoutY="439.0" mnemonicParsing="false" text="I am vegan" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="celiacCheckbox" layoutX="390.0" layoutY="439.0" mnemonicParsing="false" text="I have celiac disease" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </CheckBox>
+      <TextField fx:id="textBudget" alignment="CENTER" layoutX="83.0" layoutY="516.0" prefHeight="30.0" prefWidth="200.0" text="Select your budget" />
+      <Button fx:id="generateSchedButton" layoutX="235.0" layoutY="622.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="230.0" text="Generate Scheduling">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ChoiceBox fx:id="rangeQuality" layoutX="418.0" layoutY="516.0" prefHeight="30.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
