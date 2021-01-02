@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true">
          <image>
-            <Image url="@restaurant-mural-wallpaper_23-2148707022.jpg" />
+            <Image url="@..\restaurant-mural-wallpaper_23-2148707022.jpg" />
          </image>
       </ImageView>
       <Button fx:id="manageMenuButton" layoutX="190.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToManageMenu" prefHeight="31.0" prefWidth="230.0" text="Manage Menu">
@@ -37,7 +37,7 @@
       </Button>
       <ImageView fitHeight="51.0" fitWidth="86.0" layoutX="584.0" layoutY="92.0" pickOnBounds="true">
          <image>
-            <Image url="@utente.jpg" />
+            <Image url="@..\utente.jpg" />
          </image>
       </ImageView>
       <Label fx:id="nomeUtenteLabel" layoutX="583.0" layoutY="143.0" text="nomeUtente" textFill="#fffbfb">
