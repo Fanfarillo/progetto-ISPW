@@ -2,7 +2,7 @@
  * Sample Skeleton for 'AdviceView.fxml' Controller Class
  */
 
-package logic.controller.guicontroller;
+package logic.controller.guicontroller.ManageMenuGuiController;
 
 import java.net.URL;
 import java.util.ResourceBundle;

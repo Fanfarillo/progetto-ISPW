@@ -2,7 +2,7 @@
  * Sample Skeleton for 'TripSettingsView.fxml' Controller Class
  */
 
-package logic;
+package logic.controller.guicontroller.ScheduleTrip;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -1,4 +1,4 @@
-package logic.controller.guicontroller;
+package logic.controller.guicontroller.ChooseRestaurant;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -2,7 +2,7 @@
  * Sample Skeleton for 'ReadReviewsView.fxml' Controller Class
  */
 
-package logic;
+package logic.controller.guicontroller.ChooseRestaurant;
 
 import java.net.URL;
 import java.util.ResourceBundle;

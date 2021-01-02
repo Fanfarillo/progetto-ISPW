@@ -2,7 +2,7 @@
  * Sample Skeleton for 'RestaurantMenuView.fxml' Controller Class
  */
 
-package logic.controller.guicontroller;
+package logic.controller.guicontroller.ManageMenuGuiController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
