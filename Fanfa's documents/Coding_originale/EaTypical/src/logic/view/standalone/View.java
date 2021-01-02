@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class View extends Application{
+public class View extends Application {
 
 	public static void main(String args[]) {
 		launch(args);
@@ -14,7 +14,7 @@ public class View extends Application{
 	
 	@Override
 	public void start(Stage arg0) throws Exception {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("ItalianViewCity.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml"));
 		Parent rootParent = loader.load();
 		Scene scene = new Scene(rootParent);
 		arg0.setScene(scene);

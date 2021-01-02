@@ -4,12 +4,16 @@
 
 package logic.controller.guicontroller.ScheduleTrip;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -17,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
 
 public class ControllerGuiTripSettings {
 	ObservableList<String> list = FXCollections.observableArrayList();
@@ -26,6 +31,9 @@ public class ControllerGuiTripSettings {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+    
+    @FXML // fx:id="pane"
+    private AnchorPane pane; // Value injected by FXMLLoader
 
     @FXML // fx:id="backButton"
     private Button backButton; // Value injected by FXMLLoader
@@ -92,9 +100,17 @@ public class ControllerGuiTripSettings {
 
     @FXML // fx:id="rangeQuality"
     private ChoiceBox<String> rangeQuality; // Value injected by FXMLLoader
+    
+    @FXML
+    void openTripViewCity(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ScheduleTrip/ItalianViewCity.fxml"));
+    	Parent root = loader.load();
+    	pane.getChildren().setAll(root);
+    }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
+    	assert pane != null : "fx:id=\"pane\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert chooseRestButton != null : "fx:id=\"chooseRestButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert scheduleButton != null : "fx:id=\"scheduleButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";

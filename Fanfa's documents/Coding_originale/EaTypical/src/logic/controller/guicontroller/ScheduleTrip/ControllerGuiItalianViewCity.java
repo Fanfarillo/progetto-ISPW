@@ -1,3 +1,7 @@
+/**
+ * Sample Skeleton for 'ItalianViewCity.fxml' Controller Class
+ */
+
 package logic.controller.guicontroller.ScheduleTrip;
 
 import java.net.URL;
@@ -10,59 +14,39 @@ import javafx.scene.control.Label;
 
 public class ControllerGuiItalianViewCity {
 
-    @FXML
+    @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
-    @FXML
+    @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
 
-    @FXML
-    private Button homeButton;
+    @FXML // fx:id="homeButton"
+    private Button homeButton; // Value injected by FXMLLoader
+
+    @FXML // fx:id="scheduleTripButton"
+    private Button scheduleTripButton; // Value injected by FXMLLoader
+
+    @FXML // fx:id="chooseRestaurantButton"
+    private Button chooseRestaurantButton; // Value injected by FXMLLoader
+
+    @FXML // fx:id="searchButton"
+    private Button searchButton; // Value injected by FXMLLoader
+
+    @FXML // fx:id="nomeUtente"
+    private Label nomeUtente; // Value injected by FXMLLoader
+
+    @FXML // fx:id="choiceBox"
+    private ChoiceBox<?> choiceBox; // Value injected by FXMLLoader
+
+    @FXML // fx:id="backButton"
+    private Button backButton; // Value injected by FXMLLoader
 
     @FXML
-    private Button scheduleTripButton;
-
-    @FXML
-    private Button chooseRestaurantButton;
-
-    @FXML
-    private Button searchButton;
-
-    @FXML
-    private Label nomeUtente;
-
-    @FXML
-    private ChoiceBox<?> choiceBox;
-
-    @FXML
-    private Button backButton;
-
-    @FXML
-    void caricaHomePage(ActionEvent event) {
-    	System.out.print("Home\n");
+    void metodo(ActionEvent event) {
+    	//Da implementare
     }
 
-    @FXML
-    void goToBackPage(ActionEvent event) {
-    	System.out.print("Back\n");
-    }
-
-    @FXML
-    void goToChooseRestaurantPage(ActionEvent event) {
-    	System.out.print("Choose\n");
-    }
-
-    @FXML
-    void goToScheduleTripPage(ActionEvent event) {
-    	System.out.print("Schedule\n");
-    }
-
-    @FXML
-    void search(ActionEvent event) {
-    	System.out.print("Search\n");
-    }
-
-    @FXML
+    @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert scheduleTripButton != null : "fx:id=\"scheduleTripButton\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
