@@ -14,7 +14,7 @@ public class View extends Application {
 	
 	@Override
 	public void start(Stage arg0) throws Exception {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("ScheduleTrip/TripSettingsView.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Chooserestaurant/ItalianViewcity.fxml"));
 		Parent rootParent = loader.load();
 		Scene scene = new Scene(rootParent);
 		arg0.setScene(scene);
