@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.ControllerGuiRestaurantView">
+<AnchorPane fx:id="myAnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.controller.guicontroller.ChooseRestaurant.ControllerGuiRestaurantView">
    <children>
       <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true">
          <image>

@@ -4,15 +4,19 @@
 
 package logic.controller.guicontroller.ChooseRestaurant;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import logic.controller.guicontroller.UserBaseGuiController;
+import logic.engineeringclasses.others.SizedStack;
 public class ControllerGuiRestaurantView extends UserBaseGuiController{
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -46,18 +50,26 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     private Button writeReviewButton; // Value injected by FXMLLoader
 
     @FXML
-    void goToReadreviewsPage(ActionEvent event) {		//TO DO
-
+    void goToReadreviewsPage(ActionEvent event) throws IOException {		//TO DO
+    	System.out.print("reviewPage\n");
+    	SizedStack.getSizedStack().push("/logic/view/standalone/ChooseRestaurant/ReadReviewsView.fxml");
+    	FXMLLoader loader=new FXMLLoader(getClass().getResource("/logic/view/standalone/ChooseRestaurant/ReadReviewsView.fxml"));
+    	Parent root=loader.load();
+    	myAnchorPane.getChildren().setAll(root);
     }
     
     @FXML
-    void goToWriteReviewPage(ActionEvent event) {		//TO Do
-
+    void goToWriteReviewPage(ActionEvent event) throws IOException {		//TO Do
+    	System.out.print("WritereviewPage\n");
+    	SizedStack.getSizedStack().push("/logic/view/standalone/ChooseRestaurant/WriteReviewView.fxml");
+    	FXMLLoader loader=new FXMLLoader(getClass().getResource("/logic/view/standalone/ChooseRestaurant/WriteReviewView.fxml"));
+    	Parent root=loader.load();
+    	myAnchorPane.getChildren().setAll(root);
     }
     
     @FXML
     void saveFavourites(ActionEvent event) {			//TO DO
-
+    	System.out.print("saveFav");
     }
     
     @FXML // This method is called by the FXMLLoader when initialization is complete

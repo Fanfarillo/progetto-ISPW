@@ -1,9 +1,14 @@
 package logic.controller.guicontroller.ChooseRestaurant;
 import logic.controller.guicontroller.UserBaseGuiController;
+import logic.engineeringclasses.others.SizedStack;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -27,8 +32,12 @@ public class ControllerGuiItalianViewCity extends UserBaseGuiController{
 
 
     @FXML
-    void search(ActionEvent event) {
+    void search(ActionEvent event) throws IOException {
     	System.out.print("Search\n");
+    	SizedStack.getSizedStack().push("/logic/view/standalone/ChooseRestaurant/RestaurantView.fxml");
+    	FXMLLoader loader=new FXMLLoader(getClass().getResource("/logic/view/standalone/ChooseRestaurant/RestaurantView.fxml"));
+    	Parent root=loader.load();
+    	myAnchorPane.getChildren().setAll(root);
     }
 
     @FXML
