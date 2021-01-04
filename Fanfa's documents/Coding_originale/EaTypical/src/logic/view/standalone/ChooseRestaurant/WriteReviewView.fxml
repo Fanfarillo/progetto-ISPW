@@ -9,29 +9,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.ControllerGuiWriteReview">
+<AnchorPane fx:id="myAnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.ControllerGuiWriteReview">
    <children>
       <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true">
          <image>
             <Image url="@../restaurant-mural-wallpaper_23-2148707022.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="backButton" layoutX="30.0" layoutY="92.0" mnemonicParsing="false" text="Back">
+      <Button fx:id="backButton" layoutX="30.0" layoutY="92.0" mnemonicParsing="false" onAction="#goToBackPage" text="Back">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="chooseRestButton" layoutX="440.0" layoutY="47.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="230.0" text="Choose Restaurant">
+      <Button fx:id="chooseRestButton" layoutX="440.0" layoutY="47.0" mnemonicParsing="false" onAction="#goTochooseRestaurantPage" prefHeight="31.0" prefWidth="230.0" text="Choose Restaurant">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="scheduleButton" layoutX="190.0" layoutY="47.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="230.0" text="Schedule Trip">
+      <Button fx:id="scheduleButton" layoutX="190.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToScheduleTripPage" prefHeight="31.0" prefWidth="230.0" text="Schedule Trip">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="homeButton" layoutX="30.0" layoutY="47.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="140.0" text="Home">
+      <Button fx:id="homeButton" layoutX="30.0" layoutY="47.0" mnemonicParsing="false" onAction="#goHomePage" prefHeight="31.0" prefWidth="140.0" text="Home">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -82,7 +82,7 @@
          </font>
       </Label>
       <TextArea fx:id="textArea" layoutX="30.0" layoutY="296.0" prefHeight="285.0" prefWidth="640.0" />
-      <Button fx:id="publishButton" layoutX="280.0" layoutY="622.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="140.0" text="Publish">
+      <Button fx:id="publishButton" layoutX="280.0" layoutY="622.0" mnemonicParsing="false" onAction="#publishMethod" prefHeight="31.0" prefWidth="140.0" text="Publish">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

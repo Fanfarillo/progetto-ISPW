@@ -6,30 +6,20 @@ package logic.controller.guicontroller.ChooseRestaurant;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
-
-public class ControllerGuiRestaurantView {
+import logic.controller.guicontroller.UserBaseGuiController;
+public class ControllerGuiRestaurantView extends UserBaseGuiController{
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
-
-    @FXML // fx:id="backButton"
-    private Button backButton; // Value injected by FXMLLoader
-
-    @FXML // fx:id="chooseRestButton"
-    private Button chooseRestButton; // Value injected by FXMLLoader
-
-    @FXML // fx:id="scheduleButton"
-    private Button scheduleButton; // Value injected by FXMLLoader
-
-    @FXML // fx:id="homeButton"
-    private Button homeButton; // Value injected by FXMLLoader
 
     @FXML // fx:id="tabella1"
     private TableView<?> tabella1; // Value injected by FXMLLoader
@@ -55,11 +45,26 @@ public class ControllerGuiRestaurantView {
     @FXML // fx:id="writeReviewButton"
     private Button writeReviewButton; // Value injected by FXMLLoader
 
+    @FXML
+    void goToReadreviewsPage(ActionEvent event) {		//TO DO
+
+    }
+    
+    @FXML
+    void goToWriteReviewPage(ActionEvent event) {		//TO Do
+
+    }
+    
+    @FXML
+    void saveFavourites(ActionEvent event) {			//TO DO
+
+    }
+    
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'RestaurantView.fxml'.";
-        assert chooseRestButton != null : "fx:id=\"chooseRestButton\" was not injected: check your FXML file 'RestaurantView.fxml'.";
-        assert scheduleButton != null : "fx:id=\"scheduleButton\" was not injected: check your FXML file 'RestaurantView.fxml'.";
+        assert chooseRestaurantButton != null : "fx:id=\"chooseRestButton\" was not injected: check your FXML file 'RestaurantView.fxml'.";
+        assert scheduleTripButton != null : "fx:id=\"scheduleButton\" was not injected: check your FXML file 'RestaurantView.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'RestaurantView.fxml'.";
         assert tabella1 != null : "fx:id=\"tabella1\" was not injected: check your FXML file 'RestaurantView.fxml'.";
         assert tabella2 != null : "fx:id=\"tabella2\" was not injected: check your FXML file 'RestaurantView.fxml'.";

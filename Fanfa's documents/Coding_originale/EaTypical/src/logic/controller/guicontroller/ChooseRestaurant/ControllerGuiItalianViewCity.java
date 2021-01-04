@@ -1,5 +1,5 @@
 package logic.controller.guicontroller.ChooseRestaurant;
-
+import logic.controller.guicontroller.UserBaseGuiController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -8,22 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
-public class ControllerGuiItalianViewCity {
+public class ControllerGuiItalianViewCity extends UserBaseGuiController{
 
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
-
-    @FXML
-    private Button homeButton;
-
-    @FXML
-    private Button scheduleTripButton;
-
-    @FXML
-    private Button chooseRestaurantButton;
 
     @FXML
     private Button searchButton;
@@ -34,28 +25,6 @@ public class ControllerGuiItalianViewCity {
     @FXML
     private ChoiceBox<?> choiceBox;
 
-    @FXML
-    private Button backButton;
-
-    @FXML
-    void caricaHomePage(ActionEvent event) {
-    	System.out.print("Home\n");
-    }
-
-    @FXML
-    void goToBackPage(ActionEvent event) {
-    	System.out.print("Back\n");
-    }
-
-    @FXML
-    void goToChooseRestaurantPage(ActionEvent event) {
-    	System.out.print("Choose\n");
-    }
-
-    @FXML
-    void goToScheduleTripPage(ActionEvent event) {
-    	System.out.print("Schedule\n");
-    }
 
     @FXML
     void search(ActionEvent event) {

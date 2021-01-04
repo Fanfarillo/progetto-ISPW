@@ -8,8 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-public class ControllerGuiRestaurantSettings {
+import logic.controller.guicontroller.UserBaseGuiController;
+public class ControllerGuiRestaurantSettings extends UserBaseGuiController{
 
     @FXML
     private ResourceBundle resources;
@@ -19,18 +19,6 @@ public class ControllerGuiRestaurantSettings {
 
     @FXML
     private TextField budgetButton;
-
-    @FXML
-    private Button homeButton;
-
-    @FXML
-    private Button scheduleTripButton;
-
-    @FXML
-    private Button chooseRestaurantButton;
-
-    @FXML
-    private Button backButton;
 
     @FXML
     private Label nomeUtente;
@@ -64,25 +52,6 @@ public class ControllerGuiRestaurantSettings {
     	System.out.print("Continue\n");
     }
 
-    @FXML
-    void goToBackPage(ActionEvent event) {
-    	System.out.print("Back\n");
-    }
-
-    @FXML
-    void goToChooseRestaurantPage(ActionEvent event) {
-    	System.out.print("Choose\n");
-    }
-
-    @FXML
-    void goToScheduleTripPage(ActionEvent event) {
-    	System.out.print("Schedule\n");
-    }
-
-    @FXML
-    void loadHomePage(ActionEvent event) {
-    	System.out.print("HomePage\n");
-    }
 
     @FXML
     void initialize() {
