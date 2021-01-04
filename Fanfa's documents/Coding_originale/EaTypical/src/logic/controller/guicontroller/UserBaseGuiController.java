@@ -21,7 +21,7 @@ public class UserBaseGuiController extends BaseGuiController {
 	void goToChooseRestaurantPage(ActionEvent event) throws IOException 	//The Choose Restaurant Page button onAction method
 	{
 		System.out.print("Choose Restaurant\n");
-    	FXMLLoader loader=new FXMLLoader(getClass().getResource("/logic/view/standalone/ChooseRestaurant/ChooseRestaurant.fxml"));
+    	FXMLLoader loader=new FXMLLoader(getClass().getResource("/logic/view/standalone/ChooseRestaurant/RestaurantSettingsView.fxml"));
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);
     }
