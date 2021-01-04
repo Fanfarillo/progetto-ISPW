@@ -13,8 +13,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import logic.controller.guicontroller.OwnerBaseGuiController;
 
-public class ControllerGuiModifyDishView {
+public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -52,30 +53,16 @@ public class ControllerGuiModifyDishView {
     @FXML // fx:id="modifyButton"
     private Button modifyButton; // Value injected by FXMLLoader
 
-    @FXML
-    void back(ActionEvent event) {
-    	System.out.println("back\n");
-    }
+    
 
-    @FXML
-    void goToHome(ActionEvent event) {
-    	System.out.println("home\n");
-    }
-
-    @FXML
-    void manageMenu(ActionEvent event) {
-    	System.out.println("manage\n");
-    }
+    
 
     @FXML
     void modify(ActionEvent event) {
     	System.out.println("modify\n");
     }
 
-    @FXML
-    void sponsorRestaurant(ActionEvent event) {
-    	System.out.println("sponsor\n");
-    }
+   
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {

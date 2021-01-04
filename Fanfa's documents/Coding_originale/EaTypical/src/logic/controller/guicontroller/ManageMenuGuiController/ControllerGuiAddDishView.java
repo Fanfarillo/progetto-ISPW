@@ -4,17 +4,21 @@
 
 package logic.controller.guicontroller.ManageMenuGuiController;
 
+
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import logic.controller.guicontroller.OwnerBaseGuiController;
 
-public class  ControllerGuiAddDishView{
+public class  ControllerGuiAddDishView extends OwnerBaseGuiController{
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -52,30 +56,14 @@ public class  ControllerGuiAddDishView{
     @FXML // fx:id="okButton"
     private Button okButton; // Value injected by FXMLLoader
 
-    @FXML
-    void goToBack(ActionEvent event) {
-    	System.out.print("Back\n");
-    }
+    
 
     @FXML
     void goToConfirmMessageView(ActionEvent event) {
     	System.out.print("confirm\n");
     }
-
-    @FXML
-    void goToHome(ActionEvent event) {
-    	System.out.print("home\n");
-    }
-
-    @FXML
-    void manageMenu(ActionEvent event) {
-    	System.out.print("manage\n");
-    }
-
-    @FXML
-    void sponsorRestaurant(ActionEvent event) {
-    	System.out.print("Sponsor\n");
-    }
+    
+      
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {

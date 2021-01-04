@@ -12,8 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import logic.controller.guicontroller.OwnerBaseGuiController;
 
-public class ControllerGuiNotificationsRestaurantView {
+public class ControllerGuiNotificationsRestaurantView  extends OwnerBaseGuiController{
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -21,8 +22,7 @@ public class ControllerGuiNotificationsRestaurantView {
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
 
-    @FXML // fx:id="homeButton"
-    private Button homeButton; // Value injected by FXMLLoader
+  
 
     @FXML // fx:id="chooseRestaurantButton"
     private Button chooseRestaurantButton; // Value injected by FXMLLoader
@@ -30,8 +30,6 @@ public class ControllerGuiNotificationsRestaurantView {
     @FXML // fx:id="scheduleATripButton"
     private Button scheduleATripButton; // Value injected by FXMLLoader
 
-    @FXML // fx:id="backButton"
-    private Button backButton; // Value injected by FXMLLoader
 
     @FXML // fx:id="nomeUtenteLabel"
     private Label nomeUtenteLabel; // Value injected by FXMLLoader
@@ -50,15 +48,7 @@ public class ControllerGuiNotificationsRestaurantView {
     	System.out.println("a");
     }
 
-    @FXML
-    void goBack(ActionEvent event) {
-    	System.out.println("ab");
-    }
-
-    @FXML
-    void goToHome(ActionEvent event) {
-    	System.out.println("af");
-    }
+    
 
     @FXML
     void schedule(ActionEvent event) {
