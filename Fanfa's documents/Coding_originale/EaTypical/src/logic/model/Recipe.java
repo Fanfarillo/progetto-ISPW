@@ -4,16 +4,26 @@ public class Recipe {
 
 	private String dishName;
 	private Restaurant restaurant;
+	private String contenuto;
 	private boolean isVegan;
 	private boolean isCeliac;
 	private double price;
 	
-	public Recipe(String dishName,Restaurant restaurant,boolean isVegan,boolean isCeliac,double price) {
+	public Recipe(String dishName, String contenuto,Restaurant restaurant,boolean isVegan,boolean isCeliac,double price) {
 		this.dishName = dishName;
 		this.restaurant = restaurant;
 		this.isCeliac = isCeliac;
 		this.isVegan = isVegan;
 		this.price = price;
+		this.contenuto = contenuto;
+	}
+
+	public String getContenuto() {
+		return contenuto;
+	}
+
+	public void setContenuto(String contenuto) {
+		this.contenuto = contenuto;
 	}
 
 	public String getDishName() {
