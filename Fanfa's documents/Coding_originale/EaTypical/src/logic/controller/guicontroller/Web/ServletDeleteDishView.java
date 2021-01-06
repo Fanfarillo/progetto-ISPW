@@ -1,5 +1,4 @@
-package com.capo;
-
+package logic.controller.guicontroller.Web;
 import java.io.IOException;
 
 import javax.servlet.ServletException;

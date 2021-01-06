@@ -1,6 +1,5 @@
 
-package logic.controller.guicontroller.ManageMenuGuiController;
-import logic.controller.guicontroller.OwnerBaseGuiController;
+package logic.controller.guicontroller;
 
 /**
  * Sample Skeleton for 'HomePageOwnerView.fxml' Controller Class
