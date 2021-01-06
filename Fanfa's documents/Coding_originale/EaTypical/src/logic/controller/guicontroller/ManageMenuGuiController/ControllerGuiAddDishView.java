@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import logic.controller.applicationcontroller.ManageMenu;
+import logic.controller.guicontroller.OwnerBaseGuiController;
 
 public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 

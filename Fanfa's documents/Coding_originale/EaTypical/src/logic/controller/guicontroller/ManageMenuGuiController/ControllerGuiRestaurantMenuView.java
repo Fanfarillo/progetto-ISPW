@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.dao.RecipeDAO;
 
 public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
