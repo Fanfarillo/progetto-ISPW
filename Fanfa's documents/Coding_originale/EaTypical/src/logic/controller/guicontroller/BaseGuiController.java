@@ -1,4 +1,5 @@
 package logic.controller.guicontroller;
+
 import java.io.IOException;
 
 
@@ -12,6 +13,8 @@ import logic.engineeringclasses.others.SizedStack;
 
 //Base Graphic Controller: every view page has a back button and a home button
 public class BaseGuiController {
+	
+	protected String homePage = "/logic/view/standalone/HomePageTouristView.fxml";
     
 	@FXML
     protected AnchorPane myAnchorPane;
@@ -26,8 +29,8 @@ public class BaseGuiController {
     void goHomePage(ActionEvent event) throws IOException {			//The Home Page button onAction method
 		//To Do
     	System.out.print("Home\n");
-    	SizedStack.getSizedStack().push("/logic/view/standalone/ChooseRestaurant/ItalianViewCity.fxml");
-    	FXMLLoader loader=new FXMLLoader(getClass().getResource("/logic/view/standalone/ChooseRestaurant/ItalianViewCity.fxml"));
+    	SizedStack.getSizedStack().push(this.homePage);
+    	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.homePage));
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);
     }

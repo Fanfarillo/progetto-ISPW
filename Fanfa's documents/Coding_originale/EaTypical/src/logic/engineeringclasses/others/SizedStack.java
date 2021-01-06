@@ -10,10 +10,10 @@ public class SizedStack {
 	private int currentSize;
 	private String firstPage;
 	
-	protected SizedStack() {				//contructor of the SINGLETON class
+	protected SizedStack() {				//constructor of the SINGLETON class
 		this.currentSize=0;
 		this.stack=new LinkedList<String>();
-		this.firstPage="/logic/view/standalone/ChooseRestaurant/ItalianViewCity.fxml";
+		this.firstPage="/logic/view/standalone/HomePageTouristView.fxml";
 	}
 	
 	public void push(String page)			//push of a page in the stack 
