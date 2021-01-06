@@ -23,18 +23,7 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
 
-    @FXML // fx:id="homeButton"
-    private Button homeButton; // Value injected by FXMLLoader
-
-    @FXML // fx:id="manageMenuButton"
-    private Button manageMenuButton; // Value injected by FXMLLoader
-
-    @FXML // fx:id="sponsorRestaurantButton"
-    private Button sponsorRestaurantButton; // Value injected by FXMLLoader
-
-    @FXML // fx:id="backButton"
-    private Button backButton; // Value injected by FXMLLoader
-
+    
     @FXML // fx:id="nomeUtenteLabel"
     private Label nomeUtenteLabel; // Value injected by FXMLLoader
 

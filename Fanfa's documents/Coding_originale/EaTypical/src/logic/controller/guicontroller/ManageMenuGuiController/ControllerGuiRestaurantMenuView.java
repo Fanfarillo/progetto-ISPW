@@ -7,13 +7,18 @@ package logic.controller.guicontroller.ManageMenuGuiController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import logic.controller.guicontroller.OwnerBaseGuiController;
+import logic.engineeringclasses.dao.RecipeDAO;
 
 public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
@@ -40,9 +45,42 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     private Button getAdviceButton; // Value injected by FXMLLoader
 
     @FXML
-    void addADish(ActionEvent event) throws IOException {
+    void addADish(ActionEvent event) throws IOException, ClassNotFoundException {
+    	/*
+    	ObservableList<String> obs = FXCollections.observableArrayList();
+    	obs.addAll("luca","matteo","adrian");
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
     	Parent rootParent = loader.load();
+    	ControllerGuiAddDishView controllerGuiAddDishView = loader.getController();
+    	ChoiceBox<String> choiceBox = controllerGuiAddDishView.getScegliPiattoBox();    	
+    	choiceBox.setItems(obs);
+    	*/
+    	//obs1: contiene i cibi tipici
+    	ObservableList<String> obs1 = FXCollections.observableArrayList();
+    	
+    	//obs2: contiene i nomi dei ristoranti dell'utente
+    	ObservableList<String> obs2 = FXCollections.observableArrayList();
+    	
+    	
+    	RecipeDAO recipeDAO = new RecipeDAO();
+    	obs1 = recipeDAO.selectRecipe("Luca");
+    	System.out.print(obs1.toString());
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
+    	Parent rootParent = loader.load();
+    	
+    	//ottengo il controller grafico
+    	ControllerGuiAddDishView controllerGuiAddDishView = loader.getController();
+    	  	
+    	
+    	//carico tutte le ricette dei prodotti tipici per poterle mostrare
+    	ChoiceBox<String> choiceBox = controllerGuiAddDishView.getScegliPiattoBox();  
+    	choiceBox.setItems(obs1);
+    	
+    	//mi porto a presso l'informazione dello username
+    	Label label = controllerGuiAddDishView.getLabel();
+    	label.setText(nomeUtenteLabel.getText());
+    	
+    	//cambio scena
     	myAnchorPane.getChildren().setAll(rootParent);
     }
 
@@ -55,10 +93,8 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     @FXML
     void getAdvice(ActionEvent event) throws IOException {
-    	System.out.print("Eccome");
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AdviceView.fxml"));
     	Parent rootParent = loader.load();
-    	System.out.print("Eccome");
     	myAnchorPane.getChildren().setAll(rootParent);
     }
 
@@ -84,6 +120,6 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
         assert addADishButton != null : "fx:id=\"addADishButton\" was not injected: check your FXML file 'RestaurantMenuView.fxml'.";
         assert modifyADishButton != null : "fx:id=\"modifyADishButton\" was not injected: check your FXML file 'RestaurantMenuView.fxml'.";
         assert getAdviceButton != null : "fx:id=\"getAdviceButton\" was not injected: check your FXML file 'RestaurantMenuView.fxml'.";
-
+        nomeUtenteLabel.setText("Luca Capotombolo");
     }
 }
