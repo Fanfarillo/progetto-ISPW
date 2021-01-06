@@ -15,7 +15,7 @@ public class View extends Application {
 	@Override
 	public void start(Stage arg0) throws Exception {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageTouristView.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageOwnerView.fxml"));
 		Parent rootParent = loader.load();
 		Scene scene = new Scene(rootParent);
 		arg0.setScene(scene);

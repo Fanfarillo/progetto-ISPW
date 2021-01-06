@@ -45,4 +45,14 @@ public class SizedStack {
 		return instance;
 	}	
 	
+	public void setFirstPage(String page)
+	{
+		instance.firstPage=page;
+	}
+	
+	public void clearStack()
+	{
+		instance.stack.clear();
+	}
+	
 }
