@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+ 
+  <servlet>
+  	<servlet-name>abc</servlet-name>
+  	<servlet-class>com.capo.ServletRestaurantMenuView</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>abc</servlet-name>
+  	<url-pattern>/ManageMenu</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>cba</servlet-name>
+  	<servlet-class>com.capo.ServletDeleteDishView</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>cba</servlet-name>
+  	<url-pattern>/DeleteDish</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>cb</servlet-name>
+  	<servlet-class>com.capo.ServletAddDishView</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>cb</servlet-name>
+  	<url-pattern>/AddDish</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>a</servlet-name>
+  	<servlet-class>com.capo.SevletModifyView</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>a</servlet-name>
+  	<url-pattern>/ModifyDish</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>b</servlet-name>
+  	<servlet-class>com.capo.ServletAdviceView</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>b</servlet-name>
+  	<url-pattern>/AdviceDish</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
