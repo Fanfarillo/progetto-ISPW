@@ -3,13 +3,13 @@ package logic.model;
 public class Recipe {
 
 	private String dishName;
-	private Restaurant restaurant;
+	private String restaurant;
 	private String contenuto;
 	private boolean isVegan;
 	private boolean isCeliac;
 	private double price;
 	
-	public Recipe(String dishName, String contenuto,Restaurant restaurant,boolean isVegan,boolean isCeliac,double price) {
+	public Recipe(String dishName, String contenuto,String restaurant,boolean isVegan,boolean isCeliac,double price) {
 		this.dishName = dishName;
 		this.restaurant = restaurant;
 		this.isCeliac = isCeliac;
@@ -34,11 +34,11 @@ public class Recipe {
 		this.dishName = dishName;
 	}
 
-	public Restaurant getRestaurant() {
+	public String getRestaurant() {
 		return restaurant;
 	}
 
-	public void setRestaurant(Restaurant restaurant) {
+	public void setRestaurant(String restaurant) {
 		this.restaurant = restaurant;
 	}
 

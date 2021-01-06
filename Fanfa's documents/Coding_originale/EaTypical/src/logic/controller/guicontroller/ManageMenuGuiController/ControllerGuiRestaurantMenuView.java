@@ -17,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.dao.RecipeDAO;
 
 public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
@@ -59,7 +58,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	ObservableList<String> obs1 = FXCollections.observableArrayList();
     	
     	//obs2: contiene i nomi dei ristoranti dell'utente
-    	ObservableList<String> obs2 = FXCollections.observableArrayList();
+    	//ObservableList<String> obs2 = FXCollections.observableArrayList();
     	
     	
     	RecipeDAO recipeDAO = new RecipeDAO();
@@ -67,11 +66,11 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	System.out.print(obs1.toString());
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
     	Parent rootParent = loader.load();
-    	
+    	//ControllerGuiAddDishView controllerGuiAddDishView = new ControllerGuiAddDishView(obs1);
     	//ottengo il controller grafico
     	ControllerGuiAddDishView controllerGuiAddDishView = loader.getController();
     	  	
-    	
+    	//loader.setController(controllerGuiAddDishView);
     	//carico tutte le ricette dei prodotti tipici per poterle mostrare
     	ChoiceBox<String> choiceBox = controllerGuiAddDishView.getScegliPiattoBox();  
     	choiceBox.setItems(obs1);

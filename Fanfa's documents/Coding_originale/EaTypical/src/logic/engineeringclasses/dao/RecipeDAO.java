@@ -34,6 +34,8 @@ public class RecipeDAO {
 		Statement stmt = null;
 		Connection conn = null;
 		ObservableList<String> obs = FXCollections.observableArrayList();
+		
+		
 		try {
 			
 			//loading dinamico del driver del DBMS scelto
@@ -47,22 +49,20 @@ public class RecipeDAO {
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);	
 			
-			try {
-				rs = QueryRecipe.selectDish(stmt, username);
+			
+			rs = QueryRecipe.selectDish(stmt, username);
 				
-				//scansiono i risultati
-				rs.first();
-				String recipe;
-				do {
-					recipe = rs.getString(1);
-					System.out.println(recipe);
-					obs.add(recipe);
-				}
-				while(rs.next());
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
+			//scansiono i risultati
+			rs.first();
+			String recipe;
+			do {
+				recipe = rs.getString(1);
+				System.out.println(recipe);
+				obs.add(recipe);
 			}
+			while(rs.next());
+				
+			
 			
 			
 		} catch (SQLException e) {			
@@ -112,13 +112,15 @@ public class RecipeDAO {
 			
 			
 		} catch (SQLException e) {			
-			System.out.print("Eccezione eliminazione piatto");			
+			System.out.print("Eccezione eliminazione piatto");	
+			e.printStackTrace();
 		}finally {
 			try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
             	System.out.println("Errore chiusura Statement delete");
+            	se2.printStackTrace();
             }
             try {
                 if (conn != null)
@@ -144,17 +146,15 @@ public class RecipeDAO {
 			
 			//eseguo l'inserimento
 			
-			try {
-				QueryRecipe.addDish(conn, recipe.getDishName(), recipe.getRestaurant().getName(), recipe.getContenuto(), recipe.getPrice(), recipe.isVegan(),recipe.isCeliac());
-				System.out.print("add completata.\n");
-				
-			} catch (SQLException e) {
-				System.out.print("Errore add fish DAO");
-			}
+			
+			QueryRecipe.addDish(conn, recipe.getDishName(), recipe.getRestaurant(), recipe.getContenuto(), recipe.getPrice(), recipe.isVegan(),recipe.isCeliac());
+			System.out.print("add completata.\n");
+			
 			
 			
 		} catch (SQLException e) {			
-			System.out.print("Eccezione eliminazione piatto");			
+			System.out.print("Eccezione eliminazione piatto");	
+			e.printStackTrace();
 		}finally {
 			
             try {

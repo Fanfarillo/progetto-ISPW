@@ -4,19 +4,22 @@
 
 package logic.controller.guicontroller.ManageMenuGuiController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import logic.controller.guicontroller.OwnerBaseGuiController;
+import logic.controller.applicationcontroller.ManageMenu;
 
 public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 
@@ -65,7 +68,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
    
 
     @FXML
-    void goToConfirmMessageView(ActionEvent event) {
+    void goToConfirmMessageView(ActionEvent event) throws ClassNotFoundException, IOException {
     	String contenutoString = contenutoRicetta.getText();
     	String ristorante = scegliRistorante.getValue();
     	String ricetta = scegliPiattoBox.getValue(); 
@@ -73,6 +76,11 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     	boolean vegano = veganCheckBox.isSelected();
     	boolean celiaco = celiacCheckBox.isSelected();
     	//System.out.print(contenutoString + " " + ristorante + " " + ricetta + " " + prezzo + " "+ vegano + " "+ celiaco);
+    	ManageMenu manageMenu = new ManageMenu();
+    	manageMenu.addDish(ricetta, ristorante, contenutoString, prezzo, vegano, celiaco);
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
+    	Parent rootParent = loader.load();
+    	myAnchorPane.getChildren().setAll(rootParent);
     }
 
     

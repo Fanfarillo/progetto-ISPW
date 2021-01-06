@@ -23,7 +23,7 @@ public class QueryRecipe {
 	 */
 	
 	public static ResultSet selectDish(Statement stmt, String Username) throws SQLException {
-		String sql = "SELECT NomePiatto FROM Piatto";
+		String sql = "SELECT distinct NomePiatto FROM Piatto";
 		System.out.print("Query eseguita\n");
 		return stmt.executeQuery(sql);
 	}
@@ -37,7 +37,7 @@ public class QueryRecipe {
 	}
 	
 	public static void addDish(Connection conn,String nomePiatto, String nomeRistorante, String contenuto, double prezzo, boolean vegano, boolean celiaco) throws SQLException  {
-		String sql = "INSERT into piatto(Ristorante, NomePiatto,Contenuto,Prezzo,Vegano,Celiaco) values(?,?,?,?,?,?);";
+		String sql = "INSERT into piatto(NomeRistorante, NomePiatto,Contenuto,Prezzo,Vegano,Celiaco) values(?,?,?,?,?,?);";
 		PreparedStatement preparedStatement = null;
 		try {
 			//creo insert preparedStatement
