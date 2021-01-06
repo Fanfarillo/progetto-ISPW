@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Ristorante` (
   INDEX `fk_nomeP_idx` (`UsernameProprietario` ASC) VISIBLE, 
   CONSTRAINT `fk_nomeP`
     FOREIGN KEY (`UsernameProprietario`)
-    REFERENCES `progettoispwfinaledb`.`Proprietario` (`Username`)
+    REFERENCES `progettoispwfinaledatabase`.`Proprietario` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
  )
@@ -81,12 +81,12 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Preferiti` (
   INDEX `fk_nomeTur_idx` (`UsernameTurista` ASC) VISIBLE,  
   CONSTRAINT `fk_nomeRist`
     FOREIGN KEY (`NomeRistorante`)
-    REFERENCES `progettoispwfinaledb`.`Ristorante` (`Nome`)
+    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_nomeTur`
     FOREIGN KEY (`UsernameTurista`)
-    REFERENCES `progettoispwfinaledb`.`Turista` (`Username`)
+    REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
   )
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Piatto` (
   PRIMARY KEY (`NomeRistorante`, `NomePiatto`),
   CONSTRAINT `fk_nomeRisPiat`
     FOREIGN KEY (`NomeRistorante`)
-    REFERENCES `progettoispwfinaledb`.`Ristorante` (`Nome`)
+    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -132,17 +132,17 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`NotificaScheduling` (
   INDEX `fNotifica5_idx` (`NomeRistorante` ASC) VISIBLE,
   CONSTRAINT `fNotifica1`
     FOREIGN KEY (`UsernameProprietario`)
-    REFERENCES `progettoispwfinaledb`.`Proprietario` (`Username`)
+    REFERENCES `progettoispwfinaledatabase`.`Proprietario` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,  
   CONSTRAINT `fNotifica3`
     FOREIGN KEY (`UsernameTurista`)
-    REFERENCES `progettoispwfinaledb`.`Turista` (`Username`)
+    REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,  
   CONSTRAINT `fNotifica5`
     FOREIGN KEY (`NomeRistorante`)
-    REFERENCES `progettoispwfinaledb`.`Ristorante` (`Nome`)
+    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -163,12 +163,12 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Recensione` (
   INDEX `fRec3_idx` (`NomeRistorante` ASC) VISIBLE,
   CONSTRAINT `fRec1`
     FOREIGN KEY (`UsernameTurista`)
-    REFERENCES `progettoispwfinaledb`.`Turista` (`Username`)
+    REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION, 
   CONSTRAINT `fRec3`
     FOREIGN KEY (`NomeRistorante`)
-    REFERENCES `progettoispwfinaledb`.`Ristorante` (`Nome`)
+    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -188,12 +188,12 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`NotificaRecensione` (
   INDEX `fNotR3_idx` (`NomeRistorante` ASC) VISIBLE,
   CONSTRAINT `fNotR1`
     FOREIGN KEY (`UsernameTurista`)
-    REFERENCES `progettoispwfinaledb`.`Turista` (`Username`)
+    REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION, 
   CONSTRAINT `fNotR3`
     FOREIGN KEY (`NomeRistorante`)
-    REFERENCES `progettoispwfinaledb`.`Ristorante` (`Nome`)
+    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -212,12 +212,12 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`RistorantiSponsorizzati
   INDEX `fRS3_idx` (`NomeRistorante` ASC) VISIBLE,
   CONSTRAINT `fRS1`
     FOREIGN KEY (`UsernameProprietario`)
-    REFERENCES `progettoispwfinaledb`.`Proprietario` (`Username`)
+    REFERENCES `progettoispwfinaledatabase`.`Proprietario` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fRS3`
     FOREIGN KEY (`NomeRistorante`)
-    REFERENCES `progettoispwfinaledb`.`Ristorante` (`Nome`)
+    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -240,12 +240,12 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`NotificaMenuAggiornato`
   INDEX `fMA4_idx` (`NomePiatto` ASC) VISIBLE,
   CONSTRAINT `fMA1`
     FOREIGN KEY (`UsernameTurista`)
-    REFERENCES `progettoispwfinaledb`.`Turista` (`Username`)
+    REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fMA3`
     FOREIGN KEY (`NomeRistorante`,`NomePiatto`)
-    REFERENCES `progettoispwfinaledb`.`Piatto` (`NomeRistorante`,`NomePiatto`)
+    REFERENCES `progettoispwfinaledatabase`.`Piatto` (`NomeRistorante`,`NomePiatto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
     )
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Menu` (
   PRIMARY KEY (`NomeRistorante`),
   CONSTRAINT `fM1`
     FOREIGN KEY (`NomeRistorante`)
-    REFERENCES `progettoispwfinaledb`.`Ristorante` (`Nome`)
+    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`DettaglioMenu` (
   INDEX `fDM1_idx` (`NomePiatto` ASC) VISIBLE,
   CONSTRAINT `fDM1`
     FOREIGN KEY (`NomeRistorante`,`NomePiatto`)
-    REFERENCES `progettoispwfinaledb`.`Piatto` (`NomeRistorante`,`NomePiatto`)
+    REFERENCES `progettoispwfinaledatabase`.`Piatto` (`NomeRistorante`,`NomePiatto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
     )
