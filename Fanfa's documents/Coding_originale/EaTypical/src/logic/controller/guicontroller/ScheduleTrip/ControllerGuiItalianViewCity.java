@@ -21,7 +21,6 @@ public class ControllerGuiItalianViewCity extends UserBaseGuiController {
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
 
-
     @FXML // fx:id="searchButton"
     private Button searchButton; // Value injected by FXMLLoader
 

@@ -27,7 +27,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="searchButton" layoutX="105.0" layoutY="567.0" mnemonicParsing="false" onAction="#metodo" prefHeight="31.0" prefWidth="150.0" text="Search">
+      <Button fx:id="searchButton" layoutX="105.0" layoutY="567.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" text="Search">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
