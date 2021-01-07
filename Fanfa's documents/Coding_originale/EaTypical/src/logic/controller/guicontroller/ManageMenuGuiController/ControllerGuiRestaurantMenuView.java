@@ -17,8 +17,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.dao.RecipeDAO;
+import logic.engineeringclasses.dao.RestaurantDAO;
 
 public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
@@ -85,9 +85,35 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     }
 
     @FXML
-    void deleteADish(ActionEvent event) throws IOException {
+    void deleteADish(ActionEvent event) throws IOException, ClassNotFoundException {
+    	ObservableList<String> obs1 = FXCollections.observableArrayList();
+    	ObservableList<String> obs2 = FXCollections.observableArrayList();
+    	RecipeDAO recipeDAO = new RecipeDAO();
+    	obs1 = recipeDAO.selectOwnRecipe("U2");
+    	RestaurantDAO restaurantDAO = new RestaurantDAO();
+    	obs2 = restaurantDAO.selectOwnRecipe("U2");
+    	
+    	//FXMLLoader
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/DeleteDishView.fxml"));
     	Parent rootParent = loader.load();
+    	
+    	//ottengo il controller grafico
+    	ControllerGuiDeleteDish controllerGuiDeleteDish = loader.getController();
+    	  	
+    	
+    	//carico tutte le ricette dei prodotti tipici che i suoi ristoranti fanno
+    	ChoiceBox<String> choiceBox1 = controllerGuiDeleteDish.getChoiceBoxDish();
+    	choiceBox1.setItems(obs1);
+    	
+    	//carico tutti i ristoranti del proprietario
+    	ChoiceBox<String> choiceBox2 = controllerGuiDeleteDish.getChoiceBoxRestaurant();
+    	choiceBox2.setItems(obs2);
+    	
+    	//mi porto a presso l'informazione dello username
+    	Label label = controllerGuiDeleteDish.getLabel();
+    	label.setText(nomeUtenteLabel.getText());
+    	
+    	//cambio scena
     	myAnchorPane.getChildren().setAll(rootParent);
     }
 

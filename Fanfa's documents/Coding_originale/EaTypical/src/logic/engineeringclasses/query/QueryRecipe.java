@@ -11,6 +11,7 @@ import java.sql.Statement;
 
 public class QueryRecipe {
 
+	private QueryRecipe() {}
 	/**
 	 * 
 	 * Elimina un piatto dal menu di un ristorante
@@ -25,6 +26,12 @@ public class QueryRecipe {
 	public static ResultSet selectDish(Statement stmt, String Username) throws SQLException {
 		String sql = "SELECT distinct NomePiatto FROM Piatto";
 		System.out.print("Query eseguita\n");
+		return stmt.executeQuery(sql);
+	}
+	
+	public static ResultSet selectOwnDish(Statement stmt, String Username) throws SQLException
+	{
+		String sql = "SELECT distinct NomePiatto FROM Piatto as P, Ristorante as R, Proprietario as PR WHERE P.NomeRistorante = R.Nome and R.UsernameProprietario = '"+ Username +"';";
 		return stmt.executeQuery(sql);
 	}
 	

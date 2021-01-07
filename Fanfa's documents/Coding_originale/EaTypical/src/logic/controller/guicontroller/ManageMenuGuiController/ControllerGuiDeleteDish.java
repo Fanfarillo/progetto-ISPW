@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import logic.controller.guicontroller.OwnerBaseGuiController;
 
 public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
 
@@ -21,12 +20,14 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
 
+    @FXML
+    private ChoiceBox<String> scegliRistorante;
 
     @FXML // fx:id="nomeUtente"
     private Label nomeUtente; // Value injected by FXMLLoader
 
     @FXML // fx:id="choiseDish"
-    private ChoiceBox<?> choiseDish; // Value injected by FXMLLoader
+    private ChoiceBox<String> choiseDish; // Value injected by FXMLLoader
 
     @FXML // fx:id="deleteButton"
     private Button deleteButton; // Value injected by FXMLLoader
@@ -36,7 +37,17 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
     	System.out.println("delete\n");
     }
 
+    public ChoiceBox<String> getChoiceBoxDish() {
+		return this.choiseDish;
+	}
     
+    public Label getLabel() {
+    	return this.nomeUtente;
+    }
+    
+    public ChoiceBox<String> getChoiceBoxRestaurant() {
+    	return this.scegliRistorante;
+    }
 
     
 

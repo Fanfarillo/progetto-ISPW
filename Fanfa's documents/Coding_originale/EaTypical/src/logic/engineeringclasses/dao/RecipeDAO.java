@@ -17,13 +17,12 @@ public class RecipeDAO {
 	/*
 	 * Se ho tempo, crea un file di configurazione per le credenziali
 	 */
-	String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=1234.&serverTimezone=UTC";
+	String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
 	private String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 	
 	/**
-	 * Instaura la connessione al DBMS e richiede l'eliminazione del piatto identificato dai parametri
-	 * @param nomeRistorante
-	 * @param nomePiatto
+	 * Instaura la connessione al DBMS e richiede la lettura dei possibili piatti tipici
+	 * @param username 
 	 * @throws ClassNotFoundException 
 	 * 
 	 */
@@ -86,6 +85,14 @@ public class RecipeDAO {
 		return obs;
 	}
 	
+	/**
+	 * Instaura la connessione al DBMS e richiede l'eliminazione del piatto identificato dai parametri
+	 * @param nomeRistorante
+	 * @param nomePiatto
+	 * @throws ClassNotFoundException 
+	 * 
+	 */
+	
 	public void deleteRecipe(String nomeRistorante, String nomePiatto) throws ClassNotFoundException {
 		
 		Statement stmt = null;
@@ -133,6 +140,15 @@ public class RecipeDAO {
 		
 	}
 	
+	/**
+	 * Instaura la connessione al DBMS e richiede l'aggiunta del piatto identificato dai parametri
+	 * @param nomeRistorante
+	 * @param nomePiatto
+	 * @throws ClassNotFoundException 
+	 * 
+	 */
+	
+	
 	public void addDish(Recipe recipe) throws ClassNotFoundException {	
 		Connection conn = null;	
 		
@@ -166,5 +182,74 @@ public class RecipeDAO {
             }
 		}
 		
+	}
+	
+	/**
+	 * Instaura la connessione al DBMS e richiede la lettura delle ricette dei ristoranti di un proprietario
+	 * @param nomeRistorante
+	 * @param nomePiatto
+	 * @throws ClassNotFoundException 
+	 * 
+	 */
+	
+	public ObservableList<String> selectOwnRecipe(String username)
+	{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		ObservableList<String> obs = FXCollections.observableArrayList();
+		
+		
+		try {
+			
+			//loading dinamico del driver del DBMS scelto
+			Class.forName(DRIVER_CLASS_NAME);
+			
+			//apro la connssione verso il DBMS
+			conn = DriverManager.getConnection(connectionString);
+			
+			
+			//creazione ed esecuzione dell'eliminazione
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);	
+			
+			
+			rs = QueryRecipe.selectOwnDish(stmt, username);
+				
+			//scansiono i risultati
+			rs.first();
+			String recipe;
+			do {
+				recipe = rs.getString(1);
+				System.out.println(recipe);
+				obs.add(recipe);
+			}
+			while(rs.next());
+				
+			
+			
+			
+		} catch (SQLException e) {			
+			System.out.print("Eccezione eliminazione piatto");	
+			e.printStackTrace();
+		}catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            	System.out.println("Errore chiusura Statement delete");
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+            	System.out.println("Errore chiusura Connessione delete");
+                se.printStackTrace();
+            }
+		}
+		
+		return obs;
 	}
 }
