@@ -253,4 +253,44 @@ public class RecipeDAO {
 		return obs;
 	}
 	
+	/**
+	 * DA FINIRE!!
+	 * @param nomePiatto
+	 * @param username
+	 */
+	public void updateDishes(String nomePiatto,String username)
+	{
+		Connection conn = null;	
+		
+		try {
+			
+			//loading dinamico del driver del DBMS scelto
+			Class.forName(DRIVER_CLASS_NAME);
+			
+			//apro la connssione verso il DBMS
+			conn = DriverManager.getConnection(connectionString);
+			
+			//eseguo l'inserimento
+			
+			
+			QueryRecipe.updateDishes(nomePiatto,username);
+			System.out.print("add completata.\n");
+			
+			
+			
+		} catch (SQLException e) {			
+			System.out.print("Eccezione eliminazione piatto");	
+			e.printStackTrace();
+		}finally {
+			
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+            	System.out.println("Errore chiusura Connessione delete");
+                se.printStackTrace();
+            }
+		}
+	}
+	
 }

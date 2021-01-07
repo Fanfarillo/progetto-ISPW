@@ -10,11 +10,14 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import logic.controller.applicationcontroller.ManageMenu;
 
 public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 
@@ -57,7 +60,20 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 
     @FXML
     void modify(ActionEvent event) {
-    	System.out.println("modify\n");
+    	//System.out.println("modify\n");
+    	
+    	//leggo gli input dell'utente
+    	String ricetta = choiseBox.getValue(); 
+    	double prezzo = Double.parseDouble(priceText.getText());
+    	boolean vegano = veganCheck.isSelected();
+    	boolean celiaco = celiacCheck.isSelected();
+    	
+    	
+    	ManageMenu manageMenu = new ManageMenu();
+    	manageMenu.
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
+    	Parent rootParent = loader.load();
+    	myAnchorPane.getChildren().setAll(rootParent);
     }
 
    
@@ -77,5 +93,4 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
        
     }
 }
-
 

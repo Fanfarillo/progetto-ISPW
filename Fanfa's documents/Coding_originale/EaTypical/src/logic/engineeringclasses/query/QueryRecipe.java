@@ -12,7 +12,16 @@ import java.sql.Statement;
 public class QueryRecipe {
 
 	private QueryRecipe() {}
-	
+	/**
+	 * 
+	 * Elimina un piatto dal menu di un ristorante
+	 * 
+	 * @param stmt statement
+	 * @param nomeRistorante nome del ristorante che ha la ricetta
+	 * @param nomePiatto nome del piatto che deve essere eliminato
+	 * @return il numero di righe interessate oppure 0 se si una una istruzione DDL
+	 * @throws SQLException
+	 */
 	
 	/**
 	 * Serve per add recipe
@@ -77,11 +86,19 @@ public class QueryRecipe {
 				e2.printStackTrace();
 			}
 			
-		}
+		}		
 		
-		
-		
-		
+	}
+	
+	/**
+	 * Devo prima trovare tutte le ricette NEI RISTORANTI DELL'UTENTE e poi modificare quelle selezionate assegnadole i vari parametri 
+	 * inseriti dall'utente
+	 * @param stmt
+	 * @param nomePiatto
+	 * @param username
+	 */
+	public static void updateDishes(Statement stmt, String nomePiatto,String username)
+	{
 		
 	}
 }

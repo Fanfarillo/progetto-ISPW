@@ -21,4 +21,13 @@ public class ManageMenu {
 		
 	}
 	
+	public void modifyDishes(String nomePiatto, String username, double prezzo, boolean vegano, boolean celiaco)
+	{
+		//istanzio una DAO per modificare tuple della tabella
+		RecipeDAO recipeDAO = new RecipeDAO();
+		
+		//attenzione: i nomi dei ristoranti dell'utente li leggo dal database
+		recipeDAO.updateDishes(nomePiatto,username);
+	}
+	
 }

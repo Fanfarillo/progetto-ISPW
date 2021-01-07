@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import logic.controller.guicontroller.OwnerBaseGuiController;
 
 public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 
@@ -65,3 +64,4 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 
     }
 }
+
