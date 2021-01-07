@@ -16,6 +16,15 @@ public class SizedStack {
 		this.firstPage="/logic/view/standalone/HomePageTouristView.fxml";
 	}
 	
+	protected SizedStack(boolean web) {		// (maybe) better constructor of the SINGLETON class
+		this.currentSize=0;
+		this.stack=new LinkedList<String>();
+		if(web==true)
+			this.firstPage="HomePageTouristView.jsp";
+		else
+			this.firstPage="/logic/view/standalone/HomePageTouristView.fxml";
+	}
+	
 	public void push(String page)			//push of a page in the stack 
 	{
 		if(instance.currentSize==instance.maxSize+1)
@@ -44,6 +53,13 @@ public class SizedStack {
 			SizedStack.instance=new SizedStack();
 		return instance;
 	}	
+	
+	public synchronized static SizedStack getSizedStack(boolean web)  // (maybe) a better getter of the singleton instance
+	{
+		if(SizedStack.instance==null)
+			SizedStack.instance=new SizedStack(web);
+		return instance;
+	}
 	
 	public void setFirstPage(String page)
 	{
