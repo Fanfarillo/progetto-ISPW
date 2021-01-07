@@ -63,7 +63,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	
     	
     	RecipeDAO recipeDAO = new RecipeDAO();
-    	obs1 = recipeDAO.selectRecipe("Luca");
+    	obs1 = recipeDAO.selectAllRecipe("Luca");
     	System.out.print(obs1.toString());
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
     	Parent rootParent = loader.load();
@@ -130,8 +130,27 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     @FXML
     void modifyADish(ActionEvent event) throws IOException {
+    	
+    	RecipeDAO recipeDAO = new RecipeDAO();
+    	
+    	//ottengo le ricette dei ristoranti del proprietario
+    	ObservableList<String> obs = recipeDAO.selectOwnRecipe("U1");
+    	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ModifyDishView.fxml"));
     	Parent rootParent = loader.load();
+    	
+    	//ottengo il controller grafico
+    	ControllerGuiModifyDishView controllerGuiModifyDishView= loader.getController();
+    	
+    
+    	//carico tutte le ricette dei prodotti tipici che i suoi ristoranti fanno
+    	ChoiceBox<String> choiceBox1 = controllerGuiModifyDishView.getChoiceBox();
+    	choiceBox1.setItems(obs);
+    	
+    	//mi porto a presso l'informazione dello username
+    	Label label = controllerGuiModifyDishView.getLabel();
+    	label.setText(nomeUtenteLabel.getText());
+    	
     	myAnchorPane.getChildren().setAll(rootParent);
     }
 

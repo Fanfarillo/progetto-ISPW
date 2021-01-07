@@ -12,26 +12,31 @@ import java.sql.Statement;
 public class QueryRecipe {
 
 	private QueryRecipe() {}
+	
+	
 	/**
-	 * 
-	 * Elimina un piatto dal menu di un ristorante
-	 * 
-	 * @param stmt statement
-	 * @param nomeRistorante nome del ristorante che ha la ricetta
-	 * @param nomePiatto nome del piatto che deve essere eliminato
-	 * @return il numero di righe interessate oppure 0 se si una una istruzione DDL
+	 * Serve per add recipe
+	 * @param stmt
+	 * @return
 	 * @throws SQLException
 	 */
-	
-	public static ResultSet selectDish(Statement stmt, String Username) throws SQLException {
+	public static ResultSet selectDish(Statement stmt) throws SQLException {
 		String sql = "SELECT distinct NomePiatto FROM Piatto";
 		System.out.print("Query eseguita\n");
 		return stmt.executeQuery(sql);
 	}
 	
-	public static ResultSet selectOwnDish(Statement stmt, String Username) throws SQLException
+	/**
+	 * Serve per restituire tutte le ricette di un proprietario per poterne eliminare una (vengono visualizzate
+	 * su GUI cosi l'utente poi scegliere quale eliminare)
+	 * @param stmt
+	 * @param Username
+	 * @return
+	 * @throws SQLException
+	 */
+	public static ResultSet selectOwnDish(Statement stmt, String username) throws SQLException
 	{
-		String sql = "SELECT distinct NomePiatto FROM Piatto as P, Ristorante as R, Proprietario as PR WHERE P.NomeRistorante = R.Nome and R.UsernameProprietario = '"+ Username +"';";
+		String sql = "SELECT distinct NomePiatto FROM Piatto as P, Ristorante as R, Proprietario as PR WHERE P.NomeRistorante = R.Nome and R.UsernameProprietario = '"+ username +"';";
 		return stmt.executeQuery(sql);
 	}
 	

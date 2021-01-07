@@ -27,7 +27,7 @@ public class RecipeDAO {
 	 * 
 	 */
 	
-	public ObservableList<String> selectRecipe(String username) throws ClassNotFoundException
+	public ObservableList<String> selectAllRecipe(String username) throws ClassNotFoundException
 	{
 		ResultSet rs = null;
 		Statement stmt = null;
@@ -49,7 +49,7 @@ public class RecipeDAO {
                     ResultSet.CONCUR_READ_ONLY);	
 			
 			
-			rs = QueryRecipe.selectDish(stmt, username);
+			rs = QueryRecipe.selectDish(stmt);
 				
 			//scansiono i risultati
 			rs.first();
@@ -252,4 +252,5 @@ public class RecipeDAO {
 		
 		return obs;
 	}
+	
 }

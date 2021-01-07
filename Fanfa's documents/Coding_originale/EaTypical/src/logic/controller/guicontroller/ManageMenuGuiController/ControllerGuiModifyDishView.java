@@ -6,6 +6,8 @@ package logic.controller.guicontroller.ManageMenuGuiController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,10 +15,11 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import logic.controller.guicontroller.OwnerBaseGuiController;
 
 public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 
+	
+	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -28,7 +31,7 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
     private Label nomeUtenteLabel; // Value injected by FXMLLoader
 
     @FXML // fx:id="choiseBox"
-    private ChoiceBox<?> choiseBox; // Value injected by FXMLLoader
+    private ChoiceBox<String> choiseBox; // Value injected by FXMLLoader
 
     @FXML // fx:id="veganCheck"
     private CheckBox veganCheck; // Value injected by FXMLLoader
@@ -42,9 +45,15 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
     @FXML // fx:id="modifyButton"
     private Button modifyButton; // Value injected by FXMLLoader
 
+  
     
-
+    public Label getLabel() {
+    	return this.nomeUtenteLabel;
+    }
     
+    public ChoiceBox<String> getChoiceBox(){
+    	return this.choiseBox;
+    }
 
     @FXML
     void modify(ActionEvent event) {
@@ -65,7 +74,8 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
         assert celiacCheck != null : "fx:id=\"celiacCheck\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert priceText != null : "fx:id=\"priceText\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert modifyButton != null : "fx:id=\"modifyButton\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
-
+       
     }
 }
+
 
