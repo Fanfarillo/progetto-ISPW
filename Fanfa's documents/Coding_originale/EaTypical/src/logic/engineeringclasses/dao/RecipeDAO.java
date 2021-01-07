@@ -17,7 +17,7 @@ public class RecipeDAO {
 	/*
 	 * Se ho tempo, crea un file di configurazione per le credenziali
 	 */
-	String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
+	String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=1234.&serverTimezone=UTC";
 	private String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 	
 	/**
