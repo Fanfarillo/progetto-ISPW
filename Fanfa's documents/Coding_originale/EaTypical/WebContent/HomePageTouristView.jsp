@@ -14,7 +14,7 @@
 
 <body>
 <div class="container">
-	<form action="HomePageTouristView.jsp" name="myform" method="get">
+	<form action="HomePageTouristView" name="myform" method="get">
 		<img id="fotoUtente" src="utente.jpg"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box">

@@ -6,10 +6,10 @@ body {
 }
 
 #fotoUtente {
-	width: 12.29%;
+	width: 10.29%;
 	height: 7.29%;
 	position: absolute;
-	left: 83.43%;
+	left: 85.43%;
 	top: 13.14%;
 }
 
@@ -47,10 +47,10 @@ body {
 
 #nomeUtente {
 	position: absolute;
-	left: 84.43%;
-	top: 21.43%;
+	left: 85.43%;
+	top: 20.43%;
 	color: white;
-	font-size: 11px;
+	font-size: 16px;
 	background-color: rgba(0,0,0,0.7);
 }
 
@@ -64,7 +64,7 @@ body {
 
 #scrollVoto {
 	width: 28.57%;
-	height: 5%;
+	height: 5.6%;
 	position: absolute;
 	left: 59.71%;
 	top: 73.71%;
@@ -72,7 +72,7 @@ body {
 
 #budget {
 	width: 28.57%;
-	height: 5%;
+	height: 5.6%;
 	position: absolute;
 	left: 11.86%;
 	top: 73.71%;

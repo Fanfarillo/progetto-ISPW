@@ -14,15 +14,15 @@
 
 <body>
 <div class="container">
-	<form action="ItalianViewCity.jsp" name="myform" method="get">
+	<form action="ItalianViewCity" name="myform" method="get">
 		<input id="home" type="submit" name="Home" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant" value="Choose Restaurant">
 		<input id="back" type="submit" name="Back" value="Back">
 		<img id="fotoUtente" src="utente.jpg"/>
-		<label id="nomeUtente">NomeUtente</label>
+		<label id="nomeUtente">nomeUtente</label>
 		<div class="box">
-			<p>Click on the map or select a city from the drop-down menu</p>
+			<p>Select the city you are travelling to:</p>
 		</div>
 <!--  	<div class="input-group">
 			<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">City</button>
@@ -37,7 +37,7 @@
 			<option>Mah</option>
 		</select>
 		<img id="fotoItalia" src="Cartina.jpg"/>
-		<input id="search" type="submit" name="Search" value="Search">
+		<input id="continue" type="submit" name="Continue" value="Continue">
 	</form>
 </div>
 </body>

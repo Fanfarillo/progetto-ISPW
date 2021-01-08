@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%
-	if(request.getParameter("Back")!=null) {
-%>
-	<jsp:forward page="ItalianViewCity.jsp"/>		
-<%
-	}	
-%>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,13 +14,13 @@
 
 <body>
 <div class="container">
-	<form action="TripSettingsView.jsp" name="myform" method="get">
+	<form action="TripSettingsView" name="myform" method="get">
 		<input id="home" type="submit" name="Home" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant" value="Choose Restaurant">
 		<input id="back" type="submit" name="Back" value="Back">
 		<img id="fotoUtente" src="utente.jpg"/>
-		<label id="nomeUtente">NomeUtente</label>
+		<label id="nomeUtente">nomeUtente</label>
 		<div class="box-1">
 			<p>Choose the first day of your trip:</p>
 			<select class="scrollGiorni">

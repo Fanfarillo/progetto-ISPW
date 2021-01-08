@@ -10,7 +10,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-
+  
   <servlet>
   	<servlet-name>abc</servlet-name>
   	<servlet-class>com.capo.ServletRestaurantMenuView</servlet-class>
@@ -86,6 +86,15 @@
   <servlet-mapping>
   	<servlet-name>ServletTripSettings</servlet-name>
   	<url-pattern>/TripSettingsView</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>ServletCreatingRestaurant</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.sponsorrestaurant.ServletCreatingRestaurant</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletCreatingRestaurant</servlet-name>
+  	<url-pattern>/CreatingRestaurantView</url-pattern>
   </servlet-mapping>
   
 </web-app>

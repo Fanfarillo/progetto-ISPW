@@ -13,14 +13,6 @@ body {
 	top: 13.14%;
 }
 
-#fotoItalia {
-	width: 42.86%;
-	height: 59.14%;
-	position: absolute;
-	left: 52.86%;
-	top: 26.29%;
-}
-
 #home {
 	width: 20%;
 	height: 6.43%;
@@ -29,7 +21,7 @@ body {
 	top: 4.71%;
 }
 
-#scheduleTrip {
+#manageMenu {
 	width: 32.86%;
 	height: 6.43%;
 	position: absolute;
@@ -37,7 +29,7 @@ body {
 	top: 4.71%;
 }
 
-#chooseRestaurant {
+#sponsorRestaurant {
 	width: 32.86%;
 	height: 6.43%;
 	position: absolute;
@@ -53,28 +45,30 @@ body {
 	top: 13.14%;
 }
 
-#continue {
-	width: 21.43%;
-	height: 6.43%;
+#nomeUtente {
 	position: absolute;
-	left: 15%;
-	top: 79%;
+	left: 85.43%;
+	top: 20.43%;
+	color: white;
+	font-size: 16px;
+	background-color: rgba(0,0,0,0.7);
 }
 
-#scrollbar {
-	width: 21.43%;
-	height: 5%;
+.box-1 {
+	width: 37%;
+	height: 17%;
 	position: absolute;
-	left: 15%;
-	top: 46.86%;
+	left: 12%;
+	top: 32%;
+	background-color: rgba(0,0,0,0.7);
 }
 
-.box {
-	width: 32.86%;
-	height: 18.29%;
+.box-2 {
+	width: 37%;
+	height: 17%;
 	position: absolute;
-	left: 9.29%;
-	top: 26.29%;
+	left: 12%;
+	top: 56.57%;
 	background-color: rgba(0,0,0,0.7);
 }
 
@@ -83,11 +77,33 @@ p {
 	font-size: 20px;
 }
 
-#nomeUtente {
+.textbox {
+	width: 25.14%;
+	height: 5.6%;
 	position: absolute;
-	left: 85.43%;
-	top: 20.43%;
-	color: white;
-	font-size: 16px;
-	background-color: rgba(0,0,0,0.7);
+	left: 60%;
+}
+
+#restName {
+	top: 34.71%;
+}
+
+#restAddress {
+	top: 42.29%;
+}
+
+.buttonbelow {
+	width: 15.14%;
+	height: 7.29%;
+	position: absolute;
+}
+
+#addDish {
+	left: 60%;
+	top: 61.43%;
+}
+
+#done {
+	left: 42.43%;
+	top: 82.14%;
 }
