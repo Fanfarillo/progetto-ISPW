@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,18 +21,25 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import logic.controller.applicationcontroller.ManageMenu;
-import logic.controller.guicontroller.OwnerBaseGuiController;
+
 
 public class ControllerGuiAddDishView extends OwnerBaseGuiController{
+	
+	ObservableList<String> listaP,listaR;
+	private String username;
+	
+	public ControllerGuiAddDishView(ObservableList<String> listP,ObservableList<String> listR,String username) {
+    	this.listaP = FXCollections.observableArrayList(listP);
+    	this.listaR = FXCollections.observableArrayList(listR);
+    	this.username = username;
+    	
+    }
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
-    private URL location;
-
-   
+    private URL location;   
 
     @FXML // fx:id="nomeUtenteLabel"
     private Label nomeUtenteLabel; // Value injected by FXMLLoader
@@ -56,16 +65,11 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     @FXML // fx:id="contenutoRicetta"
     private TextArea contenutoRicetta; // Value injected by FXMLLoader
     
-   
-
-    public ChoiceBox<String> getScegliPiattoBox()
-    {
-    	return this.scegliPiattoBox;
-    }
     
-    public Label getLabel() {
-    	return this.nomeUtenteLabel;
-    }
+    
+   
+    
+
    
 
     @FXML
@@ -77,9 +81,10 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     	boolean vegano = veganCheckBox.isSelected();
     	boolean celiaco = celiacCheckBox.isSelected();
     	//System.out.print(contenutoString + " " + ristorante + " " + ricetta + " " + prezzo + " "+ vegano + " "+ celiaco);
-    	ManageMenu manageMenu = new ManageMenu();
-    	manageMenu.addDish(ricetta, ristorante, contenutoString, prezzo, vegano, celiaco);
+    	//ManageMenu manageMenu = new ManageMenu();
+    	//manageMenu.addDish(ricetta, ristorante, contenutoString, prezzo, vegano, celiaco);
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
+    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,0, contenutoString, ristorante, ricetta, vegano, celiaco, prezzo);});
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }
@@ -101,6 +106,8 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
         assert okButton != null : "fx:id=\"okButton\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert scegliRistorante != null : "fx:id=\"scegliRistorante\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert contenutoRicetta != null : "fx:id=\"contenutoRicetta\" was not injected: check your FXML file 'AddDish.fxml'.";
-
+        scegliPiattoBox.setItems(this.listaP);
+        scegliRistorante.setItems(this.listaR);
+        nomeUtenteLabel.setText(username);
     }
 }

@@ -27,7 +27,7 @@ public class RecipeDAO {
 	 * 
 	 */
 	
-	public ObservableList<String> selectAllRecipe(String username) throws ClassNotFoundException
+	public ObservableList<String> selectAllRecipe() throws ClassNotFoundException
 	{
 		ResultSet rs = null;
 		Statement stmt = null;

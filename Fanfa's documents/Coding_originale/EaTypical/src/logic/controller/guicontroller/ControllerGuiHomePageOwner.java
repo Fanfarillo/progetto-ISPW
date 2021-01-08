@@ -1,5 +1,6 @@
+package logic.controller.guicontroller.ManageMenuGuiController;
 
-package logic.controller.guicontroller;
+
 
 /**
  * Sample Skeleton for 'HomePageOwnerView.fxml' Controller Class
@@ -11,7 +12,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import logic.controller.guicontroller.ManageMenuGuiController.
 
 public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
 
@@ -38,6 +38,6 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert labelBenvenuto != null : "fx:id=\"labelBenvenuto\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
-
+        labelBenvenuto.setText("Luca");
     }
 }
