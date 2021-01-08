@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
- 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  
+  <display-name>ISPWproject</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
   <servlet>
   	<servlet-name>abc</servlet-name>
   	<servlet-class>com.capo.ServletRestaurantMenuView</servlet-class>
@@ -49,6 +59,33 @@
   <servlet-mapping>
   	<servlet-name>b</servlet-name>
   	<url-pattern>/AdviceDish</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ServletHomePageTourist</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.ServletHomePageTourist</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletHomePageTourist</servlet-name>
+  	<url-pattern>/HomePageTouristView</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ServletItalianCity</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.scheduletrip.ServletItalianCity</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletItalianCity</servlet-name>
+  	<url-pattern>/ItalianViewCity</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ServletTripSettings</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.scheduletrip.ServletTripSettings</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletTripSettings</servlet-name>
+  	<url-pattern>/TripSettingsView</url-pattern>
   </servlet-mapping>
   
 </web-app>

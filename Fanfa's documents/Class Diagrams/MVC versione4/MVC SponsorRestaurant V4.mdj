@@ -455,7 +455,7 @@
 											"top": 228,
 											"width": 151.708984375,
 											"height": 13,
-											"text": "CreatingRestaurantPage"
+											"text": "CreatingRestaurantView"
 										},
 										{
 											"_type": "LabelView",
@@ -7500,7 +7500,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF2OD2XVf/1TSk="
 					},
-					"name": "CreatingRestaurantPage",
+					"name": "CreatingRestaurantView",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
