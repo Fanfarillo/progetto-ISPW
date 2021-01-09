@@ -72,46 +72,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 
    
 
-    @FXML
-    void goToConfirmMessageView(ActionEvent event) throws ClassNotFoundException, IOException {
-    	
-    	//definisco ed inizializzo i parametri del costruttore del controller grafico
-    	String contenutoString = contenutoRicetta.getText();
-    	String ristorante = scegliRistorante.getValue();
-    	String ricetta = scegliPiattoBox.getValue(); 
-    	double prezzo = Double.parseDouble(priceTextField.getText());
-    	boolean vegano = veganCheckBox.isSelected();
-    	boolean celiaco = celiacCheckBox.isSelected();
-    	
-    	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
-    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,0, contenutoString, ristorante, ricetta, vegano, celiaco, prezzo);});
-    	Parent rootParent = loader.load();
-    	myAnchorPane.getChildren().setAll(rootParent);
-    }
-
-    
-
-    @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
-        assert myAnchorPane != null : "fx:id=\"myAnchorPane\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert sponsorRestaurantButton != null : "fx:id=\"sponsorRestaurantButton\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert manageMenuButton != null : "fx:id=\"manageMenuButton\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert scegliPiattoBox != null : "fx:id=\"scegliPiattoBox\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert priceTextField != null : "fx:id=\"priceTextField\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert veganCheckBox != null : "fx:id=\"veganCheckBox\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert celiacCheckBox != null : "fx:id=\"celiacCheckBox\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert okButton != null : "fx:id=\"okButton\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert scegliRistorante != null : "fx:id=\"scegliRistorante\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert contenutoRicetta != null : "fx:id=\"contenutoRicetta\" was not injected: check your FXML file 'AddDish.fxml'.";
-        scegliPiattoBox.setItems(this.listaP);
-        scegliRistorante.setItems(this.listaR);
-        nomeUtenteLabel.setText(username);
-    }
-}
+   
 
    
 
