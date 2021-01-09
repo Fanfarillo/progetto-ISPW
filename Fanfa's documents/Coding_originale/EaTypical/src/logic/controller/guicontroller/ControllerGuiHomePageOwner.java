@@ -1,4 +1,4 @@
-package logic.controller.guicontroller.ManageMenuGuiController;
+package logic.controller.guicontroller;
 
 
 
