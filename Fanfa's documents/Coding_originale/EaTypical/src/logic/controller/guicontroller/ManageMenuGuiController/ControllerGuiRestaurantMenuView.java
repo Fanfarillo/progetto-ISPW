@@ -51,7 +51,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     private Button getAdviceButton; // Value injected by FXMLLoader
 
     /**
-     * Ottiene i piatti disponibili e i ristoranti di sua proprietÃ  
+     * Ottiene i piatti disponibili e i ristoranti di sua proprietÃƒÂ  
      * per poi passarli al costruttore del controller grafico di AddDishView
      * @param event
      * @throws IOException
