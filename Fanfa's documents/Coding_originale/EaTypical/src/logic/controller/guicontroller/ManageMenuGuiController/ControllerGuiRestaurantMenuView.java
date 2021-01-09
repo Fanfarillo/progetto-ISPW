@@ -3,14 +3,13 @@
  */
 
 package logic.controller.guicontroller.ManageMenuGuiController;
-
+import logic.controller.guicontroller.OwnerBaseGuiController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,7 +52,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     private Button getAdviceButton; // Value injected by FXMLLoader
 
     /**
-     * Ottiene i piatti disponibili e i ristoranti di sua proprietà 
+     * Ottiene i piatti disponibili e i ristoranti di sua proprietÃ  
      * per poi passarli al costruttore del controller grafico di AddDishView
      * @param event
      * @throws IOException
@@ -68,7 +67,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     	//ottengo i ristoranti dell'utente
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
-    	final ObservableList<String> obs2 = restaurantDAO.selectOwnRecipe("U1");
+    	final ObservableList<String> obs2 = restaurantDAO.selectOwnRestaurant("U1");
     	
     	//carico la gerarchia dei nodi
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
@@ -82,33 +81,22 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     }
 
     @FXML
-    void deleteADish(ActionEvent event) throws IOException, ClassNotFoundException {
-    	ObservableList<String> obs1 = FXCollections.observableArrayList();
-    	ObservableList<String> obs2 = FXCollections.observableArrayList();
+    void deleteADish(ActionEvent event) throws IOException, ClassNotFoundException {    	
+    	
+    	//ottengo tutte le ricette di tutti i ristoranti dell'utente
     	RecipeDAO recipeDAO = new RecipeDAO();
+    	ObservableList<String> obs1;
     	obs1 = recipeDAO.selectOwnRecipe("U2");
+    	
+    	//ottengo tutti i ristoranti dell'utente
+    	ObservableList<String> obs2;   	
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
-    	obs2 = restaurantDAO.selectOwnRecipe("U2");
+    	obs2 = restaurantDAO.selectOwnRestaurant("U2");
     	
-    	//FXMLLoader
+    	//FXMLLoader e setto il nuovo controller grafico
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/DeleteDishView.fxml"));
-    	Parent rootParent = loader.load();
-    	
-    	//ottengo il controller grafico
-    	ControllerGuiDeleteDish controllerGuiDeleteDish = loader.getController();
-    	  	
-    	
-    	//carico tutte le ricette dei prodotti tipici che i suoi ristoranti fanno
-    	ChoiceBox<String> choiceBox1 = controllerGuiDeleteDish.getChoiceBoxDish();
-    	choiceBox1.setItems(obs1);
-    	
-    	//carico tutti i ristoranti del proprietario
-    	ChoiceBox<String> choiceBox2 = controllerGuiDeleteDish.getChoiceBoxRestaurant();
-    	choiceBox2.setItems(obs2);
-    	
-    	//mi porto a presso l'informazione dello username
-    	Label label = controllerGuiDeleteDish.getLabel();
-    	label.setText(nomeUtenteLabel.getText());
+    	loader.setControllerFactory(c -> {return new ControllerGuiDeleteDish(nomeUtenteLabel.getText(),obs1,obs2);});
+    	Parent rootParent = loader.load();    	
     	
     	//cambio scena
     	myAnchorPane.getChildren().setAll(rootParent);

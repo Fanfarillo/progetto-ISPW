@@ -3,7 +3,7 @@
  */
 
 package logic.controller.guicontroller.ManageMenuGuiController;
-
+import logic.controller.guicontroller.OwnerBaseGuiController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -71,8 +71,11 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     
 
     @FXML
-    void keepManagingMenu(ActionEvent event) {
-    	System.out.println("keep\n");
+    void keepManagingMenu(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));
+    	loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView(username);});
+    	Parent root = loader.load();
+    	myAnchorPane.getChildren().setAll(root);
     }
 
     

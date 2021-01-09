@@ -3,9 +3,12 @@
  */
 
 package logic.controller.guicontroller.ManageMenuGuiController;
-
+import logic.controller.guicontroller.OwnerBaseGuiController;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,6 +17,16 @@ import javafx.scene.control.Label;
 
 public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
 
+	private ObservableList<String> obs1;
+	private ObservableList<String> obs2;
+	private String username;
+	
+	public ControllerGuiDeleteDish(String username,ObservableList<String> obs1, ObservableList<String> obs2) {
+		this.obs1 = FXCollections.observableArrayList(obs1);
+    	this.obs2 = FXCollections.observableArrayList(obs2);
+		this.username = username;
+	}
+	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -37,19 +50,7 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
     	System.out.println("delete\n");
     }
 
-    public ChoiceBox<String> getChoiceBoxDish() {
-		return this.choiseDish;
-	}
-    
-    public Label getLabel() {
-    	return this.nomeUtente;
-    }
-    
-    public ChoiceBox<String> getChoiceBoxRestaurant() {
-    	return this.scegliRistorante;
-    }
-
-    
+        
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -60,6 +61,8 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
         assert nomeUtente != null : "fx:id=\"nomeUtente\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
         assert choiseDish != null : "fx:id=\"choiseDish\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
         assert deleteButton != null : "fx:id=\"deleteButton\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
-
+        choiseDish.setItems(this.obs1);
+        scegliRistorante.setItems(this.obs2);
+        nomeUtente.setText(username);
     }
 }

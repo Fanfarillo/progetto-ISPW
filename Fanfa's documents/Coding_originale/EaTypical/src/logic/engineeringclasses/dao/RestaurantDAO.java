@@ -19,7 +19,7 @@ public class RestaurantDAO {
 	private String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 	
 	
-	public ObservableList<String> selectOwnRecipe(String username) throws ClassNotFoundException
+	public ObservableList<String> selectOwnRestaurant(String username) throws ClassNotFoundException
 	{
 		ResultSet rs = null;
 		Statement stmt = null;
