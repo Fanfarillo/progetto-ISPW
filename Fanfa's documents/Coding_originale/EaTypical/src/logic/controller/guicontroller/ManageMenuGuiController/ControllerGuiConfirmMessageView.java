@@ -3,7 +3,11 @@
  */
 
 package logic.controller.guicontroller.ManageMenuGuiController;
+import logic.controller.applicationcontroller.ManageMenu;
 import logic.controller.guicontroller.OwnerBaseGuiController;
+import logic.engineeringclasses.dao.RecipeDAO;
+import logic.model.Recipe;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +21,7 @@ import javafx.scene.control.Label;
 public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 	
 	private String contenuto;
+	private int stato;
 	private String ristorante;
 	private String piatto;
 	private boolean forCeliac;
@@ -26,6 +31,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 	
 	public ControllerGuiConfirmMessageView(String username,int stato,String contenuto, String ristorante, String piatto, boolean forVegan, boolean forCeliac, double prezzo) {
 		this.contenuto = contenuto;
+		this.stato = stato;
 		this.ristorante = ristorante;
 		this.prezzo = prezzo;
 		this.forCeliac = forCeliac;
@@ -64,8 +70,25 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     }
 
     @FXML
-    void done(ActionEvent event) {
-    	System.out.println("done\n");
+    void done(ActionEvent event) throws ClassNotFoundException {
+    	
+    	
+    	switch (stato) {
+    	
+    	
+		case 0: {
+			
+			//esegue l'aggiunta del piatto e la relativa notifica agli utenti che hanno i suoi ristoranti con
+			//quel piatto tra i preferiti
+			
+			//ricordati di sostituire tutto cio con una Bean!
+			ManageMenu manageMenu = new ManageMenu();
+			manageMenu.addDish(this.piatto, this.contenuto, this.ristorante, this.forVegan, this.forCeliac, this.prezzo);
+			
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + stato);
+		}
     }
 
     

@@ -168,17 +168,19 @@ public class RecipeDAO {
 			
 			
 			
-		} catch (SQLException e) {			
-			System.out.print("Eccezione eliminazione piatto");	
+		} catch (SQLException e) {		
+			
+			//stampa stack
 			e.printStackTrace();
+			
 		}finally {
 			
+			//chiudo la connessione al DBMS
             try {
                 if (conn != null)
                     conn.close();
-            } catch (SQLException se) {
-            	System.out.println("Errore chiusura Connessione delete");
-                se.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
 		}
 		

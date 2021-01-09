@@ -3,7 +3,7 @@
  */
 
 package logic.controller.guicontroller.ManageMenuGuiController;
-
+import logic.controller.guicontroller.OwnerBaseGuiController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -74,15 +74,15 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 
     @FXML
     void goToConfirmMessageView(ActionEvent event) throws ClassNotFoundException, IOException {
+    	
+    	//definisco ed inizializzo i parametri del costruttore del controller grafico
     	String contenutoString = contenutoRicetta.getText();
     	String ristorante = scegliRistorante.getValue();
     	String ricetta = scegliPiattoBox.getValue(); 
     	double prezzo = Double.parseDouble(priceTextField.getText());
     	boolean vegano = veganCheckBox.isSelected();
     	boolean celiaco = celiacCheckBox.isSelected();
-    	//System.out.print(contenutoString + " " + ristorante + " " + ricetta + " " + prezzo + " "+ vegano + " "+ celiaco);
-    	//ManageMenu manageMenu = new ManageMenu();
-    	//manageMenu.addDish(ricetta, ristorante, contenutoString, prezzo, vegano, celiaco);
+    	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
     	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,0, contenutoString, ristorante, ricetta, vegano, celiaco, prezzo);});
     	Parent rootParent = loader.load();

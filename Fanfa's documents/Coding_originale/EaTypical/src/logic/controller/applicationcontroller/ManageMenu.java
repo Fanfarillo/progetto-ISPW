@@ -6,7 +6,7 @@ import logic.model.Recipe;
 public class ManageMenu {
 
 	
-	public void addDish(String nomePiatto, String nomeRistorante, String contenuto, double prezzo, boolean vegano, boolean celiaco) throws ClassNotFoundException
+	public void addDish(String nomePiatto, String contenuto, String nomeRistorante,boolean vegano, boolean celiaco, double prezzo) throws ClassNotFoundException
 	{
 		//creo la entity recipe
 		Recipe recipe = new Recipe(nomePiatto, contenuto, "Da Luca", vegano, celiaco, prezzo);

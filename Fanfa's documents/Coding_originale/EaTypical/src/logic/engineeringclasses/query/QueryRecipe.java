@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.mysql.cj.jdbc.CallableStatement;
+
 
 
 public class QueryRecipe {
@@ -58,9 +60,11 @@ public class QueryRecipe {
 	}
 	
 	public static void addDish(Connection conn,String nomePiatto, String nomeRistorante, String contenuto, double prezzo, boolean vegano, boolean celiaco) throws SQLException  {
-		String sql = "INSERT into piatto(NomeRistorante, NomePiatto,Contenuto,Prezzo,Vegano,Celiaco) values(?,?,?,?,?,?);";
-		PreparedStatement preparedStatement = null;
+		//String sql = "INSERT into piatto(NomeRistorante, NomePiatto,Contenuto,Prezzo,Vegano,Celiaco) values(?,?,?,?,?,?);";
+		//PreparedStatement preparedStatement = null;
+		CallableStatement cstmt = null;
 		try {
+			/*
 			//creo insert preparedStatement
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, nomeRistorante);
@@ -71,19 +75,34 @@ public class QueryRecipe {
 			preparedStatement.setBoolean(6, celiaco);
 			
 			//eseguo
-			preparedStatement.executeUpdate();
+			preparedStatement.executeUpdate();*/
+			cstmt = (CallableStatement) conn.prepareCall("{call aggiungi_piatto(?,?,?,?,?,?)}");
+			cstmt.setString(1, nomeRistorante);
+			cstmt.setString(2, nomePiatto);
+			cstmt.setString(3, contenuto);
+			cstmt.setDouble(4, prezzo);
+			cstmt.setBoolean(5, vegano);
+			cstmt.setBoolean(6, celiaco);
+			
 		} catch (SQLException e) {
+			
+			//stampa stack
 			e.printStackTrace();
-			System.out.println("Eccezione add dish");
+			
 			throw e;
 		}finally {
+			
+			//chiudo
 			try {
-				if(preparedStatement != null) {
-				preparedStatement.close();
+				if(cstmt != null) {
+					
+				cstmt.close();
+				
 				}
 			} catch (Exception e2) {
-				System.out.println("Eccezione add dish");
+				
 				e2.printStackTrace();
+				
 			}
 			
 		}		
