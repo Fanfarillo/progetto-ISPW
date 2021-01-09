@@ -4,10 +4,12 @@
 
 package logic.controller.guicontroller.ManageMenuGuiController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +18,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import logic.controller.applicationcontroller.ManageMenu;
+import logic.controller.guicontroller.OwnerBaseGuiController;
 
 public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 
+	private String username;
+	private ObservableList<String> obs;
+	private ObservableList<String> obs2;
 	
+	public ControllerGuiModifyDishView(String username, ObservableList<String> obs,ObservableList<String> obs2) {
+		this.username = username;
+		this.obs = FXCollections.observableArrayList(obs);
+		this.obs2 = FXCollections.observableArrayList(obs2);
+		
+	}
 	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -47,31 +59,28 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 
     @FXML // fx:id="modifyButton"
     private Button modifyButton; // Value injected by FXMLLoader
+    
+    @FXML
+    private ChoiceBox<String> choiseRistoranti;
+    
+    @FXML
+    private TextArea nuovoContenuto;
 
   
-    
-    public Label getLabel() {
-    	return this.nomeUtenteLabel;
-    }
-    
-    public ChoiceBox<String> getChoiceBox(){
-    	return this.choiseBox;
-    }
 
     @FXML
-    void modify(ActionEvent event) {
-    	//System.out.println("modify\n");
+    void modify(ActionEvent event) throws IOException {
     	
-    	//leggo gli input dell'utente
+    	
+    	//definisco ed inizializzo i parametri del costruttore del controller grafico    	
     	String ricetta = choiseBox.getValue(); 
     	double prezzo = Double.parseDouble(priceText.getText());
     	boolean vegano = veganCheck.isSelected();
     	boolean celiaco = celiacCheck.isSelected();
     	
-    	
-    	ManageMenu manageMenu = new ManageMenu();
-    	manageMenu.
+    	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
+    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(nuovoContenuto.getText(),nomeUtenteLabel.getText(),ricetta, choiseRistoranti.getValue(),vegano, celiaco, prezzo);});
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }
@@ -86,11 +95,15 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert choiseBox != null : "fx:id=\"choiseBox\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
+        assert choiseRistoranti != null : "fx:id=\"choiseRistoranti\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert veganCheck != null : "fx:id=\"veganCheck\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert celiacCheck != null : "fx:id=\"celiacCheck\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert priceText != null : "fx:id=\"priceText\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert modifyButton != null : "fx:id=\"modifyButton\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
-       
+        assert nuovoContenuto != null : "fx:id=\"nuovoContenuto\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
+        nomeUtenteLabel.setText(username);
+        choiseBox.setItems(obs);
+        choiseRistoranti.setItems(obs2);
     }
 }
 

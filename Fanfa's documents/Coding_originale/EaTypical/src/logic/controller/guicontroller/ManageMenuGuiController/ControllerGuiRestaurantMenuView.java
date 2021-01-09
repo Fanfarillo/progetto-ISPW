@@ -16,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
 import logic.engineeringclasses.dao.RecipeDAO;
@@ -67,7 +66,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     	//ottengo i ristoranti dell'utente
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
-    	final ObservableList<String> obs2 = restaurantDAO.selectOwnRestaurant("U1");
+    	final ObservableList<String> obs2 = restaurantDAO.selectOwnRestaurant("liuk");
     	
     	//carico la gerarchia dei nodi
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
@@ -86,12 +85,12 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	//ottengo tutte le ricette di tutti i ristoranti dell'utente
     	RecipeDAO recipeDAO = new RecipeDAO();
     	ObservableList<String> obs1;
-    	obs1 = recipeDAO.selectOwnRecipe("U2");
+    	obs1 = recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
     	
     	//ottengo tutti i ristoranti dell'utente
     	ObservableList<String> obs2;   	
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
-    	obs2 = restaurantDAO.selectOwnRestaurant("U2");
+    	obs2 = restaurantDAO.selectOwnRestaurant(nomeUtenteLabel.getText());
     	
     	//FXMLLoader e setto il nuovo controller grafico
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/DeleteDishView.fxml"));
@@ -114,28 +113,23 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
    
 
     @FXML
-    void modifyADish(ActionEvent event) throws IOException {
+    void modifyADish(ActionEvent event) throws IOException, ClassNotFoundException {
     	
     	RecipeDAO recipeDAO = new RecipeDAO();
     	
     	//ottengo le ricette dei ristoranti del proprietario
-    	ObservableList<String> obs = recipeDAO.selectOwnRecipe("U1");
+    	ObservableList<String> obs = recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
     	
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ModifyDishView.fxml"));
-    	Parent rootParent = loader.load();
+    	RestaurantDAO restaurantDAO = new RestaurantDAO();
     	
-    	//ottengo il controller grafico
-    	ControllerGuiModifyDishView controllerGuiModifyDishView= loader.getController();
-    	
+    	ObservableList<String> obs2 = restaurantDAO.selectOwnRestaurant(username);
     
-    	//carico tutte le ricette dei prodotti tipici che i suoi ristoranti fanno
-    	ChoiceBox<String> choiceBox1 = controllerGuiModifyDishView.getChoiceBox();
-    	choiceBox1.setItems(obs);
+    	//FXMLLoader e setto il nuovo controller grafico
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ModifyDishView.fxml"));
+    	loader.setControllerFactory(c -> {return new ControllerGuiModifyDishView(nomeUtenteLabel.getText(),obs,obs2);});
+    	Parent rootParent = loader.load();      	
     	
-    	//mi porto a presso l'informazione dello username
-    	Label label = controllerGuiModifyDishView.getLabel();
-    	label.setText(nomeUtenteLabel.getText());
-    	
+    	//carica GUI successiva
     	myAnchorPane.getChildren().setAll(rootParent);
     }
 

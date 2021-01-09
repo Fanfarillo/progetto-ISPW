@@ -4,6 +4,8 @@
 
 package logic.controller.guicontroller.ManageMenuGuiController;
 import logic.controller.guicontroller.OwnerBaseGuiController;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,6 +13,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -46,8 +50,17 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
     private Button deleteButton; // Value injected by FXMLLoader
 
     @FXML
-    void delete(ActionEvent event) {
-    	System.out.println("delete\n");
+    void delete(ActionEvent event) throws IOException {
+    	
+    	String ristorante = scegliRistorante.getValue();
+    	String ricetta = choiseDish.getValue(); 
+    	
+    	
+    	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
+    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(ricetta, ristorante);});
+    	Parent rootParent = loader.load();
+    	myAnchorPane.getChildren().setAll(rootParent);
     }
 
         

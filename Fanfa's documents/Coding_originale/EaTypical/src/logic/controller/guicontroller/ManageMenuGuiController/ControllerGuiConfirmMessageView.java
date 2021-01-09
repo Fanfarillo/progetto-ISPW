@@ -29,6 +29,23 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 	private double prezzo;
 	private String username;
 	
+	public ControllerGuiConfirmMessageView(String contenuto, String username,String piatto, String ristorante, boolean vegano, boolean celiaco, double prezzo) {
+		this.piatto = piatto;
+		this.contenuto = contenuto;
+		this.prezzo = prezzo;
+		this.forCeliac = celiaco;
+		this.forVegan = vegano;
+		this.username = username;
+		this.ristorante = ristorante;
+		this.stato = 1;
+	}
+	
+	public ControllerGuiConfirmMessageView(String nomePiatto, String nomeRistorante) {
+		this.piatto = nomePiatto;
+		this.ristorante = nomeRistorante;
+		this.stato = 2;
+	}
+	
 	public ControllerGuiConfirmMessageView(String username,int stato,String contenuto, String ristorante, String piatto, boolean forVegan, boolean forCeliac, double prezzo) {
 		this.contenuto = contenuto;
 		this.stato = stato;
@@ -63,6 +80,8 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 
     @FXML
     void discardChanges(ActionEvent event) throws IOException {
+    	
+    	//scarto tutte le opzioni e ritorno al menu iniziale
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));
     	loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView(username);});
     	Parent root = loader.load();
@@ -70,10 +89,10 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     }
 
     @FXML
-    void done(ActionEvent event) throws ClassNotFoundException {
+    void done(ActionEvent event) throws ClassNotFoundException, IOException {
     	
     	
-    	switch (stato) {
+    	switch (this.stato) {
     	
     	
 		case 0: {
@@ -84,11 +103,36 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 			//ricordati di sostituire tutto cio con una Bean!
 			ManageMenu manageMenu = new ManageMenu();
 			manageMenu.addDish(this.piatto, this.contenuto, this.ristorante, this.forVegan, this.forCeliac, this.prezzo);
+			break;
 			
+		}
+		
+		case 1: {
+			
+			//esegue la modifica di un piatto
+			ManageMenu manageMenu = new ManageMenu();
+			manageMenu.modifyDishes(this.contenuto,this.ristorante,this.piatto, this.username, this.prezzo, this.forVegan, this.forCeliac);			
+			break;
+			
+		}
+		
+		case 2: {
+			
+			//esegue l'eliminazione del piatto selezionato cucinato in un suo ristorante, precedentemente selezionato
+			
+			ManageMenu manageMenu = new ManageMenu();
+			manageMenu.deleteDish(piatto, ristorante);
+			break;
 		}
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + stato);
+			
 		}
+    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));
+    	loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView(username);});
+    	Parent root = loader.load();
+    	myAnchorPane.getChildren().setAll(root);
     }
 
     
