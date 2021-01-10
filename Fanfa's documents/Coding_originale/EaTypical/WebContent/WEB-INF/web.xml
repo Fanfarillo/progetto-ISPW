@@ -12,6 +12,16 @@
   </welcome-file-list>
   
   <servlet>
+  	<servlet-name>HomePage</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.ServletHomePageOwnerView</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>HomePage</servlet-name>
+  	<url-pattern>/HomePageOwner</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>abc</servlet-name>
   	<servlet-class>logic.controller.guicontroller.Web.ServletRestaurantMenuView</servlet-class>
   </servlet>
