@@ -46,7 +46,7 @@ public class ServletRestaurantMenuView extends HttpServlet{
 			System.out.print("advice");
 		}
 		if(b5!=null) {
-			req.getRequestDispatcher("DeleteDishView.jsp").forward(req, resp);
+			req.getRequestDispatcher("HomePageOwner.jsp").forward(req, resp);
 			System.out.print("home");
 		}
 		if(b6!=null) {
@@ -54,11 +54,11 @@ public class ServletRestaurantMenuView extends HttpServlet{
 			System.out.print("manage");
 		}
 		if(b7!=null) {
-			req.getRequestDispatcher("AddDishView.jsp").forward(req, resp);
+			req.getRequestDispatcher("CreatingRestaurantView.jsp").forward(req, resp);
 			System.out.print("sponsor");
 		}
 		if(b8!=null) {
-			req.getRequestDispatcher("AdviceView.jsp").forward(req, resp);
+			req.getRequestDispatcher("HomePageOwner.jsp").forward(req, resp);
 			System.out.print("back");
 		}
 		

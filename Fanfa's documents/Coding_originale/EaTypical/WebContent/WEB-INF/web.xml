@@ -12,8 +12,18 @@
   </welcome-file-list>
   
   <servlet>
+  	<servlet-name>confermaStep</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.ServletConfirmMessage</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>confermaStep</servlet-name>
+  	<url-pattern>/confirm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>HomePage</servlet-name>
-  	<servlet-class>logic.controller.guicontroller.Web.ServletHomePageOwnerView</servlet-class>
+  	<servlet-class>logic.controller.guicontroller.Web.ServletHomePageOwner</servlet-class>
   </servlet>
   
   <servlet-mapping>

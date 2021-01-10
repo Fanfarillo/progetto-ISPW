@@ -23,7 +23,7 @@ public class ServletAddDishView extends HttpServlet{
 		String b5 = req.getParameter("continue");
 		
 		if(b1!=null) {
-			req.getRequestDispatcher("AddDishView.jsp").forward(req, resp);
+			req.getRequestDispatcher("HomePageOwner.jsp").forward(req, resp);
 			System.out.print("home");
 		}
 		if(b2!=null) {
@@ -31,7 +31,7 @@ public class ServletAddDishView extends HttpServlet{
 			System.out.print("manageMenu");
 		}
 		if(b3!=null) {
-			req.getRequestDispatcher("RestaurantMenuview.jsp").forward(req, resp);
+			req.getRequestDispatcher("CreatingRestaurantView.jsp").forward(req, resp);
 			System.out.print("sponsor");
 		}
 		if(b4!=null) {
@@ -39,9 +39,10 @@ public class ServletAddDishView extends HttpServlet{
 			System.out.print("back");
 		}
 		if(b5!=null) {
-			req.getRequestDispatcher("DeleteDishView.jsp").forward(req, resp);
+			req.getRequestDispatcher("ConfirmMessage.jsp").forward(req, resp);
 			System.out.print("delete");
 		}
 	}
 
 }
+
