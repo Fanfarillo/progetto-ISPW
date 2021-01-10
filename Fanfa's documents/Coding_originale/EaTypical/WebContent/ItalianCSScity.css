@@ -32,102 +32,106 @@ body {
 	position: absolute;
 }
 
-#aosta {
+.city:hover {
+	cursor: pointer;
+}
+
+#AO_img {
 	left: 2.67%;
 	top: 9.66%;
 }
 
-#torino {
+#TO_img {
 	left: 8.67%;
 	top: 17.63%;
 }
 
-#genova {
+#GE_img {
 	left: 14%;
 	top: 22.46%;
 }
 
-#milano {
+#MI_img {
 	left: 19.67%;
 	top: 14.49%;
 }
 
-#trento {
+#TN_img {
 	left: 30.67%;
 	top: 6.52%;
 }
 
-#venezia {
+#VE_img {
 	left: 39.33%;
 	top: 13.25%;
 }
 
-#trieste {
+#TR_img {
 	left: 49%;
 	top: 7.73%;
 }
 
-#bologna {
+#BO_img {
 	left: 35%;
 	top: 20.77%;
 }
 
-#firenze {
+#FI_img {
 	left: 31.67%;
 	top: 29.23%;
 }
 
-#ancona {
+#AN_img {
 	left: 50.67%;
 	top: 30.68%;
 }
 
-#perugia {
+#PG_img {
 	left: 42%;
 	top: 35.27%;
 }
 
-#roma {
+#RM_img {
 	left: 44%;
 	top: 45.41%;
 }
 
-#laquila {
+#AQ_img {
 	left: 52.33%;
 	top: 41.3%;
 }
 
-#campobasso {
+#CB_img {
 	left: 59.33%;
 	top: 46.62%;
 }
 
-#napoli {
+#NA_img {
 	left: 61%;
 	top: 55.07%;
 }
 
-#potenza {
+#PZ_img {
 	left: 73%;
 	top: 57.49%;
 }
 
-#bari {
+#BA_img {
 	left: 81%;
 	top: 51.21%;
 }
 
-#catanzaro {
+#CZ_img {
 	left: 82%;
 	top: 68.84%;
 }
 
-#palermo {
+#PA_img {
 	left: 52.33%;
 	top: 80.43%;
 }
 
-#cagliari {
+#CG_img {
 	left: 18.33%;
 	top: 70.77%;
 }
