@@ -18,8 +18,7 @@
 			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant" value="Sponsor Restaurant">
 			<input id="back" type="submit" name="back" value="Back">
 			
-			<p><%String nome = request.getParameter ( "nome" );  
-			out.print ( "Dio" + nome);   %></p>
+			
 			
 			<img id="fotoUtente" alt="image" src="utente.jpg"/>
 			
@@ -32,6 +31,13 @@
 			</div>
 			
 			<div id="containerSelect">
+				<select id="select">
+					<option>opzione 1</option>
+					<option>opzione 2</option>
+				</select>
+			</div>	
+			
+			<div id="cont">
 				<select id="select">
 					<option>opzione 1</option>
 					<option>opzione 2</option>

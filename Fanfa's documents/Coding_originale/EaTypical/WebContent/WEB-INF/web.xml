@@ -13,7 +13,7 @@
   
   <servlet>
   	<servlet-name>abc</servlet-name>
-  	<servlet-class>com.capo.ServletRestaurantMenuView</servlet-class>
+  	<servlet-class>logic.controller.guicontroller.Web.ServletRestaurantMenuView</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -23,7 +23,7 @@
   
   <servlet>
   	<servlet-name>cba</servlet-name>
-  	<servlet-class>com.capo.ServletDeleteDishView</servlet-class>
+  	<servlet-class>logic.controller.guicontroller.Web.ServletDeleteDishView</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -33,7 +33,7 @@
   
    <servlet>
   	<servlet-name>cb</servlet-name>
-  	<servlet-class>com.capo.ServletAddDishView</servlet-class>
+  	<servlet-class>logic.controller.guicontroller.Web.ServletAddDishView</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -43,7 +43,7 @@
   
   <servlet>
   	<servlet-name>a</servlet-name>
-  	<servlet-class>com.capo.SevletModifyView</servlet-class>
+  	<servlet-class>logic.controller.guicontroller.Web.SevletModifyView</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -53,7 +53,7 @@
   
   <servlet>
   	<servlet-name>b</servlet-name>
-  	<servlet-class>com.capo.ServletAdviceView</servlet-class>
+  	<servlet-class>logic.controller.guicontroller.Web.ServletAdviceView</servlet-class>
   </servlet>
   
   <servlet-mapping>

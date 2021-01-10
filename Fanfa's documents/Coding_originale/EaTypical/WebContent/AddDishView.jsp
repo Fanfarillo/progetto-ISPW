@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" type="text/css" href="prova.css">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Dish</title>
 </head>
 <body>
 
@@ -31,8 +31,19 @@
 				<select id="select">
 					<option>opzione 1</option>
 					<option>opzione 2</option>
-				</select>
+				</select>				
 			</div>	
+			
+			<div id="cont">
+				<select id="sel">
+					<option>opzione 1</option>
+					<option>opzione 2</option>
+				</select>				
+			</div>
+			
+			
+			
+			
 			
 			<div id="price">
 				<input type="text" id="priceInput" name="priceInput" value="Insert new Price">
@@ -43,6 +54,10 @@
   				<label for="c1" id="l1"> Vegan</label><br>
   				<input type="checkbox" id="c2" name="c2" value="Celiac">
   				<label for="c2" id="l2"> Celiac</label><br>			
+			</div>
+			
+			<div>
+				<textarea id = "area" rows="15" cols="76">Scrivi ricetta...</textarea>
 			</div>
 			
 			<div>

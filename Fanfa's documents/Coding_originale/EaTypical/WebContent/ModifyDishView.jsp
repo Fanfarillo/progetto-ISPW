@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="styleModifyDishView.css">
+<link rel="stylesheet" type="text/css" href="modifyDish.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -35,8 +35,19 @@
 				</select>
 			</div>	
 			
+			<div id="contR">
+				<select id="sel">
+					<option>opzione 1</option>
+					<option>opzione 2</option>
+				</select>
+			</div>
+			
 			<div id="price">
-				<input type="text" id="priceInput" name="priceInput" value="Insert new Price">
+				<input type="text" id="priceInput" name="priceInput" >
+			</div>
+			
+			<div>
+				<textarea id = "area" rows="15" cols="76">Inserire la nuova ricetta ...</textarea>	
 			</div>
 			
 			<div id="check">
