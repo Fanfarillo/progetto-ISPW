@@ -1,5 +1,7 @@
 @charset "ISO-8859-1";
 
+/* METTILO AL POSTO DI StyleAddDishView */
+
 #fotoUtente {
 	width: 12.29%;
 	height: 11.29%;
@@ -8,18 +10,39 @@
 	top: 13.14%;
 }
 
-p {
+#area {
 	position:absolute;
-	top:70%;
-	
+	left: 13.29%;
+	top:50%;
 }
 
-#delete {
+
+
+#price {
+	top: 72%;
 	position:absolute;
-	left: 47%;
-	top:85%;	
-	width:10em;
-	height:5em;
+	left: 60%;
+}
+
+#check {
+	position:absolute;
+	left:60%;
+	top: 50%;
+}
+
+#l2 {
+	font-size:40px;
+	color:white;
+}
+#l1 {
+	font-size:40px;
+	color:white;
+}
+
+#priceInput {
+	font-size: 25px;
+	
+	
 }
 
 body {
@@ -28,15 +51,34 @@ body {
 }
 
 #select {
-	font-size: 30px;
+	position:absolute;
+	font-size: 30px;	
 }
+
+#sel {
+	position:absolute;
+	font-size: 30px;	
+}
+
+
+
+
 #containerSelect {
 	position: absolute;
 	left: 60%;
 	top: 26.29%;
 }
 
-#n {
+#cont {
+	position: absolute;
+	left: 60%;
+	top: 40%;
+}
+
+
+
+
+#nomeUtente {
 	position: absolute;
 	left: 84.43%;
 	top: 25.43%;
@@ -52,6 +94,15 @@ body {
 	left: 4.29%;
 	top: 4.71%;
 }
+
+#continue {
+	position:absolute;
+	left: 47%;
+	top:85%;	
+	width:10em;
+	height:5em;
+}
+
 
 #fotoUtente {
 	width: 12.29%;

@@ -8,31 +8,18 @@
 	top: 13.14%;
 }
 
-#price {
-	top: 60%;
+p {
 	position:absolute;
-	left: 13.29%;
+	top:70%;
+	
 }
 
-#check {
+#delete {
 	position:absolute;
-	left:60%;
-	top: 60%;
-}
-
-#l2 {
-	font-size:40px;
-	color:white;
-}
-#l1 {
-	font-size:40px;
-	color:white;
-}
-
-#priceInput {
-	font-size: 25px;
-	
-	
+	left: 47%;
+	top:85%;	
+	width:10em;
+	height:5em;
 }
 
 body {
@@ -49,7 +36,13 @@ body {
 	top: 26.29%;
 }
 
-#nomeUtente {
+#cont {
+	position: absolute;
+	left: 60%;
+	top: 40%;
+}
+
+#n {
 	position: absolute;
 	left: 84.43%;
 	top: 25.43%;
@@ -65,15 +58,6 @@ body {
 	left: 4.29%;
 	top: 4.71%;
 }
-
-#continue {
-	position:absolute;
-	left: 47%;
-	top:85%;	
-	width:10em;
-	height:5em;
-}
-
 
 #fotoUtente {
 	width: 12.29%;
