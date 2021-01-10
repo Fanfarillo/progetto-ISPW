@@ -5,13 +5,17 @@
 package logic.controller.guicontroller.ScheduleTrip;
 
 import logic.controller.guicontroller.UserBaseGuiController;
-//import java.io.IOException;
+import logic.engineeringclasses.others.SizedStack;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-//import javafx.event.ActionEvent;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 //import javafx.fxml.FXMLLoader;
 //import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -25,6 +29,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class ControllerGuiTripSettings extends UserBaseGuiController {
 	ObservableList<String> list = FXCollections.observableArrayList();
+	
+	private String schedulingPage = "/logic/view/standalone/ScheduleTrip/SchedulingView.fxml";
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -80,11 +86,19 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     @FXML // fx:id="textBudget"
     private TextField textBudget; // Value injected by FXMLLoader
 
-    @FXML // fx:id="generateSchedButton"
-    private Button generateSchedButton; // Value injected by FXMLLoader
+    @FXML // fx:id="generateSchedulingButton"
+    private Button generateSchedulingButton; // Value injected by FXMLLoader
 
     @FXML // fx:id="rangeQuality"
     private ChoiceBox<String> rangeQuality; // Value injected by FXMLLoader
+    
+    @FXML
+    void goToSchedulingPage(ActionEvent event) throws IOException {
+		SizedStack.getSizedStack().push(this.schedulingPage);
+    	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.schedulingPage));
+    	Parent root=loader.load();
+    	myAnchorPane.getChildren().setAll(root);    	
+    }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -109,7 +123,7 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
         assert veganCheckbox != null : "fx:id=\"veganCheckbox\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert celiacCheckbox != null : "fx:id=\"celiacCheckbox\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert textBudget != null : "fx:id=\"textBudget\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
-        assert generateSchedButton != null : "fx:id=\"generateSchedButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
+        assert generateSchedulingButton != null : "fx:id=\"generateSchedButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert rangeQuality != null : "fx:id=\"rangeQuality\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
 
         loadDataDays();

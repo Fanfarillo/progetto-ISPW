@@ -4,7 +4,7 @@
 
 package logic.controller.guicontroller.SponsorRestaurant;
 
-import logic.controller.guicontroller.ManageMenuGuiController.OwnerBaseGuiController;
+import logic.controller.guicontroller.OwnerBaseGuiController;
 import java.net.URL;
 import java.util.ResourceBundle;
 //import javafx.event.ActionEvent;

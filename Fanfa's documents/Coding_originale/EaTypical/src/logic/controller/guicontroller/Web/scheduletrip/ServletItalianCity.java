@@ -29,6 +29,27 @@ public class ServletItalianCity extends HttpServlet {
     	String s4 = request.getParameter("Back");
     	String s5 = request.getParameter("Continue");
     	
+    	String s6 = request.getParameter("Aosta");
+    	String s7 = request.getParameter("Torino");
+    	String s8 = request.getParameter("Genova");
+    	String s9 = request.getParameter("Milano");
+    	String s10 = request.getParameter("Trento");
+    	String s11 = request.getParameter("Venezia");
+    	String s12 = request.getParameter("Trieste");
+    	String s13 = request.getParameter("Bologna");
+    	String s14 = request.getParameter("Firenze");
+    	String s15 = request.getParameter("Ancona");
+    	String s16 = request.getParameter("Perugia");
+    	String s17 = request.getParameter("Roma");
+    	String s18 = request.getParameter("L'Aquila");
+    	String s19 = request.getParameter("Campobasso");
+    	String s20 = request.getParameter("Napoli");
+    	String s21 = request.getParameter("Potenza");
+    	String s22 = request.getParameter("Bari");
+    	String s23 = request.getParameter("Catanzaro");
+    	String s24 = request.getParameter("Palermo");
+    	String s25 = request.getParameter("Cagliari");
+    	
     	if(s1!=null) {
     		SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
     		request.getRequestDispatcher("HomePageTouristView.jsp").forward(request, response);
@@ -49,6 +70,67 @@ public class ServletItalianCity extends HttpServlet {
     		SizedStack.getSizedStack(true).push("TripSettingsView.jsp");
     		request.getRequestDispatcher("TripSettingsView.jsp").forward(request, response);
     	}
+    	
+    	if(s6!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s7!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s8!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s9!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s10!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s11!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s12!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s13!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s14!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s15!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s16!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s17!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s18!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s19!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s20!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s21!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s22!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s23!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s24!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}
+    	if(s25!=null) {
+    		request.getRequestDispatcher("ItalianViewCity.jsp").forward(request, response);
+    	}    	
     	
 	}
 

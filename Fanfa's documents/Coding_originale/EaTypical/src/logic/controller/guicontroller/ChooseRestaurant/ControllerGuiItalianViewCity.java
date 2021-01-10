@@ -118,7 +118,7 @@ public class ControllerGuiItalianViewCity extends UserBaseGuiController{
     void selectCityChoiceBox(MouseEvent event) {
     	String imageId=((ImageView)event.getSource()).getId();
     	String selection;
-    	if(!imageId.equals(imageId))
+    	if(imageId.equals("laquila"))
     	{
     		selection="L'Aquila";
     	}

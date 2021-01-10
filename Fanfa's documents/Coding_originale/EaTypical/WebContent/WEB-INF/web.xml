@@ -88,6 +88,15 @@
   	<url-pattern>/TripSettingsView</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>ServletScheduling</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.scheduletrip.ServletScheduling</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletScheduling</servlet-name>
+  	<url-pattern>/SchedulingView</url-pattern>
+  </servlet-mapping>  
+  
    <servlet>
   	<servlet-name>ServletCreatingRestaurant</servlet-name>
   	<servlet-class>logic.controller.guicontroller.Web.sponsorrestaurant.ServletCreatingRestaurant</servlet-class>
@@ -95,6 +104,15 @@
   <servlet-mapping>
   	<servlet-name>ServletCreatingRestaurant</servlet-name>
   	<url-pattern>/CreatingRestaurantView</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>ServletItalianCitySponsor</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.sponsorrestaurant.ServletItalianCitySponsor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletItalianCitySponsor</servlet-name>
+  	<url-pattern>/ItalianCitySponsorView</url-pattern>
   </servlet-mapping>
   
 </web-app>

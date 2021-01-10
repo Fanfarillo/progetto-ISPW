@@ -101,7 +101,7 @@
          </font>
       </CheckBox>
       <TextField fx:id="textBudget" alignment="CENTER" layoutX="83.0" layoutY="516.0" prefHeight="30.0" prefWidth="200.0" promptText="Select your budget" />
-      <Button fx:id="generateSchedButton" layoutX="235.0" layoutY="622.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="230.0" text="Generate Scheduling">
+      <Button fx:id="generateSchedulingButton" layoutX="235.0" layoutY="622.0" mnemonicParsing="false" onAction="#goToSchedulingPage" prefHeight="31.0" prefWidth="230.0" text="Generate Scheduling">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

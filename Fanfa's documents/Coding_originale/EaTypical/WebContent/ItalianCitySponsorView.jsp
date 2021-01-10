@@ -6,7 +6,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>City selection</title>
-	<link rel="stylesheet" type="text/css" href="ItalianCSScity.css">
+	<link rel="stylesheet" type="text/css" href="ItalianCitySponsorCSS.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -14,10 +14,10 @@
 
 <body>
 <div class="container">
-	<form action="ItalianViewCity" name="myform" method="get">
+	<form action="ItalianCitySponsorView" name="myform" method="get">
 		<input id="home" type="submit" name="Home" value="Home">
-		<input id="scheduleTrip" type="submit" name="Schedule Trip" value="Schedule Trip">
-		<input id="chooseRestaurant" type="submit" name="Choose Restaurant" value="Choose Restaurant">
+		<input id="sponsorRestaurant" type="submit" name="Sponsor Restaurant" value="Sponsor Restaurant">
+		<input id="manageMenu" type="submit" name="Manage Menu" value="Manage Menu">
 		<input id="back" type="submit" name="Back" value="Back">
 		<img id="fotoUtente" src="utente.jpg"/>
 		<label id="nomeUtente">nomeUtente</label>
@@ -77,26 +77,26 @@
 			<input id="catanzaro" class="city" type="image" name="Catanzaro" value="Catanzaro" src="placeicon.png">
 			<input id="palermo" class="city" type="image" name="Palermo" value="Palermo" src="placeicon.png">
 			<input id="cagliari" class="city" type="image" name="Cagliari" value="Cagliari" src="placeicon.png">		-->
-			<input id="aosta" class="city" type="submit" name="Aosta" value=".">
-			<input id="torino" class="city" type="submit" name="Torino" value=".">
-			<input id="genova" class="city" type="submit" name="Genova" value=".">
-			<input id="milano" class="city" type="submit" name="Milano" value=".">
-			<input id="trento" class="city" type="submit" name="Trento" value=".">
-			<input id="venezia" class="city" type="submit" name="Venezia" value=".">
-			<input id="trieste" class="city" type="submit" name="Trieste" value=".">
-			<input id="bologna" class="city" type="submit" name="Bologna" value=".">
-			<input id="firenze" class="city" type="submit" name="Firenze" value=".">
-			<input id="ancona" class="city" type="submit" name="Ancona" value=".">
-			<input id="perugia" class="city" type="submit" name="Perugia" value=".">
-			<input id="roma" class="city" type="submit" name="Roma" value=".">
-			<input id="laquila" class="city" type="submit" name="L'Aquila" value=".">
-			<input id="campobasso" class="city" type="submit" name="Campobasso" value=".">
-			<input id="napoli" class="city" type="submit" name="Napoli" value=".">
-			<input id="potenza" class="city" type="submit" name="Potenza" value=".">
-			<input id="bari" class="city" type="submit" name="Bari" value=".">
-			<input id="catanzaro" class="city" type="submit" name="Catanzaro" value=".">
-			<input id="palermo" class="city" type="submit" name="Palermo" value=".">
-			<input id="cagliari" class="city" type="submit" name="Cagliari" value=".">
+			<input id="aosta" class="city" type="submit" name="Aosta" value="-">
+			<input id="torino" class="city" type="submit" name="Torino" value="-">
+			<input id="genova" class="city" type="submit" name="Genova" value="-">
+			<input id="milano" class="city" type="submit" name="Milano" value="-">
+			<input id="trento" class="city" type="submit" name="Trento" value="-">
+			<input id="venezia" class="city" type="submit" name="Venezia" value="-">
+			<input id="trieste" class="city" type="submit" name="Trieste" value="-">
+			<input id="bologna" class="city" type="submit" name="Bologna" value="-">
+			<input id="firenze" class="city" type="submit" name="Firenze" value="-">
+			<input id="ancona" class="city" type="submit" name="Ancona" value="-">
+			<input id="perugia" class="city" type="submit" name="Perugia" value="-">
+			<input id="roma" class="city" type="submit" name="Roma" value="-">
+			<input id="laquila" class="city" type="submit" name="L'Aquila" value="-">
+			<input id="campobasso" class="city" type="submit" name="Campobasso" value="-">
+			<input id="napoli" class="city" type="submit" name="Napoli" value="-">
+			<input id="potenza" class="city" type="submit" name="Potenza" value="-">
+			<input id="bari" class="city" type="submit" name="Bari" value="-">
+			<input id="catanzaro" class="city" type="submit" name="Catanzaro" value="-">
+			<input id="palermo" class="city" type="submit" name="Palermo" value="-">
+			<input id="cagliari" class="city" type="submit" name="Cagliari" value="-">
 		</div>
 		
 		<input id="continue" type="submit" name="Continue" value="Continue">
