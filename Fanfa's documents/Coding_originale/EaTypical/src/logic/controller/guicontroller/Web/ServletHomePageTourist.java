@@ -31,7 +31,7 @@ public class ServletHomePageTourist extends HttpServlet {
 		
 		if(s1!=null) {
 			System.out.println("To do - Choose Restaurant");
-			request.getRequestDispatcher("HomePageTouristView.jsp").forward(request, response);
+			request.getRequestDispatcher("ItalianViewCity2.jsp").forward(request, response);
 		}
 		if(s2!=null) {
 			SizedStack.getSizedStack(true).push("ItalianViewCity.jsp");

@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Select Restaurant</title>
-<link rel="stylesheet" type="text/css" href="RestaurantViewCSS.css">
+<link rel="stylesheet" type="text/css" href="WriteReviewViewCSS.css">
 </head>
 <body>
 	<div class="container">
@@ -14,21 +14,11 @@
 			<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip" value="Schedule Trip">
 			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant" value="Choose Restaurant">
 			<input id="back" class="button" type="submit" name="Back" value="Back">
-			<input id="saveFavourite" class="button" type="submit" name="Save Restaurant into Favourite" value="Save Restaurant into Favourite">
-			<input id="readReviews" class="button" type="submit" name="Read Reviews" value="Read Reviews">
-			<input id="writeReview" class="button" type="submit" name="Write Review" value="Write Review">
+			<input id="submitReview" class="button" type="submit" name="Submit Review" value="Submit Review">
 			<img id="fotoUtente" src="utente.jpg"/>
 			<label id="nomeUtente">nomeUtente</label>
-			<table id="table1">
-				 <colgroup>
-					<col width="45%">
-					<col width="55%">
-				</colgroup> 
-			  <tr>
-			    <th><b>Restaurant Name</b></th>
-			    <th><b>Address</b></th>
-			  </tr>		  
-			</table>
+			<textarea id="writeReview" name="Write Review" rows="15">Write here your review...
+ 			</textarea>
 		</form>
 	</div>
 

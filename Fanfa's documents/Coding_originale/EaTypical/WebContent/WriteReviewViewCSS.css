@@ -57,36 +57,19 @@ body {
 	position: absolute;
 }
 
-#readReviews {
-	width: 24.5%;
+#submitReview{
+	width: 9.5%;
 	height: 6.63%;
 	left: 37.53%;
 	top: 80.4%;
 	position: absolute;
 }
-
-#writeReview {
-	width: 24.5%;
-	height: 6.63%;
-	left: 69.53%;
-	top: 80.4%;
-	position: absolute;
-}
-
-table, td, th{
-	background-color: white;
-	border: 1px solid black;
-    border-collapse: collapse;
-}
-
-#table1{
-	
+#writeReview{
 	width: 70%;
 	top:32.2%;
 	left:8.50%;
 	position: absolute;
 }
-
 #nomeUtente {
 	position: absolute;
 	left: 85.43%;
