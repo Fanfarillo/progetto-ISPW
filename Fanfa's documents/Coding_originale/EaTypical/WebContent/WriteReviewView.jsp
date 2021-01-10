@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-		<form action="TripSettingsView" class="button" name="myform" method="get">
+		<form action="WriteReviewView" class="button" name="myform" method="get">
 			<input id="home" class="button" type="submit" name="Home" value="Home">
 			<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip" value="Schedule Trip">
 			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant" value="Choose Restaurant">

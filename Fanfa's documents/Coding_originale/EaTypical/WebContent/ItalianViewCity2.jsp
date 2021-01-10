@@ -14,7 +14,7 @@
 
 <body>
 <div class="container">
-	<form action="ItalianViewCity" name="myform" method="get">
+	<form action="ItalianViewCity2" name="myform" method="get">
 		<input id="home" type="submit" name="Home" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant" value="Choose Restaurant">

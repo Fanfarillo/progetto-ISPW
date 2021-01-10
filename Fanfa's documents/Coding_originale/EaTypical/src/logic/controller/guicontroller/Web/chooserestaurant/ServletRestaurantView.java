@@ -41,14 +41,16 @@ public class ServletRestaurantView extends HttpServlet {
     	}
     	if(s5!=null) {
     		System.out.println("---to do");
+		SizedStack.getSizedStack(true).push("RestaurantView.jsp");
+    		request.getRequestDispatcher("RestaurantView.jsp").forward(request, response);
     	}
     	if(s6!=null) {
     		SizedStack.getSizedStack(true).push("ReadReviewsView.jsp");
-    		request.getRequestDispatcher("ReadReviews.jsp").forward(request, response);
+    		request.getRequestDispatcher("ReadReviewsView.jsp").forward(request, response);
     	}
     	if(s7!=null) {
     		SizedStack.getSizedStack(true).push("WriteReviewView.jsp");
-    		request.getRequestDispatcher("WriteReview.jsp").forward(request, response);
+    		request.getRequestDispatcher("WriteReviewView.jsp").forward(request, response);
     	}
 	}
 

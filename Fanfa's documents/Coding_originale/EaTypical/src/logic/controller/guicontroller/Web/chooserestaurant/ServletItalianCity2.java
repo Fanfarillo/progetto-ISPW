@@ -41,8 +41,9 @@ public class ServletItalianCity2 extends HttpServlet {
     		request.getRequestDispatcher(page).forward(request, response);
     	}
     	if(s5!=null) {
-    		SizedStack.getSizedStack(true).push("TripSettingsView.jsp");
-    		request.getRequestDispatcher("TripSettingsView.jsp").forward(request, response);
+    		System.out.print("test");
+    		SizedStack.getSizedStack(true).push("RestaurantView.jsp");
+    		request.getRequestDispatcher("RestaurantView.jsp").forward(request, response);
     	}
 	}
 
