@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<link rel="stylesheet" type="text/css" href="styleAddDishView.css">
+<link rel="stylesheet" type="text/css" href="prova.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>

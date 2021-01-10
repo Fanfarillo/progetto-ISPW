@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<link rel="stylesheet" type="text/css" href="styleDeleteDishView.css">
+<link rel="stylesheet" type="text/css" href="DeleteDish.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
