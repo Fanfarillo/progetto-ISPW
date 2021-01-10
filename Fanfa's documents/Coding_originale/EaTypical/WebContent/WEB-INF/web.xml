@@ -115,4 +115,41 @@
   	<url-pattern>/ItalianCitySponsorView</url-pattern>
   </servlet-mapping>
   
+     <servlet>
+  	<servlet-name>ServletItalianCity2</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.chooserestaurant.ServletItalianCity2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletItalianCity2</servlet-name>
+  	<url-pattern>/ItalianViewCity2</url-pattern>
+  </servlet-mapping>
+  
+       <servlet>
+  	<servlet-name>ServletRestaurantView</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.chooserestaurant.ServletRestaurantView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletRestaurantView</servlet-name>
+  	<url-pattern>/RestaurantView</url-pattern>
+  </servlet-mapping>
+  
+         <servlet>
+  	<servlet-name>ServletWriteReview</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.chooserestaurant.ServletWriteReview</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletWriteReview</servlet-name>
+  	<url-pattern>/WriteReviewView</url-pattern>
+  </servlet-mapping>
+  
+           <servlet>
+  	<servlet-name>ServletReadReviews</servlet-name>
+  	<servlet-class>logic.controller.guicontroller.Web.chooserestaurant.ServletReadReviews</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletReadReviews</servlet-name>
+  	<url-pattern>/ReadReviewsView</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
