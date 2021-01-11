@@ -27,6 +27,9 @@ public class ServletConfirmMessage extends HttpServlet{
 		String b6 = req.getParameter("Discard");
 		String b7 = req.getParameter("keep");
 		
+		String b8 = req.getParameter("piatto")+req.getParameter("prezzo")+req.getParameter("ricetta");
+		System.out.println(b8);
+		
 		if(b1!=null) {
 			SizedStack.getSizedStack(true).push("HomePageOwner.jsp");
 			req.getRequestDispatcher("HomePageOwner.jsp").forward(req, resp);
@@ -53,7 +56,7 @@ public class ServletConfirmMessage extends HttpServlet{
 			SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 			
 			//implementa collegamento logica applicativa
-			req.getRequestDispatcher("RestaurantMenuview.jsp").forward(req, resp);
+			req.getRequestDispatcher("NewFile.jsp").forward(req, resp);
 			System.out.print("done");
 		}
 		if(b6!=null) {

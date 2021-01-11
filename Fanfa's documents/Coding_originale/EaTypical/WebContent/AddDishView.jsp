@@ -28,14 +28,14 @@
 			</div>
 			
 			<div id="containerSelect">
-				<select id="select">
+				<select id="select" name="piatto">
 					<option>opzione 1</option>
 					<option>opzione 2</option>
 				</select>				
 			</div>	
 			
 			<div id="cont">
-				<select id="sel">
+				<select id="sel" name="ristorante">
 					<option>opzione 1</option>
 					<option>opzione 2</option>
 				</select>				
@@ -46,7 +46,7 @@
 			
 			
 			<div id="price">
-				<input type="text" id="priceInput" name="priceInput" value="Insert new Price">
+				<input type="text" id="priceInput" name="prezzo" value="Insert new Price">
 			</div>
 			
 			<div id="check">
@@ -57,7 +57,7 @@
 			</div>
 			
 			<div>
-				<textarea id = "area" rows="15" cols="76">Scrivi ricetta...</textarea>
+				<textarea id = "area" rows="15" cols="76" name="ricetta">Scrivi ricetta...</textarea>
 			</div>
 			
 			<div>
