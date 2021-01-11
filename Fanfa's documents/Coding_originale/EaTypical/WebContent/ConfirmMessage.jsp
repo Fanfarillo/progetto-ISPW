@@ -12,7 +12,7 @@
 
 <body>
 <div class="container">
-	<form action="HomePageTouristView" name="myform" method="get">
+	<form action="confirm" name="myform" method="get">
 	
 		<input id="home" type="submit" name="home" value="Home">
 		<input id="manageMenu" type="submit" name="manageMenu" value="Manage Menu">
