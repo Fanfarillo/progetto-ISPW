@@ -29,11 +29,11 @@ public class ServletHomePageOwner extends HttpServlet {
 		
 		
 		if(s1!=null) {
-			
+			SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 			request.getRequestDispatcher("RestaurantMenuview.jsp").forward(request, response);
 		}
 		if(s2!=null) {
-			
+			SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 			request.getRequestDispatcher("CreatingRestaurantView.jsp").forward(request, response);
 		}
 		if(s3!=null) {

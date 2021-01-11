@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import logic.engineeringclasses.others.SizedStack;
+
 public class ServletAdviceView extends HttpServlet{
 
 	/**
@@ -25,22 +27,27 @@ public class ServletAdviceView extends HttpServlet{
 		
 		
 		if(b1!=null) {
+			SizedStack.getSizedStack(true).push("HomePageOwner.jsp");
 			req.getRequestDispatcher("HomePageOwner.jsp").forward(req, resp);
 			System.out.print("home");
 		}
 		if(b2!=null) {
+			SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 			req.getRequestDispatcher("RestaurantMenuview.jsp").forward(req, resp);
 			System.out.print("manageMenu");
 		}
 		if(b3!=null) {
+			SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 			req.getRequestDispatcher("CreatingRestaurantView.jsp").forward(req, resp);
 			System.out.print("sponsor");
 		}
 		if(b4!=null) {
-			req.getRequestDispatcher("HomePageOwner.jsp").forward(req, resp);
+			String page = SizedStack.getSizedStack(true).pop();
+			req.getRequestDispatcher(page).forward(req, resp);
 			System.out.print("back");
 		}
 		if(b5!=null) {
+			SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 			req.getRequestDispatcher("RestaurantMenuview.jsp").forward(req, resp);
 			System.out.print("continue");
 		}
