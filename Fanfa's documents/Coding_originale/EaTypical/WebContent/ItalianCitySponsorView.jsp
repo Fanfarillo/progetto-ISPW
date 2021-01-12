@@ -1,6 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+<%@page import="logic.engineeringclasses.others.SizedStack" %>
+
+<%    	
+    	if(request.getParameter("Home SR1")!=null) {
+    		//SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
+    		SizedStack.getSizedStack(true).clearStack();
+%>
+			<jsp:forward page="HomePageOwner.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Manage Menu SR1")!=null) {
+    		SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+%>
+			<jsp:forward page="RestaurantMenuview.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Back SR1")!=null) {
+    		String pag = SizedStack.getSizedStack(true).pop();
+    		if(pag=="RestaurantMenuview.jsp") {
+%>
+				<jsp:forward page="RestaurantMenuview.jsp"/>
+<%
+    		}
+			else if(pag=="ItalianCitySponsorView.jsp") {
+%>
+				<jsp:forward page="ItalianCitySponsorView.jsp"/>
+<%
+			}
+			else {
+%>
+				<jsp:forward page="HomePageOwner.jsp"/>
+<%
+			}
+    	}
+    	if(request.getParameter("Continue")!=null) {
+    		//SizedStack.getSizedStack(true).push("TripSettingsView.jsp");
+%>
+			<jsp:forward page="CreatingRestaurantView.jsp"/>
+<%
+    	}
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +57,10 @@
 <body>
 <div class="container">
 	<form action="ItalianCitySponsorView" name="myform" method="get">
-		<input id="home" type="submit" name="Home" value="Home">
-		<input id="sponsorRestaurant" type="submit" name="Sponsor Restaurant" value="Sponsor Restaurant">
-		<input id="manageMenu" type="submit" name="Manage Menu" value="Manage Menu">
-		<input id="back" type="submit" name="Back" value="Back">
+		<input id="home" type="submit" name="Home SR1" value="Home">
+		<input id="sponsorRestaurant" type="submit" name="Sponsor Restaurant SR1" value="Sponsor Restaurant" disabled>
+		<input id="manageMenu" type="submit" name="Manage Menu SR1" value="Manage Menu">
+		<input id="back" type="submit" name="Back SR1" value="Back">
 		<img id="fotoUtente" src="utente.jpg"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box-1">
@@ -57,50 +99,39 @@
 		
 		<div class="box-2">
 			<img id="fotoItalia" src="Cartina.jpg"/>
-<!--		<input id="aosta" class="city" type="image" name="Aosta" value="Aosta" src="placeicon.png">
-			<input id="torino" class="city" type="image" name="Torino" value="Torino" src="placeicon.png">
-			<input id="genova" class="city" type="image" name="Genova" value="Genova" src="placeicon.png">
-			<input id="milano" class="city" type="image" name="Milano" value="Milano" src="placeicon.png">
-			<input id="trento" class="city" type="image" name="Trento" value="Trento" src="placeicon.png">
-			<input id="venezia" class="city" type="image" name="Venezia" value="Venezia" src="placeicon.png">
-			<input id="trieste" class="city" type="image" name="Trieste" value="Trieste" src="placeicon.png">
-			<input id="bologna" class="city" type="image" name="Bologna" value="Bologna" src="placeicon.png">
-			<input id="firenze" class="city" type="image" name="Firenze" value="Firenze" src="placeicon.png">
-			<input id="ancona" class="city" type="image" name="Ancona" value="Ancona" src="placeicon.png">
-			<input id="perugia" class="city" type="image" name="Perugia" value="Perugia" src="placeicon.png">
-			<input id="roma" class="city" type="image" name="Roma" value="Roma" src="placeicon.png">
-			<input id="laquila" class="city" type="image" name="L'Aquila" value="L'Aquila" src="placeicon.png">
-			<input id="campobasso" class="city" type="image" name="Campobasso" value="Campobasso" src="placeicon.png">
-			<input id="napoli" class="city" type="image" name="Napoli" value="Napoli" src="placeicon.png">
-			<input id="potenza" class="city" type="image" name="Potenza" value="Potenza" src="placeicon.png">
-			<input id="bari" class="city" type="image" name="Bari" value="Bari" src="placeicon.png">
-			<input id="catanzaro" class="city" type="image" name="Catanzaro" value="Catanzaro" src="placeicon.png">
-			<input id="palermo" class="city" type="image" name="Palermo" value="Palermo" src="placeicon.png">
-			<input id="cagliari" class="city" type="image" name="Cagliari" value="Cagliari" src="placeicon.png">		-->
-			<input id="aosta" class="city" type="submit" name="Aosta" value="-">
-			<input id="torino" class="city" type="submit" name="Torino" value="-">
-			<input id="genova" class="city" type="submit" name="Genova" value="-">
-			<input id="milano" class="city" type="submit" name="Milano" value="-">
-			<input id="trento" class="city" type="submit" name="Trento" value="-">
-			<input id="venezia" class="city" type="submit" name="Venezia" value="-">
-			<input id="trieste" class="city" type="submit" name="Trieste" value="-">
-			<input id="bologna" class="city" type="submit" name="Bologna" value="-">
-			<input id="firenze" class="city" type="submit" name="Firenze" value="-">
-			<input id="ancona" class="city" type="submit" name="Ancona" value="-">
-			<input id="perugia" class="city" type="submit" name="Perugia" value="-">
-			<input id="roma" class="city" type="submit" name="Roma" value="-">
-			<input id="laquila" class="city" type="submit" name="L'Aquila" value="-">
-			<input id="campobasso" class="city" type="submit" name="Campobasso" value="-">
-			<input id="napoli" class="city" type="submit" name="Napoli" value="-">
-			<input id="potenza" class="city" type="submit" name="Potenza" value="-">
-			<input id="bari" class="city" type="submit" name="Bari" value="-">
-			<input id="catanzaro" class="city" type="submit" name="Catanzaro" value="-">
-			<input id="palermo" class="city" type="submit" name="Palermo" value="-">
-			<input id="cagliari" class="city" type="submit" name="Cagliari" value="-">
+		    <img id="AO_img" class="city"  name="Aosta" src="placeicon.png">
+			<img id="TO_img" class="city"  name="Torino"  src="placeicon.png">
+			<img id="GE_img" class="city"  name="Genova"  src="placeicon.png">
+			<img id="MI_img" class="city"  name="Milano"  src="placeicon.png">
+			<img id="TN_img" class="city"  name="Trento"  src="placeicon.png">
+			<img id="VE_img" class="city"  name="Venezia"  src="placeicon.png">
+			<img id="TR_img" class="city"  name="Trieste" src="placeicon.png">
+			<img id="BO_img" class="city"  name="Bologna"  src="placeicon.png">
+			<img id="FI_img" class="city"  name="Firenze"  src="placeicon.png">
+			<img id="AN_img" class="city"  name="Ancona" src="placeicon.png">
+			<img id="PG_img" class="city"  name="Perugia"  src="placeicon.png">
+			<img id="RM_img" class="city"  name="Roma"  src="placeicon.png">
+			<img id="AQ_img" class="city"  name="L'Aquila" src="placeicon.png">
+			<img id="CB_img" class="city"  name="Campobasso"  src="placeicon.png">
+			<img id="NA_img" class="city"  name="Napoli" src="placeicon.png">
+			<img id="PZ_img" class="city"  name="Potenza"  src="placeicon.png">
+			<img id="BA_img" class="city"  name="Bari" src="placeicon.png">
+			<img id="CZ_img" class="city"  name="Catanzaro"  src="placeicon.png">
+			<img id="PA_img" class="city"  name="Palermo"  src="placeicon.png">
+			<img id="CG_img" class="city"  name="Cagliari"  src="placeicon.png">
 		</div>
 		
 		<input id="continue" type="submit" name="Continue" value="Continue">
 	</form>
 </div>
+
+
+<script>
+	$(".city").click(function(e){
+	$("#scrollbar").val(e.currentTarget.id.replace("_img","")).change();
+	});
+</script>
+
+
 </body>
 </html>

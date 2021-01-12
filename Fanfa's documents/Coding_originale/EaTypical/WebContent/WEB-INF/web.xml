@@ -115,7 +115,7 @@
   <servlet-mapping>
   	<servlet-name>ServletScheduling</servlet-name>
   	<url-pattern>/SchedulingView</url-pattern>
-  </servlet-mapping>  -->
+  </servlet-mapping>
   
    <servlet>
   	<servlet-name>ServletCreatingRestaurant</servlet-name>
@@ -133,7 +133,7 @@
   <servlet-mapping>
   	<servlet-name>ServletItalianCitySponsor</servlet-name>
   	<url-pattern>/ItalianCitySponsorView</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>	-->
   
      <servlet>
   	<servlet-name>ServletItalianCity2</servlet-name>
