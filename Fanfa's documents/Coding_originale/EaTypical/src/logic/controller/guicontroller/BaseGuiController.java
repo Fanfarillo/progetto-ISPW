@@ -27,9 +27,9 @@ public class BaseGuiController {
 	
 	@FXML
     void goHomePage(ActionEvent event) throws IOException {			//The Home Page button onAction method
-		//To Do
-    	System.out.print("Home\n");
-    	SizedStack.getSizedStack().push(this.homePage);
+		
+    	//SizedStack.getSizedStack().push(this.homePage);
+		SizedStack.getSizedStack().clearStack();
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.homePage));
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);
@@ -37,10 +37,9 @@ public class BaseGuiController {
 
     @FXML
     void goToBackPage(ActionEvent event) throws IOException {		//The Back Button onAction method
-    	//To Do
+
     	String page=SizedStack.getSizedStack().pop();
-    	System.out.print("Back\n");
-    	
+    	//String page=SizedStack.getSizedStack().read();
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(page));
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);

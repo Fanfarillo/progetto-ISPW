@@ -81,7 +81,7 @@
   	<url-pattern>/AdviceDish</url-pattern>
   </servlet-mapping>
   
-  <servlet>
+<!--  <servlet>
   	<servlet-name>ServletHomePageTourist</servlet-name>
   	<servlet-class>logic.controller.guicontroller.Web.ServletHomePageTourist</servlet-class>
   </servlet>
@@ -115,7 +115,7 @@
   <servlet-mapping>
   	<servlet-name>ServletScheduling</servlet-name>
   	<url-pattern>/SchedulingView</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>  -->
   
    <servlet>
   	<servlet-name>ServletCreatingRestaurant</servlet-name>

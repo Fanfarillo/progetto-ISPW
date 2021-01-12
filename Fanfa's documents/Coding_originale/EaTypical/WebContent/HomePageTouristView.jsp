@@ -1,6 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+<%@page import="logic.engineeringclasses.others.SizedStack" %>
+
+<%    	
+    	if(request.getParameter("Logout")!=null) {
+    		System.out.println("To do - Logout");
+%>
+			<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Schedule Trip HT")!=null) {
+    		SizedStack.getSizedStack(true).push("ItalianViewCity.jsp");
+%>
+			<jsp:forward page="ItalianViewCity.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Choose Restaurant HT")!=null) {
+    		SizedStack.getSizedStack(true).push("ItalianViewCity2.jsp");
+%>
+			<jsp:forward page="ItalianViewCity2.jsp"/>
+<%
+    	}
+    	if(request.getParameter("See Your Favourite Restaurants")!=null) {
+    		System.out.println("To do - See Your Favourite Restaurants");
+%>
+			<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+    	}
+    	if(request.getParameter("See Your Trips")!=null) {
+    		System.out.println("To do - See Your Trips");
+%>
+			<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+    	}
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +49,14 @@
 
 <body>
 <div class="container">
-	<form action="HomePageTouristView" name="myform" method="get">
+	<form action="HomePageTouristView.jsp" name="myform" method="get">
 		<img id="fotoUtente" src="utente.jpg"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box">
 			<p>Hi!</p>
 		</div>
-		<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant" value="Choose Restaurant">
-		<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip" value="Schedule Trip">
+		<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant HT" value="Choose Restaurant">
+		<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip HT" value="Schedule Trip">
 		<input id="seeFavRestaurants" class="button" type="submit" name="See Your Favourite Restaurants" value="See Your Favourite Restaurants">
 		<input id="seeTrips" class="button" type="submit" name="See Your Trips" value="See Your Trips">
 		<input id="logout" class="button" type="submit" name="Logout" value="Logout">

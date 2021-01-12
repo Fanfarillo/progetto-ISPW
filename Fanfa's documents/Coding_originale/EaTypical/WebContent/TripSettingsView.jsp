@@ -1,6 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+<%@page import="logic.engineeringclasses.others.SizedStack" %>
+
+<%    	
+    	if(request.getParameter("Home ST2")!=null) {
+    		//SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
+    		SizedStack.getSizedStack(true).clearStack();
+%>
+			<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Schedule Trip ST2")!=null) {
+    		SizedStack.getSizedStack(true).push("ItalianViewCity.jsp");
+%>
+			<jsp:forward page="ItalianViewCity.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Choose Restaurant ST2")!=null) {
+    		SizedStack.getSizedStack(true).push("ItalianViewCity2.jsp");
+%>
+			<jsp:forward page="ItalianViewCity2.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Back ST2")!=null) {
+    		String pag = SizedStack.getSizedStack(true).read();
+    		//SizedStack.getSizedStack(true).push(pag);
+    		if(pag=="ItalianViewCity.jsp") {
+%>
+				<jsp:forward page="ItalianViewCity.jsp"/>
+<%
+    		}
+			else if(pag=="ItalianViewCity2.jsp") {
+%>
+				<jsp:forward page="ItalianViewCity2.jsp"/>
+<%
+			}
+			else {
+%>
+				<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+			}
+    	}
+    	if(request.getParameter("Generate Scheduling")!=null) {
+    		//SizedStack.getSizedStack(true).push("SchedulingView.jsp");
+%>
+			<jsp:forward page="SchedulingView.jsp"/>
+<%
+    	}
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +63,11 @@
 
 <body>
 <div class="container">
-	<form action="TripSettingsView" name="myform" method="get">
-		<input id="home" type="submit" name="Home" value="Home">
-		<input id="scheduleTrip" type="submit" name="Schedule Trip" value="Schedule Trip">
-		<input id="chooseRestaurant" type="submit" name="Choose Restaurant" value="Choose Restaurant">
-		<input id="back" type="submit" name="Back" value="Back">
+	<form action="TripSettingsView.jsp" name="myform" method="get">
+		<input id="home" type="submit" name="Home ST2" value="Home">
+		<input id="scheduleTrip" type="submit" name="Schedule Trip ST2" value="Schedule Trip">
+		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST2" value="Choose Restaurant">
+		<input id="back" type="submit" name="Back ST2" value="Back">
 		<img id="fotoUtente" src="utente.jpg"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box-1">

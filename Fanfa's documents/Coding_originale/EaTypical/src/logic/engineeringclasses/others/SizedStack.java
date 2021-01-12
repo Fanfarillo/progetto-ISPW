@@ -42,8 +42,13 @@ public class SizedStack {
 		{
 			return firstPage;
 		}
-		currentSize--;
+		instance.currentSize--;
 		instance.stack.removeLast();
+		return instance.stack.getLast();
+	}
+	
+	public String read()									//reading of a page from the stack
+	{
 		return instance.stack.getLast();
 	}
 	
@@ -69,6 +74,7 @@ public class SizedStack {
 	public void clearStack()
 	{
 		instance.stack.clear();
+		instance.currentSize=0;
 	}
 	
 }
