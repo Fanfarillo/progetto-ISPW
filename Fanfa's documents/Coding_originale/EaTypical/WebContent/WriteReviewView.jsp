@@ -1,5 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%    	
+    	if(request.getParameter("Home ww")!=null) {
+    		//SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
+    		//SizedStack.getSizedStack(true).clearStack();
+%>
+			<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Choose Restaurant ww")!=null) {
+    		//SizedStack.getSizedStack(true).push("ItalianViewCity2.jsp");
+%>
+			<jsp:forward page="ItalianViewCity2.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Schedule Trip ww")!=null) {
+    		//SizedStack.getSizedStack(true).push("ItalianViewCity2.jsp");
+%>
+			<jsp:forward page="ItalianViewCity.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Back rr")!=null) {
+
+%>
+				<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+			
+    	}
+    	if(request.getParameter("Submit Review ww")!=null) {
+    		//SizedStack.getSizedStack(true).push("TripSettingsView.jsp");
+%>
+			<!--<jsp:forward page="RestaurantView.jsp"/> TO DO-->
+<%
+    	}
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +43,12 @@
 </head>
 <body>
 	<div class="container">
-		<form action="WriteReviewView" class="button" name="myform" method="get">
-			<input id="home" class="button" type="submit" name="Home" value="Home">
-			<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip" value="Schedule Trip">
-			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant" value="Choose Restaurant">
-			<input id="back" class="button" type="submit" name="Back" value="Back">
-			<input id="submitReview" class="button" type="submit" name="Submit Review" value="Submit Review">
+		<form action="WriteReviewView.jsp" class="button" name="myform" method="get">
+			<input id="home" class="button" type="submit" name="Home ww" value="Home">
+			<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip ww" value="Schedule Trip">
+			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant ww" value="Choose Restaurant">
+			<input id="back" class="button" type="submit" name="Back ww" value="Back">
+			<input id="submitReview" class="button" type="submit" name="Submit Review ww" value="Submit Review">
 			<img id="fotoUtente" src="utente.jpg"/>
 			<label id="nomeUtente">nomeUtente</label>
 			<textarea id="writeReview" name="Write Review" rows="15">Write here your review...

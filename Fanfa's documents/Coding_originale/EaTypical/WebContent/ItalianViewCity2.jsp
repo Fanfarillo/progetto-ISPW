@@ -1,5 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+<%    	
+    	if(request.getParameter("Home ivc2")!=null) {
+    		//SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
+    		//SizedStack.getSizedStack(true).clearStack();
+%> 
+			<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Schedule Trip ivc2")!=null) {
+    		//SizedStack.getSizedStack(true).push("ItalianViewCity2.jsp");
+%>
+			<jsp:forward page="ItalianViewCity.jsp"/>
+<%
+    	}
+    	
+    	if(request.getParameter("Back ivc2")!=null) {
+
+%>
+				<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+			
+    	}
+    	if(request.getParameter("Continue ivc2")!=null) {
+    		//SizedStack.getSizedStack(true).push("TripSettingsView.jsp");
+%>
+			<jsp:forward page="RestaurantView.jsp"/>
+<%
+    	}
+%>    
+
     
 <!DOCTYPE html>
 <html>
@@ -14,23 +45,16 @@
 
 <body>
 <div class="container">
-	<form action="ItalianViewCity2" name="myform" method="get">
-		<input id="home" type="submit" name="Home" value="Home">
-		<input id="scheduleTrip" type="submit" name="Schedule Trip" value="Schedule Trip">
-		<input id="chooseRestaurant" type="submit" name="Choose Restaurant" value="Choose Restaurant">
-		<input id="back" type="submit" name="Back" value="Back">
+	<form action="ItalianViewCity2.jsp" name="myform" method="get">
+		<input id="home" type="submit" name="Home ivc2" value="Home">
+		<input id="scheduleTrip" type="submit" name="Schedule Trip ivc2" value="Schedule Trip">
+		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ivc2" value="Choose Restaurant" disabled>
+		<input id="back" type="submit" name="Back ivc2" value="Back">
 		<img id="fotoUtente" src="utente.jpg"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box-1">
 			<p>Click on the map or select a city from the drop-down menu:</p>
 		</div>
-<!--  	<div class="input-group">
-			<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">City</button>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" href="#">Boh</a>
-				<a class="dropdown-item" href="#">Mah</a>
-			</div>
-		</div>		-->
 		<select id="scrollbar" name="Scroll">
 			<option disabled selected>City</option>
 			<option value="AO">Aosta</option>
@@ -80,7 +104,7 @@
 
 		</div>
 		
-		<input id="continue" type="submit" name="Continue" value="Continue">
+		<input id="continue" type="submit" name="Continue ivc2" value="Continue">
 	</form>
 </div>
 

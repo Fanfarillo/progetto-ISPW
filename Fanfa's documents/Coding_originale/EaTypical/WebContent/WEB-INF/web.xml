@@ -135,7 +135,7 @@
   	<url-pattern>/ItalianCitySponsorView</url-pattern>
   </servlet-mapping>	-->
   
-     <servlet>
+<!--      <servlet>
   	<servlet-name>ServletItalianCity2</servlet-name>
   	<servlet-class>logic.controller.guicontroller.Web.chooserestaurant.ServletItalianCity2</servlet-class>
   </servlet>
@@ -169,7 +169,7 @@
   <servlet-mapping>
   	<servlet-name>ServletReadReviews</servlet-name>
   	<url-pattern>/ReadReviewsView</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
   
   
 </web-app>

@@ -1,5 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    
+ <%    	
+    	if(request.getParameter("Home restv")!=null) {
+    		//SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
+    		//SizedStack.getSizedStack(true).clearStack();
+%>
+			<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Choose Restaurant restv")!=null) {
+    		//SizedStack.getSizedStack(true).push("ItalianViewCity2.jsp");
+%>
+			<jsp:forward page="ItalianViewCity2.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Schedule Trip restv")!=null) {
+    		//SizedStack.getSizedStack(true).push("ItalianViewCity2.jsp");
+%>
+			<jsp:forward page="ItalianViewCity.jsp"/>
+<%
+    	}
+    	if(request.getParameter("Back restv")!=null) {
+
+%>
+				<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+			
+    	}
+    	if(request.getParameter("save Restaurant into Favourites restv")!=null) {
+    		//SizedStack.getSizedStack(true).push("TripSettingsView.jsp");
+%>
+			<!--<jsp:forward page="RestaurantView.jsp"/> TO DO-->
+<%
+    	}
+    	if(request.getParameter("Read Reviews restv")!=null) {
+
+    		%>
+    						<jsp:forward page="ReadReviewsView.jsp"/>
+    		<%
+    					
+    	}
+    	if(request.getParameter("Write Review restv")!=null) {
+
+    		%>
+    						<jsp:forward page="WriteReviewView.jsp"/>
+    		<%
+    					
+    	}
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +59,14 @@
 </head>
 <body>
 	<div class="container">
-		<form action="RestaurantView" class="button" name="myform" method="get">
-			<input id="home" class="button" type="submit" name="Home" value="Home">
-			<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip" value="Schedule Trip">
-			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant" value="Choose Restaurant">
-			<input id="back" class="button" type="submit" name="Back" value="Back">
-			<input id="saveFavourite" class="button" type="submit" name="Save Restaurant into Favourite" value="Save Restaurant into Favourite">
-			<input id="readReviews" class="button" type="submit" name="Read Reviews" value="Read Reviews">
-			<input id="writeReview" class="button" type="submit" name="Write Review" value="Write Review">
+		<form action="RestaurantView.jsp" class="button" name="myform" method="get">
+			<input id="home" class="button" type="submit" name="Home restv" value="Home">
+			<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip restv" value="Schedule Trip">
+			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant restv" value="Choose Restaurant">
+			<input id="back" class="button" type="submit" name="Back restv" value="Back">
+			<input id="saveFavourite" class="button" type="submit" name="Save Restaurant into Favourite restv" value="Save Restaurant into Favourite">
+			<input id="readReviews" class="button" type="submit" name="Read Reviews restv" value="Read Reviews">
+			<input id="writeReview" class="button" type="submit" name="Write Review restv" value="Write Review">
 			<img id="fotoUtente" src="utente.jpg"/>
 			<label id="nomeUtente">nomeUtente</label>
 			<table id="table1">
