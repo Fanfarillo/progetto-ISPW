@@ -69,14 +69,21 @@
 			<input id="writeReview" class="button" type="submit" name="Write Review restv" value="Write Review">
 			<img id="fotoUtente" src="utente.jpg"/>
 			<label id="nomeUtente">nomeUtente</label>
+			<fieldset id="checkboxes">
+					<label id="choice">you want something only </label>
+					<input type="checkbox" name="filter" value="forCeliacs">for celiacs
+					<input type="checkbox" name="filter" value="forVegans">for vegans					
+			</fieldset>
+			<label id="restName">Restaurant Name</label>
+			<label id="addrName">Address</label>
 			<table id="table1">
 				 <colgroup>
 					<col width="45%">
 					<col width="55%">
 				</colgroup> 
 			  <tr>
-			    <th><b>Restaurant Name</b></th>
-			    <th><b>Address</b></th>
+			    <th><b>prova1</b></th>
+			    <th><b>prova1</b></th>
 			  </tr>		  
 			</table>
 		</form>

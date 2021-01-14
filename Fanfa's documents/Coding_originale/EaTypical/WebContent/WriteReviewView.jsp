@@ -51,7 +51,23 @@
 			<input id="submitReview" class="button" type="submit" name="Submit Review ww" value="Submit Review">
 			<img id="fotoUtente" src="utente.jpg"/>
 			<label id="nomeUtente">nomeUtente</label>
-			<textarea id="writeReview" name="Write Review" rows="15">Write here your review...
+			
+			<input type="radio" id="one" name="rating" value="onestar">
+				<label for="one" id="onel" class="ratingl">1 star</label>
+				
+			<input type="radio" id="two" name="rating" value="twostars">
+				<label for="two" id="twol" class="ratingl">2 stars</label>
+				
+			<input type="radio" id="three" name="rating" value="threestars">
+				<label for="three" id="threel" class="ratingl">3 stars</label>
+				
+			<input type="radio" id="four" name="rating" value="fourstars">
+				<label for="four" id="fourl" class="ratingl">4 stars</label>
+				
+			<input type="radio" id="five" name="rating" value="fivestars">
+				<label for="five" id="fivel" class="ratingl">5 stars</label>
+				
+			<textarea id="writeReview" name="Write Review" rows="12">Write here your review...
  			</textarea>
 		</form>
 	</div>

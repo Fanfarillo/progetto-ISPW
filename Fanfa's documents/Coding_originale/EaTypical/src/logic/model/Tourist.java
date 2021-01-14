@@ -7,8 +7,8 @@ public class Tourist extends User {
 
 	private List<Restaurant> favouriteRestaurants = null; 
 	
-	public Tourist(String name, String surname, boolean notifications, List<Restaurant> favourite) {
-		super(name, surname, notifications);
+	public Tourist(String name, String surname, boolean notifications,String username, List<Restaurant> favourite) {
+		super(name, surname, notifications, username);
 		this.favouriteRestaurants = favourite;
 	}
 

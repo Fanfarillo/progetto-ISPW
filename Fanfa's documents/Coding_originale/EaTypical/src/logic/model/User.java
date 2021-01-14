@@ -9,13 +9,23 @@ package logic.model;
 public abstract class User {
 	private String name;
 	private String surname;
+	private String username;
 	private boolean notification;
 		
 	
-	public User(String name, String surname,boolean notifications) {
+	public User(String name, String surname,boolean notifications,String username) {
 		this.surname = surname;
 		this.name = name;
 		this.notification = notifications;
+		this.username=username;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getName() {

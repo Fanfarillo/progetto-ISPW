@@ -7,8 +7,8 @@ public class Owner extends User{
 
 	private List<Restaurant> ownRestaurant = null;
 	
-	public Owner(String name, String surname, boolean notifications, List<Restaurant> restaurants) {
-		super(name, surname, notifications);
+	public Owner(String name, String surname, boolean notifications, List<Restaurant> restaurants, String username) {
+		super(name, surname, notifications, username);
 		this.ownRestaurant = restaurants;
 	}
 

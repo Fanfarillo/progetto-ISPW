@@ -58,16 +58,71 @@ body {
 }
 
 #submitReview{
-	width: 9.5%;
+	width: 12.5%;
 	height: 6.63%;
-	left: 37.53%;
-	top: 80.4%;
+	left: 43%;
+	top: 83.4%;
 	position: absolute;
 }
+
+#one{
+	top: 32%;
+	left: 31%;
+	position:absolute;
+}
+#onel{
+	top: 32%;
+	left: 33%;
+	position:absolute;
+}
+#two{
+	top: 25%;
+	left: 39%;
+	position:absolute;
+}
+#twol{
+	top: 25%;
+	left: 41%;
+	position:absolute;
+}
+#three{
+	top: 32%;
+	left: 47%;
+	position:absolute;
+}
+#threel{
+	top: 32%;
+	left: 49%;
+	position:absolute;
+}
+#four{
+	top: 25%;
+	left: 55%;
+	position:absolute;
+}
+#fourl{
+	top: 25%;
+	left: 57%;
+	position:absolute;
+}
+#five{
+	top: 32%;
+	left: 63%;
+	position:absolute;
+}
+#fivel{
+	top: 32%;
+	left: 65%;
+	position:absolute;
+}
+.ratingl{
+	color:white;
+}
+
 #writeReview{
 	width: 70%;
-	top:32.2%;
-	left:8.50%;
+	top:40.2%;
+	left:14.50%;
 	position: absolute;
 }
 #nomeUtente {
