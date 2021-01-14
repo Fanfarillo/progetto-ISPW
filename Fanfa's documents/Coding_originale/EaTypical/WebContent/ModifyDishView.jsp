@@ -1,7 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    
+<%@page import="logic.engineeringclasses.others.SizedStack" %>
+
+<%
+	if(request.getParameter("home4")!=null) {
+		SizedStack.getSizedStack(true).clearStack();
+		%>
+		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("manageMenu4")!=null) {
+		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("sponsorRestaurant4")!=null) {
+		SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
+		%>
+		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("continue4")!=null) {
+		//SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
+		%>
+		<jsp:forward page="ConfirmMessage.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("back4")!=null) {		
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%		
+	}
+%>    
     
 <!DOCTYPE html>
 <html>
@@ -12,12 +56,12 @@
 </head>
 <body>
 	<div class="container">
-		<form action="ModifyDish" name="myform" method="get">
+		<form action="ModifyDishView.jsp" name="myform" method="get">
 		
-			<input id="home" type="submit" name="home" value="Home">
-			<input id="manageMenu" type="submit" name="manageMenu" value="Manage Menu">
-			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back" value="Back">
+			<input id="home" type="submit" name="home4" value="Home">
+			<input id="manageMenu" type="submit" name="manageMenu4" value="Manage Menu">
+			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant4" value="Sponsor Restaurant">
+			<input id="back" type="submit" name="back4" value="Back">
 			
 			<img id="fotoUtente" src="utente.jpg"/>
 			<label id="nomeUtente">NomeUtente</label>  
@@ -58,7 +102,7 @@
 			</div>
 			
 			<div>
-				<input type="submit" id="continue" value="CONTINUE" name="continue">
+				<input type="submit" id="continue" value="CONTINUE" name="continue4">
 			</div>
 			
 		</form>

@@ -1,5 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    
+<%@page import="logic.engineeringclasses.others.SizedStack" %>
+
+<%
+	if(request.getParameter("home7")!=null) {
+		SizedStack.getSizedStack(true).clearStack();
+		%>
+		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("manageMenu7")!=null) {
+		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("sponsorRestaurant7")!=null) {
+		SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
+		%>
+		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("delete2")!=null) {
+		//SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
+		%>
+		<jsp:forward page="ConfirmMessage.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("back7")!=null) {		
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%		
+	}
+%>    
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,12 +60,12 @@
 <body>
 
 	<div class="container">
-		<form action="DeleteDish" method="get">
+		<form action="DeleteDishView.jsp" method="get">
 		
-			<input id="home" type="submit" name="home" value="Home">
-			<input id="manageMenu" type="submit" name="manageMenu" value="Manage Menu">
-			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back" value="Back">
+			<input id="home" type="submit" name="home7" value="Home">
+			<input id="manageMenu" type="submit" name="manageMenu7" value="Manage Menu">
+			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant7" value="Sponsor Restaurant">
+			<input id="back" type="submit" name="back7" value="Back">
 			
 			
 			
@@ -44,7 +93,7 @@
 				</select>
 			</div>	
 			
-			<input id="delete" name="delete" value="DELETE" type="submit">
+			<input id="delete" name="delete2" value="DELETE" type="submit">
 			
 			
 			

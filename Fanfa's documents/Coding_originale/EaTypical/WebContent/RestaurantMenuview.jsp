@@ -1,8 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <!-- Modello l'input per capire quale pulsante è stato spinto -->
+ <%@page import="logic.engineeringclasses.others.SizedStack" %>
+
+<%
+	if(request.getParameter("home5")!=null) {
+		SizedStack.getSizedStack(true).clearStack();
+		%>
+		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+
+<%
+	if(request.getParameter("sponsorRestaurant5")!=null) {
+		SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
+		%>
+		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("continue5")!=null) {
+		SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
+		%>
+		<jsp:forward page="ConfirmMessage.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("back5")!=null) {		
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%		
+	}
+%>    
    
+
+<%
+	if(request.getParameter("delete")!=null) {
+		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		%>
+		<jsp:forward page="DeleteDishView.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("add")!=null) {
+		//SizedStack.getSizedStack(true).push("Resta.jsp");
+		%>
+		<jsp:forward page="AddDishView.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("modify")!=null) {
+		//SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
+		%>
+		<jsp:forward page="ModifyDishView.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("advice")!=null) {		
+		%>
+		<jsp:forward page="AdviceView.jsp"></jsp:forward>
+		<%		
+	}
+%>    
     
     
 <!DOCTYPE html>
@@ -15,12 +86,12 @@
 <body>
 
 	<div class="container">
-		<form action="ManageMenu" method="get">
+		<form action="RestaurantMenuview.jsp" method="get">
 		
-			<input id="home" type="submit" name="home" value="Home">
-			<input id="manageMenu" type="submit" name="manageMenu" value="Manage Menu">
-			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back" value="Back">
+			<input id="home" type="submit" name="home5" value="Home">
+			<input id="manageMenu" type="submit" name="manageMenu5" value="Manage Menu">
+			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant5" value="Sponsor Restaurant">
+			<input id="back" type="submit" name="back5" value="Back">
 			
 			
 			<img id="fotoUtente" alt="image" src="utente.jpg"/>
@@ -49,4 +120,4 @@
 	
 
 </body>
-</html>
+</html

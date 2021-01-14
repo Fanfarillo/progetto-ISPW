@@ -1,6 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@page import="logic.engineeringclasses.others.SizedStack" %>
+
+<%
+	if(request.getParameter("home1")!=null) {
+		SizedStack.getSizedStack(true).clearStack();
+		%>
+		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("manageMenu1")!=null) {
+		SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("sponsorRestaurant1")!=null) {
+		SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
+		%>
+		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("continue1")!=null) {
+		SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
+		%>
+		<jsp:forward page="ConfirmMessage.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("back1")!=null) {		
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%		
+	}
+%>
+
+<!-- INIZIO CODICE HTML -->
+
 <!DOCTYPE html>
+
 <html>
 <head>
 
@@ -11,14 +61,14 @@
 <body>
 
 	<div class="container">
-		<form action="AddDish" name="myform" method="get">
+		<form action="AddDishView.jsp" name="myform" method="get">
 		
-			<input id="home" type="submit" name="home" value="Home">
-			<input id="manageMenu" type="submit" name="manageMenu" value="Manage Menu">
-			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back" value="Back">
+			<input id="home" type="submit" name="home1" value="Home">
+			<input id="manageMenu" type="submit" name="manageMenu1" value="Manage Menu">
+			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant1" value="Sponsor Restaurant">
+			<input id="back" type="submit" name="back1" value="Back">
 			
-			<img id="fotoUtente" src="utente.jpg"/>
+			<img id="fotoUtente" alt="fotoUtente" src="utente.jpg"/>
 			<label id="nomeUtente">NomeUtente</label>  
 			
 			
@@ -61,7 +111,7 @@
 			</div>
 			
 			<div>
-				<input type="submit" id="continue" value="OK" name="continue">
+				<input type="submit" id="continue" value="OK" name="continue1">
 			</div>
 			
 			

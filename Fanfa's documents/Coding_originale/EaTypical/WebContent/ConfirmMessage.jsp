@@ -4,6 +4,70 @@
 
 <%request.setAttribute("piatto",request.getAttribute("piatto")); %>
  
+ <%@page import="logic.engineeringclasses.others.SizedStack" %>
+
+<%
+	if(request.getParameter("home3")!=null) {
+		SizedStack.getSizedStack(true).clearStack();
+		%>
+		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("manageMenu3")!=null) {
+		SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("sponsorRestaurant3")!=null) {
+		SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
+		%>
+		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("Discard")!=null) {
+		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("back3")!=null) {		
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%		
+	}
+%>
+
+
+<%
+	if(request.getParameter("Done")!=null) {
+		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%
+	}
+%>
+
+<%
+	if(request.getParameter("keep")!=null) {	
+		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		%>
+		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
+		<%		
+	}
+%>
 
 <!DOCTYPE html>
 <html>
@@ -19,12 +83,12 @@
 <div class="container">
 
 	
-	<form action="confirm" name="myform" method="get">
+	<form action="ConfirmMessage.jsp" name="myform" method="get">
 	
-		<input id="home" type="submit" name="home" value="Home">
-		<input id="manageMenu" type="submit" name="manageMenu" value="Manage Menu">
-		<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant" value="Sponsor Restaurant">
-		<input id="back" type="submit" name="back" value="Back">
+		<input id="home" type="submit" name="home3" value="Home">
+		<input id="manageMenu" type="submit" name="manageMenu3" value="Manage Menu">
+		<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant3" value="Sponsor Restaurant">
+		<input id="back" type="submit" name="back3" value="Back">
 			
 		<img id="fotoUtente" src="utente.jpg"/>
 		
