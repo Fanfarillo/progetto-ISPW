@@ -7,6 +7,7 @@ package logic.controller.guicontroller.ScheduleTrip;
 import logic.controller.guicontroller.UserBaseGuiController;
 import logic.engineeringclasses.others.Cities;
 import logic.engineeringclasses.others.SizedStack;
+import logic.engineeringclasses.exceptions.EmptyFieldException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,6 +28,17 @@ public class ControllerGuiItalianViewCity extends UserBaseGuiController {
 	ObservableList<String> list=FXCollections.observableArrayList();
 	
 	private String tripSettingsPage = "/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml";
+	private String username;
+	private String errorMessage="";
+	
+	public ControllerGuiItalianViewCity(String username) {
+		this.username=username;
+	}
+	
+	public ControllerGuiItalianViewCity(String username, String errorMessage) {
+		this.username=username;
+		this.errorMessage=errorMessage;
+	}
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -37,6 +49,9 @@ public class ControllerGuiItalianViewCity extends UserBaseGuiController {
     @FXML // fx:id="continueButton"
     private Button continueButton; // Value injected by FXMLLoader
 
+    @FXML // fx:id="errorLabel"
+    private Label errorLabel; // Value injected by FXMLLoader
+    
     @FXML // fx:id="nomeUtenteLabel"
     private Label nomeUtenteLabel; // Value injected by FXMLLoader
 
@@ -104,11 +119,27 @@ public class ControllerGuiItalianViewCity extends UserBaseGuiController {
     private ImageView cagliari; // Value injected by FXMLLoader
     
     @FXML
-    void goToTripSettingsPage(ActionEvent event) throws IOException { 	//The Trip Settings Page button onAction method
-		SizedStack.getSizedStack().push(this.tripSettingsPage);
-    	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    	Parent root=loader.load();
-    	myAnchorPane.getChildren().setAll(root);
+    void goToTripSettingsPage(ActionEvent event) throws IOException, ClassNotFoundException { 	//The Trip Settings Page button onAction method		
+		try {
+			String city = choiceBox.getValue();
+			if(city==null) {
+				EmptyFieldException e = new EmptyFieldException("There is no city selected.");
+				throw e;
+			}
+		
+			SizedStack.getSizedStack().push(this.tripSettingsPage);
+			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
+			loader.setControllerFactory(c -> {return new ControllerGuiTripSettings(this.username, city);});
+			Parent root=loader.load();
+			myAnchorPane.getChildren().setAll(root);
+		}
+		
+		catch(EmptyFieldException e) {
+			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.scheduleTripPage));
+			loader.setControllerFactory(c -> {return new ControllerGuiItalianViewCity(this.username, e.getMessage());});
+			Parent root=loader.load();
+			myAnchorPane.getChildren().setAll(root);
+		}
     }
     
     @FXML
@@ -133,6 +164,7 @@ public class ControllerGuiItalianViewCity extends UserBaseGuiController {
         assert scheduleTripButton != null : "fx:id=\"scheduleTripButton\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert chooseRestaurantButton != null : "fx:id=\"chooseRestaurantButton\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert continueButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
+        assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtente\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert choiceBox != null : "fx:id=\"choiceBox\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
@@ -156,6 +188,10 @@ public class ControllerGuiItalianViewCity extends UserBaseGuiController {
         assert catanzaro != null : "fx:id=\"catanzaro\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert palermo != null : "fx:id=\"palermo\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert cagliari != null : "fx:id=\"cagliari\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
+        
+        nomeUtenteLabel.setText(this.username);
+        errorLabel.setText(this.errorMessage);
+        
         for(Cities city:Cities.values())
         {
         	list.add(city.nome);

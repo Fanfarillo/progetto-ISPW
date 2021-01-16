@@ -4,11 +4,16 @@
 
 package logic.controller.guicontroller.ScheduleTrip;
 
+import logic.controller.applicationcontroller.ScheduleTrip;
 import logic.controller.guicontroller.UserBaseGuiController;
+import logic.engineeringclasses.bean.scheduletrip.BeanRestaurantSchedule;
+import logic.engineeringclasses.bean.scheduletrip.BeanCheckedRestaurantSchedule;
+import logic.engineeringclasses.exceptions.EmptyFieldException;
 import logic.engineeringclasses.others.SizedStack;
-
+//import logic.engineeringclasses.exceptions.InvalidDateException;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,18 +30,37 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+//import javafx.scene.image.ImageView;
 //import javafx.scene.layout.AnchorPane;
 
 public class ControllerGuiTripSettings extends UserBaseGuiController {
 	ObservableList<String> list = FXCollections.observableArrayList();
 	
+	private String tripSettingsPage = "/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml";
 	private String schedulingPage = "/logic/view/standalone/ScheduleTrip/SchedulingView.fxml";
+	private String username;
+	private String city;
+	private String errorMessage="";
+	
+	public ControllerGuiTripSettings(String username, String city) {
+		this.username=username;
+		this.city=city;
+	}
+	
+	public ControllerGuiTripSettings(String username, String city, String errorMessage) {
+		this.username=username;
+		this.city=city;
+		this.errorMessage=errorMessage;
+	}
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+    
+    @FXML // fx:id="errorLabel"
+    private Label errorLabel; // Value injected by FXMLLoader
 
     @FXML // fx:id="nomeUtenteLabel"
     private Label nomeUtenteLabel; // Value injected by FXMLLoader
@@ -94,15 +118,68 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     
     @FXML
     void goToSchedulingPage(ActionEvent event) throws IOException {
+    	try {
+    		String day1 = firstDay.getValue();
+    		String month1 = firstMonth.getValue();
+    		String year1 = firstYear.getValue();
+    		String selToggle1 = firstMeal.getSelectedToggle().toString();
+    		boolean atLunch1 = (selToggle1 == "RadioButton[id=radioLunch1, styleClass=radio-button]'Lunch'");
+    		String day2 = lastDay.getValue();
+    		String month2 = lastMonth.getValue();
+    		String year2 = lastYear.getValue();
+    		String selToggle2 = lastMeal.getSelectedToggle().toString();
+    		boolean atLunch2 = (selToggle2 == "RadioButton[id=radioLunch2, styleClass=radio-button]'Lunch'");
+    		boolean vegan = veganCheckbox.isSelected();
+    		boolean celiac = celiacCheckbox.isSelected();
+    		String budget = textBudget.getText();
+    		String quality = rangeQuality.getValue();
+    		
+    		if(day1==null || month1==null || year1==null || day2==null || month2==null|| year2==null) {
+    			EmptyFieldException e = new EmptyFieldException("You need to specify both the first day of your trip and the last day of your trip.");
+    			throw e;
+    		}
+    		
+    		BeanRestaurantSchedule beanRestSched = new BeanRestaurantSchedule(day1, month1, year1, atLunch1, day2, month2, year2, atLunch2, this.city, vegan, celiac, budget, quality);
+    		BeanCheckedRestaurantSchedule beanCheckedRestSched = beanRestSched.syntacticCheck();
+    		
+    		ScheduleTrip scheduleTrip = new ScheduleTrip(beanCheckedRestSched);
+    		scheduleTrip.generateScheduling();
+    		
+    	}
+    	
+    	catch(NumberFormatException e) {
+    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
+    		loader.setControllerFactory(c -> {return new ControllerGuiTripSettings(this.username, this.city, "Sorry, you entered an invalid budget.");});
+    		Parent root=loader.load();
+    		myAnchorPane.getChildren().setAll(root);    		
+    	}
+    	catch(ParseException e) {
+    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
+    		loader.setControllerFactory(c -> {return new ControllerGuiTripSettings(this.username, this.city, "Sorry, you entered a nonexistent date.");});
+    		Parent root=loader.load();
+    		myAnchorPane.getChildren().setAll(root);   
+    	}
+    	catch(Exception e) {		// EmptyFieldException, InvalidDateException
+    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
+    		loader.setControllerFactory(c -> {return new ControllerGuiTripSettings(this.username, this.city, e.getMessage());});
+    		Parent root=loader.load();
+    		myAnchorPane.getChildren().setAll(root);
+    	}
+    	
+    }
+    
+    void showSchedulingPage() throws IOException {
+    	// Maybe it's to do
 		SizedStack.getSizedStack().push(this.schedulingPage);
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.schedulingPage));
     	Parent root=loader.load();
-    	myAnchorPane.getChildren().setAll(root);    	
+    	myAnchorPane.getChildren().setAll(root);  
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
     	assert myAnchorPane != null : "fx:id=\"pane\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
+    	assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert chooseRestaurantButton != null : "fx:id=\"chooseRestButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert scheduleTripButton != null : "fx:id=\"scheduleButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
@@ -125,6 +202,9 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
         assert textBudget != null : "fx:id=\"textBudget\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert generateSchedulingButton != null : "fx:id=\"generateSchedButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert rangeQuality != null : "fx:id=\"rangeQuality\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
+        
+        nomeUtenteLabel.setText(this.username);
+        errorLabel.setText(this.errorMessage);
 
         loadDataDays();
         loadDataMonths();

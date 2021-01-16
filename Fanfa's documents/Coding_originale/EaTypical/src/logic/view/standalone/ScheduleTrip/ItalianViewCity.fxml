@@ -161,5 +161,10 @@
             <Image url="@../placeicon.png" />
          </image>
       </ImageView>
+      <Label fx:id="errorLabel" layoutX="68.0" layoutY="433.0" opacity="0.9" style="-fx-background-color: black;" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
