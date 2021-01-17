@@ -7,9 +7,11 @@ public class Menu {
 
 	private Restaurant restaurant;
 	private List<Recipe> dishes;
+	private double totalPrice;
 	
-	public Menu(List<Recipe> dishes) {
+	public Menu(List<Recipe> dishes, double totalPrice) {
 		this.dishes =dishes;
+		this.totalPrice=totalPrice;
 	}
 
 	public List<Recipe> getDishes() {
@@ -26,6 +28,14 @@ public class Menu {
 
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	

@@ -9,6 +9,8 @@ import logic.controller.guicontroller.UserBaseGuiController;
 import logic.engineeringclasses.bean.scheduletrip.BeanRestaurantSchedule;
 import logic.engineeringclasses.bean.scheduletrip.BeanCheckedRestaurantSchedule;
 import logic.engineeringclasses.exceptions.EmptyFieldException;
+import logic.engineeringclasses.exceptions.InvalidDateException;
+import logic.engineeringclasses.exceptions.NoResultException;
 import logic.engineeringclasses.others.SizedStack;
 //import logic.engineeringclasses.exceptions.InvalidDateException;
 import java.io.IOException;
@@ -159,9 +161,27 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);   
     	}
-    	catch(Exception e) {		// EmptyFieldException, InvalidDateException
+    	catch(EmptyFieldException e) {
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> {return new ControllerGuiTripSettings(this.username, this.city, e.getMessage());});
+    		loader.setControllerFactory(c -> {return new ControllerGuiTripSettings(this.username, this.city, "You need to specify both the first day of your trip and the last day of your trip.");});
+    		Parent root=loader.load();
+    		myAnchorPane.getChildren().setAll(root);   
+    	}
+    	catch(InvalidDateException e) {
+    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
+    		loader.setControllerFactory(c -> {return new ControllerGuiTripSettings(this.username, this.city, "Last meal cannot be before first meal; you cannot schedule trips which last more than 30 days.");});
+    		Parent root=loader.load();
+    		myAnchorPane.getChildren().setAll(root);   
+    	}
+    	catch(NoResultException e) {
+    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
+    		loader.setControllerFactory(c -> {return new ControllerGuiTripSettings(this.username, this.city, "No restaurant has been found.");});
+    		Parent root=loader.load();
+    		myAnchorPane.getChildren().setAll(root);   
+    	}
+    	catch(Exception e) {
+    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
+    		loader.setControllerFactory(c -> {return new ControllerGuiTripSettings(this.username, this.city, "An unknown error occurred. Please, try again later.");});
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);
     	}
