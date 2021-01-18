@@ -5,8 +5,11 @@
  <%@page import="logic.engineeringclasses.others.SizedStack" %>
 
 <%
+
+	System.out.println("-----------------------------------------------------------------------------");
 	if(request.getParameter("manage6")!=null) {
-		SizedStack.getSizedStack(true).clearStack();
+		
+		SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%

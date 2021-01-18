@@ -24,7 +24,7 @@
 
 <%
 	if(request.getParameter("continue5")!=null) {
-		SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
+		
 		%>
 		<jsp:forward page="ConfirmMessage.jsp"></jsp:forward>
 		<%
@@ -32,10 +32,17 @@
 %>
 
 <%
-	if(request.getParameter("back5")!=null) {		
-		%>
-		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
-		<%		
+	if(request.getParameter("back5")!=null) {	
+		//SizedStack.getSizedStack(true).pop();
+		String str = SizedStack.getSizedStack(true).pop();
+		
+		
+			%>
+				<jsp:forward page="<%=str%>"></jsp:forward>
+			<%	
+		
+		
+		
 	}
 %>    
    
@@ -120,4 +127,4 @@
 	
 
 </body>
-</html
+</html>
