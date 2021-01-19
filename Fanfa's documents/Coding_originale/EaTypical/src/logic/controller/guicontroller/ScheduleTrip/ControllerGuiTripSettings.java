@@ -144,8 +144,8 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     		BeanRestaurantSchedule beanRestSched = new BeanRestaurantSchedule(day1, month1, year1, atLunch1, day2, month2, year2, atLunch2, this.city, vegan, celiac, budget, quality);
     		BeanCheckedRestaurantSchedule beanCheckedRestSched = beanRestSched.syntacticCheck();
     		
-    		ScheduleTrip scheduleTrip = new ScheduleTrip(beanCheckedRestSched);
-    		scheduleTrip.generateScheduling();
+    		ScheduleTrip scheduleTrip = new ScheduleTrip();
+    		scheduleTrip.generateScheduling(beanCheckedRestSched);
     		
     	}
     	
