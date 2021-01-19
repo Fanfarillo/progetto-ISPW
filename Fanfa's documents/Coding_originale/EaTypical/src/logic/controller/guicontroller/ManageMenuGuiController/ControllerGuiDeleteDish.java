@@ -4,11 +4,11 @@
 
 package logic.controller.guicontroller.ManageMenuGuiController;
 import logic.controller.guicontroller.OwnerBaseGuiController;
+import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +18,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+
+/**
+ * 
+ * @author Luca Capotombolo
+ *
+ */
 
 public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
 
@@ -30,6 +36,12 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
     	this.obs2 = FXCollections.observableArrayList(obs2);
 		this.username = username;
 	}
+	
+	@FXML
+	private Label campoMancantePiatto;
+	
+	@FXML
+	private Label campoMancanteRistorante;
 	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -48,17 +60,36 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
 
     @FXML // fx:id="deleteButton"
     private Button deleteButton; // Value injected by FXMLLoader
+    
+    private final static String MANCANTE = "Mancante";
 
     @FXML
     void delete(ActionEvent event) throws IOException {
     	
     	String ristorante = scegliRistorante.getValue();
-    	String ricetta = choiseDish.getValue(); 
+    	String piatto = choiseDish.getValue(); 
+    	int count = 0;
     	
+    	if(ristorante == null) {
+    		campoMancanteRistorante.setText(MANCANTE);
+    		count++;
+    	}else {
+			campoMancanteRistorante.setText("");
+		}
+    	
+    	if(piatto == null) {
+    		campoMancantePiatto.setText(MANCANTE);
+    		count++;
+    	}else {
+			campoMancantePiatto.setText("");
+		}
+    	
+    	if(count>0) return;
     	
     	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
-    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(ricetta, ristorante);});
+    	BeanDeleteDish beanDeleteDish = new BeanDeleteDish(ristorante, piatto,2);
+    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,beanDeleteDish);});
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }
@@ -74,6 +105,8 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
         assert nomeUtente != null : "fx:id=\"nomeUtente\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
         assert choiseDish != null : "fx:id=\"choiseDish\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
         assert deleteButton != null : "fx:id=\"deleteButton\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
+        assert campoMancanteRistorante != null : "fx:id=\"campoMancanteRistorante\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
+        assert campoMancantePiatto != null : "fx:id=\"\"campoMancantePiatto\"\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
         choiseDish.setItems(this.obs1);
         scegliRistorante.setItems(this.obs2);
         nomeUtente.setText(username);

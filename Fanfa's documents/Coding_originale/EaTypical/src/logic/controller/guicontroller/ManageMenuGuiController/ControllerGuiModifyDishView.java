@@ -7,7 +7,6 @@ package logic.controller.guicontroller.ManageMenuGuiController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +20,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import logic.controller.guicontroller.OwnerBaseGuiController;
+import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
+
+/**
+ * 
+ * @author Luca Capotombolo
+ *
+ */
 
 public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 
@@ -34,6 +40,18 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 		this.obs2 = FXCollections.observableArrayList(obs2);
 		
 	}
+	
+	@FXML
+	private Label campoMancateContenuto;
+	
+	@FXML
+	private Label campoMancantePiatto;
+	
+	@FXML
+	private Label campoMancanteRistorante;
+	
+	@FXML
+	private Label campoMancantePrezzo;
 	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -66,21 +84,58 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
     @FXML
     private TextArea nuovoContenuto;
 
+    private static final String MANCANTE = "Mancante";
   
 
     @FXML
     void modify(ActionEvent event) throws IOException {
     	
-    	
+    	int count = 0;
     	//definisco ed inizializzo i parametri del costruttore del controller grafico    	
-    	String ricetta = choiseBox.getValue(); 
-    	double prezzo = Double.parseDouble(priceText.getText());
+    	String piatto = choiseBox.getValue(); 
+    	String contenuto = nuovoContenuto.getText();
+    	String ristorante = choiseRistoranti.getValue();
+    	String prezzoString = priceText.getText();
     	boolean vegano = veganCheck.isSelected();
     	boolean celiaco = celiacCheck.isSelected();
     	
+    	if(contenuto.equals(""))
+    	{
+    		campoMancateContenuto.setText(MANCANTE);
+    		count++;
+    	}else {
+    		campoMancateContenuto.setText("");
+    	}
+    	
+    	if(prezzoString.equals("")) {
+    		campoMancantePrezzo.setText(MANCANTE);
+    		count++;
+    	}else {
+    		campoMancantePrezzo.setText("");
+    	}
+    	if(ristorante==null) {
+    		campoMancanteRistorante.setText(MANCANTE);
+    		count++;
+    	}else {
+    		campoMancanteRistorante.setText("");
+    	}
+    	if(piatto==null) {
+    		campoMancantePiatto.setText(MANCANTE);
+    		count++;
+    	}else {
+    		campoMancantePiatto.setText("");
+    	}
+    	
+    	if(count>0) return;
+    	
+    	
+    	
+    	double prezzo = Double.parseDouble(priceText.getText());
+    	
     	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
-    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(nuovoContenuto.getText(),nomeUtenteLabel.getText(),ricetta, choiseRistoranti.getValue(),vegano, celiaco, prezzo);});
+    	BeanAddDish beanAddDish = new BeanAddDish(piatto, ristorante, contenuto, vegano, celiaco, prezzo, 1);
+    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,beanAddDish);});
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }
@@ -100,7 +155,11 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
         assert celiacCheck != null : "fx:id=\"celiacCheck\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert priceText != null : "fx:id=\"priceText\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert modifyButton != null : "fx:id=\"modifyButton\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
-        assert nuovoContenuto != null : "fx:id=\"nuovoContenuto\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
+        assert campoMancateContenuto != null : "fx:id=\"campoMancanteContenuto\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
+        assert campoMancantePiatto != null : "fx:id=\"campoMancantePiatto\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
+        assert campoMancanteRistorante != null : "fx:id=\"campoMancanteRistorante\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
+        assert campoMancantePrezzo != null : "fx:id=\"nuovoContenuto\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
+        
         nomeUtenteLabel.setText(username);
         choiseBox.setItems(obs);
         choiseRistoranti.setItems(obs2);

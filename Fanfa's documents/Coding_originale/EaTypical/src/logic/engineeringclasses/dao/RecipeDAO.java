@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
 import logic.engineeringclasses.query.QueryRecipe;
 import logic.model.Recipe;
 
@@ -253,7 +254,7 @@ public class RecipeDAO {
 	}
 	
 	
-	public void updateDishes(String contenuto,String ristorante,String nomePiatto,String username,double prezzo, boolean vegano, boolean celiaco) throws ClassNotFoundException
+	public void updateDishes(BeanAddDish beanAddDish) throws ClassNotFoundException
 	{
 		Connection conn = null;	
 		
@@ -266,7 +267,7 @@ public class RecipeDAO {
 			conn = DriverManager.getConnection(connectionString);
 			
 		
-			QueryRecipe.updateDishes(contenuto,ristorante,conn,nomePiatto,username,prezzo,vegano,celiaco);
+			QueryRecipe.updateDishes(beanAddDish.getContenuto(),beanAddDish.getRistorante(),conn,beanAddDish.getPiatto(),beanAddDish.getPrezzo(),beanAddDish.isVegano(),beanAddDish.isCeliaco());
 			//System.out.print("add completata.\n");
 			
 			

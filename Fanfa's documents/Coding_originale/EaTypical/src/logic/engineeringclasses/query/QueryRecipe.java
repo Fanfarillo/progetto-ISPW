@@ -170,7 +170,7 @@ public class QueryRecipe {
 	 * @param username
 	 * @throws SQLException 
 	 */
-	public static void updateDishes(String contenuto, String ristorante, Connection conn, String nomePiatto,String username,double prezzo, boolean vegano, boolean celiaco) throws SQLException
+	public static void updateDishes(String contenuto, String ristorante, Connection conn, String nomePiatto,double prezzo, boolean vegano, boolean celiaco) throws SQLException
 	{
 		CallableStatement cstmt = null;
 		try {

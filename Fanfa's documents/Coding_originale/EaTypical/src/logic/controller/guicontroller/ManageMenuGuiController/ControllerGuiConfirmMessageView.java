@@ -2,11 +2,12 @@
  * Sample Skeleton for 'ConfirmMessageView.fxml' Controller Class
  */
 
+
 package logic.controller.guicontroller.ManageMenuGuiController;
 import logic.controller.applicationcontroller.ManageMenu;
 import logic.controller.guicontroller.OwnerBaseGuiController;
-import logic.engineeringclasses.dao.RecipeDAO;
-import logic.model.Recipe;
+import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
+import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,44 +19,29 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+/**
+ * @author Luca Capotombolo
+ */
+
+
+
 public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 	
-	private String contenuto;
-	private int stato;
-	private String ristorante;
-	private String piatto;
-	private boolean forCeliac;
-	private boolean forVegan;
-	private double prezzo;
+	
+	private BeanDeleteDish beanDeleteDish;
+	private BeanAddDish beanAddDish;		
 	private String username;
 	
-	public ControllerGuiConfirmMessageView(String contenuto, String username,String piatto, String ristorante, boolean vegano, boolean celiaco, double prezzo) {
-		this.piatto = piatto;
-		this.contenuto = contenuto;
-		this.prezzo = prezzo;
-		this.forCeliac = celiaco;
-		this.forVegan = vegano;
+	
+	public ControllerGuiConfirmMessageView(String username,BeanDeleteDish beanDeleteDish) {
 		this.username = username;
-		this.ristorante = ristorante;
-		this.stato = 1;
+		this.beanDeleteDish = beanDeleteDish;
+		
 	}
 	
-	public ControllerGuiConfirmMessageView(String nomePiatto, String nomeRistorante) {
-		this.piatto = nomePiatto;
-		this.ristorante = nomeRistorante;
-		this.stato = 2;
-	}
-	
-	public ControllerGuiConfirmMessageView(String username,int stato,String contenuto, String ristorante, String piatto, boolean forVegan, boolean forCeliac, double prezzo) {
-		this.contenuto = contenuto;
-		this.stato = stato;
-		this.ristorante = ristorante;
-		this.prezzo = prezzo;
-		this.forCeliac = forCeliac;
-		this.forVegan = forVegan;
-		this.piatto = piatto;
+	public ControllerGuiConfirmMessageView(String username,BeanAddDish beanAddDish) {
+		this.beanAddDish = beanAddDish;
 		this.username = username;
-		System.out.println(contenuto+ristorante+prezzo+forCeliac+forVegan+piatto);
 		
 	}
 
@@ -78,6 +64,12 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     @FXML // fx:id="keepManagingMenuButton"
     private Button keepManagingMenuButton; // Value injected by FXMLLoader
 
+    
+    /**
+     * Scarta la opzioni e ritorna al menu principale
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void discardChanges(ActionEvent event) throws IOException {
     	
@@ -88,11 +80,43 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     	myAnchorPane.getChildren().setAll(root);
     }
 
+    
+    /**
+     * Eseguo effettivamente l'operazione richiesta
+     * @param event
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     @FXML
     void done(ActionEvent event) throws ClassNotFoundException, IOException {
     	
+    	if(beanAddDish!=null) {
+    		if(beanAddDish.getTipoModifica()==0) {
+    			ManageMenu manageMenu = new ManageMenu();
+    			manageMenu.addDish(beanAddDish);
+    			
+    		}else {
+    			ManageMenu manageMenu = new ManageMenu();
+    			manageMenu.modifyDishes(beanAddDish);	
+    			
+    		}
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));
+        	loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView(username);});
+        	Parent root = loader.load();
+        	myAnchorPane.getChildren().setAll(root);
+    	}
     	
-    	switch (this.stato) {
+    	if(beanDeleteDish!=null) {
+    		ManageMenu manageMenu = new ManageMenu();
+			manageMenu.deleteDish(beanDeleteDish);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));
+	    	loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView(username);});
+	    	Parent root = loader.load();
+	    	myAnchorPane.getChildren().setAll(root);
+			return;
+    	}
+    	/*
+    	switch (this.beanAddDish.getTipoModifica()) {
     	
     	
 		case 0: {
@@ -102,7 +126,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 			
 			//ricordati di sostituire tutto cio con una Bean!
 			ManageMenu manageMenu = new ManageMenu();
-			manageMenu.addDish(this.piatto, this.contenuto, this.ristorante, this.forVegan, this.forCeliac, this.prezzo);
+			manageMenu.addDish(beanAddDish);
 			break;
 			
 		}
@@ -111,7 +135,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 			
 			//esegue la modifica di un piatto
 			ManageMenu manageMenu = new ManageMenu();
-			manageMenu.modifyDishes(this.contenuto,this.ristorante,this.piatto, this.username, this.prezzo, this.forVegan, this.forCeliac);			
+			manageMenu.modifyDishes(beanAddDish);			
 			break;
 			
 		}
@@ -121,7 +145,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 			//esegue l'eliminazione del piatto selezionato cucinato in un suo ristorante, precedentemente selezionato
 			
 			ManageMenu manageMenu = new ManageMenu();
-			manageMenu.deleteDish(piatto, ristorante);
+			manageMenu.deleteDish(beanDeleteDish);
 			break;
 		}
 		default:
@@ -132,11 +156,15 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));
     	loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView(username);});
     	Parent root = loader.load();
-    	myAnchorPane.getChildren().setAll(root);
+    	myAnchorPane.getChildren().setAll(root);*/
     }
 
     
-
+    /**
+     * Reindirro al menu principale
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void keepManagingMenu(ActionEvent event) throws IOException {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));

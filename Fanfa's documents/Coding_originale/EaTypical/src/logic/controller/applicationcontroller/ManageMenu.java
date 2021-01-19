@@ -1,15 +1,17 @@
 package logic.controller.applicationcontroller;
 
+import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
+import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
 import logic.engineeringclasses.dao.RecipeDAO;
 import logic.model.Recipe;
 
 public class ManageMenu {
 
 	
-	public void addDish(String nomePiatto, String contenuto, String nomeRistorante,boolean vegano, boolean celiaco, double prezzo) throws ClassNotFoundException
+	public void addDish(BeanAddDish beanAddDish) throws ClassNotFoundException
 	{
 		//creo la entity recipe
-		Recipe recipe = new Recipe(nomePiatto, contenuto, nomeRistorante, vegano, celiaco, prezzo);
+		Recipe recipe = new Recipe(beanAddDish.getPiatto(), beanAddDish.getContenuto(), beanAddDish.getRistorante(), beanAddDish.isVegano(), beanAddDish.isCeliaco(), beanAddDish.getPrezzo());
 		
 		//richiedo la persistenza nel db
 		//aggiungi la factory
@@ -21,20 +23,22 @@ public class ManageMenu {
 		
 	}
 	
-	public void modifyDishes(String contenuto, String ristorante, String nomePiatto, String username, double prezzo, boolean vegano, boolean celiaco) throws ClassNotFoundException
+	public void modifyDishes(BeanAddDish beanAddDish) throws ClassNotFoundException
 	{
+
+		//CREA LA ENTITY !! --------------------------------------------------------------------------
 		//istanzio una DAO per modificare tuple della tabella
 		RecipeDAO recipeDAO = new RecipeDAO();
 		
-		recipeDAO.updateDishes(contenuto,ristorante,nomePiatto, username,prezzo, vegano,celiaco);
+		recipeDAO.updateDishes(beanAddDish);
 	}
 	
-	public void deleteDish(String nomePiatto, String nomeRistorante) throws ClassNotFoundException {
+	public void deleteDish(BeanDeleteDish beanDeleteDish) throws ClassNotFoundException {
 		
 		//istanzio una DAO per eliminare la tupla richiesta dalla tabella
 		RecipeDAO recipeDAO = new RecipeDAO();
 		
-		recipeDAO.deleteRecipe(nomeRistorante, nomePiatto);
+		recipeDAO.deleteRecipe(beanDeleteDish.getRistorante(), beanDeleteDish.getPiatto());
 	}
 	
 }
