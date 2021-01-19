@@ -8,15 +8,22 @@ public class BeanOutputSchedule {
 	private int dayOfWeek;
 	private Date date;
 	private boolean atLunch;
-	private List<BeanOutputRestaurant> listOfBeans;
+	//private List<BeanOutputRestaurant> listOfBeans;
 	private BeanOutputRestaurant rest;
 	
 	public BeanOutputSchedule(int dayOfWeek, Date date, boolean atLunch, List<BeanOutputRestaurant> listOfBeans) {
 		this.dayOfWeek=dayOfWeek;
 		this.date=date;
 		this.atLunch=atLunch;
-		this.listOfBeans=listOfBeans;
-		// Missing rest with random() function
+		//this.listOfBeans=listOfBeans;
+		
+		if(listOfBeans.isEmpty()) {
+			this.rest=null;
+		}
+		else {
+			int index = (int)(Math.random()*listOfBeans.size());
+			this.rest = listOfBeans.get(index);
+		}
 	}
 
 	/**

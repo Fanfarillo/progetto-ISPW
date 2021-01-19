@@ -2,8 +2,10 @@ package logic.engineeringclasses.bean.scheduletrip;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import logic.engineeringclasses.exceptions.InvalidDateException;
 
@@ -58,29 +60,44 @@ public class BeanRestaurantSchedule {
 			intQuality = Integer.parseInt(this.quality);
 		}
 		
-		String strDate1 = this.day1 + " " + this.month1 + " " + this.year1;
-		String strDate2 = this.day2 + " " + this.month2 + " " + this.year2;
+		String strDate1 = this.month1 + " " + this.day1 + ", " + this.year1;
+		String strDate2 = this.month2 + " " + this.day2 + ", " + this.year2;
 		
-		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.ENGLISH);
+		DateFormat df = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 		df.setLenient(false);
 		
 		Date date1 = df.parse(strDate1);
 		Date date2 = df.parse(strDate2);
+		Calendar cal = Calendar.getInstance();
 		
-		if((date2.compareTo(date1)<0) || (date2.compareTo(date1)==0 && this.atLunch1==false && this.atLunch2==false)) {
+		cal.setTime(date1);
+		if(this.atLunch1) cal.add(Calendar.HOUR_OF_DAY, 15);
+		else cal.add(Calendar.HOUR_OF_DAY, 22);
+		date1 = cal.getTime();
+		
+		cal.setTime(date2);
+		if(this.atLunch2) cal.add(Calendar.HOUR_OF_DAY, 15);
+		else cal.add(Calendar.HOUR_OF_DAY, 22);
+		date2 = cal.getTime();
+		
+		if(date2.compareTo(date1)<0) {
 			InvalidDateException e1 = new InvalidDateException("Last meal cannot be before first meal.");
 			throw e1;
-		}
+		}	
 		
-		Calendar cal = Calendar.getInstance();
-		Date d;
-		
+		Date d;		
 		cal.setTime(date2);
 		cal.add(Calendar.DATE, -30);
 		d=cal.getTime();
 		if(date1.compareTo(d)<0) {
-			InvalidDateException e2 = new InvalidDateException("Sorry, you cannot schedule trips which last more than 30 days.");
+			InvalidDateException e2 = new InvalidDateException("You cannot schedule trips which last more than 30 days.");
 			throw e2;
+		}
+		
+		Date today = GregorianCalendar.getInstance().getTime();
+		if(date1.compareTo(today)<0) {
+			InvalidDateException e3 = new InvalidDateException("You cannot schedule trips in the past.");
+			throw e3;
 		}
 		
 		BeanCheckedRestaurantSchedule beanCheckedRestSched = new BeanCheckedRestaurantSchedule(date1, this.atLunch1, date2, this.atLunch2, this.city, this.vegan, this.celiac, doubleBudget, intQuality);

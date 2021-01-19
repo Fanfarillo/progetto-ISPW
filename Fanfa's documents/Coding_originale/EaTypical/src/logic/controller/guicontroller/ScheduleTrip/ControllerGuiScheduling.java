@@ -5,12 +5,11 @@
 package logic.controller.guicontroller.ScheduleTrip;
 
 import logic.controller.guicontroller.UserBaseGuiController;
+import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
 import logic.engineeringclasses.others.SizedStack;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 //import javafx.collections.FXCollections;
 //import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,6 +29,13 @@ public class ControllerGuiScheduling extends UserBaseGuiController {
 	
 	private String schedulingPage = "/logic/view/standalone/ScheduleTrip/SchedulingView.fxml";
 	private String tripSettingsPage = "/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml";
+	private String username;
+	private BeanOutputSchedule[] scheduling;
+	
+	public ControllerGuiScheduling(String username, BeanOutputSchedule[] scheduling) {
+		this.username=username;
+		this.scheduling=scheduling;
+	}
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -56,7 +62,13 @@ public class ControllerGuiScheduling extends UserBaseGuiController {
     private TableColumn<?, ?> nameColumn; // Value injected by FXMLLoader
 
     @FXML // fx:id="addressColumn"
-    private TableColumn<?, ?> addressColumn; // Value injected by FXMLLoader
+    private TableColumn<?, ?> addressColumn; // Value injected by FXMLLoader    
+
+    @FXML // fx:id="avgPriceColumn"
+    private TableColumn<?, ?> avgPriceColumn; // Value injected by FXMLLoader
+
+    @FXML // fx:id="avgVoteColumn"
+    private TableColumn<?, ?> avgVoteColumn; // Value injected by FXMLLoader
 
     @FXML // fx:id="generateNewSchedulingButton"
     private Button generateNewSchedulingButton; // Value injected by FXMLLoader
@@ -96,6 +108,8 @@ public class ControllerGuiScheduling extends UserBaseGuiController {
         assert addressColumn != null : "fx:id=\"addressColumn\" was not injected: check your FXML file 'SchedulingView.fxml'.";
         assert generateNewSchedulingButton != null : "fx:id=\"generateNewSchedulingButton\" was not injected: check your FXML file 'SchedulingView.fxml'.";
         assert saveSchedulingButton != null : "fx:id=\"saveSchedulingButton\" was not injected: check your FXML file 'SchedulingView.fxml'.";
+        
+        nomeUtenteLabel.setText(this.username);
         
 //      ol = FXCollections.observableArrayList(new BeanRestaurant("stringaData","stringaOra","stringaRistorante","stringaIndirizzo"), BeanRestaurant("stringaData","stringaOra","stringaRistorante","stringaIndirizzo"));
 //      dateColumn.setCellValueFactory(new PropertyValueFactory<BeanRestaurant,String>("stringaData"));
