@@ -5,7 +5,6 @@
 
 <%    	
     	if(request.getParameter("Home ST2")!=null) {
-    		//SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
     		SizedStack.getSizedStack(true).clearStack();
 %>
 			<jsp:forward page="HomePageTouristView.jsp"/>
@@ -24,34 +23,19 @@
 <%
     	}
     	if(request.getParameter("Back ST2")!=null) {
-    		String pag = SizedStack.getSizedStack(true).read();
-    		//SizedStack.getSizedStack(true).push(pag);
-    		if(pag=="ItalianViewCity.jsp") {
 %>
-				<jsp:forward page="ItalianViewCity.jsp"/>
-<%
-    		}
-			else if(pag=="ItalianViewCity2.jsp") {
-%>
-				<jsp:forward page="ItalianViewCity2.jsp"/>
-<%
-			}
-			else {
-%>
-				<jsp:forward page="HomePageTouristView.jsp"/>
-<%
-			}
+			<jsp:forward page="ItalianViewCity.jsp"/>
+<%    		
     	}
     	if(request.getParameter("Generate Scheduling")!=null) {
-    		//SizedStack.getSizedStack(true).push("SchedulingView.jsp");
 %>
 			<jsp:forward page="SchedulingView.jsp"/>
 <%
     	}
-%>    
+%>
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Trip settings</title>
@@ -68,7 +52,7 @@
 		<input id="scheduleTrip" type="submit" name="Schedule Trip ST2" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST2" value="Choose Restaurant">
 		<input id="back" type="submit" name="Back ST2" value="Back">
-		<img id="fotoUtente" src="utente.jpg"/>
+		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box-1">
 			<p>Choose the first day of your trip:</p>
@@ -212,6 +196,7 @@
 		<label id="labelVegan" for="checkboxVegan">I am vegan</label>
 		<input id="checkboxCeliac" type="checkbox">
 		<label id="labelCeliac" for="checkboxCeliac">I have celiac disease</label>
+		<img id="euro" src="euro.png" alt="eur"/>
 		<input id="budget" type="text" placeholder="Select your budget">
 		<select id="scrollVoto">
 			<option disabled selected>Vote</option>

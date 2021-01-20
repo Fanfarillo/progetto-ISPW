@@ -1,4 +1,5 @@
 package logic.engineeringclasses.others;
+
 import java.util.LinkedList;
 
 //stack class that represent how the back button works
@@ -12,14 +13,14 @@ public class SizedStack {
 	
 	protected SizedStack() {				//constructor of the SINGLETON class
 		this.currentSize=0;
-		this.stack=new LinkedList<String>();
+		this.stack=new LinkedList<>();
 		this.firstPage="/logic/view/standalone/HomePageTouristView.fxml";
 	}
 	
 	protected SizedStack(boolean web) {		// (maybe) better constructor of the SINGLETON class
 		this.currentSize=0;
-		this.stack=new LinkedList<String>();
-		if(web==true)
+		this.stack=new LinkedList<>();
+		if(web)
 			this.firstPage="HomePageTouristView.jsp";
 		else
 			this.firstPage="/logic/view/standalone/HomePageTouristView.fxml";
@@ -52,14 +53,14 @@ public class SizedStack {
 		return instance.stack.getLast();
 	}
 	
-	public synchronized static SizedStack getSizedStack()	//the getter of the singleton instance
+	public static synchronized SizedStack getSizedStack()	//the getter of the singleton instance
 	{
 		if(SizedStack.instance==null)
 			SizedStack.instance=new SizedStack();
 		return instance;
 	}	
 	
-	public synchronized static SizedStack getSizedStack(boolean web)  // (maybe) a better getter of the singleton instance
+	public static synchronized SizedStack getSizedStack(boolean web)  // (maybe) a better getter of the singleton instance
 	{
 		if(SizedStack.instance==null)
 			SizedStack.instance=new SizedStack(web);

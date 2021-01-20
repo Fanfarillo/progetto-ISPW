@@ -5,7 +5,6 @@
 
 <%    	
     	if(request.getParameter("Home ST1")!=null) {
-    		//SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
     		SizedStack.getSizedStack(true).clearStack();
 %>
 			<jsp:forward page="HomePageTouristView.jsp"/>
@@ -36,7 +35,6 @@
 			}
     	}
     	if(request.getParameter("Continue")!=null) {
-    		//SizedStack.getSizedStack(true).push("TripSettingsView.jsp");
 %>
 			<jsp:forward page="TripSettingsView.jsp"/>
 <%
@@ -44,7 +42,7 @@
 %>    
     	
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>City selection</title>
@@ -61,19 +59,11 @@
 		<input id="scheduleTrip" type="submit" name="Schedule Trip ST1" value="Schedule Trip" disabled>
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST1" value="Choose Restaurant">
 		<input id="back" type="submit" name="Back ST1" value="Back">
-		<img id="fotoUtente" src="utente.jpg"/>
+		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box-1">
 			<p>Click on the map or select a city from the drop-down menu:</p>
 		</div>
-		
-<!--  	<div class="input-group">
-			<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">City</button>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" href="#">Boh</a>
-				<a class="dropdown-item" href="#">Mah</a>
-			</div>
-		</div>		-->
 		
 		<select id="scrollbar" name="Scroll">
 			<option disabled selected>City</option>
@@ -101,26 +91,26 @@
 		
 		<div class="box-2">
 			<img id="fotoItalia" src="Cartina.jpg"/>
-		    <img id="AO_img" class="city"  name="Aosta" src="placeicon.png">
-			<img id="TO_img" class="city"  name="Torino"  src="placeicon.png">
-			<img id="GE_img" class="city"  name="Genova"  src="placeicon.png">
-			<img id="MI_img" class="city"  name="Milano"  src="placeicon.png">
-			<img id="TN_img" class="city"  name="Trento"  src="placeicon.png">
-			<img id="VE_img" class="city"  name="Venezia"  src="placeicon.png">
-			<img id="TR_img" class="city"  name="Trieste" src="placeicon.png">
-			<img id="BO_img" class="city"  name="Bologna"  src="placeicon.png">
-			<img id="FI_img" class="city"  name="Firenze"  src="placeicon.png">
-			<img id="AN_img" class="city"  name="Ancona" src="placeicon.png">
-			<img id="PG_img" class="city"  name="Perugia"  src="placeicon.png">
-			<img id="RM_img" class="city"  name="Roma"  src="placeicon.png">
-			<img id="AQ_img" class="city"  name="L'Aquila" src="placeicon.png">
-			<img id="CB_img" class="city"  name="Campobasso"  src="placeicon.png">
-			<img id="NA_img" class="city"  name="Napoli" src="placeicon.png">
-			<img id="PZ_img" class="city"  name="Potenza"  src="placeicon.png">
-			<img id="BA_img" class="city"  name="Bari" src="placeicon.png">
-			<img id="CZ_img" class="city"  name="Catanzaro"  src="placeicon.png">
-			<img id="PA_img" class="city"  name="Palermo"  src="placeicon.png">
-			<img id="CG_img" class="city"  name="Cagliari"  src="placeicon.png">
+		    <img id="AO_img" class="city" src="placeicon.png" alt=".">
+			<img id="TO_img" class="city" src="placeicon.png" alt=".">
+			<img id="GE_img" class="city" src="placeicon.png" alt=".">
+			<img id="MI_img" class="city" src="placeicon.png" alt=".">
+			<img id="TN_img" class="city" src="placeicon.png" alt=".">
+			<img id="VE_img" class="city" src="placeicon.png" alt=".">
+			<img id="TR_img" class="city" src="placeicon.png" alt=".">
+			<img id="BO_img" class="city" src="placeicon.png" alt=".">
+			<img id="FI_img" class="city" src="placeicon.png" alt=".">
+			<img id="AN_img" class="city" src="placeicon.png" alt=".">
+			<img id="PG_img" class="city" src="placeicon.png" alt=".">
+			<img id="RM_img" class="city" src="placeicon.png" alt=".">
+			<img id="AQ_img" class="city" src="placeicon.png" alt=".">
+			<img id="CB_img" class="city" src="placeicon.png" alt=".">
+			<img id="NA_img" class="city" src="placeicon.png" alt=".">
+			<img id="PZ_img" class="city" src="placeicon.png" alt=".">
+			<img id="BA_img" class="city" src="placeicon.png" alt=".">
+			<img id="CZ_img" class="city" src="placeicon.png" alt=".">
+			<img id="PA_img" class="city" src="placeicon.png" alt=".">
+			<img id="CG_img" class="city" src="placeicon.png" alt=".">
 		</div>
 		
 		<input id="continue" type="submit" name="Continue" value="Continue">

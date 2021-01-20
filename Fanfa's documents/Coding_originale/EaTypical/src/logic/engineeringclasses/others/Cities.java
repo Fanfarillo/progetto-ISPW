@@ -1,26 +1,26 @@
 package logic.engineeringclasses.others;
 
 public enum Cities {
-	Torino("Torino"),
-	Aosta("Aosta"),
-	Genova("Genova"),
-	Milano("Milano"),
-	Trento("Trento"),
-	Trieste("Trieste"),
-	Venezia("Venezia"),
-	Bologna("Bologna"),
-	Firenze("Firenze"),
-	Ancona("Ancona"),
-	Perugia("Perugia"),
-	Roma("Roma"),
-	Aquila("L'Aquila"),
-	Campobasso("Campobasso"),
-	Napoli("Napoli"),
-	Bari("Bari"),
-	Potenza("Potenza"),
-	Catanzaro("Catanzaro"),
-	Palermo("Palermo"),
-	Cagliari("Cagliari");
+	torino("Torino"),
+	aosta("Aosta"),
+	genova("Genova"),
+	milano("Milano"),
+	trento("Trento"),
+	trieste("Trieste"),
+	venezia("Venezia"),
+	bologna("Bologna"),
+	firenze("Firenze"),
+	ancona("Ancona"),
+	perugia("Perugia"),
+	roma("Roma"),
+	aquila("L'Aquila"),
+	campobasso("Campobasso"),
+	napoli("Napoli"),
+	bari("Bari"),
+	potenza("Potenza"),
+	catanzaro("Catanzaro"),
+	palermo("Palermo"),
+	cagliari("Cagliari");
 	public final String nome;
 	private Cities(String nome)
 	{

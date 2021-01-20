@@ -5,31 +5,54 @@
 
 <%    	
     	if(request.getParameter("Home SR2")!=null) {
-    		
+    		//SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
     		SizedStack.getSizedStack(true).clearStack();
-    		
 %>
 			<jsp:forward page="HomePageOwner.jsp"/>
 <%
     	}
-    	
+    	if(request.getParameter("Sponsor Restaurant SR2")!=null) {
+    		SizedStack.getSizedStack(true).push("ItalianCitySponsorView.jsp");
+%>
+			<jsp:forward page="ItalianCitySponsorView.jsp"/>
+<%
+    	}
     	if(request.getParameter("Manage Menu SR2")!=null) {
-    		//System.out.println(SizedStack.getSizedStack().toString());
     		SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 %>
 			<jsp:forward page="RestaurantMenuview.jsp"/>
 <%
     	}
     	if(request.getParameter("Back SR2")!=null) {
-    		
-    		
-    		String pag = SizedStack.getSizedStack(true).pop();
-    		
-    		
+    		String pag = SizedStack.getSizedStack(true).read();
+    		//SizedStack.getSizedStack(true).push(pag);
+    		if(pag=="RestaurantMenuview.jsp") {
 %>
-				<jsp:forward page="<%=pag%>"></jsp:forward>
+				<jsp:forward page="RestaurantMenuview.jsp"/>
 <%
-    		
+    		}
+			else if(pag=="ItalianCitySponsorView.jsp") {
+%>
+				<jsp:forward page="ItalianCitySponsorView.jsp"/>
+<%
+			}
+			else {
+%>
+				<jsp:forward page="HomePageOwner.jsp"/>
+<%
+			}
+    	}
+    	if(request.getParameter("Add Dish")!=null) {
+    		//SizedStack.getSizedStack(true).push("SchedulingView.jsp");
+%>
+<!--			<jsp:forward page="SchedulingView.jsp"/>	-->
+<%
+    	}
+    	if(request.getParameter("Done")!=null) {
+    		//SizedStack.getSizedStack(true).push("SchedulingView.jsp");
+%>
+<!--			<jsp:forward page="SchedulingView.jsp"/>	-->
+<%
     	}
 %>    
     
@@ -46,7 +69,7 @@
 
 <body>
 <div class="container">
-	<form action="CreatingRestaurantView.jsp" name="myform" method="get">
+	<form action="CreatingRestaurantView" name="myform" method="get">
 		<input id="home" type="submit" name="Home SR2" value="Home">
 		<input id="sponsorRestaurant" type="submit" name="Sponsor Restaurant SR2" value="Sponsor Restaurant">
 		<input id="manageMenu" type="submit" name="Manage Menu SR2" value="Manage Menu">
@@ -54,13 +77,36 @@
 		<img id="fotoUtente" src="utente.jpg"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box-1">
-			<p>Please, insert name and address of your restaurant:</p>
+			<p>Please, insert name, address and city of your restaurant:</p>
 		</div>
 		<div class="box-2">
 			<p>Click here to add a dish into your menu:</p>
 		</div>
-		<input id="restName" class="textbox" type="text" placeholder="Restaurant name">
-		<input id="restAddress" class="textbox" type="text" placeholder="Restaurant address">
+		<input id="restName" class="inputbox" type="text" placeholder="Restaurant name">
+		<input id="restAddress" class="inputbox" type="text" placeholder="Restaurant address">
+		<select id="scrollbar" class="inputbox" name="Scroll">
+			<option disabled selected>City</option>
+			<option value="AO">Aosta</option>
+			<option value="TO">Torino</option>
+			<option value="GE">Genova</option>
+			<option value="MI">Milano</option>
+			<option value="TN">Trento</option>
+			<option value="VE">Venezia</option>
+			<option value="TR">Trieste</option>
+			<option value="BO">Bologna</option>
+			<option value="FI">Firenze</option>
+			<option value="AN">Ancona</option>
+			<option value="PG">Perugia</option>
+			<option value="RM">Roma</option>
+			<option value="AQ">L'Aquila</option>
+			<option value="CB">Campobasso</option>
+			<option value="NA">Napoli</option>
+			<option value="PZ">Potenza</option>
+			<option value="BA">Bari</option>
+			<option value="CZ">Catanzaro</option>
+			<option value="PA">Palermo</option>
+			<option value="CG">Cagliari</option>
+		</select>
 		<input id="addDish" class="buttonbelow" type="submit" name="Add Dish" value="Add Dish">
 		<input id="done" class="buttonbelow" type="submit" name="Done" value="Done">
 	</form>

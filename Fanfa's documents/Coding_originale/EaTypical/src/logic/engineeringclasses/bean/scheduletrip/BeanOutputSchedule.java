@@ -2,6 +2,7 @@ package logic.engineeringclasses.bean.scheduletrip;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class BeanOutputSchedule {
 
@@ -21,7 +22,8 @@ public class BeanOutputSchedule {
 			this.rest=null;
 		}
 		else {
-			int index = (int)(Math.random()*listOfBeans.size());
+			Random random = new Random();
+			int index = random.nextInt(listOfBeans.size());
 			this.rest = listOfBeans.get(index);
 		}
 	}

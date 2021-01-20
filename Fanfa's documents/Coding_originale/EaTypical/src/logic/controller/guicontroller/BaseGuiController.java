@@ -1,8 +1,6 @@
 package logic.controller.guicontroller;
 
 import java.io.IOException;
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +35,8 @@ public class BaseGuiController {
 
     @FXML
     void goToBackPage(ActionEvent event) throws IOException {		//The Back Button onAction method
-
+    	
+    	// TO FIX (Per esempio NON vengono chiamati i costruttori giusti dei controller applicativi)
     	String page=SizedStack.getSizedStack().pop();
     	//String page=SizedStack.getSizedStack().read();
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(page));

@@ -8,14 +8,14 @@ public class Factory {
 	
 	protected Factory() {}
 	
-	public synchronized static Factory getFactory() {
+	public static synchronized Factory getFactory() {
 		if(Factory.instance==null) {
 			Factory.instance = new Factory();
 		}
 		return Factory.instance;
 	}
 	
-	// Metodi per la creazione delle DAO
+	// Methods for DAOs creation
 	public FanfaAbstractDAO createRestaurantDAO() {
 		return new FanfaRestaurantDAO();
 	}

@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-//import javafx.scene.layout.AnchorPane;
 
 public class ControllerGuiHomePageTourist extends UserBaseGuiController {
 
@@ -35,13 +34,11 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     @FXML
     void goToFavouriteRestaurantsPage(ActionEvent event) {
     	//To do
-    	System.out.print("To do\n");
     }
 
     @FXML
     void goToTripsPage(ActionEvent event) {
     	//To do
-    	System.out.print("To do\n");
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

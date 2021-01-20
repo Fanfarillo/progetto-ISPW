@@ -1,6 +1,6 @@
 package logic.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Restaurant {
 	
@@ -10,11 +10,11 @@ public class Restaurant {
 	private String address;
 	private String name;
 	private double avgVote;
-	private ArrayList<Review> reviews = null;
-	private ArrayList<User> clients = null;
+	private List<Review> reviews = null;
+	private List<User> clients = null;
 	private boolean[][] openingHours;
 	
-	public Restaurant(Owner owner, String city, Menu menu, String address, String name, double avgVote, ArrayList<Review> reviews, ArrayList<User> clients, boolean[][] openingHours) {
+	public Restaurant(Owner owner, String city, Menu menu, String address, String name, double avgVote, List<Review> reviews, List<User> clients, boolean[][] openingHours) {
 		this.owner = owner;
 		this.city = city;
 		this.menu = menu;
@@ -74,19 +74,19 @@ public class Restaurant {
 		this.avgVote = avgVote;
 	}
 
-	public ArrayList<Review> getReviews() {
+	public List<Review> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(ArrayList<Review> reviews) {
+	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
 
-	public ArrayList<User> getClients() {
+	public List<User> getClients() {
 		return clients;
 	}
 
-	public void setClients(ArrayList<User> clients) {
+	public void setClients(List<User> clients) {
 		this.clients = clients;
 	}
 

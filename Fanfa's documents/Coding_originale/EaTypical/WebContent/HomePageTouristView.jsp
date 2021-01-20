@@ -37,7 +37,7 @@
 %>    
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Home page tourist</title>
@@ -50,7 +50,7 @@
 <body>
 <div class="container">
 	<form action="HomePageTouristView.jsp" name="myform" method="get">
-		<img id="fotoUtente" src="utente.jpg"/>
+		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box">
 			<p>Hi!</p>

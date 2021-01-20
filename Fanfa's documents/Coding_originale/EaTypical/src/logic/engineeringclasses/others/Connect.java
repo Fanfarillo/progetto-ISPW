@@ -12,7 +12,7 @@ public class Connect {
 	
 	protected Connect() {}
 	
-	public synchronized static Connect getInstance() {
+	public static synchronized Connect getInstance() {
 		if(Connect.instance==null) {
 			Connect.instance = new Connect();
 		}

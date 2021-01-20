@@ -5,7 +5,6 @@
 
 <%    	
     	if(request.getParameter("Home ST3")!=null) {
-    		//SizedStack.getSizedStack(true).push("HomePageTouristView.jsp");
     		SizedStack.getSizedStack(true).clearStack();
 %>
 			<jsp:forward page="HomePageTouristView.jsp"/>
@@ -24,32 +23,16 @@
 <%
     	}
     	if(request.getParameter("Back ST3")!=null) {
-    		String pag = SizedStack.getSizedStack(true).read();
-    		//SizedStack.getSizedStack(true).push("ItalianViewCity.jsp");
-    		if(pag=="ItalianViewCity.jsp") {
 %>
-				<jsp:forward page="ItalianViewCity.jsp"/>
-<%
-    		}
-			else if(pag=="ItalianViewCity2.jsp") {
-%>
-				<jsp:forward page="ItalianViewCity2.jsp"/>
-<%
-			}
-			else {
-%>
-				<jsp:forward page="HomePageTouristView.jsp"/>
-<%
-			}
+			<jsp:forward page="ItalianViewCity.jsp"/>
+<%    		
     	}
     	if(request.getParameter("Change Settings")!=null) {
-    		//SizedStack.getSizedStack(true).push("TripSettingsView.jsp");
 %>
 			<jsp:forward page="TripSettingsView.jsp"/>
 <%
     	}
     	if(request.getParameter("Generate New Scheduling")!=null) {
-    		//SizedStack.getSizedStack(true).push("SchedulingView.jsp");
 %>
 			<jsp:forward page="SchedulingView.jsp"/>
 <%
@@ -63,7 +46,7 @@
 %>    
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Scheduling result</title>
@@ -80,7 +63,7 @@
 		<input id="scheduleTrip" type="submit" name="Schedule Trip ST3" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST3" value="Choose Restaurant">
 		<input id="back" type="submit" name="Back ST3" value="Back">
-		<img id="fotoUtente" src="utente.jpg"/>
+		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente">nomeUtente</label>
 		
 		<input id="changeSettings" class="buttonBelow" type="submit" name="Change Settings" value="Change Settings">

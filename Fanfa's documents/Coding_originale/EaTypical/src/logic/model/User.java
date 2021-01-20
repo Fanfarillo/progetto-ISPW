@@ -13,7 +13,7 @@ public abstract class User {
 	private boolean notification;
 		
 	
-	public User(String name, String surname,boolean notifications,String username) {
+	protected User(String name, String surname,boolean notifications,String username) {
 		this.surname = surname;
 		this.name = name;
 		this.notification = notifications;

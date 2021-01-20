@@ -1,7 +1,6 @@
 package logic.engineeringclasses.dao;
 
 import java.sql.Connection;
-//import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,15 +14,15 @@ import logic.engineeringclasses.others.Connect;
 
 public class FanfaRestaurantDAO extends FanfaAbstractDAO {
 
-	public List<Restaurant> select1(String city, boolean vegan, boolean celiac) throws NoResultException, Exception {
+	public List<Restaurant> select1(String city, boolean vegan, boolean celiac) throws NoResultException, ClassNotFoundException, SQLException {
 		// Step 1: declarations
 		Statement stmt=null;
 		Connection conn=null;
-		List<Restaurant> listOfRestaurants = new ArrayList<Restaurant>();
+		List<Restaurant> listOfRestaurants = new ArrayList<>();
 		
 		try {
 			// Step 2: dinamic loading of sql driver
-			Class.forName(this.DRIVER_CLASS_NAME);
+			Class.forName(this.driverClassName);
 			
 			// Step 3: connection opening
 			conn = Connect.getInstance().getDBConnection();
@@ -33,8 +32,7 @@ public class FanfaRestaurantDAO extends FanfaAbstractDAO {
 			ResultSet rs = FanfaQueryRestaurant.selectRestaurantsForTrip(stmt, city, vegan, celiac);
 			
 			if(!rs.first()) {		// rs empty
-				NoResultException e = new NoResultException("No restaurant has been found.");
-				throw e;
+				throw new NoResultException("No restaurant has been found.");
 			}
 			
 			rs.first();
@@ -42,9 +40,6 @@ public class FanfaRestaurantDAO extends FanfaAbstractDAO {
 				String name = rs.getString("Nome");
 				String address = rs.getString("Indirizzo");
 				double avgVote = rs.getDouble("VotoMedio");
-				//int dayOfWeek = rs.getInt("GiornoSettimana");
-				//boolean atLunch = rs.getBoolean("ApertoAPranzo");
-				//boolean atDinner = rs.getBoolean("ApertoACena");
 				Menu menu = new Menu(null, rs.getDouble("Totale"));
 				boolean[][] openingHours = new boolean[7][2];
 				
@@ -54,7 +49,7 @@ public class FanfaRestaurantDAO extends FanfaAbstractDAO {
 					}
 				}
 				
-				while(rs.getString("Nome")==name) {
+				while(rs.getString("Nome").equals(name)) {
 					openingHours[rs.getInt("GiornoSettimana")-1][0] = rs.getBoolean("ApertoAPranzo");
 					openingHours[rs.getInt("GiornoSettimana")-1][1] = rs.getBoolean("ApertoACena");
 					rs.next();

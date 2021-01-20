@@ -5,6 +5,14 @@ body {
 	background-size: cover;
 }
 
+#euro {
+	width: 2.8%;
+	height: 5.6%;
+	position: absolute;
+	left: 9.06%;
+	top: 73.71%;
+}
+
 #fotoUtente {
 	width: 10.29%;
 	height: 7.29%;
@@ -49,7 +57,6 @@ body {
 	position: absolute;
 	left: 85.43%;
 	top: 20.43%;
-	color: white;
 	font-size: 16px;
 	background-color: rgba(0,0,0,0.7);
 }
