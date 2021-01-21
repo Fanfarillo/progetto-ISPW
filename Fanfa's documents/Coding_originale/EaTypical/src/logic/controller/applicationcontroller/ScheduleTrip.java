@@ -8,21 +8,24 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import logic.engineeringclasses.bean.scheduletrip.BeanRestaurantSchedule;
+import logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputRestaurant;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
-import logic.engineeringclasses.dao.FanfaAbstractDAO;
+import logic.engineeringclasses.dao.ScheduleTripRestaurantDAO;
+import logic.engineeringclasses.dao.SchedulingDAO;
 import logic.engineeringclasses.exceptions.NoResultException;
-import logic.engineeringclasses.factory.Factory;
+import logic.model.Menu;
 import logic.model.Restaurant;
+import logic.model.Scheduling;
+import logic.model.Tourist;
 
 public class ScheduleTrip {
 	
 	public BeanOutputSchedule[] generateScheduling(BeanRestaurantSchedule beanCRS) throws NoResultException, ClassNotFoundException, SQLException {
 		
 		// Query of the restaurants that are in the selected city and satisfy tourist's eventual food requirements
-		Factory f = Factory.getFactory();
-		FanfaAbstractDAO dao = f.createRestaurantDAO();
-		List<Restaurant> listOfRestaurants = dao.select1(beanCRS.getCity(), beanCRS.isVegan(), beanCRS.isCeliac());		// List of restaurants that satisfy the most important conditions given by the tourist.
+		ScheduleTripRestaurantDAO dao = new ScheduleTripRestaurantDAO();
+		List<Restaurant> listOfRestaurants = dao.select(beanCRS.getCity(), beanCRS.isVegan(), beanCRS.isCeliac());		// List of restaurants that satisfy the most important conditions given by the tourist.
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(beanCRS.getDate1());
@@ -64,7 +67,7 @@ public class ScheduleTrip {
 					validRestForAMeal.add(b);
 				}
 			}			
-			BeanOutputSchedule beanSched = new BeanOutputSchedule(dayOfWeek, date, atLunch, validRestForAMeal);
+			BeanOutputSchedule beanSched = new BeanOutputSchedule(date, atLunch, validRestForAMeal);
 			scheduling[k] = beanSched;
 			
 			if(atLunch) {
@@ -342,6 +345,33 @@ public class ScheduleTrip {
 			validBeanRestaurants.add(b);
 		}
 		return validBeanRestaurants;
+	}
+	
+	
+	
+	public void saveScheduleTrip(ConvertedBeanSchedule[] scheduling, String username) throws ClassNotFoundException, SQLException {
+		SchedulingDAO dao = new SchedulingDAO();
+		Tourist tourist = new Tourist(null, null, false, username, null);		
+		double doubleAvgPrice;
+		double doubleAvgVote;
+		boolean atLunch;
+		
+		dao.delete(tourist);
+		
+		for(int i=0; i<scheduling.length; i++) {
+			doubleAvgPrice = Double.parseDouble(scheduling[i].getStrAvgPrice());
+			doubleAvgVote = Double.parseDouble(scheduling[i].getStrAvgVote());
+			
+			Menu menu = new Menu(null, doubleAvgPrice);
+			Restaurant r = new Restaurant(null, scheduling[i].getCity(), menu, scheduling[i].getAddress(), scheduling[i].getName(), doubleAvgVote, null, null, null);
+			
+			if(scheduling[i].getStrHour().equals("Lunch")) atLunch=true;
+			else atLunch = false;
+			
+			Scheduling schedEntity = new Scheduling(tourist, scheduling[i].getStrDate(), atLunch, r);
+			dao.insert(schedEntity);
+		}
+		
 	}
 	
 }

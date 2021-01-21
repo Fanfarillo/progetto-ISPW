@@ -1,7 +1,5 @@
 package logic.engineeringclasses.factory;
 
-import logic.engineeringclasses.dao.*;
-
 public class Factory {
 	
 	private static Factory instance=null;
@@ -16,8 +14,5 @@ public class Factory {
 	}
 	
 	// Methods for DAOs creation
-	public FanfaAbstractDAO createRestaurantDAO() {
-		return new FanfaRestaurantDAO();
-	}
 	
 }

@@ -28,8 +28,8 @@
 			<jsp:forward page="HomePageTouristView.jsp"/>
 <%
     	}
-    	if(request.getParameter("See Your Trips")!=null) {
-    		System.out.println("To do - See Your Trips");
+    	if(request.getParameter("See Your Trip")!=null) {
+    		System.out.println("To do - See Your Trip");
 %>
 			<jsp:forward page="HomePageTouristView.jsp"/>
 <%
@@ -58,7 +58,7 @@
 		<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant HT" value="Choose Restaurant">
 		<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip HT" value="Schedule Trip">
 		<input id="seeFavRestaurants" class="button" type="submit" name="See Your Favourite Restaurants" value="See Your Favourite Restaurants">
-		<input id="seeTrips" class="button" type="submit" name="See Your Trips" value="See Your Trips">
+		<input id="seeTrip" class="button" type="submit" name="See Your Trip" value="See Your Trip">
 		<input id="logout" class="button" type="submit" name="Logout" value="Logout">
 	</form>
 </div>

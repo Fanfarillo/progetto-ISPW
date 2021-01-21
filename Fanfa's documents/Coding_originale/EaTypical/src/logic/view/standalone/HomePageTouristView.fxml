@@ -14,7 +14,7 @@
             <Image url="@restaurant-mural-wallpaper_23-2148707022.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="tripsButton" layoutX="210.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToTripsPage" prefHeight="60.0" prefWidth="280.0" text="See Your Trips">
+      <Button fx:id="tripsButton" layoutX="210.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToTripsPage" prefHeight="60.0" prefWidth="280.0" text="See Your Trip">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

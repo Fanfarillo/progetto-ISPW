@@ -9,6 +9,6 @@ public abstract class FanfaAbstractDAO {
 
 	protected String driverClassName = "com.mysql.jdbc.Driver";
 	
-	public abstract List<Restaurant> select1(String city, boolean vegan, boolean celiac) throws NoResultException, ClassNotFoundException, SQLException;
+	public abstract List<Restaurant> select(String city, boolean vegan, boolean celiac) throws NoResultException, ClassNotFoundException, SQLException;
 	
 }

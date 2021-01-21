@@ -154,7 +154,7 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     		
     		SizedStack.getSizedStack().push(this.schedulingPage);
         	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.schedulingPage));
-        	loader.setControllerFactory(c -> new ControllerGuiScheduling(this.username, scheduling));
+        	loader.setControllerFactory(c -> new ControllerGuiScheduling(this.username, this.city, scheduling));
         	Parent root=loader.load();
         	myAnchorPane.getChildren().setAll(root);      		
     		

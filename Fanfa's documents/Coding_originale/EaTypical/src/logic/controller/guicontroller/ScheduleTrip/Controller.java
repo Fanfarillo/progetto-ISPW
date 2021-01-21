@@ -21,6 +21,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class Controller {
 
 	private ObservableList<Data> ol;
+	private Data lc;
+	private Data mf;
+	private Data fr;
 	
 	@FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -51,7 +54,18 @@ public class Controller {
         assert colonnaBottone != null : "fx:id=\"colonnaBottone\" was not injected: check your FXML file 'ProvaTabellaBottone.fxml'.";
         assert colonnaNome != null : "fx:id=\"colonnaNome\" was not injected: check your FXML file 'ProvaTabellaBottone.fxml'.";
         assert bottoneLoad != null : "fx:id=\"bottoneLoad\" was not injected: check your FXML file 'ProvaTabellaBottone.fxml'.";
-        ol = FXCollections.observableArrayList(new Data("Capotombolo","Luca"),new Data("Fanfarillo","Matteo"));
+        
+        lc = new Data("Capotombolo", "Luca");
+        mf = new Data("Fanfarillo", "Matteo");
+        fr = new Data("Romersi", "Federico");
+        Data[] array = new Data[3];
+        array[0]=lc;
+        array[1]=mf;
+        array[2]=fr;
+        ol = FXCollections.observableArrayList();
+        for(int i=0; i<3; i++) {
+        	ol.add(array[i]);
+        }
         colonnaBottone.setCellValueFactory(new PropertyValueFactory<Data,String>("button"));
         colonnaNome.setCellValueFactory(new PropertyValueFactory<Data,String>("cognomeString"));
         

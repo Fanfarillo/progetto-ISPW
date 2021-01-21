@@ -6,40 +6,27 @@ import java.util.Random;
 
 public class BeanOutputSchedule {
 
-	private int dayOfWeek;
 	private Date date;
 	private boolean atLunch;
-	//private List<BeanOutputRestaurant> listOfBeans;
+	private List<BeanOutputRestaurant> listOfBeans;
 	private BeanOutputRestaurant rest;
 	
-	public BeanOutputSchedule(int dayOfWeek, Date date, boolean atLunch, List<BeanOutputRestaurant> listOfBeans) {
-		this.dayOfWeek=dayOfWeek;
+	public BeanOutputSchedule(Date date, boolean atLunch, List<BeanOutputRestaurant> listOfBeans) {
 		this.date=date;
 		this.atLunch=atLunch;
-		//this.listOfBeans=listOfBeans;
-		
-		if(listOfBeans.isEmpty()) {
-			this.rest=null;
+		this.listOfBeans=listOfBeans;
+		setRestFromList();		
+	}
+	
+	public void setRestFromList() {
+		if(this.listOfBeans.isEmpty()) {
+			this.rest = new BeanOutputRestaurant("No available restaurant", null, null, 0, 0, null);
 		}
 		else {
 			Random random = new Random();
-			int index = random.nextInt(listOfBeans.size());
-			this.rest = listOfBeans.get(index);
-		}
-	}
-
-	/**
-	 * @return the dayOfWeek
-	 */
-	public int getDayOfWeek() {
-		return dayOfWeek;
-	}
-
-	/**
-	 * @param dayOfWeek the dayOfWeek to set
-	 */
-	public void setDayOfWeek(int dayOfWeek) {
-		this.dayOfWeek = dayOfWeek;
+			int index = random.nextInt(this.listOfBeans.size());
+			this.rest = this.listOfBeans.get(index);
+		}		
 	}
 
 	/**
