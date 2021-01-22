@@ -341,7 +341,7 @@ public class ScheduleTrip {
 		
 		while(iter.hasNext()) {									// Conversion of valid restaurants in beans.
 			Restaurant r = iter.next();
-			BeanOutputRestaurant b = new BeanOutputRestaurant(r.getName(), r.getAddress(), r.getCity(), r.getMenu().getTotalPrice(), r.getAvgVote(), r.getOpeningHours());
+			BeanOutputRestaurant b = new BeanOutputRestaurant(r.getOwner().getUsername(), r.getName(), r.getAddress(), r.getCity(), r.getMenu().getTotalPrice(), r.getAvgVote(), r.getOpeningHours());
 			validBeanRestaurants.add(b);
 		}
 		return validBeanRestaurants;
@@ -355,7 +355,7 @@ public class ScheduleTrip {
 		double doubleAvgPrice;
 		double doubleAvgVote;
 		boolean atLunch;
-		
+
 		dao.delete(tourist);
 		
 		for(int i=0; i<scheduling.length; i++) {

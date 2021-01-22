@@ -80,7 +80,7 @@
 			<p>Please, insert name, address and city of your restaurant:</p>
 		</div>
 		<div class="box-2">
-			<p>Click here to add a dish into your menu:</p>
+			<p>Click here to set the opening hours:</p>
 		</div>
 		<input id="restName" class="inputbox" type="text" placeholder="Restaurant name">
 		<input id="restAddress" class="inputbox" type="text" placeholder="Restaurant address">
@@ -107,7 +107,7 @@
 			<option value="PA">Palermo</option>
 			<option value="CG">Cagliari</option>
 		</select>
-		<input id="addDish" class="buttonbelow" type="submit" name="Add Dish" value="Add Dish">
+		<input id="setOpeningHours" class="buttonbelow" type="submit" name="Set Opening Hours" value="Set Opening Hours">
 		<input id="done" class="buttonbelow" type="submit" name="Done" value="Done">
 	</form>
 </div>

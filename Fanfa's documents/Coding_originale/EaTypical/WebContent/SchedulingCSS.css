@@ -54,6 +54,15 @@ body {
 	background-color: rgba(0,0,0,0.7);
 }
 
+#citta {
+	position: absolute;
+	left: 47.14%;
+	top: 18.57%;
+	color: green;
+	font-size: 16px;
+	background-color: rgba(0,0,0,0.7);
+}
+
 .buttonBelow {
 	width: 25.71%;
 	height: 6.43%;

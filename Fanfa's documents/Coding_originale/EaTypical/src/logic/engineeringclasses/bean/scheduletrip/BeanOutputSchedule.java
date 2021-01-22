@@ -20,7 +20,7 @@ public class BeanOutputSchedule {
 	
 	public void setRestFromList() {
 		if(this.listOfBeans.isEmpty()) {
-			this.rest = new BeanOutputRestaurant("No available restaurant", null, null, 0, 0, null);
+			this.rest = new BeanOutputRestaurant("", "No available restaurants", "", "", 0, 0, null);
 		}
 		else {
 			Random random = new Random();

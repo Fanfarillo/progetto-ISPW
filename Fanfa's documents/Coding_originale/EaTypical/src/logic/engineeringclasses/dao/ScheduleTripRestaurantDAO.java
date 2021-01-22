@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import logic.model.Menu;
+import logic.model.Owner;
 import logic.model.Restaurant;
 import logic.engineeringclasses.exceptions.NoResultException;
 import logic.engineeringclasses.query.QueryRestaurantScheduleTrip;
@@ -42,6 +43,7 @@ public class ScheduleTripRestaurantDAO {
 				String address = rs.getString("Indirizzo");
 				double avgVote = rs.getDouble("VotoMedio");
 				Menu menu = new Menu(null, rs.getDouble("Totale"));
+				Owner owner = new Owner(null, null, false, null, rs.getString("UsernameProprietario"));
 				boolean[][] openingHours = new boolean[7][2];
 				
 				for(int i=0; i<7; i++) {
@@ -57,7 +59,7 @@ public class ScheduleTripRestaurantDAO {
 				}
 				rs.previous();
 				
-				Restaurant rest = new Restaurant(null, city, menu, address, name, avgVote, null, null, openingHours);
+				Restaurant rest = new Restaurant(owner, city, menu, address, name, avgVote, null, null, openingHours);
 				listOfRestaurants.add(rest);
 				
 			}	while(rs.next());

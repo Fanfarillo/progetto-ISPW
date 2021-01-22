@@ -65,6 +65,7 @@
 		<input id="back" type="submit" name="Back ST3" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente">nomeUtente</label>
+		<label id="citta">Città</label>
 		
 		<input id="changeSettings" class="buttonBelow" type="submit" name="Change Settings" value="Change Settings">
 		<input id="generateNewScheduling" class="buttonBelow" type="submit" name="Generate New Scheduling" value="Generate New Scheduling">

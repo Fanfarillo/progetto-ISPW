@@ -35,7 +35,7 @@ public class Controller {
     private TableView<Data> tabella; // Value injected by FXMLLoader
 
     @FXML // fx:id="colonnaBottone"
-    private TableColumn<Data, String> colonnaBottone; // Value injected by FXMLLoader
+    private TableColumn<Data, Button> colonnaBottone; // Value injected by FXMLLoader
 
     @FXML // fx:id="colonnaNome"
     private TableColumn<Data, String> colonnaNome; // Value injected by FXMLLoader
@@ -66,7 +66,7 @@ public class Controller {
         for(int i=0; i<3; i++) {
         	ol.add(array[i]);
         }
-        colonnaBottone.setCellValueFactory(new PropertyValueFactory<Data,String>("button"));
+        colonnaBottone.setCellValueFactory(new PropertyValueFactory<Data,Button>("button"));
         colonnaNome.setCellValueFactory(new PropertyValueFactory<Data,String>("cognomeString"));
         
         tabella.setItems(ol);

@@ -2,6 +2,7 @@ package logic.engineeringclasses.bean.scheduletrip;
 
 public class BeanOutputRestaurant {
 
+	private String usernameOwner;
 	private String name;
 	private String address;
 	private String city;
@@ -9,13 +10,28 @@ public class BeanOutputRestaurant {
 	private double avgVote;
 	private boolean[][] openingHours;
 	
-	public BeanOutputRestaurant(String name, String address, String city, double avgPrice, double avgVote, boolean[][] openingHours) {
+	public BeanOutputRestaurant(String usernameOwner, String name, String address, String city, double avgPrice, double avgVote, boolean[][] openingHours) {
+		this.usernameOwner=usernameOwner;
 		this.name=name;
 		this.address=address;
 		this.city=city;
 		this.avgPrice=avgPrice;
 		this.avgVote=avgVote;
 		this.openingHours=openingHours;
+	}
+	
+	/**
+	 * @return the usernameOwner
+	 */
+	public String getUsernameOwner() {
+		return usernameOwner;
+	}
+
+	/**
+	 * @param usernameOwner the usernameOwner to set
+	 */
+	public void setUsernameOwner(String usernameOwner) {
+		this.usernameOwner = usernameOwner;
 	}
 
 	/**

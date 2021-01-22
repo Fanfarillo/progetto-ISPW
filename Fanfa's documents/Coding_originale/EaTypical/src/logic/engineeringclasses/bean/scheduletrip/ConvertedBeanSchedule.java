@@ -6,6 +6,7 @@ public class ConvertedBeanSchedule {
 
 	private String strDate;
 	private String strHour;
+	private String usernameOwner;
 	private String name;
 	private String address;
 	private String city;
@@ -13,8 +14,8 @@ public class ConvertedBeanSchedule {
 	private String strAvgVote;
 	private Button button;
 	
-	public ConvertedBeanSchedule(String[] dateAndHour, String name, String address, String city, String strAvgPrice, String strAvgVote, String buttonName) {
-		setAttributes(dateAndHour, name, address, city, strAvgPrice, strAvgVote);
+	public ConvertedBeanSchedule(String[] dateAndHour, String[] restInfo, String strAvgPrice, String strAvgVote, String buttonName) {
+		setAttributes(dateAndHour, restInfo, strAvgPrice, strAvgVote);
 		
 		if(buttonName!=null) {
 			this.button = new Button(buttonName);
@@ -25,17 +26,18 @@ public class ConvertedBeanSchedule {
 		
 	}
 	
-	public ConvertedBeanSchedule(String[] dateAndHour, String name, String address, String city, String strAvgPrice, String strAvgVote) {
-		setAttributes(dateAndHour, name, address, city, strAvgPrice, strAvgVote);
+	public ConvertedBeanSchedule(String[] dateAndHour, String[] restInfo, String strAvgPrice, String strAvgVote) {
+		setAttributes(dateAndHour, restInfo, strAvgPrice, strAvgVote);
 		this.button=null;
 	}
 	
-	private void setAttributes(String[] dateAndHour, String name, String address, String city, String strAvgPrice, String strAvgVote) {
+	private void setAttributes(String[] dateAndHour, String[] restInfo, String strAvgPrice, String strAvgVote) {
 		this.strDate=dateAndHour[0];
 		this.strHour=dateAndHour[1];
-		this.name=name;
-		this.address=address;
-		this.city=city;
+		this.usernameOwner=restInfo[0];
+		this.name=restInfo[1];
+		this.address=restInfo[2];
+		this.city=restInfo[3];
 		this.strAvgPrice=strAvgPrice;
 		this.strAvgVote=strAvgVote;
 	}
@@ -66,6 +68,20 @@ public class ConvertedBeanSchedule {
 	 */
 	public void setStrHour(String strHour) {
 		this.strHour = strHour;
+	}
+
+	/**
+	 * @return the usernameOwner
+	 */
+	public String getUsernameOwner() {
+		return usernameOwner;
+	}
+
+	/**
+	 * @param usernameOwner the usernameOwner to set
+	 */
+	public void setUsernameOwner(String usernameOwner) {
+		this.usernameOwner = usernameOwner;
 	}
 
 	/**
