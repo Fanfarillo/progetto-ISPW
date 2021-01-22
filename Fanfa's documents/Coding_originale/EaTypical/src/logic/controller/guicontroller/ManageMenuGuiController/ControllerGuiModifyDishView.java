@@ -6,9 +6,8 @@ package logic.controller.guicontroller.ManageMenuGuiController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,13 +30,13 @@ import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
 public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 
 	private String username;
-	private ObservableList<String> obs;
-	private ObservableList<String> obs2;
+	private ArrayList<String> obs;
+	private ArrayList<String> obs2;
 	
-	public ControllerGuiModifyDishView(String username, ObservableList<String> obs,ObservableList<String> obs2) {
+	public ControllerGuiModifyDishView(String username, ArrayList<String> obs,ArrayList<String> obs2) {
 		this.username = username;
-		this.obs = FXCollections.observableArrayList(obs);
-		this.obs2 = FXCollections.observableArrayList(obs2);
+		this.obs = obs;
+		this.obs2 = obs2;
 		
 	}
 	
@@ -161,8 +160,15 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
         assert campoMancantePrezzo != null : "fx:id=\"nuovoContenuto\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         
         nomeUtenteLabel.setText(username);
-        choiseBox.setItems(obs);
-        choiseRistoranti.setItems(obs2);
+        //choiseBox.setItems(obs);
+        
+        for(int i = 0; i<this.obs.size();i++) {
+        	choiseBox.getItems().add(this.obs.get(i));
+        }
+        //choiseRistoranti.setItems(obs2);
+        for(int i = 0; i<this.obs2.size();i++) {
+        	choiseRistoranti.getItems().add(this.obs2.get(i));
+        }
     }
 }
 

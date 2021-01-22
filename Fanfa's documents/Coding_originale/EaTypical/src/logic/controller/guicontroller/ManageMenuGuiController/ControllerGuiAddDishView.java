@@ -3,15 +3,13 @@
  */
 
 package logic.controller.guicontroller.ManageMenuGuiController;
+
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-
-import javafx.collections.FXCollections;
 import logic.engineeringclasses.bean.manageMenu.*;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,12 +30,12 @@ import javafx.scene.control.TextField;
 
 public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 	
-	ObservableList<String> listaP,listaR;
+	ArrayList<String> listaP,listaR;
 	private String username;
 	
-	public ControllerGuiAddDishView(ObservableList<String> listP,ObservableList<String> listR,String username) {
-    	this.listaP = FXCollections.observableArrayList(listP);
-    	this.listaR = FXCollections.observableArrayList(listR);
+	public ControllerGuiAddDishView(ArrayList<String> listP, ArrayList<String> listR,String username) {
+    	this.listaP = listP;
+    	this.listaR = listR;
     	this.username = username;
     	
     }
@@ -136,7 +134,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     		campoMancantePiatto.setText("");
     	}
     	
-    	//verifico se vi è almeno un campo che non è stato riempito
+    	//verifico se vi Ã¨ almeno un campo che non Ã¨ stato riempito
     	if(count>0) return;
     	
     	//faccio la conversione del prezzo essendo sicuramente diverso da empty string
@@ -172,8 +170,14 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
         assert campoMancantePrezzo != null : "fx:id=\"campoMancantePrezzo\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert campoMancanteRicetta != null : "fx:id=\"campoMancanteRicetta\" was not injected: check your FXML file 'AddDish.fxml'.";
         
-        scegliPiattoBox.setItems(this.listaP);
-        scegliRistorante.setItems(this.listaR);
+        //scegliPiattoBox.setItems(this.listaP);
+        for(int i = 0; i<this.listaP.size();i++) {
+        	scegliPiattoBox.getItems().add(this.listaP.get(i));
+        }
+        //scegliRistorante.setItems(this.listaR);
+        for(int i = 0; i<this.listaR.size();i++) {
+        	scegliRistorante.getItems().add(this.listaR.get(i));
+        }
         nomeUtenteLabel.setText(username);
     }
 }

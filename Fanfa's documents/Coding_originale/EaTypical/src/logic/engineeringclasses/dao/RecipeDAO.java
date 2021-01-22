@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
 import logic.engineeringclasses.query.QueryRecipe;
 import logic.model.Recipe;
@@ -28,12 +28,12 @@ public class RecipeDAO {
 	 * 
 	 */
 	
-	public ObservableList<String> selectAllRecipe() throws ClassNotFoundException
+	public ArrayList<String> selectAllRecipe() throws ClassNotFoundException
 	{
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
-		ObservableList<String> obs = FXCollections.observableArrayList();
+		ArrayList<String> obs = new ArrayList<>();
 		
 		
 		try {
@@ -188,12 +188,13 @@ public class RecipeDAO {
 	 * 
 	 */
 	
-	public ObservableList<String> selectOwnRecipe(String username)
+	public ArrayList<String> selectOwnRecipe(String username)
 	{
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
-		ObservableList<String> obs = FXCollections.observableArrayList();
+		//ObservableList<String> obs = FXCollections.observableArrayList();
+		ArrayList<String> obs = new ArrayList<>();
 		
 		System.out.println("Usernam : " + username);
 		try {

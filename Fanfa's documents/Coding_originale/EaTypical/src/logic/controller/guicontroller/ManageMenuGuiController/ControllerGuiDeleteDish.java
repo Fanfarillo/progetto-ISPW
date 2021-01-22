@@ -8,9 +8,8 @@ import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,13 +26,13 @@ import javafx.scene.control.Label;
 
 public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
 
-	private ObservableList<String> obs1;
-	private ObservableList<String> obs2;
+	private ArrayList<String> obs1;
+	private ArrayList<String> obs2;
 	private String username;
 	
-	public ControllerGuiDeleteDish(String username,ObservableList<String> obs1, ObservableList<String> obs2) {
-		this.obs1 = FXCollections.observableArrayList(obs1);
-    	this.obs2 = FXCollections.observableArrayList(obs2);
+	public ControllerGuiDeleteDish(String username,ArrayList<String> obs1, ArrayList<String> obs2) {
+		this.obs1 = obs1;
+    	this.obs2 = obs2;
 		this.username = username;
 	}
 	
@@ -107,8 +106,14 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
         assert deleteButton != null : "fx:id=\"deleteButton\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
         assert campoMancanteRistorante != null : "fx:id=\"campoMancanteRistorante\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
         assert campoMancantePiatto != null : "fx:id=\"\"campoMancantePiatto\"\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
-        choiseDish.setItems(this.obs1);
-        scegliRistorante.setItems(this.obs2);
+        //choiseDish.setItems(this.obs1);
+        for(int i = 0; i<this.obs1.size();i++) {
+        	choiseDish.getItems().add(this.obs1.get(i));
+        }
+        //scegliRistorante.setItems(this.obs2);
+        for(int i = 0; i<this.obs2.size();i++) {
+        	scegliRistorante.getItems().add(this.obs2.get(i));
+        }
         nomeUtente.setText(username);
     }
 }

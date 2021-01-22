@@ -3,14 +3,13 @@
  */
 
 package logic.controller.guicontroller.ManageMenuGuiController;
+
+
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-
-
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,7 +50,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     private Button getAdviceButton; // Value injected by FXMLLoader
 
     /**
-     * Ottiene i piatti disponibili e i ristoranti di sua proprietÃƒÂ  
+     * Ottiene i piatti disponibili e i ristoranti di sua proprietÃƒÆ’Ã‚Â  
      * per poi passarli al costruttore del controller grafico di AddDishView
      * @param event
      * @throws IOException
@@ -62,11 +61,11 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	
     	//ottengo le ricette che possono essere aggiunte
     	RecipeDAO recipeDAO = new RecipeDAO();
-    	final ObservableList<String> obs1 = recipeDAO.selectAllRecipe(); 
+    	ArrayList<String> obs1 = recipeDAO.selectAllRecipe(); 
 
     	//ottengo i ristoranti dell'utente
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
-    	final ObservableList<String> obs2 = restaurantDAO.selectOwnRestaurant("liuk");
+    	ArrayList<String> obs2 = restaurantDAO.selectOwnRestaurant("liuk");
     	
     	//carico la gerarchia dei nodi
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
@@ -84,11 +83,11 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	
     	//ottengo tutte le ricette di tutti i ristoranti dell'utente
     	RecipeDAO recipeDAO = new RecipeDAO();
-    	ObservableList<String> obs1;
+    	ArrayList<String> obs1;
     	obs1 = recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
     	
     	//ottengo tutti i ristoranti dell'utente
-    	ObservableList<String> obs2;   	
+    	ArrayList<String> obs2;   	
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
     	obs2 = restaurantDAO.selectOwnRestaurant(nomeUtenteLabel.getText());
     	
@@ -118,11 +117,11 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	RecipeDAO recipeDAO = new RecipeDAO();
     	
     	//ottengo le ricette dei ristoranti del proprietario
-    	ObservableList<String> obs = recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
+    	ArrayList<String> obs = recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
     	
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
     	
-    	ObservableList<String> obs2 = restaurantDAO.selectOwnRestaurant(username);
+    	ArrayList<String> obs2 = restaurantDAO.selectOwnRestaurant(username);
     
     	//FXMLLoader e setto il nuovo controller grafico
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ModifyDishView.fxml"));

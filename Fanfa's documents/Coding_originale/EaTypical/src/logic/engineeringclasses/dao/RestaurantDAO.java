@@ -5,9 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
 import logic.engineeringclasses.query.QueryRestaurant;
 
 public class RestaurantDAO {
@@ -19,12 +17,13 @@ public class RestaurantDAO {
 	private String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 	
 	
-	public ObservableList<String> selectOwnRestaurant(String username) throws ClassNotFoundException
+	public /*ObservableList<String>*/ ArrayList<String> selectOwnRestaurant(String username) throws ClassNotFoundException
 	{
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
-		ObservableList<String> obs = FXCollections.observableArrayList();
+		//ObservableList<String> obs = FXCollections.observableArrayList();
+		ArrayList<String> obs = new ArrayList<>();
 		
 		
 		try {
