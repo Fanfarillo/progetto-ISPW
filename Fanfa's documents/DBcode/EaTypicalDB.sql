@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Ristorante` (
   `Nome` VARCHAR(45) NOT NULL,
   `Indirizzo` VARCHAR(45) NOT NULL,
   `Citta` VARCHAR(45) NOT NULL,
-  `UsernameProprietario` VARCHAR(45) NOT NULL,
+  `UsernameProprietario` VARCHAR(45) NOT NULL,  
   -- `NomeProprietario` VARCHAR(45) NOT NULL,
   -- `CognomeProprietario` VARCHAR(45) NOT NULL,
   `VotoMedio` DOUBLE NOT NULL,
@@ -48,8 +48,8 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Ristorante` (
   CONSTRAINT `fk_nomeP`
     FOREIGN KEY (`UsernameProprietario`)
     REFERENCES `progettoispwfinaledatabase`.`Proprietario` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE cascade
+    ON UPDATE cascade
  )
 ENGINE = InnoDB;
 
@@ -82,16 +82,27 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Preferiti` (
   CONSTRAINT `fk_nomeRist`
     FOREIGN KEY (`NomeRistorante`)
     REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE cascade
+    ON UPDATE cascade,
   CONSTRAINT `fk_nomeTur`
     FOREIGN KEY (`UsernameTurista`)
     REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE cascade
+    ON UPDATE cascade
   )
 ENGINE = InnoDB;
 
+
+
+-- -----------------------------------------------------
+-- Table `progettoispwfinaledb`.`PiattoTipico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`PiattoTipico` (
+  `NomePiatto` VARCHAR(45) NOT NULL,
+  
+  PRIMARY KEY (`NomePiatto`),
+)
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `progettoispwfinaledb`.`Piatto`
@@ -107,8 +118,14 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Piatto` (
   CONSTRAINT `fk_nomeRisPiat`
     FOREIGN KEY (`NomeRistorante`)
     REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE cascade
+    ON UPDATE cascade,
+  CONSTRAINT `fk_nomePiatPiat`
+	FOREIGN KEY (`NomePiatto`)
+    REFERENCES `progettoispwfinaledatabase`.`PiattoTipico` (`NomePiatto`)
+    ON DELETE cascade
+    ON UPDATE cascade,
+	)
 ENGINE = InnoDB;
 
 
@@ -133,18 +150,40 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`NotificaScheduling` (
   CONSTRAINT `fNotifica1`
     FOREIGN KEY (`UsernameProprietario`)
     REFERENCES `progettoispwfinaledatabase`.`Proprietario` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,  
+    ON DELETE cascade
+    ON UPDATE cascade,  
   CONSTRAINT `fNotifica3`
     FOREIGN KEY (`UsernameTurista`)
     REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,  
+    ON DELETE cascade
+    ON UPDATE cascade,  
   CONSTRAINT `fNotifica5`
     FOREIGN KEY (`NomeRistorante`)
     REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE cascade
+    ON UPDATE cascade)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `progettoispwfinaledb`.`GiornoSett`
+-- -----------------------------------------------------
+
+
+CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`GiornoSett` (
+  `Ristorante` VARCHAR(45) NOT NULL,
+  `Giorno` INT NOT NULL,
+  `ApertoCena` BOOLEAN NOT NULL,
+  `ApertoPranzo` VARCHAR(45) NOT NULL,
+  
+  primary key(`Ristorante`,`Giorno`),
+  
+  PRIMARY KEY (`NomePiatto`),
+  CONSTRAINT `fNotifica543`
+    FOREIGN KEY (`Ristorante`)
+    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
+    ON DELETE cascade
+    ON UPDATE cascade
+)
 ENGINE = InnoDB;
 
 
@@ -164,14 +203,16 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Recensione` (
   CONSTRAINT `fRec1`
     FOREIGN KEY (`UsernameTurista`)
     REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION, 
+    ON DELETE cascade
+    ON UPDATE cascade, 
   CONSTRAINT `fRec3`
     FOREIGN KEY (`NomeRistorante`)
     REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE cascade
+    ON UPDATE cascade)
 ENGINE = InnoDB;
+
+
 
 
 -- -----------------------------------------------------
@@ -189,13 +230,13 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`NotificaRecensione` (
   CONSTRAINT `fNotR1`
     FOREIGN KEY (`UsernameTurista`)
     REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION, 
+    ON DELETE cascade
+    ON UPDATE cascade, 
   CONSTRAINT `fNotR3`
     FOREIGN KEY (`NomeRistorante`)
     REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE cascade
+    ON UPDATE cascade)
 ENGINE = InnoDB;
 
 
@@ -213,13 +254,13 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`RistorantiSponsorizzati
   CONSTRAINT `fRS1`
     FOREIGN KEY (`UsernameProprietario`)
     REFERENCES `progettoispwfinaledatabase`.`Proprietario` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE cascade
+    ON UPDATE cascade,
   CONSTRAINT `fRS3`
     FOREIGN KEY (`NomeRistorante`)
     REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE cascade
+    ON UPDATE cascade)
 ENGINE = InnoDB;
 
 
@@ -241,13 +282,13 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`NotificaMenuAggiornato`
   CONSTRAINT `fMA1`
     FOREIGN KEY (`UsernameTurista`)
     REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fMA3`
-    FOREIGN KEY (`NomeRistorante`,`NomePiatto`)
-    REFERENCES `progettoispwfinaledatabase`.`Piatto` (`NomeRistorante`,`NomePiatto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE cascade
+    ON UPDATE cascade,
+  -- CONSTRAINT `fMA3`
+  --   FOREIGN KEY (`NomeRistorante`,`NomePiatto`)
+  --   REFERENCES `progettoispwfinaledatabase`.`Piatto` (`NomeRistorante`,`NomePiatto`)
+  --   ON DELETE cascade
+  --   ON UPDATE cascade
     )
 ENGINE = InnoDB;
 
@@ -262,8 +303,8 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Menu` (
   CONSTRAINT `fM1`
     FOREIGN KEY (`NomeRistorante`)
     REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE cascade
+    ON UPDATE cascade)
 ENGINE = InnoDB;
 
 
@@ -278,8 +319,8 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`DettaglioMenu` (
   CONSTRAINT `fDM1`
     FOREIGN KEY (`NomeRistorante`,`NomePiatto`)
     REFERENCES `progettoispwfinaledatabase`.`Piatto` (`NomeRistorante`,`NomePiatto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE cascade
+    ON UPDATE cascade
     )
 ENGINE = InnoDB;
 
