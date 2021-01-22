@@ -22595,6 +22595,32 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAF3KgNpWplqEc8="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAF3KiuK2ed9178=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 1512,
+							"top": 1160,
+							"width": 85.0380859375,
+							"height": 194,
+							"text": "Le DAO creano le entity e le passano al controller applicativo, non hanno nulla a che fare con le Bean"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAF3KixZtenZtls=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 1632,
+							"top": 1080,
+							"width": 96.91455078125,
+							"height": 155,
+							"text": "Le bean vengono usate dai controller grafici che le passano all'applicativo e viceversa"
 						}
 					]
 				},
