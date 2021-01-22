@@ -1,3 +1,8 @@
+
+<%@page import="logic.engineeringclasses.dao.RecipeDAO"%>
+<%@page import="java.util.ArrayList"%>
+
+<%@page import="logic.engineeringclasses.dao.RestaurantDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -58,8 +63,18 @@
 
 <%
 	if(request.getParameter("add")!=null) {
-		//SizedStack.getSizedStack(true).push("Resta.jsp");
+		
+		RestaurantDAO restaurantDAO = new RestaurantDAO();		
+		ArrayList<String> obs2 = restaurantDAO.selectOwnRestaurant("liuk");
+		//setto i ristoranti
+		request.setAttribute("listaRistoranti", obs2);
+		RecipeDAO recipeDAO = new RecipeDAO();
+		//setto le ricette
+		ArrayList<String> obs1 = recipeDAO.selectOwnRecipe("liuk");
+		request.setAttribute("listaPiatti", obs1);
+		
 		%>
+		
 		<jsp:forward page="AddDishView.jsp"></jsp:forward>
 		<%
 	}

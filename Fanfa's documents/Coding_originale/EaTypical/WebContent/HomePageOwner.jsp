@@ -50,7 +50,7 @@
 <body>
 <div class="container">
 	<form action="HomePageOwner.jsp" name="myform" method="get">
-		<img id="fotoUtente" src="utente.jpg"/>
+		<img id="fotoUtente" alt="" src="utente.jpg"/>
 		<label id="nomeUtente">nomeUtente</label>
 		<div class="box">
 			<p>Hi!</p>
