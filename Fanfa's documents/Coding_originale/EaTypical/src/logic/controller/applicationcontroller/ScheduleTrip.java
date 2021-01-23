@@ -1,5 +1,6 @@
 package logic.controller.applicationcontroller;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,7 +22,7 @@ import logic.model.Tourist;
 
 public class ScheduleTrip {
 	
-	public BeanOutputSchedule[] generateScheduling(BeanRestaurantSchedule beanCRS) throws NoResultException, ClassNotFoundException, SQLException {
+	public BeanOutputSchedule[] generateScheduling(BeanRestaurantSchedule beanCRS) throws NoResultException, ClassNotFoundException, SQLException, NoSuchAlgorithmException {
 		
 		// Query of the restaurants that are in the selected city and satisfy tourist's eventual food requirements
 		ScheduleTripRestaurantDAO dao = new ScheduleTripRestaurantDAO();
@@ -34,16 +35,16 @@ public class ScheduleTrip {
 		int numDays = getNumDays(beanCRS, cal);					// Number of days of trip
 		int numMeals = getNumMeals(beanCRS, numDays);			// Number of meals of trip
 		
-		boolean[][] requiredMealsWeek = getRequiredMealsWeek(beanCRS, firstDayOfWeek, numDays, numMeals);		// Array that indicates which meals, from sunday to saturday, are required for the trip
+		boolean[][] requiredMealsWeek = getRequiredMealsWeek(beanCRS, firstDayOfWeek, numDays, numMeals);		// Array that indicates which meals, from Sunday to Saturday, are required for the trip
 		
-		listOfRestaurants = checkOpeningHours(listOfRestaurants, requiredMealsWeek);							// Check if the extracted restaurants are open at least for one meal of the trip
-		if(listOfRestaurants.isEmpty()) {
+		// Check if the extracted restaurants are open at least for one meal of the trip
+		List<Restaurant> listOfRestaurants2 = checkOpeningHours(listOfRestaurants, requiredMealsWeek);			// In listOfRestaurants2 there are only restaurants which satisfy this condition.
+		if(listOfRestaurants2.isEmpty()) {
 			throw new NoResultException("No restaurant has been found.");
 		}
 		
-		List<Restaurant> validRestaurants = getValidRestaurants(beanCRS, numMeals, listOfRestaurants);			// Restaurants that can actually be part of trip scheduling
+		List<Restaurant> validRestaurants = getValidRestaurants(beanCRS, numMeals, listOfRestaurants2);			// Restaurants that can actually be part of trip scheduling
 		List<BeanOutputRestaurant> validBeanRestaurants = convertValidRestaurantsList(validRestaurants);
-		Iterator<BeanOutputRestaurant> iter;
 		
 		int dayOfWeek = firstDayOfWeek;
 		Date date = beanCRS.getDate1();
@@ -58,16 +59,7 @@ public class ScheduleTrip {
 			else j=1;
 			i=dayOfWeek-1;
 			
-			iter=validBeanRestaurants.iterator();
-			List<BeanOutputRestaurant> validRestForAMeal = new ArrayList<>();		// Restaurants in validRestaurants which are open for a specific meal
-			
-			while(iter.hasNext()) {
-				BeanOutputRestaurant b = iter.next();
-				if(b.getOpeningHours()[i][j]) {
-					validRestForAMeal.add(b);
-				}
-			}			
-			BeanOutputSchedule beanSched = new BeanOutputSchedule(date, atLunch, validRestForAMeal);
+			BeanOutputSchedule beanSched = getScheduleForADay(validBeanRestaurants, i, j, date, atLunch);
 			scheduling[k] = beanSched;
 			
 			if(atLunch) {
@@ -122,28 +114,42 @@ public class ScheduleTrip {
 	}
 	
 	private boolean[][] getRequiredMealsWeek(BeanRestaurantSchedule beanCRS, int firstDayOfWeek, int numDays, int numMeals) {
+		boolean[][] requiredMealsWeek;
 		
-		boolean[][] requiredMealsWeek = new boolean[7][2];		// Array that indicates which meals, from sunday to saturday, are required for the trip		
 		if(numMeals>=14) {										// Case 1: the trip is composed of more than 13 meals -> all the meals in a week are required.
-			for(int i=0; i<7; i++) {
-				for(int j=0; j<2; j++) {
-					requiredMealsWeek[i][j]=true;
-				}
-			}
+			requiredMealsWeek = setTrueRequiredMealsWeek();
 		}
 		else {													// Case 2: the trip is composed of 13 meals or less.
-			for(int i=0; i<7; i++) {
-				for(int j=0; j<2; j++) {
-					requiredMealsWeek[i][j]=false;
+			requiredMealsWeek = setRequiredMealsWeek(beanCRS, firstDayOfWeek, numDays);
+		}
+		return requiredMealsWeek;
+	}
+	
+	private boolean[][] setTrueRequiredMealsWeek() {
+		boolean[][] requiredMealsWeek = new boolean[7][2];		// Array that indicates which meals, from Sunday to Saturday, are required for the trip	
+		
+		for(int i=0; i<7; i++) {
+			for(int j=0; j<2; j++) {
+				requiredMealsWeek[i][j]=true;
+			}
+		}
+		return requiredMealsWeek;
+	}
+	
+	private boolean[][] setRequiredMealsWeek(BeanRestaurantSchedule beanCRS, int firstDayOfWeek, int numDays) {
+		boolean[][] requiredMealsWeek = new boolean[7][2];		// Array that indicates which meals, from Sunday to Saturday, are required for the trip
+		
+		for(int i=0; i<7; i++) {
+			for(int j=0; j<2; j++) {
+				requiredMealsWeek[i][j]=false;
+			}
+		}
+		for(int i=firstDayOfWeek; i<firstDayOfWeek+numDays; i++) {
+			for(int j=0; j<2; j++) {
+				if(!(i==firstDayOfWeek && j==0 && !beanCRS.isAtLunch1()) && !(i==firstDayOfWeek+numDays-1 && j==1 && beanCRS.isAtLunch2())) {		// Check if the first day comprehends lunch and if the last day comprehends dinner
+					requiredMealsWeek[(i-1)%7][j]=true;
 				}
 			}
-			for(int i=firstDayOfWeek; i<firstDayOfWeek+numDays; i++) {
-				for(int j=0; j<2; j++) {
-					if(!(i==firstDayOfWeek && j==0 && !beanCRS.isAtLunch1()) && !(i==firstDayOfWeek+numDays-1 && j==1 && beanCRS.isAtLunch2())) {		// Check if the first day comprehends lunch and if the last day comprehends dinner
-						requiredMealsWeek[(i-1)%7][j]=true;
-					}
-				}
-			}			
 		}
 		return requiredMealsWeek;
 	}
@@ -154,25 +160,25 @@ public class ScheduleTrip {
 		
 		while(iter.hasNext()) {
 			Restaurant r = iter.next();
-			isOk=false;
-			
-			for(int i=0; i<7; i++) {
-				for(int j=0; j<2; j++) {
-					if(requiredMealsWeek[i][j] && r.getOpeningHours()[i][j]) {
-						isOk=true;
-						break;
-					}
-				}
-				if(isOk) {
-					break;
-				}
-			}
+			isOk = checkOpeningHoursOfOneRest(requiredMealsWeek, r);
+
 			if(!isOk) {
 				listOfRestaurants.remove(r);	// If an extracted restaurant is never open for the trip, remove it from the array-list.
 			}
 			
 		}
 		return listOfRestaurants;
+	}
+	
+	private boolean checkOpeningHoursOfOneRest(boolean[][] requiredMealsWeek, Restaurant r) {
+		for(int i=0; i<7; i++) {
+			for(int j=0; j<2; j++) {
+				if(requiredMealsWeek[i][j] && r.getOpeningHours()[i][j]) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	private List<Restaurant> getValidRestaurants(BeanRestaurantSchedule beanCRS, int numMeals, List<Restaurant> listOfRestaurants) {
@@ -202,7 +208,7 @@ public class ScheduleTrip {
 			// If number of restaurants in validRestaurants is not lower than mt, then we are already satisfied for this array-list.
 			// Else, we have to add some other restaurant in validRestaurants to reach the minimum threshold.
 			if(validRestaurants.size() < mt) {
-				validRestaurants = addValidRestaurants(beanCRS, numMeals, listOfRestaurants, validRestaurants, mt);
+				validRestaurants = addValidRestaurants(beanCRS, listOfRestaurants, validRestaurants, mt);
 			}
 			
 		}
@@ -211,35 +217,23 @@ public class ScheduleTrip {
 		
 	}
 	
-	private List<Restaurant> addValidRestaurants(BeanRestaurantSchedule beanCRS, int numMeals, List<Restaurant> listOfRestaurants, List<Restaurant> validRestaurants, int mt) {
+	private List<Restaurant> addValidRestaurants(BeanRestaurantSchedule beanCRS, List<Restaurant> listOfRestaurants, List<Restaurant> validRestaurants, int mt) {
 		
 		int remainingRestaurants = mt-validRestaurants.size();
 		listOfRestaurants.removeAll(validRestaurants);
-		Iterator<Restaurant> iter = listOfRestaurants.iterator();
-		List<Restaurant> temporaryList = new ArrayList<>();
 		
-		while(iter.hasNext()) {
-			Restaurant r = iter.next();
-			if(r.getMenu().getTotalPrice() <= beanCRS.getBudget()) {
-				temporaryList.add(r);										//Restaurant which is potentially valid for the scheduling (its budget but not its quality is compliant with tourist's request)
-			}
-		}
+		List<Restaurant> temporaryList = getTemporaryList(beanCRS, listOfRestaurants);		// Restaurants which are potentially valid for the scheduling (their budget but not their quality is compliant with tourist's request)
 		listOfRestaurants.removeAll(temporaryList);
+		
+		Iterator<Restaurant> iter;
 		
 		// If minimum threshold is reached, then we will accept only a part of restaurants whose budget (but not quality) is compliant with tourist's request.
 		// Else, we will accept all these restaurants and we will look for restaurants whose quality (but not budget) is compliant with tourist's request.
 		if(temporaryList.size() >= remainingRestaurants) {
-			double minVote = getMinVote(temporaryList, remainingRestaurants);		// Lower bound of the range of quality of valid restaurants	
+			double minVote = getMinVote(temporaryList, remainingRestaurants);				// Lower bound of the range of quality of valid restaurants	
 			
-			iter = temporaryList.iterator();			
-			while(iter.hasNext()) {
-				Restaurant r = iter.next();
-				if(r.getAvgVote() < minVote) {
-					iter.remove();											// Invalid restaurant (it has a too low vote)
-				}				
-				validRestaurants.addAll(temporaryList);						
-			}
-			
+			List<Restaurant> temporaryList2 = deleteRestaurantsWithTooLowVote(temporaryList, minVote);
+			validRestaurants.addAll(temporaryList2);				
 		}		
 		else {
 			validRestaurants.addAll(temporaryList);
@@ -258,55 +252,89 @@ public class ScheduleTrip {
 			
 			// If minimum threshold is reached, then we will accept only a part of restaurant whose quality (but not budget) is compliant with tourist's request.
 			// Else, we will accept all these restaurants and we will look for restaurants whose quality and budget are NOT compliant with tourist's request.
+			List<Restaurant> validRestaurants2;
 			if(temporaryList.size() >= remainingRestaurants) {
-				double maxPrice = getMaxPrice(temporaryList, remainingRestaurants);		// Upper bound of the budget of a meal in valid restaurants
-				
-				iter = temporaryList.iterator();
-				while(iter.hasNext()) {
-					Restaurant r = iter.next();
-					if(r.getMenu().getTotalPrice() > maxPrice) {
-						iter.remove();											// Invalid restaurant (it has too high prices)
-					}					
-					validRestaurants.addAll(temporaryList);
-				}
-				
+				validRestaurants2 = addValidRestaurantsNotRespectingBudget(validRestaurants, temporaryList, remainingRestaurants);
 			}			
 			else {
 				validRestaurants.addAll(temporaryList);
 				remainingRestaurants = mt-validRestaurants.size();
 				
-				temporaryList.clear();											// Clear of temporaryList
-				double maxPrice = getMaxPrice(listOfRestaurants, remainingRestaurants);		// Upper bound of the budget of a meal in valid restaurants
-
-				iter = listOfRestaurants.iterator();				
-				while(iter.hasNext()) {
-					Restaurant r = iter.next();
-					if(r.getMenu().getTotalPrice() < maxPrice) {
-						validRestaurants.add(r);								// Restaurants whose prices do not reach the established upper bound are added in validRestaurants.
-					}							
-					else if(r.getMenu().getTotalPrice() == maxPrice) {
-						temporaryList.add(r);									// Now temporaryList contains restaurants whose budget is equal to maxPrice.
-					}
-					
-				}				
-				// Now, we have to select restaurants whose prices are equal to the established upper bound and whose quality is equal or greater than a lower bound.
-				// NB: Our goal is always to reach the minimum threshold of number of restaurants in validRestaurants array-list.
-				remainingRestaurants = mt-validRestaurants.size();
-				double minVote = getMinVote(temporaryList, remainingRestaurants);			// Lower bound of the range of quality of valid restaurants
-				
-				iter = temporaryList.iterator();
-				while(iter.hasNext()) {
-					Restaurant r = iter.next();
-					if(r.getAvgVote() >= minVote) {
-						validRestaurants.add(r);								// Restaurant whose quality is equal or greater than lower bound.
-					}
-					
-				}
-				
+				temporaryList.clear();										// Clear of temporaryList
+				validRestaurants2 = addValidRestaurantsNotRespectingBudgetVote(validRestaurants, temporaryList, listOfRestaurants, remainingRestaurants, mt);				
 			}
+			validRestaurants=validRestaurants2;
 			
 		}
 		return validRestaurants;		
+	}
+	
+	private List<Restaurant> getTemporaryList(BeanRestaurantSchedule beanCRS, List<Restaurant> listOfRestaurants) {
+		Iterator<Restaurant> iter = listOfRestaurants.iterator();
+		List<Restaurant> temporaryList = new ArrayList<>();
+		
+		while(iter.hasNext()) {
+			Restaurant r = iter.next();
+			if(r.getMenu().getTotalPrice() <= beanCRS.getBudget()) {
+				temporaryList.add(r);										//Restaurant which is potentially valid for the scheduling (its budget but not its quality is compliant with tourist's request)
+			}
+		}
+		return temporaryList;
+	}
+	
+	private List<Restaurant> deleteRestaurantsWithTooLowVote(List<Restaurant> temporaryList, double minVote) {
+		Iterator<Restaurant> iter = temporaryList.iterator();	
+		while(iter.hasNext()) {
+			Restaurant r = iter.next();
+			if(r.getAvgVote() < minVote) {
+				iter.remove();												// Invalid restaurant (it has a too low vote)
+			}									
+		}
+		return temporaryList;
+	}
+	
+	private List<Restaurant> addValidRestaurantsNotRespectingBudget(List<Restaurant> validRestaurants, List<Restaurant> temporaryList, int remainingRestaurants) {
+		double maxPrice = getMaxPrice(temporaryList, remainingRestaurants);		// Upper bound of the budget of a meal in valid restaurants
+		
+		Iterator<Restaurant> iter = temporaryList.iterator();
+		while(iter.hasNext()) {
+			Restaurant r = iter.next();
+			if(r.getMenu().getTotalPrice() > maxPrice) {
+				iter.remove();													// Invalid restaurant (it has too high prices)
+			}					
+			validRestaurants.addAll(temporaryList);
+		}
+		return validRestaurants;
+	}
+	
+	private List<Restaurant> addValidRestaurantsNotRespectingBudgetVote(List<Restaurant> validRestaurants, List<Restaurant> temporaryList, List<Restaurant> listOfRestaurants, int remainingRestaurants, int mt) {
+		double maxPrice = getMaxPrice(listOfRestaurants, remainingRestaurants);		// Upper bound of the budget of a meal in valid restaurants
+
+		Iterator<Restaurant> iter = listOfRestaurants.iterator();				
+		while(iter.hasNext()) {
+			Restaurant r = iter.next();
+			if(r.getMenu().getTotalPrice() < maxPrice) {
+				validRestaurants.add(r);								// Restaurants whose prices do not reach the established upper bound are added in validRestaurants.
+			}							
+			else if(r.getMenu().getTotalPrice() == maxPrice) {
+				temporaryList.add(r);									// Now temporaryList contains restaurants whose budget is equal to maxPrice.
+			}
+			
+		}				
+		// Now, we have to select restaurants whose prices are equal to the established upper bound and whose quality is equal or greater than a lower bound.
+		// NB: Our goal is always to reach the minimum threshold of number of restaurants in validRestaurants array-list.
+		remainingRestaurants = mt-validRestaurants.size();
+		double minVote = getMinVote(temporaryList, remainingRestaurants);			// Lower bound of the range of quality of valid restaurants
+		
+		iter = temporaryList.iterator();
+		while(iter.hasNext()) {
+			Restaurant r = iter.next();
+			if(r.getAvgVote() >= minVote) {
+				validRestaurants.add(r);								// Restaurant whose quality is equal or greater than lower bound.
+			}
+			
+		}
+		return validRestaurants;
 	}
 	
 	private double getMinVote(List<Restaurant> temporaryList, int remainingRestaurants) {
@@ -345,6 +373,20 @@ public class ScheduleTrip {
 			validBeanRestaurants.add(b);
 		}
 		return validBeanRestaurants;
+	}
+	
+	private BeanOutputSchedule getScheduleForADay(List<BeanOutputRestaurant> validBeanRestaurants, int i, int j, Date date, boolean atLunch) throws NoSuchAlgorithmException {
+		Iterator<BeanOutputRestaurant> iter=validBeanRestaurants.iterator();
+		List<BeanOutputRestaurant> validRestForAMeal = new ArrayList<>();		// Restaurants in validRestaurants which are open for a specific meal
+		
+		while(iter.hasNext()) {
+			BeanOutputRestaurant b = iter.next();
+			if(b.getOpeningHours()[i][j]) {
+				validRestForAMeal.add(b);
+			}
+		}			
+		return new BeanOutputSchedule(date, atLunch, validRestForAMeal);
+		
 	}
 	
 	

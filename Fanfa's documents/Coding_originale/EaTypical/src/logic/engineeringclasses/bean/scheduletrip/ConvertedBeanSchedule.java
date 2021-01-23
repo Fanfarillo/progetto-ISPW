@@ -40,6 +40,21 @@ public class ConvertedBeanSchedule {
 		this.city=restInfo[3];
 		this.strAvgPrice=strAvgPrice;
 		this.strAvgVote=strAvgVote;
+		
+	}
+	
+	/**
+	 * @return the strHour
+	 */
+	public String getStrHour() {
+		return strHour;
+	}
+
+	/**
+	 * @param strHour the strHour to set
+	 */
+	public void setStrHour(String strHour) {
+		this.strHour = strHour;
 	}
 
 	/**
@@ -57,20 +72,6 @@ public class ConvertedBeanSchedule {
 	}
 
 	/**
-	 * @return the strHour
-	 */
-	public String getStrHour() {
-		return strHour;
-	}
-
-	/**
-	 * @param strHour the strHour to set
-	 */
-	public void setStrHour(String strHour) {
-		this.strHour = strHour;
-	}
-
-	/**
 	 * @return the usernameOwner
 	 */
 	public String getUsernameOwner() {
@@ -83,19 +84,19 @@ public class ConvertedBeanSchedule {
 	public void setUsernameOwner(String usernameOwner) {
 		this.usernameOwner = usernameOwner;
 	}
-
+	
 	/**
-	 * @return the name
+	 * @return the city
 	 */
-	public String getName() {
-		return name;
+	public String getCity() {
+		return city;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param city the city to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	/**
@@ -111,19 +112,19 @@ public class ConvertedBeanSchedule {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
+	
 	/**
-	 * @return the city
+	 * @return the name
 	 */
-	public String getCity() {
-		return city;
+	public String getName() {
+		return name;
 	}
 
 	/**
-	 * @param city the city to set
+	 * @param name the name to set
 	 */
-	public void setCity(String city) {
-		this.city = city;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**

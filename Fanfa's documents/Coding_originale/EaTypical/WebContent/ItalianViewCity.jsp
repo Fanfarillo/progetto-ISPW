@@ -90,7 +90,7 @@
 		</select>
 		
 		<div class="box-2">
-			<img id="fotoItalia" src="Cartina.jpg"/>
+			<img id="fotoItalia" src="Cartina.jpg" alt="Italian cities"/>
 		    <img id="AO_img" class="city" src="placeicon.png" alt=".">
 			<img id="TO_img" class="city" src="placeicon.png" alt=".">
 			<img id="GE_img" class="city" src="placeicon.png" alt=".">

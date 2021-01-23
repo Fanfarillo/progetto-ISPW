@@ -67,7 +67,7 @@ public class SchedulingBaseGuiController extends UserBaseGuiController {
     }  
     
     protected ConvertedBeanSchedule[] convertDataType(boolean thereIsButton) {
-    	ConvertedBeanSchedule[] convertedScheduling = new ConvertedBeanSchedule[this.scheduling.length];
+    	ConvertedBeanSchedule[] convertedBeanSchedule = new ConvertedBeanSchedule[this.scheduling.length];
 
     	String[] dateAndHour;
     	String[] restInfo;
@@ -93,14 +93,14 @@ public class SchedulingBaseGuiController extends UserBaseGuiController {
     		strAvgVote = Double.toString(this.scheduling[i].getRest().getAvgVote());
     		
     		if(!thereIsButton) {
-    			convertedScheduling[i] = new ConvertedBeanSchedule(dateAndHour, restInfo, strAvgPrice, strAvgVote);    	
+    			convertedBeanSchedule[i] = new ConvertedBeanSchedule(dateAndHour, restInfo, strAvgPrice, strAvgVote);    	
     		}
     		else {
-    			convertedScheduling[i] = new ConvertedBeanSchedule(dateAndHour, restInfo, strAvgPrice, strAvgVote, this.scheduling[i].getRest().getName());
+    			convertedBeanSchedule[i] = new ConvertedBeanSchedule(dateAndHour, restInfo, strAvgPrice, strAvgVote, this.scheduling[i].getRest().getName());
     		}
     		
     	}
-    	return convertedScheduling;
+    	return convertedBeanSchedule;
     }
 
 }

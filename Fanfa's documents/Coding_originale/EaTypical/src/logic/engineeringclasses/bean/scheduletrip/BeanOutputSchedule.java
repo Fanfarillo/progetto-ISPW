@@ -1,5 +1,7 @@
 package logic.engineeringclasses.bean.scheduletrip;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -10,11 +12,13 @@ public class BeanOutputSchedule {
 	private boolean atLunch;
 	private List<BeanOutputRestaurant> listOfBeans;
 	private BeanOutputRestaurant rest;
+	private Random random;
 	
-	public BeanOutputSchedule(Date date, boolean atLunch, List<BeanOutputRestaurant> listOfBeans) {
+	public BeanOutputSchedule(Date date, boolean atLunch, List<BeanOutputRestaurant> listOfBeans) throws NoSuchAlgorithmException {
 		this.date=date;
 		this.atLunch=atLunch;
 		this.listOfBeans=listOfBeans;
+		this.random = SecureRandom.getInstanceStrong();
 		setRestFromList();		
 	}
 	
@@ -23,8 +27,7 @@ public class BeanOutputSchedule {
 			this.rest = new BeanOutputRestaurant("", "No available restaurants", "", "", 0, 0, null);
 		}
 		else {
-			Random random = new Random();
-			int index = random.nextInt(this.listOfBeans.size());
+			int index = this.random.nextInt(this.listOfBeans.size());
 			this.rest = this.listOfBeans.get(index);
 		}		
 	}

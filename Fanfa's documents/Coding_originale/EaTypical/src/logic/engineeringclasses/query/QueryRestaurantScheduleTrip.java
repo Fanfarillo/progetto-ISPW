@@ -14,17 +14,18 @@ public class QueryRestaurantScheduleTrip {
 				+ "WHERE M.NomeRistorante=Nome and P.NomeRistorante=Nome and A.NomeRistorante=Nome and Citta='" +city+ "'";
 		String lastPartQuery = " ORDER BY Nome;";
 		
-		if(vegan && celiac) {
-			sql = firstPartQuery + " and Vegano='1' and Celiaco='1'" + lastPartQuery;
+		if(vegan) {
+			if(celiac)
+				sql = firstPartQuery + " and Vegano='1' and Celiaco='1'" + lastPartQuery;
+			else
+				sql = firstPartQuery + " and Vegano='1'" + lastPartQuery;
 		}
-		else if(vegan && !celiac) {
-			sql = firstPartQuery + " and Vegano='1'" + lastPartQuery;
-		}
-		else if(!vegan && celiac) {
-			sql = firstPartQuery + " and Celiaco='1'" + lastPartQuery;	
-		}
+		
 		else {
-			sql = firstPartQuery + lastPartQuery;
+			if(celiac)
+				sql = firstPartQuery + " and Celiaco='1'" + lastPartQuery;
+			else
+				sql = firstPartQuery + lastPartQuery;
 		}
 		
 		return stmt.executeQuery(sql);
