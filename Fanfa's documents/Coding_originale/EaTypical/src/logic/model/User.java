@@ -10,13 +10,12 @@ public abstract class User {
 	private String name;
 	private String surname;
 	private String username;
-	private boolean notification;
+	//private boolean notification;
 		
 	
-	protected User(String name, String surname,boolean notifications,String username) {
+	protected User(String name, String surname,String username) {
 		this.surname = surname;
 		this.name = name;
-		this.notification = notifications;
 		this.username=username;
 	}
 
@@ -44,12 +43,12 @@ public abstract class User {
 		this.surname = surname;
 	}
 
-	public boolean isNotification() {
+	/*public boolean isNotification() {
 		return notification;
 	}
 
 	public void setNotification(boolean notification) {
 		this.notification = notification;
-	}	
+	}	*/
 	
 }

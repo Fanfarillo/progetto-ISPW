@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import logic.engineeringclasses.query.QueryFavouriteRest;
+import logic.engineeringclasses.query.QueryRestByName;
 import logic.model.Tourist;
 import logic.model.Restaurant;
 
@@ -24,7 +25,7 @@ public class FavouriteRestDAO {
     private static String DB_URL = "jdbc:mysql://localhost:3308/progettoispwfinaledatabase";
     private static String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 
-    public static List<Restaurant> findFavourites(Tourist tourist) throws Exception {
+    public static List<Restaurant> findFavourites(String tourist) throws Exception {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -41,14 +42,20 @@ public class FavouriteRestDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             
-            ResultSet rs = QueryFavouriteRest.selectFavourites(stmt,tourist);			//FIXARE IL TURISTA
-            do{									//// SISTEMA TURISTA
-
-                String restaurant = rs.getString("NomeRistorante");
-                //SISTEMA RICERCA RISTORANTI PER NOME
-                Restaurant rest=new Restaurant(null,null,null,null,null,null,null);
-                listOfRestaurants.add(rest);
-            }while(rs.next());
+            ResultSet rs = QueryFavouriteRest.selectFavourites(stmt,tourist); //ask for the favourite restaurants
+            if(rs.first())		//if there is something
+            {
+	            do{			//for each restaurant									
+	                String restaurant = rs.getString("NomeRistorante");		//get his name
+	                ResultSet rs2=QueryRestByName.selectRestaurants(stmt, restaurant);		//look for the restaurant infos
+	                String name=rs2.getString("Nome");
+	                String address=rs2.getString("Indirizzo");
+	                String city=rs2.getString("Città");
+	                double avgVote=rs2.getDouble("VotoMedio");		
+	                Restaurant r=new Restaurant(name,address,city,avgVote);		//make a new restaurant
+	                listOfRestaurants.add(r);		//add the restaurant in the list
+	            }while(rs.next());
+            }
             
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
@@ -85,7 +92,7 @@ public class FavouriteRestDAO {
             // STEP 4.1: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = QueryFavouriteRest.selectFavourites(stmt, tourist);
+            //ResultSet rs = QueryFavouriteRest.selectFavourites(stmt, tourist);
             /*while (rs.next()) {								//CONTROLLO RISTORANTE NON PRESENTE FRA I FAVORITI
                 // lettura delle colonne "by name"
                 int albumId = rs.getInt("AlbumId");
@@ -96,7 +103,7 @@ public class FavouriteRestDAO {
                 }
             }*/
             
-            rs.close();
+            //rs.close();
             stmt.close();
 
             // STEP 4.2: creazione ed esecuzione della query
@@ -112,7 +119,7 @@ public class FavouriteRestDAO {
 
             
             // STEP 5.1: Clean-up dell'ambiente
-            rs.close();
+           // rs.close();
         } finally {
             // STEP 5.2: Clean-up dell'ambiente        	
                 if (stmt != null)

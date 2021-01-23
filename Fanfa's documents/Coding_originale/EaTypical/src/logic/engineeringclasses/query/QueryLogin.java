@@ -4,40 +4,62 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import logic.model.User;
-import logic.model.Tourist;
-import logic.model.Owner;
 
 
 public class QueryLogin {
 	
-	public static ResultSet login(Statement stmt, User user, String pw, boolean isOwner) throws SQLException
+	//look for a tourist account in the database, by username and password
+	public static ResultSet loginTourist(Statement stmt, String user, String pw) throws SQLException
 	{
 		String sql;
-		if(!isOwner)
-		{
-			sql = "SELECT * FROM Turista WHERE Username = '"+ ((Tourist)user).getUsername() + "' and PASSWORD = '"+ pw +"';";
-			
-		}
-		else 
-		{
-			sql = "SELECT * FROM Proprietario WHERE Username = '"+ ((Owner)user).getUsername() + "' and PASSWORD = '"+ pw +"';";
-		}
+		sql = "SELECT * FROM Turista WHERE Username = '"+ user + "' and PASSWORD = '"+ pw +"';";
 		return stmt.executeQuery(sql);
 	}
-	public static int register(Statement stmt, User user, String pw, boolean isOwner) throws SQLException
+	
+	//look if there's a tourist with a specific username
+	public static ResultSet loginTourist(Statement stmt, String user) throws SQLException
+	{
+		String sql;
+		sql = "SELECT * FROM Turista WHERE Username = '"+ user + "';";
+		return stmt.executeQuery(sql);
+	}
+	
+	//look for an owner account in the database, by username and password
+	public static ResultSet loginOwner(Statement stmt, String user, String pw) throws SQLException
+	{
+		String sql;
+		sql = "SELECT * FROM Proprietario WHERE Username = '"+ user + "' and PASSWORD = '"+ pw +"';";
+		return stmt.executeQuery(sql);
+	}
+	
+	//look if there's an owner with a specific username
+	public static ResultSet loginOwner(Statement stmt, String user) throws SQLException
+	{
+		String sql;
+		sql = "SELECT * FROM Proprietario WHERE Username = '"+ user + "';";
+		return stmt.executeQuery(sql);
+	}
+	
+	//insert a new tourist account in the database with all his registration data
+	public static int registerTourist(Statement stmt, User user, String pw) throws SQLException
 	{	
 		String insertStatement;
+		String name=user.getName();
+		String surname=user.getSurname();
+		String username=user.getUsername();
+		insertStatement = String.format("INSERT INTO Turista (Nome, Cognome, Username, Password) VALUES ('%s','%s','%s','%s')", name, surname, username , pw);
+		System.out.println("Turista Registrato");				        	
+		return stmt.executeUpdate(insertStatement);
+	}
 	
-		if(!isOwner)
-		{	
-		    insertStatement = String.format("INSERT INTO Turista (Nome, Cognome, Username, Password) VALUES ('%s','%s','%s','%s')", ((Tourist)user).getName(), ((Tourist)user).getSurname(), ((Tourist)user).getUsername(), pw);
-		    System.out.println("Turista Registrato");				        
-		}
-		else
-		{
-			insertStatement = String.format("INSERT INTO Proprietario (Nome, Cognome, Username, Password) VALUES ('%s','%s','%s','%s')", ((Owner)user).getName(), ((Owner)user).getSurname(), ((Owner)user).getUsername(), pw);
-			System.out.println("Proprietario Registrato");	
-		}
+	//insert a new owner account in the database with all his registration data
+	public static int registerOwner(Statement stmt, User user, String pw) throws SQLException{
+		String insertStatement;
+		String name=user.getName();
+		String surname=user.getSurname();
+		String username=user.getUsername();
+		insertStatement = String.format("INSERT INTO Proprietario (Nome, Cognome, Username, Password) VALUES ('%s','%s','%s','%s')", name, surname, username , pw);
+		System.out.println("Proprietario Registrato");
 		return stmt.executeUpdate(insertStatement);
 	}
 	

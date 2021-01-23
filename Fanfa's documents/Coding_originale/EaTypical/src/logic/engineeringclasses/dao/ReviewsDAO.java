@@ -22,7 +22,7 @@ public class ReviewsDAO {
     private static String DB_URL = "jdbc:mysql://localhost:3308/progettoispwfinaledatabase";
     private static String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 
-    public static List<Review> findRestaurantreviews(Restaurant restaurant) throws Exception {
+    public static List<Review> findRestaurantReviews(String restaurant) throws Exception {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -38,20 +38,15 @@ public class ReviewsDAO {
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs;
             
-            ResultSet rs = QueryReview.selectReviews(stmt,restaurant.getName());
-            int i=0;
-            do{									//// SISTEMA TURISTA
-
-                String tourist = rs.getString("UsernameTurista");
-                String restaurantName = rs.getString("NomeRistorante");
-                String text = rs.getString("Contenuto");
-                int vote = rs.getInt("Voto");
-                Tourist t=new Tourist("provanome"+i,"provacognome"+i,false,tourist,null);
-                Review rev = new Review(text, t, vote, restaurantName);
-                i++;
-                listOfReviews.add(rev);
-            }while(rs.next());
+	            rs = QueryReview.selectReviews(stmt,restaurant);
+	            do{									//// SISTEMA TURISTA
+	                String text = rs.getString("Contenuto");
+	                int vote = rs.getInt("Voto");
+	                Review rev = new Review(text, vote);
+	                listOfReviews.add(rev);
+	            }while(rs.next());            
             
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
@@ -72,6 +67,52 @@ public class ReviewsDAO {
 
         return listOfReviews;
     }
+    public static Review findRestaurantReviews(String restaurant,String username) throws Exception {		//recensione di un certo ristorante e di un certo utente
+        // STEP 1: dichiarazioni
+        Statement stmt = null;
+        Connection conn = null;
+        List<Review> listOfReviews = new ArrayList<Review>();
+        
+        try {
+            // STEP 2: loading dinamico del driver mysql
+            Class.forName(DRIVER_CLASS_NAME);
+
+            // STEP 3: apertura connessione
+            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+
+            // STEP 4: creazione ed esecuzione della query
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs;
+            
+	            rs = QueryReview.selectReviewsByName(stmt,restaurant, username);
+	            do{									//// SISTEMA TURISTA
+	                String text = rs.getString("Contenuto");
+	                int vote = rs.getInt("Voto");
+	                Review rev = new Review(text, vote);
+	            }while(rs.next());  
+	            
+            
+            // STEP 5.1: Clean-up dell'ambiente
+            rs.close();
+        	} finally {
+            // STEP 5.2: Clean-up dell'ambiente
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+
+        return rev;
+    }
+    
 
     public static void insertReview(Review review) throws Exception {
         // STEP 1: dichiarazioni
