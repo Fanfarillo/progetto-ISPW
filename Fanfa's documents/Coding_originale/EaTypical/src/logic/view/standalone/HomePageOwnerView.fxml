@@ -14,22 +14,17 @@
             <Image url="@restaurant-mural-wallpaper_23-2148707022.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="backButton" layoutX="210.0" layoutY="501.0" mnemonicParsing="false" onAction="#goToBackPage" prefHeight="60.0" prefWidth="280.0" text="Logout">
+      <Button fx:id="backButton" layoutX="212.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToBackPage" prefHeight="76.0" prefWidth="280.0" text="Logout">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="sponsorRestaurantButton" layoutX="210.0" layoutY="400.0" mnemonicParsing="false" onAction="#goToSponsorRestaurant" prefHeight="60.0" prefWidth="280.0" text="Sponsor Restaurant">
+      <Button fx:id="sponsorRestaurantButton" layoutX="210.0" layoutY="401.0" mnemonicParsing="false" onAction="#goToSponsorRestaurant" prefHeight="76.0" prefWidth="280.0" text="Sponsor Restaurant">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="manageMenuButton" layoutX="210.0" layoutY="299.0" mnemonicParsing="false" onAction="#goToManageMenu" prefHeight="60.0" prefWidth="280.0" text="Manage Menu">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="homeButton" layoutX="210.0" layoutY="198.0" mnemonicParsing="false" onAction="#goHomePage" prefHeight="60.0" prefWidth="280.0" text="Home">
+      <Button fx:id="manageMenuButton" layoutX="212.0" layoutY="185.0" mnemonicParsing="false" onAction="#goToManageMenu" prefHeight="76.0" prefWidth="280.0" text="Manage Menu">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -49,5 +44,10 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+      <Button fx:id="bottoneNotifiche" layoutX="212.0" layoutY="292.0" mnemonicParsing="false" onAction="#goToNotificationsView" prefHeight="76.0" prefWidth="280.0" text="See Notifications">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

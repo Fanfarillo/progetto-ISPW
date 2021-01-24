@@ -29,4 +29,10 @@ public class QueryNotifications {
 		sql = "SELECT * FROM NotificaScheduling WHERE NomeRistorante = '"+ rest + "';";
 		return stmt.executeQuery(sql);
 	}
+	
+	public static ResultSet ownerNotificationScheduling(Statement stmt,String username) throws SQLException {
+		String sql;
+		sql = "SELECT * FROM notificascheduling WHERE UsernameProprietario = '"+ username + "';";
+		return stmt.executeQuery(sql);
+	}
 }

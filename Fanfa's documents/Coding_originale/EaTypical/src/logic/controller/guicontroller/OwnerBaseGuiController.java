@@ -20,6 +20,7 @@ public class OwnerBaseGuiController extends BaseGuiController{
 	@FXML
 	@Override
 	public void goHomePage(ActionEvent event) throws IOException {
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageOwnerView.fxml"));
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
@@ -34,12 +35,15 @@ public class OwnerBaseGuiController extends BaseGuiController{
 	}
 	
 	@FXML
+	
 	void goToSponsorRestaurant(ActionEvent e) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/HomePageOwnerView.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/SponsorRestaurant/CreatingRestaurantView.fxml"));
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
 	}
 }
+
+
 
 
 

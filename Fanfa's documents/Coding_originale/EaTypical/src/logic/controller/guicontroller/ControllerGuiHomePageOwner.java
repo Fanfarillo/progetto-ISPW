@@ -2,6 +2,8 @@ package logic.controller.guicontroller;
 
 
 
+import java.io.IOException;
+
 /**
  * Sample Skeleton for 'HomePageOwnerView.fxml' Controller Class
  */
@@ -10,11 +12,31 @@ package logic.controller.guicontroller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiNotificationsView;
+import logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling;
+import logic.engineeringclasses.dao.NotificationsOwnerDAO;
+
+/**
+ * 
+ * @author Luca Capotombolo
+ *
+ */
 
 public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
-
+	
+	private String username;
+	/*
+	public ControllerGuiHomePageOwner(String username) {
+		this.username = username;
+	}
+*/
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -26,8 +48,25 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
 
     @FXML // fx:id="labelBenvenuto"
     private Label labelBenvenuto; // Value injected by FXMLLoader
+    
+    @FXML
+    private Button bottoneNotifiche;
 
-   
+    public void goToNotificationsView(ActionEvent e) throws ClassNotFoundException, IOException {
+ 	   System.out.print("Colpito\n");
+ 	  NotificationsOwnerDAO notificationsDAO = new NotificationsOwnerDAO();
+ 	   BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications("liuk");
+ 	   
+ 	   //carico la gerarchia dei nodi
+ 	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/NotificationsRestaurantView.fxml"));
+   	    	
+ 	   //setto il nuovo controller grafico
+ 	   loader.setControllerFactory(c -> {return new ControllerGuiNotificationsView(beanListNotificationsScheduling,"liuk");});
+ 	   Parent rootParent = loader.load();    	
+   	
+   	//cambio scena
+   	myAnchorPane.getChildren().setAll(rootParent);
+    }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -38,6 +77,8 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert labelBenvenuto != null : "fx:id=\"labelBenvenuto\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
+        assert bottoneNotifiche != null : "fx:id=\"bottoneNotifiche\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         labelBenvenuto.setText("Luca");
+        nomeUtenteLabel.setText(username);
     }
 }
