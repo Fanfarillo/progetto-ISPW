@@ -1,5 +1,7 @@
 package logic.engineeringclasses.exceptions;
 
+import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
+import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
 
 /**
  * L'utente ha la possibilità di modificare un piatto che viene cucinato in un suo ristorante
@@ -24,13 +26,10 @@ public class InvalidDishModify extends Exception {
 	 * Metodi Getter
 	 */
 
-	public String getRestaurant() {
-		return restaurant;
+	public BeanErrorDish getMess() {
+		return new BeanErrorDish(dish, restaurant);
 	}
 
-	public String getDish() {
-		return dish;
-	}
 	
 
 }

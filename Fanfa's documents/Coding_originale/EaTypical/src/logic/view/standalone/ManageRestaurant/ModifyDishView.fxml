@@ -32,23 +32,23 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="choiseBox" layoutX="420.0" layoutY="188.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiseBox" layoutX="365.0" layoutY="188.0" prefWidth="150.0" />
       <Label alignment="CENTER" layoutX="65.0" layoutY="188.0" opacity="0.8" prefHeight="74.0" prefWidth="250.0" style="-fx-background-color: black;" text="Select the dish taht you would like to modify" textFill="#eeeeee" wrapText="true">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <CheckBox fx:id="veganCheck" layoutX="420.0" layoutY="342.0" mnemonicParsing="false" text="For Vegan" textFill="#eeeeee">
+      <CheckBox fx:id="veganCheck" layoutX="367.0" layoutY="306.0" mnemonicParsing="false" text="For Vegan" textFill="#eeeeee">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="celiacCheck" layoutX="420.0" layoutY="415.0" mnemonicParsing="false" text="For Celiac" textFill="#eeeeee">
+      <CheckBox fx:id="celiacCheck" layoutX="369.0" layoutY="358.0" mnemonicParsing="false" text="For Celiac" textFill="#eeeeee">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </CheckBox>
-      <TextField fx:id="priceText" alignment="CENTER" layoutX="294.0" layoutY="499.0" promptText="new price">
+      <TextField fx:id="priceText" alignment="CENTER" layoutX="365.0" layoutY="426.0" promptText="new price">
          <font>
             <Font size="22.0" />
          </font>
@@ -58,7 +58,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="choiseRistoranti" layoutX="420.0" layoutY="262.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiseRistoranti" layoutX="366.0" layoutY="247.0" prefWidth="150.0" />
       <TextArea fx:id="nuovoContenuto" layoutX="65.0" layoutY="274.0" prefHeight="200.0" prefWidth="250.0" promptText="inserisci nuovo contenuto..." />
       <Label fx:id="campoMancantePiatto" layoutX="474.0" layoutY="225.0" textFill="WHITE">
          <font>
@@ -76,6 +76,11 @@
          </font>
       </Label>
       <Label fx:id="campoMancateContenuto" layoutX="65.0" layoutY="499.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorePiattoLabel" layoutX="64.0" layoutY="533.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

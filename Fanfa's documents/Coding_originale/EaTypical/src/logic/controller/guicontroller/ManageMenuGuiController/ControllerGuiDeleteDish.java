@@ -5,6 +5,7 @@
 package logic.controller.guicontroller.ManageMenuGuiController;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
+import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,15 +30,22 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
 	private ArrayList<String> obs1;
 	private ArrayList<String> obs2;
 	private String username;
+	private BeanErrorDish beanErrorDish;
+	private int errorePiatto = -1;
 	
-	public ControllerGuiDeleteDish(String username,ArrayList<String> obs1, ArrayList<String> obs2) {
+	public ControllerGuiDeleteDish(String username,ArrayList<String> obs1, ArrayList<String> obs2,int errorePiatto,BeanErrorDish beanErrorDish) {
 		this.obs1 = obs1;
     	this.obs2 = obs2;
 		this.username = username;
+		this.beanErrorDish = beanErrorDish;
+		this.errorePiatto = errorePiatto;
 	}
 	
 	@FXML
 	private Label campoMancantePiatto;
+	
+	@FXML
+	private Label errorePiattoLabel;
 	
 	@FXML
 	private Label campoMancanteRistorante;
@@ -106,6 +114,8 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
         assert deleteButton != null : "fx:id=\"deleteButton\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
         assert campoMancanteRistorante != null : "fx:id=\"campoMancanteRistorante\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
         assert campoMancantePiatto != null : "fx:id=\"\"campoMancantePiatto\"\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
+        assert errorePiattoLabel != null : "fx:id=\"\"errorePiattoLabel\"\" was not injected: check your FXML file 'DeleteDishView.fxml'.";
+        
         //choiseDish.setItems(this.obs1);
         for(int i = 0; i<this.obs1.size();i++) {
         	choiseDish.getItems().add(this.obs1.get(i));
@@ -115,5 +125,9 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
         	scegliRistorante.getItems().add(this.obs2.get(i));
         }
         nomeUtente.setText(username);
+        
+        if(this.errorePiatto==2) {
+        	this.errorePiattoLabel.setText(beanErrorDish.getMess());
+        }
     }
 }

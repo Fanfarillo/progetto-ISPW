@@ -30,14 +30,18 @@ import javafx.scene.control.TextField;
 
 public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 	
-	ArrayList<String> listaP,listaR;
+	private ArrayList<String> listaP;
+	private ArrayList<String> listaR;
 	private String username;
+	private int errorePiatto;
+	private BeanErrorDishAlreadyExists beanErrorDishAlreadyExists;
 	
-	public ControllerGuiAddDishView(ArrayList<String> listP, ArrayList<String> listR,String username) {
+	public ControllerGuiAddDishView(ArrayList<String> listP, ArrayList<String> listR,String username,int errorePiatto, BeanErrorDishAlreadyExists beanErrorDishAlreadyExists) {
     	this.listaP = listP;
     	this.listaR = listR;
     	this.username = username;
-    	
+    	this.errorePiatto = errorePiatto;
+    	this.beanErrorDishAlreadyExists =  beanErrorDishAlreadyExists;
     }
 
 	private static final String MANCANTE = "Mancante";
@@ -73,6 +77,9 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 
     @FXML // fx:id="celiacCheckBox"
     private CheckBox celiacCheckBox; // Value injected by FXMLLoader
+    
+    @FXML
+    private Label errorePiattoLabel;
 
     @FXML // fx:id="okButton"
     private Button okButton; // Value injected by FXMLLoader
@@ -169,15 +176,22 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
         assert campoMancanteRicetta != null : "fx:id=\"campoMancanteRicetta\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert campoMancantePrezzo != null : "fx:id=\"campoMancantePrezzo\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert campoMancanteRicetta != null : "fx:id=\"campoMancanteRicetta\" was not injected: check your FXML file 'AddDish.fxml'.";
+        assert errorePiattoLabel != null : "fx:id=\"errorePiattoLabel\" was not injected: check your FXML file 'AddDish.fxml'.";
         
-        //scegliPiattoBox.setItems(this.listaP);
+        //carico i piatti che può scegliere
         for(int i = 0; i<this.listaP.size();i++) {
         	scegliPiattoBox.getItems().add(this.listaP.get(i));
         }
-        //scegliRistorante.setItems(this.listaR);
+        //carico i ristoranti che può scegliere
         for(int i = 0; i<this.listaR.size();i++) {
         	scegliRistorante.getItems().add(this.listaR.get(i));
         }
+        //imposto il nome utente
         nomeUtenteLabel.setText(username);
+        
+        //verifico se provengo da un errore di inserimento
+        if(this.errorePiatto == 0) {
+        	errorePiattoLabel.setText(this.beanErrorDishAlreadyExists.getMess());
+        }
     }
 }

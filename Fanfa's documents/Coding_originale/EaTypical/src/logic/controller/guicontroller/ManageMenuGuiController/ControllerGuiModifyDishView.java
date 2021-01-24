@@ -20,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
+import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
 
 /**
  * 
@@ -32,12 +33,15 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 	private String username;
 	private ArrayList<String> obs;
 	private ArrayList<String> obs2;
+	private int errorePiatto = -1;
+	private BeanErrorDish beanErrorDish;
 	
-	public ControllerGuiModifyDishView(String username, ArrayList<String> obs,ArrayList<String> obs2) {
+	public ControllerGuiModifyDishView(String username, ArrayList<String> obs,ArrayList<String> obs2,int errorePiatto, BeanErrorDish beanErrorDish) {
 		this.username = username;
 		this.obs = obs;
 		this.obs2 = obs2;
-		
+		this.errorePiatto = errorePiatto;
+		this.beanErrorDish = beanErrorDish;
 	}
 	
 	@FXML
@@ -83,6 +87,9 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
     @FXML
     private TextArea nuovoContenuto;
 
+    @FXML
+    private Label errorePiattoLabel;
+    
     private static final String MANCANTE = "Mancante";
   
 
@@ -158,6 +165,7 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
         assert campoMancantePiatto != null : "fx:id=\"campoMancantePiatto\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert campoMancanteRistorante != null : "fx:id=\"campoMancanteRistorante\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert campoMancantePrezzo != null : "fx:id=\"nuovoContenuto\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
+        assert errorePiattoLabel != null : "fx:id=\"errorePiattoLabel\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         
         nomeUtenteLabel.setText(username);
         //choiseBox.setItems(obs);
@@ -168,6 +176,10 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
         //choiseRistoranti.setItems(obs2);
         for(int i = 0; i<this.obs2.size();i++) {
         	choiseRistoranti.getItems().add(this.obs2.get(i));
+        }
+        
+        if(this.errorePiatto!=-1) {
+        	this.errorePiattoLabel.setText(this.beanErrorDish.getMess());
         }
     }
 }

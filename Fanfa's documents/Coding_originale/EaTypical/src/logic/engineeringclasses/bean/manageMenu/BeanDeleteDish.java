@@ -16,7 +16,7 @@ public class BeanDeleteDish {
 	public BeanDeleteDish(String ristorante, String piatto,int tipoModifica) {
 		this.ristorante = ristorante;
 		this.piatto = piatto;
-		this.tipoModifica = tipoModifica;
+		this.tipoModifica = 2;
 	}
 
 	public int getTipoModifica() {

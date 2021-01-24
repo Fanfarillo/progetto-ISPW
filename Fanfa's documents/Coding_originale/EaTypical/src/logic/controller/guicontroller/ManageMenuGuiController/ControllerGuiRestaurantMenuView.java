@@ -5,6 +5,7 @@
 package logic.controller.guicontroller.ManageMenuGuiController;
 
 
+import logic.controller.applicationcontroller.ManageMenu;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import java.io.IOException;
 import java.net.URL;
@@ -16,17 +17,43 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
+import logic.engineeringclasses.bean.manageMenu.BeanAdvice;
+import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
+import logic.engineeringclasses.bean.manageMenu.BeanErrorDishAlreadyExists;
 import logic.engineeringclasses.dao.RecipeDAO;
 import logic.engineeringclasses.dao.RestaurantDAO;
+
+/**
+ * 
+ * @author Luca Capotombolo
+ *
+ */
 
 public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
 	private String username;
+	private int errorePiatto = -1;
+	private BeanErrorDish beanErrorDish = null;
+	private BeanErrorDishAlreadyExists beanErrorDishAlreadyExists = null;
+	
+	public ControllerGuiRestaurantMenuView(String username,int errore, BeanErrorDish beanErrorDish) {
+		this.username = username;
+		this.errorePiatto = errore;
+		this.beanErrorDish = beanErrorDish;
+	}
+	
+	public ControllerGuiRestaurantMenuView(String username,int errore, BeanErrorDishAlreadyExists beanErrorDishAlreadyExists) {
+		this.username = username;
+		this.errorePiatto = errore;
+		this.beanErrorDishAlreadyExists = beanErrorDishAlreadyExists;
+	}
+	
 	
 	public ControllerGuiRestaurantMenuView(String username) {
 		this.username = username;
+		
 	}
+	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -50,7 +77,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     private Button getAdviceButton; // Value injected by FXMLLoader
 
     /**
-     * Ottiene i piatti disponibili e i ristoranti di sua proprietÃƒÆ’Ã‚Â  
+     * Ottiene i piatti disponibili e i ristoranti di sua proprieta 
      * per poi passarli al costruttore del controller grafico di AddDishView
      * @param event
      * @throws IOException
@@ -71,13 +98,21 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
     	    	
     	//setto il nuovo controller grafico
-    	loader.setControllerFactory(c -> {return new ControllerGuiAddDishView(obs1,obs2,nomeUtenteLabel.getText());});
+    	loader.setControllerFactory(c -> {return new ControllerGuiAddDishView(obs1,obs2,nomeUtenteLabel.getText(),this.errorePiatto,this.beanErrorDishAlreadyExists);});
     	Parent rootParent = loader.load();    	
     	
     	//cambio scena
     	myAnchorPane.getChildren().setAll(rootParent);
     }
 
+    /**
+     * ottiene i piatti e le ricette di tutti i ristoranti dell'utente
+     * Li passa al controller grafico della view successiva in cui l'utente potrà fare la selezione
+     * @param event
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    
     @FXML
     void deleteADish(ActionEvent event) throws IOException, ClassNotFoundException {    	
     	
@@ -93,22 +128,41 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	
     	//FXMLLoader e setto il nuovo controller grafico
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/DeleteDishView.fxml"));
-    	loader.setControllerFactory(c -> {return new ControllerGuiDeleteDish(nomeUtenteLabel.getText(),obs1,obs2);});
+    	loader.setControllerFactory(c -> {return new ControllerGuiDeleteDish(nomeUtenteLabel.getText(),obs1,obs2,this.errorePiatto,this.beanErrorDish);});
     	Parent rootParent = loader.load();    	
     	
     	//cambio scena
     	myAnchorPane.getChildren().setAll(rootParent);
     }
 
+    /**
+     * Il sistema fornisce all'utente i piatti tipici della sua zona che non
+     * offre ai clienti
+     * @param event
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     @FXML
-    void getAdvice(ActionEvent event) throws IOException {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AdviceView.fxml"));
+    void getAdvice(ActionEvent event) throws IOException, ClassNotFoundException {
+    	
+    	//chiamo l'applicativo per ottenere la lista di suggerimenti da farmi dare
+    	ManageMenu manageMenu = new ManageMenu();
+    	BeanAdvice beanAdvices = manageMenu.advice(username);
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AdviceView.fxml"));    	
+    	loader.setControllerFactory(c -> {return new ControllerGuiAdviceView(username,beanAdvices);});
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }
 
     
 
+    /**
+     * Vengono caricati i ristoranti e i piatti dell'utente per poi passarli
+     * alla view successiva tramite cui l'utente potrà cancellarli
+     * @param event
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
    
 
     @FXML
@@ -125,7 +179,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     
     	//FXMLLoader e setto il nuovo controller grafico
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ModifyDishView.fxml"));
-    	loader.setControllerFactory(c -> {return new ControllerGuiModifyDishView(nomeUtenteLabel.getText(),obs,obs2);});
+    	loader.setControllerFactory(c -> {return new ControllerGuiModifyDishView(nomeUtenteLabel.getText(),obs,obs2,this.errorePiatto,this.beanErrorDish);});
     	Parent rootParent = loader.load();      	
     	
     	//carica GUI successiva
@@ -133,7 +187,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
+    void initialize() throws ClassNotFoundException, IOException {
         assert manageMenuButton != null : "fx:id=\"manageMenuButton\" was not injected: check your FXML file 'RestaurantMenuView.fxml'.";
         assert sponsorRestaurantButton != null : "fx:id=\"sponsorRestaurantButton\" was not injected: check your FXML file 'RestaurantMenuView.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'RestaurantMenuView.fxml'.";
@@ -143,6 +197,17 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
         assert addADishButton != null : "fx:id=\"addADishButton\" was not injected: check your FXML file 'RestaurantMenuView.fxml'.";
         assert modifyADishButton != null : "fx:id=\"modifyADishButton\" was not injected: check your FXML file 'RestaurantMenuView.fxml'.";
         assert getAdviceButton != null : "fx:id=\"getAdviceButton\" was not injected: check your FXML file 'RestaurantMenuView.fxml'.";
+        
         nomeUtenteLabel.setText(this.username);
+        
+        //se si è verificato un errore all'atto dell'inserimento del piatto l'utente viene reindirizzato alla pagina 
+        //per l'inserimento e viene avvisato dell'errore
+        if(this.errorePiatto == 0 ) {
+        	this.addADish(null);
+        }else if(this.errorePiatto == 1) {
+        	this.modifyADish(null);
+        }else if(this.errorePiatto == 2) {
+        	this.deleteADish(null);
+        }
     }
 }

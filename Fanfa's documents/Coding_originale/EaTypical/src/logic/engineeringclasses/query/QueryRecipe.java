@@ -1,6 +1,8 @@
 package logic.engineeringclasses.query;
 
 
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,16 +16,12 @@ import com.mysql.cj.jdbc.CallableStatement;
 public class QueryRecipe {
 
 	private QueryRecipe() {}
-	/**
-	 * 
-	 * Elimina un piatto dal menu di un ristorante
-	 * 
-	 * @param stmt statement
-	 * @param nomeRistorante nome del ristorante che ha la ricetta
-	 * @param nomePiatto nome del piatto che deve essere eliminato
-	 * @return il numero di righe interessate oppure 0 se si una una istruzione DDL
-	 * @throws SQLException
-	 */
+	
+	public static ResultSet selectNoDish(Statement stmt,String username) throws SQLException {
+		String sql = "select * from piattotipico where NomePiatto <> all (select NomePiatto from piatto join ristorante on piatto.NomeRistorante = ristorante.Nome where ristorante.UsernameProprietario = '"+username+"');";
+		System.out.print("Query eseguita\n");
+		return stmt.executeQuery(sql);
+	}
 	
 	/**
 	 * Serve per add recipe
@@ -32,7 +30,7 @@ public class QueryRecipe {
 	 * @throws SQLException
 	 */
 	public static ResultSet selectDish(Statement stmt) throws SQLException {
-		String sql = "SELECT distinct NomePiatto FROM Piatto";
+		String sql = "SELECT distinct NomePiatto FROM piattotipico";
 		System.out.print("Query eseguita\n");
 		return stmt.executeQuery(sql);
 	}
@@ -70,7 +68,7 @@ public class QueryRecipe {
 			
 			//eseguo
 			preparedStatement.executeUpdate();*/
-			cstmt = (CallableStatement) conn.prepareCall("{call aggiungi_piatto3(?,?,?,?,?,?)}");
+			cstmt = (CallableStatement) conn.prepareCall("{call aggiungi_piatto4(?,?,?,?,?,?)}");
 			cstmt.setString(1, nomeRistorante);
 			cstmt.setString(2, nomePiatto);
 			cstmt.setString(3, contenuto);
@@ -120,7 +118,7 @@ public class QueryRecipe {
 		try {
 			
 			//creo insert preparedStatement
-			preparedStatement = conn.prepareStatement("call elimina_piatto3(?,?);");
+			preparedStatement = conn.prepareStatement("call elimina_piatto4(?,?);");
 			preparedStatement.setString(1, nomeRistorante);
 			preparedStatement.setString(2, nomePiatto);
 			
@@ -186,7 +184,7 @@ public class QueryRecipe {
 			
 			//eseguo
 			preparedStatement.executeUpdate();*/
-			cstmt = (CallableStatement) conn.prepareCall("{call aggiorna_piatto3(?,?,?,?,?,?)}");
+			cstmt = (CallableStatement) conn.prepareCall("{call aggiorna_piatto4(?,?,?,?,?,?)}");
 			cstmt.setString(1, ristorante);
 			cstmt.setString(2, nomePiatto);
 			cstmt.setString(3, contenuto);
@@ -196,7 +194,7 @@ public class QueryRecipe {
 			
 			cstmt.executeUpdate();
 			
-			System.out.print("Stored Procedure chiamata.\n");
+			//System.out.print("Stored Procedure chiamata.\n");
 		} catch (SQLException e) {
 			
 			//stampa stack

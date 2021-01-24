@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 
 import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
+import logic.engineeringclasses.exceptions.DishAlreadyExists;
+import logic.engineeringclasses.exceptions.InvalidDishDelete;
+import logic.engineeringclasses.exceptions.InvalidDishModify;
 import logic.engineeringclasses.query.QueryRecipe;
 import logic.model.Recipe;
 
@@ -18,7 +21,7 @@ public class RecipeDAO {
 	/*
 	 * Se ho tempo, crea un file di configurazione per le credenziali
 	 */
-	String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase3?user=root&password=Monte_2020.&serverTimezone=UTC";
+	String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
 	private String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 	
 	/**
@@ -66,7 +69,8 @@ public class RecipeDAO {
 			
 			
 		} catch (SQLException e) {			
-			System.out.print("Eccezione eliminazione piatto");			
+			System.out.print("Eccezione eliminazione piatto");		
+			e.printStackTrace();
 		}finally {
 			try {
                 if (stmt != null)
@@ -91,10 +95,11 @@ public class RecipeDAO {
 	 * @param nomeRistorante
 	 * @param nomePiatto
 	 * @throws ClassNotFoundException 
+	 * @throws InvalidDishDelete 
 	 * 
 	 */
 	
-	public void deleteRecipe(String nomeRistorante, String nomePiatto) throws ClassNotFoundException {
+	public void deleteRecipe(String nomeRistorante, String nomePiatto) throws ClassNotFoundException, InvalidDishDelete {
 		
 		
 		Connection conn = null;
@@ -119,8 +124,9 @@ public class RecipeDAO {
 			
 			
 		} catch (SQLException e) {			
-			System.out.print("Eccezione eliminazione piatto");	
-			e.printStackTrace();
+			//System.out.print("Eccezione eliminazione piatto");	
+			//e.printStackTrace();
+			throw new InvalidDishDelete(nomePiatto, nomeRistorante);
 		}finally {
 			
             try {
@@ -143,7 +149,7 @@ public class RecipeDAO {
 	 */
 	
 	
-	public void addDish(Recipe recipe) throws ClassNotFoundException {	
+	public void addDish(Recipe recipe) throws ClassNotFoundException, DishAlreadyExists {	
 		Connection conn = null;	
 		
 		try {
@@ -164,8 +170,9 @@ public class RecipeDAO {
 			
 		} catch (SQLException e) {		
 			
-			//stampa stack
-			e.printStackTrace();
+			//lancio l'eccezione per dire che il piatto è stato già inserito in precedenza
+			throw new DishAlreadyExists(recipe.getDishName());
+			//e.printStackTrace();
 			
 		}finally {
 			
@@ -193,7 +200,6 @@ public class RecipeDAO {
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
-		//ObservableList<String> obs = FXCollections.observableArrayList();
 		ArrayList<String> obs = new ArrayList<>();
 		
 		System.out.println("Usernam : " + username);
@@ -255,7 +261,7 @@ public class RecipeDAO {
 	}
 	
 	
-	public void updateDishes(BeanAddDish beanAddDish) throws ClassNotFoundException
+	public void updateDishes(BeanAddDish beanAddDish) throws ClassNotFoundException,  InvalidDishModify
 	{
 		Connection conn = null;	
 		
@@ -274,8 +280,9 @@ public class RecipeDAO {
 			
 			
 		} catch (SQLException e) {			
-			System.out.print("Eccezione aggiornamento piatto");	
-			e.printStackTrace();
+			//eccezione piatto non esistente
+			throw new InvalidDishModify(beanAddDish.getPiatto(), beanAddDish.getRistorante());
+			
 		}finally {
 			
             try {
@@ -286,6 +293,69 @@ public class RecipeDAO {
                 se.printStackTrace();
             }
 		}
+	}
+	
+	/**
+	 * OTTIENE LE RICETTA CHE NON SONO TRATTATE DAI RISTORANTI DELLO USER
+	 */
+	
+	public ArrayList<String> selectNoRecipe(String username) throws ClassNotFoundException
+	{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		ArrayList<String> obs = new ArrayList<>();
+		
+		
+		try {
+			
+			//loading dinamico del driver del DBMS scelto
+			Class.forName(DRIVER_CLASS_NAME);
+			
+			//apro la connssione verso il DBMS
+			conn = DriverManager.getConnection(connectionString);
+			
+			
+			//creazione ed esecuzione dell'eliminazione
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);	
+			
+			
+			rs = QueryRecipe.selectNoDish(stmt,username);
+				
+			//scansiono i risultati
+			rs.first();
+			String recipeMancante;
+			do {
+				recipeMancante = rs.getString(1);
+				//System.out.println(recipeMancante);
+				obs.add(recipeMancante);
+			}
+			while(rs.next());
+				
+			
+			
+			
+		} catch (SQLException e) {			
+			System.out.print("Eccezione eliminazione piatto");		
+			e.printStackTrace();
+		}finally {
+			try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+            	System.out.println("Errore chiusura Statement delete");
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+            	System.out.println("Errore chiusura Connessione delete");
+                se.printStackTrace();
+            }
+		}
+		
+		return obs;
 	}
 	
 }
