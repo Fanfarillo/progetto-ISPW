@@ -93,6 +93,16 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Preferiti` (
 ENGINE = InnoDB;
 
 
+CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Scheduling` (
+  `Ristorante` VARCHAR(45) NOT NULL,
+  `Giorno` INT NOT NULL,
+  `ApertoCena` TINYINT NOT NULL,
+  `ApertoPranzo` TINYINT NOT NULL,
+  
+  PRIMARY KEY (`Ristorante`,`Giorno`)
+)
+ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `progettoispwfinaledb`.`PiattoTipico`
@@ -140,8 +150,8 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`NotificaScheduling` (
   -- `NomeTurista` VARCHAR(45) NOT NULL,
   -- `CognomeTurista` VARCHAR(45) NOT NULL,
   `NomeRistorante` VARCHAR(45) NOT NULL,
-  `Data` DATE NULL,
-  `PranzoVsCena` TINYINT NULL,
+  `Data` VARCHAR(45) NULL,
+  `PranzoVsCena` VARCHAR(45) NULL,
   `Vista` TINYINT NULL,
   PRIMARY KEY (`UsernameProprietario`,`UsernameTurista`, `NomeRistorante`),
   INDEX `fNotifica2_idx` (`UsernameProprietario` ASC) VISIBLE,
@@ -169,22 +179,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 
 
-CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`GiornoSett` (
-  `Ristorante` VARCHAR(45) NOT NULL,
-  `Giorno` INT NOT NULL,
-  `ApertoCena` BOOLEAN NOT NULL,
-  `ApertoPranzo` VARCHAR(45) NOT NULL,
-  
-  primary key(`Ristorante`,`Giorno`),
-  
-  PRIMARY KEY (`NomePiatto`),
-  CONSTRAINT `fNotifica543`
-    FOREIGN KEY (`Ristorante`)
-    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
-    ON DELETE cascade
-    ON UPDATE cascade
-)
-ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
