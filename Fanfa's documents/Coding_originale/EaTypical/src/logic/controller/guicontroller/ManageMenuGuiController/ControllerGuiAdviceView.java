@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.bean.manageMenu.BeanAdvice;
@@ -28,6 +29,9 @@ public class ControllerGuiAdviceView  extends OwnerBaseGuiController{
 	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
+    
+    @FXML
+    private Label labelUtente;
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
@@ -66,7 +70,9 @@ public class ControllerGuiAdviceView  extends OwnerBaseGuiController{
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'AdviceView.fxml'.";
         assert doneButton != null : "fx:id=\"doneButton\" was not injected: check your FXML file 'AdviceView.fxml'.";
         assert area != null : "fx:id=\"area\" was not injected: check your FXML file 'AdviceView.fxml'.";
+        assert labelUtente != null : "fx:id=\"labelUtente\" was not injected: check your FXML file 'AdviceView.fxml'.";
         String linea = "Possibili piatti tipici da poter aggiungere ai menu dei tuoi ristoranti:";
+        labelUtente.setText(username);
         for(int i=0;i<beanAdvice.getPiattiMancanti().size();i++) {
         	linea = linea +  "\nPiatto " + i + ": " + beanAdvice.getPiattiMancanti().get(i);
         }

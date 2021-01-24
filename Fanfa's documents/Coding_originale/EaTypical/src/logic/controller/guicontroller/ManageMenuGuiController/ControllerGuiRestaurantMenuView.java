@@ -107,7 +107,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     /**
      * ottiene i piatti e le ricette di tutti i ristoranti dell'utente
-     * Li passa al controller grafico della view successiva in cui l'utente potrà fare la selezione
+     * Li passa al controller grafico della view successiva in cui l'utente potrÃ  fare la selezione
      * @param event
      * @throws IOException
      * @throws ClassNotFoundException
@@ -158,7 +158,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     /**
      * Vengono caricati i ristoranti e i piatti dell'utente per poi passarli
-     * alla view successiva tramite cui l'utente potrà cancellarli
+     * alla view successiva tramite cui l'utente potrÃ  cancellarli
      * @param event
      * @throws IOException
      * @throws ClassNotFoundException
@@ -200,7 +200,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
         
         nomeUtenteLabel.setText(this.username);
         
-        //se si è verificato un errore all'atto dell'inserimento del piatto l'utente viene reindirizzato alla pagina 
+        //se si Ã¨ verificato un errore all'atto dell'inserimento del piatto l'utente viene reindirizzato alla pagina 
         //per l'inserimento e viene avvisato dell'errore
         if(this.errorePiatto == 0 ) {
         	this.addADish(null);

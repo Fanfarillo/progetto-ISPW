@@ -18,7 +18,7 @@ public class QueryRecipe {
 	private QueryRecipe() {}
 	
 	public static ResultSet selectNoDish(Statement stmt,String username) throws SQLException {
-		String sql = "select * from piattotipico where NomePiatto <> all (select NomePiatto from piatto join ristorante on piatto.NomeRistorante = ristorante.Nome where ristorante.UsernameProprietario = '"+username+"');";
+		String sql = "select * from piattotipico where NomePiatto <> all (select NomePiatto from piatto join ristorante on piatto.NomeRistorante = ristorante.Nome where piattoTipico.Citta = ristorante.Citta and ristorante.UsernameProprietario = '"+username+"');";
 		System.out.print("Query eseguita\n");
 		return stmt.executeQuery(sql);
 	}

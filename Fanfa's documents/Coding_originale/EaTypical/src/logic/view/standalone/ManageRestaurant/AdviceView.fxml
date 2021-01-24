@@ -24,7 +24,7 @@
             <Image url="@..\utente.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="583.0" layoutY="154.0" text="nomeUtente" textFill="#eeeeee">
+      <Label layoutX="583.0" fx:id="labelUtente" layoutY="154.0" text="nomeUtente" textFill="#eeeeee">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
