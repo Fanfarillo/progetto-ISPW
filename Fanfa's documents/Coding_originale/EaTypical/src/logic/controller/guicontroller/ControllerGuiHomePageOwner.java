@@ -58,7 +58,7 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
  	   BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications("liuk");
  	   
  	   //carico la gerarchia dei nodi
- 	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/NotificationsRestaurantView.fxml"));
+ 	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/NotificationsRestaurantViewScheduling.fxml"));
    	    	
  	   //setto il nuovo controller grafico
  	   loader.setControllerFactory(c -> {return new ControllerGuiNotificationsView(beanListNotificationsScheduling,"liuk");});
