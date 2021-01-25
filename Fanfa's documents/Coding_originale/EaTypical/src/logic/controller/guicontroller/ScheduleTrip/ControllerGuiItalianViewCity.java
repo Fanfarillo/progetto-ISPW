@@ -5,7 +5,7 @@
 package logic.controller.guicontroller.ScheduleTrip;
 
 import logic.controller.guicontroller.ItalianViewBaseGuiController;
-import logic.engineeringclasses.others.SizedStack;
+import logic.engineeringclasses.others.Session;
 import logic.engineeringclasses.exceptions.EmptyFieldException;
 import java.io.IOException;
 import java.net.URL;
@@ -20,15 +20,14 @@ import javafx.scene.control.Label;
 public class ControllerGuiItalianViewCity extends ItalianViewBaseGuiController {	
 	
 	private String tripSettingsPage = "/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml";
-	private String username;
 	private String errorMessage="";
 	
-	public ControllerGuiItalianViewCity(String username) {
-		this.username=username;
+	public ControllerGuiItalianViewCity(Session bs) {
+		super(bs);
 	}
 	
-	public ControllerGuiItalianViewCity(String username, String errorMessage) {
-		this.username=username;
+	public ControllerGuiItalianViewCity(String errorMessage, Session bs) {
+		super(bs);
 		this.errorMessage=errorMessage;
 	}
 
@@ -37,15 +36,15 @@ public class ControllerGuiItalianViewCity extends ItalianViewBaseGuiController {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+    
+    @FXML // fx:id="nomeUtenteLabel"
+    private Label nomeUtenteLabel; // Value injected by FXMLLoader
 
     @FXML // fx:id="continueButton"
     private Button continueButton; // Value injected by FXMLLoader
 
     @FXML // fx:id="errorLabel"
     private Label errorLabel; // Value injected by FXMLLoader
-    
-    @FXML // fx:id="nomeUtenteLabel"
-    private Label nomeUtenteLabel; // Value injected by FXMLLoader
     
     @FXML
     void goToTripSettingsPage(ActionEvent event) throws IOException, ClassNotFoundException { 	//The Trip Settings Page button onAction method		
@@ -55,16 +54,16 @@ public class ControllerGuiItalianViewCity extends ItalianViewBaseGuiController {
 				throw new EmptyFieldException("There is no city selected.");
 			}
 		
-			SizedStack.getSizedStack().push(this.tripSettingsPage);
+			this.bs.getSizedStack().push(this.tripSettingsPage);
 			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-			loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.username, city));
+			loader.setControllerFactory(c -> new ControllerGuiTripSettings(city, bs));
 			Parent root=loader.load();
 			myAnchorPane.getChildren().setAll(root);
 		}
 		
 		catch(EmptyFieldException e) {
 			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.scheduleTripPage));
-			loader.setControllerFactory(c -> new ControllerGuiItalianViewCity(this.username, e.getMessage()));
+			loader.setControllerFactory(c -> new ControllerGuiItalianViewCity(e.getMessage(), bs));
 			Parent root=loader.load();
 			myAnchorPane.getChildren().setAll(root);
 		}
@@ -82,7 +81,10 @@ public class ControllerGuiItalianViewCity extends ItalianViewBaseGuiController {
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         
         commonInitializeOperations();
-        nomeUtenteLabel.setText(this.username);
+        if(this.bs.getUser()!=null)
+        	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
+        else
+        	nomeUtenteLabel.setText("Not logged");
         errorLabel.setText(this.errorMessage);
     }
 }

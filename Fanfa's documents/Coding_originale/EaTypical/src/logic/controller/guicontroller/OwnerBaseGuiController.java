@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiRestaurantMenuView;
 import logic.engineeringclasses.others.Session;
 
-public class OwnerBaseGuiController extends BaseGuiController{
+public abstract class OwnerBaseGuiController extends BaseGuiController{
 
 	
 	public OwnerBaseGuiController(Session bs) {

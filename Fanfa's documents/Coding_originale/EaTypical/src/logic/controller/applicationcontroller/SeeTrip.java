@@ -8,7 +8,7 @@ public class SeeTrip {
 
 	public void deleteScheduleTrip(String username) throws ClassNotFoundException, SQLException {
 		SchedulingDAO dao = new SchedulingDAO();
-		Tourist tourist = new Tourist(null, null, false, username, null);
+		Tourist tourist = new Tourist(null, null, username, null, null);
 		dao.delete(tourist);
 	}
 	

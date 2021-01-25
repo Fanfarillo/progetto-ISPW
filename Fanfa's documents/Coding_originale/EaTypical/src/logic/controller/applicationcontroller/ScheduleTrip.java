@@ -393,7 +393,7 @@ public class ScheduleTrip {
 	
 	public void saveScheduleTrip(ConvertedBeanSchedule[] scheduling, String username) throws ClassNotFoundException, SQLException {
 		SchedulingDAO dao = new SchedulingDAO();
-		Tourist tourist = new Tourist(null, null, false, username, null);		
+		Tourist tourist = new Tourist(null, null, username, null, null);		
 		double doubleAvgPrice;
 		double doubleAvgVote;
 		boolean atLunch;

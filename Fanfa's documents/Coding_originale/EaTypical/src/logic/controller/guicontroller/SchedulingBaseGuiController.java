@@ -10,8 +10,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
 import logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule;
+import logic.engineeringclasses.others.Session;
 
-public class SchedulingBaseGuiController extends UserBaseGuiController {
+public abstract class SchedulingBaseGuiController extends UserBaseGuiController {
 	protected ObservableList<ConvertedBeanSchedule> ol;
 	
 	protected String username;
@@ -20,6 +21,10 @@ public class SchedulingBaseGuiController extends UserBaseGuiController {
 	protected ConvertedBeanSchedule[] convertedScheduling;
 	protected boolean thereIsButton;
 	protected String errorMessage="";
+	
+	public SchedulingBaseGuiController(Session bs) {
+		super(bs);
+	}
 	
     @FXML // fx:id="tabella"
     protected TableView<ConvertedBeanSchedule> tabella; // Value injected by FXMLLoader

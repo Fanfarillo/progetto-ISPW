@@ -11,7 +11,7 @@ import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
 import logic.engineeringclasses.exceptions.EmptyFieldException;
 import logic.engineeringclasses.exceptions.InvalidDateException;
 import logic.engineeringclasses.exceptions.NoResultException;
-import logic.engineeringclasses.others.SizedStack;
+import logic.engineeringclasses.others.Session;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -40,17 +40,16 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
 	
 	private String tripSettingsPage = "/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml";
 	private String schedulingPage = "/logic/view/standalone/ScheduleTrip/SchedulingView.fxml";
-	private String username;
 	private String city;
 	private String errorMessage="";
 	
-	public ControllerGuiTripSettings(String username, String city) {
-		this.username=username;
+	public ControllerGuiTripSettings(String city, Session bs) {
+		super(bs);
 		this.city=city;
 	}
 	
-	public ControllerGuiTripSettings(String username, String city, String errorMessage) {
-		this.username=username;
+	public ControllerGuiTripSettings(String city, String errorMessage, Session bs) {
+		super(bs);
 		this.city=city;
 		this.errorMessage=errorMessage;
 	}
@@ -152,9 +151,9 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     		ScheduleTrip scheduleTrip = new ScheduleTrip();
     		BeanOutputSchedule[] scheduling = scheduleTrip.generateScheduling(beanRestSched);
     		
-    		SizedStack.getSizedStack().push(this.schedulingPage);
+    		this.bs.getSizedStack().push(this.schedulingPage);
         	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.schedulingPage));
-        	loader.setControllerFactory(c -> new ControllerGuiScheduling(this.username, this.city, scheduling));
+        	loader.setControllerFactory(c -> new ControllerGuiScheduling(this.city, scheduling, bs));
         	Parent root=loader.load();
         	myAnchorPane.getChildren().setAll(root);      		
     		
@@ -162,37 +161,37 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     	
     	catch(NumberFormatException e) {
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.username, this.city, "Sorry, you entered an invalid budget."));
+    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "Sorry, you entered an invalid budget.", bs));
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);    		
     	}
     	catch(InvalidDateException e) {
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.username, this.city, "Last meal cannot be before first meal; you cannot schedule trips which last more than 30 days;\nyou cannot schedule trips in the past."));
+    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "Last meal cannot be before first meal; you cannot schedule trips which last more than 30 days;\nyou cannot schedule trips in the past.", bs));
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);   
     	}
     	catch(ParseException e) {
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.username, this.city, "Sorry, you entered a nonexistent date."));
+    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "Sorry, you entered a nonexistent date.", bs));
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);
     	}
     	catch(EmptyFieldException e) {
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.username, this.city, "You need to specify both the first day of your trip and the last day of your trip."));
+    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "You need to specify both the first day of your trip and the last day of your trip.", bs));
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);   
     	}
     	catch(NoResultException e) {
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.username, this.city, "No restaurant has been found."));
+    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "No restaurant has been found.", bs));
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);   
     	}
     	catch(Exception e) {
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.username, this.city, "An unknown error occurred. Please, try again later."));
+    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "An unknown error occurred. Please, try again later.", bs));
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);
     	}
@@ -290,7 +289,10 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
         assert generateSchedulingButton != null : "fx:id=\"generateSchedButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert rangeQuality != null : "fx:id=\"rangeQuality\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         
-        nomeUtenteLabel.setText(this.username);
+        if(this.bs.getUser()!=null)
+        	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
+        else
+        	nomeUtenteLabel.setText("Not logged");
         errorLabel.setText(this.errorMessage);
 
         loadDataDays();

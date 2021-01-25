@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import logic.engineeringclasses.others.Session;
 
 //Base Graphic Controller: every view page has a back button and a home button
-public class BaseGuiController {
+public abstract class BaseGuiController {
 	
 	
 	 protected Session bs;

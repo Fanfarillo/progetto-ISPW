@@ -13,12 +13,9 @@ import javafx.scene.control.Label;
 import logic.engineeringclasses.others.Session;
 
 public class ControllerGuiHomePageTourist extends UserBaseGuiController {
-	
-	
 
     public ControllerGuiHomePageTourist(Session bs) {
-		super(bs);
-		
+		super(bs);	
 	}
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
@@ -38,6 +35,14 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
 
     @FXML // fx:id="labelBenvenuto"
     private Label labelBenvenuto; // Value injected by FXMLLoader
+    
+    @FXML // fx:id="seeNotificationsButton"
+    private Button seeNotificationsButton; // Value injected by FXMLLoader
+    
+    @FXML
+    void goToNotificationsPage(ActionEvent event) {
+    	// To do
+    }
 
     @FXML
     void goToFavouriteRestaurantsPage(ActionEvent event) {
@@ -48,17 +53,21 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     void goToTripsPage(ActionEvent event) {
     	//To do
     }
+    
+
+    @FXML
+    void logMethod(ActionEvent event) {
+    	// To do
+    }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        assert myAnchorPane != null : "fx:id=\"myAnchorPane\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert tripsButton != null : "fx:id=\"tripsButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert favouriteRestaurantsButton != null : "fx:id=\"favouriteRestaurantsButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
-        assert scheduleTripButton != null : "fx:id=\"scheduleTripButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
-        assert chooseRestaurantButton != null : "fx:id=\"chooseRestaurantButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert labelBenvenuto != null : "fx:id=\"labelBenvenuto\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
+        assert seeNotificationsButton != null : "fx:id=\"seeNotificationsButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
+        assert mustLoginLabel != null : "fx:id=\"mustLoginLabel\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         nomeUtenteLabel.setText(bs.getUser().getUsername());
     }
 }

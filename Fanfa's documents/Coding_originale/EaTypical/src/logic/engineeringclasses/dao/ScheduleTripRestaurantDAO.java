@@ -43,7 +43,7 @@ public class ScheduleTripRestaurantDAO {
 				String address = rs.getString("Indirizzo");
 				double avgVote = rs.getDouble("VotoMedio");
 				Menu menu = new Menu(null, rs.getDouble("Totale"));
-				Owner owner = new Owner(null, null, false, null, rs.getString("UsernameProprietario"));
+				Owner owner = new Owner(null, null, null, rs.getString("UsernameProprietario"), null, null);
 				boolean[][] openingHours = new boolean[7][2];
 				
 				for(int i=0; i<7; i++) {

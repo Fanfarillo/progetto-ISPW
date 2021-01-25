@@ -8,7 +8,7 @@ import logic.controller.applicationcontroller.ScheduleTrip;
 import logic.controller.guicontroller.SchedulingBaseGuiController;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
 import logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule;
-import logic.engineeringclasses.others.SizedStack;
+import logic.engineeringclasses.others.Session;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,17 +25,17 @@ public class ControllerGuiScheduling extends SchedulingBaseGuiController {
 	private String schedulingPage = "/logic/view/standalone/ScheduleTrip/SchedulingView.fxml";
 	private String tripSettingsPage = "/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml";
 	
-	public ControllerGuiScheduling(String username, String city, BeanOutputSchedule[] scheduling) {
+	public ControllerGuiScheduling(String city, BeanOutputSchedule[] scheduling, Session bs) {
+		super(bs);
 		this.thereIsButton=false;
-		this.username=username;
 		this.city=city;
 		this.scheduling=scheduling;
 		this.convertedScheduling = convertDataType(this.thereIsButton);
 	}
 	
-	public ControllerGuiScheduling(String username, String city, BeanOutputSchedule[] scheduling, String errorMessage) {
+	public ControllerGuiScheduling(String city, BeanOutputSchedule[] scheduling, String errorMessage, Session bs) {
+		super(bs);
 		this.thereIsButton=false;
-		this.username=username;
 		this.city=city;
 		this.scheduling=scheduling;
 		this.convertedScheduling = convertDataType(this.thereIsButton);
@@ -68,18 +68,18 @@ public class ControllerGuiScheduling extends SchedulingBaseGuiController {
     	for(int i=0; i<this.scheduling.length; i++) {
     		this.scheduling[i].setRestFromList();
     	}    	
-		SizedStack.getSizedStack().push(this.schedulingPage);
+		this.bs.getSizedStack().push(this.schedulingPage);
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.schedulingPage));
-    	loader.setControllerFactory(c -> new ControllerGuiScheduling(this.username, this.city, this.scheduling));
+    	loader.setControllerFactory(c -> new ControllerGuiScheduling(this.city, this.scheduling, bs));
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);   
     }
 
     @FXML
     void goBackToTripSettingsPage(ActionEvent event) throws IOException {
-		SizedStack.getSizedStack().push(this.tripSettingsPage);
+		this.bs.getSizedStack().push(this.tripSettingsPage);
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    	loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.username, this.city));
+    	loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, bs));
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);   
     }
@@ -94,7 +94,7 @@ public class ControllerGuiScheduling extends SchedulingBaseGuiController {
     	
     	catch(Exception e) {
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.schedulingPage));
-    		loader.setControllerFactory(c -> new ControllerGuiScheduling(this.username, this.city, this.scheduling, "An unknown error occurred. Please, try again later."));
+    		loader.setControllerFactory(c -> new ControllerGuiScheduling(this.city, this.scheduling, "An unknown error occurred. Please, try again later.", bs));
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);
     	}
@@ -109,7 +109,10 @@ public class ControllerGuiScheduling extends SchedulingBaseGuiController {
         assert saveSchedulingButton != null : "fx:id=\"saveSchedulingButton\" was not injected: check your FXML file 'SchedulingView.fxml'.";
         assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'SchedulingView.fxml'.";
         
-        nomeUtenteLabel.setText(this.username);
+        if(this.bs.getUser()!=null)
+        	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
+        else
+        	nomeUtenteLabel.setText("Not logged");
         cittaLabel.setText(this.city);
         errorLabel.setText(this.errorMessage);
         

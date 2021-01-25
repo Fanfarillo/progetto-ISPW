@@ -14,13 +14,14 @@ import logic.controller.applicationcontroller.SeeTrip;
 import logic.controller.guicontroller.SchedulingBaseGuiController;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
 import logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule;
+import logic.engineeringclasses.others.Session;
 
 public class ControllerGuiSeeTrip extends SchedulingBaseGuiController {
 	
 	private String seeTripPage = "/logic/view/standalone/seetrip/SeeTripView.fxml";
 	
-	public ControllerGuiSeeTrip(String username, String city, BeanOutputSchedule[] scheduling) {
-		this.username=username;
+	public ControllerGuiSeeTrip(String city, BeanOutputSchedule[] scheduling, Session bs) {
+		super(bs);
 		this.city=city;
 		this.scheduling=scheduling;
 		
@@ -35,8 +36,8 @@ public class ControllerGuiSeeTrip extends SchedulingBaseGuiController {
 		
 	}
 	
-	public ControllerGuiSeeTrip(String username, String city, BeanOutputSchedule[] scheduling, String errorMessage) {
-		this.username=username;
+	public ControllerGuiSeeTrip(String city, BeanOutputSchedule[] scheduling, String errorMessage, Session bs) {
+		super(bs);
 		this.city=city;
 		this.scheduling=scheduling;
 		this.errorMessage=errorMessage;
@@ -74,14 +75,14 @@ public class ControllerGuiSeeTrip extends SchedulingBaseGuiController {
     	seeTrip.deleteScheduleTrip(this.username);
     	
 		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.seeTripPage));
-		loader.setControllerFactory(c -> new ControllerGuiSeeTrip(this.username, this.city, null));
+		loader.setControllerFactory(c -> new ControllerGuiSeeTrip(this.city, null, bs));
 		Parent root=loader.load();
 		myAnchorPane.getChildren().setAll(root);
     	}
     	
     	catch(Exception e) {
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.seeTripPage));
-    		loader.setControllerFactory(c -> new ControllerGuiSeeTrip(this.username, this.city, this.scheduling, "An unknown error occurred. Please, try again later."));
+    		loader.setControllerFactory(c -> new ControllerGuiSeeTrip(this.city, this.scheduling, "An unknown error occurred. Please, try again later.", bs));
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);
     	}
@@ -93,7 +94,11 @@ public class ControllerGuiSeeTrip extends SchedulingBaseGuiController {
         assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'SchedulingView.fxml'.";
         assert deleteSchedulingButton != null : "fx:id=\"deleteSchedulingButton\" was not injected: check your FXML file 'SeeTripView.fxml'.";
         
-        nomeUtenteLabel.setText(this.username);
+        if(this.bs.getUser()!=null)
+        	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
+        else
+        	nomeUtenteLabel.setText("Not logged");
+        
         cittaLabel.setText(this.city);
         errorLabel.setText(this.errorMessage);
         

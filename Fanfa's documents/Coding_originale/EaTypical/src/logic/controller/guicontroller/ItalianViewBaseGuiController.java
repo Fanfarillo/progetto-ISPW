@@ -7,9 +7,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import logic.engineeringclasses.others.Cities;
+import logic.engineeringclasses.others.Session;
 
-public class ItalianViewBaseGuiController extends UserBaseGuiController {
+public abstract class ItalianViewBaseGuiController extends UserBaseGuiController {
 	protected ObservableList<String> list=FXCollections.observableArrayList();
+	
+	public ItalianViewBaseGuiController(Session bs) {
+		super(bs);
+	}
 	
     @FXML // fx:id="torino"
     protected ImageView torino; // Value injected by FXMLLoader
