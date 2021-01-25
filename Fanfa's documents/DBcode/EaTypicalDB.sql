@@ -95,11 +95,12 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Scheduling` (
   `Ristorante` VARCHAR(45) NOT NULL,
+  `Username` VARCHAR(45) NOT NULL,
   `Giorno` INT NOT NULL,
-  `ApertoCena` TINYINT NOT NULL,
-  `ApertoPranzo` TINYINT NOT NULL,
+  `CenaVsPranzo` VARCHAR(45) NOT NULL,
   
-  PRIMARY KEY (`Ristorante`,`Giorno`)
+  
+  PRIMARY KEY (`Ristorante`,`Giorno`,`NomeUtente`)
 )
 ENGINE = InnoDB;
 
