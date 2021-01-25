@@ -7,10 +7,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import logic.engineeringclasses.others.SizedStack;
+import logic.engineeringclasses.others.Session;
 
 //Base Graphic Controller: every view page has a back button and a home button
 public class BaseGuiController {
+	
+	
+	 protected Session bs;
+	 public BaseGuiController(Session bs){
+	 	this.bs = bs;
+	 }
+	
 	
 	protected String homePage = "/logic/view/standalone/HomePageTouristView.fxml";
     
@@ -26,8 +33,9 @@ public class BaseGuiController {
 	@FXML
     void goHomePage(ActionEvent event) throws IOException {			//The Home Page button onAction method
 		
-    	//SizedStack.getSizedStack().push(this.homePage);
-		SizedStack.getSizedStack().clearStack();
+		bs.getSizedStack().clearStack();
+    	bs.getSizedStack().push(this.homePage);
+		
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.homePage));
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);
@@ -37,11 +45,14 @@ public class BaseGuiController {
     void goToBackPage(ActionEvent event) throws IOException {		//The Back Button onAction method
     	
     	// TO FIX (Per esempio NON vengono chiamati i costruttori giusti dei controller applicativi)
-    	String page=SizedStack.getSizedStack().pop();
+    	//String page=SizedStack.getSizedStack().pop();
     	//String page=SizedStack.getSizedStack().read();
-    	FXMLLoader loader=new FXMLLoader(getClass().getResource(page));
-    	Parent root=loader.load();
-    	myAnchorPane.getChildren().setAll(root);
+    	
+    	
+    	//Devo aggiungere le Bean di sessione in cui ci sarà la pagina precedente
+    	//FXMLLoader loader=new FXMLLoader(getClass().getResource(page));			
+    	//Parent root=loader.load();
+    	//myAnchorPane.getChildren().setAll(root);
     }
 
 }

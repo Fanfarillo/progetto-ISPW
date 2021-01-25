@@ -5,19 +5,20 @@ import java.util.LinkedList;
 //stack class that represent how the back button works
 public class SizedStack {
 
-	private static SizedStack instance=null;
+	//private static SizedStack instance=null;
 	private LinkedList<String> stack;
 	private int maxSize=100;
 	private int currentSize;
 	private String firstPage;
 	
-	protected SizedStack() {				//constructor of the SINGLETON class
+	/*
+	public SizedStack() {				//constructor of the SINGLETON class
 		this.currentSize=0;
 		this.stack=new LinkedList<>();
 		this.firstPage="/logic/view/standalone/HomePageTouristView.fxml";
-	}
+	}*/
 	
-	protected SizedStack(boolean web) {		// (maybe) better constructor of the SINGLETON class
+	public SizedStack(boolean web) {		// (maybe) better constructor of the SINGLETON class
 		this.currentSize=0;
 		this.stack=new LinkedList<>();
 		if(web)
@@ -28,54 +29,58 @@ public class SizedStack {
 	
 	public void push(String page)			//push of a page in the stack 
 	{
-		if(instance.currentSize==instance.maxSize+1)
+		if(this.currentSize==this.maxSize+1)
 		{
-			instance.stack.removeFirst();
-			instance.currentSize--;
+			this.stack.removeFirst();
+			this.currentSize--;
 		}
-		instance.stack.addLast(page);
-		instance.currentSize++;
+		this.stack.addLast(page);
+		this.currentSize++;
 	}
 	
 	public String pop()						//pop of a page from the stack, last inserted or homepage if the stack is empty
 	{
-		if(instance.currentSize<=1)
+		if(this.currentSize<=1)
 		{
 			return firstPage;
 		}
-		instance.currentSize--;
-		instance.stack.removeLast();
-		return instance.stack.getLast();
+		this.currentSize--;
+		this.stack.removeLast();
+		return this.stack.getLast();
 	}
 	
 	public String read()									//reading of a page from the stack
 	{
-		return instance.stack.getLast();
+		return this.stack.getLast();
 	}
 	
+	/*
 	public static synchronized SizedStack getSizedStack()	//the getter of the singleton instance
 	{
 		if(SizedStack.instance==null)
 			SizedStack.instance=new SizedStack();
 		return instance;
-	}	
+	}	*/
 	
+	/*
 	public static synchronized SizedStack getSizedStack(boolean web)  // (maybe) a better getter of the singleton instance
 	{
 		if(SizedStack.instance==null)
 			SizedStack.instance=new SizedStack(web);
 		return instance;
 	}
-	
+	*/
 	public void setFirstPage(String page)
 	{
-		instance.firstPage=page;
+		this.firstPage=page;
 	}
 	
 	public void clearStack()
 	{
-		instance.stack.clear();
-		instance.currentSize=0;
+		//instance.stack.clear();
+		//anzichè svuotare la lista ne creo un'altra
+		this.stack = new LinkedList<>();
+		this.currentSize=0;
 	}
 	
 }

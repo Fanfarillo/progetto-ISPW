@@ -19,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling;
 import logic.engineeringclasses.bean.manageMenu.BeanSchedulingNotification;
+import logic.engineeringclasses.others.Session;
 
 /**
  * 
@@ -30,7 +31,8 @@ public class ControllerGuiNotificationsView extends OwnerBaseGuiController {
 	
 	private BeanListNotificationsScheduling beanListNotificationsScheduling;
 	private String username;
-	public ControllerGuiNotificationsView(BeanListNotificationsScheduling beanListNotificationsScheduling, String username) {
+	public ControllerGuiNotificationsView(BeanListNotificationsScheduling beanListNotificationsScheduling, String username,Session bs) {
+		super(bs);
 		this.beanListNotificationsScheduling = beanListNotificationsScheduling;
 		this.username = username;
 	}

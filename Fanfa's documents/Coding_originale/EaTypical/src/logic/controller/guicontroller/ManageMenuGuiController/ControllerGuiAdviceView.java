@@ -16,13 +16,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.bean.manageMenu.BeanAdvice;
+import logic.engineeringclasses.others.Session;
 
 public class ControllerGuiAdviceView  extends OwnerBaseGuiController{
 
 	private String username;
 	private BeanAdvice beanAdvice;
 	
-	public ControllerGuiAdviceView(String username,BeanAdvice beanAdvice) {
+	public ControllerGuiAdviceView(String username,BeanAdvice beanAdvice,Session bs) {
+		super(bs);
 		this.username = username;
 		this.beanAdvice = beanAdvice;
 	}
@@ -52,7 +54,7 @@ public class ControllerGuiAdviceView  extends OwnerBaseGuiController{
     void done(ActionEvent event) throws IOException {
     	//carico la gerarchia dei nodi
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));    	
-    	loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView(username);});
+    	loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView(username,bs);});
     	Parent rootParent = loader.load();
     	//cambio scena
     	myAnchorPane.getChildren().setAll(rootParent);

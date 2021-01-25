@@ -1,26 +1,39 @@
 package logic.controller.guicontroller.login;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import logic.controller.applicationcontroller.Login;
+import logic.controller.guicontroller.ControllerGuiHomePageOwner;
+import logic.controller.guicontroller.ControllerGuiHomePageTourist;
 import logic.controller.guicontroller.UserBaseGuiController;
+import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiConfirmMessageView;
 import logic.engineeringclasses.bean.login.BeanUser;
+import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
 import logic.engineeringclasses.exceptions.DataException;
 import logic.engineeringclasses.exceptions.WrongUsernameOrPasswordException;
+import logic.engineeringclasses.others.Session;
 import logic.model.User;
 
 public class LoginGuiController extends UserBaseGuiController {
 	
 	private String userErrorMessage="The username can't be empty!";
 	private String passwordErrorMessage="The password can't be empty!";
-	private String genericErrorMessage="Please try again!";
+	
+	
+	 public LoginGuiController(Session bs){
+	 	super(bs);
+	 	
+	 }
 	
 	@FXML
     private ResourceBundle resources;
@@ -58,26 +71,42 @@ public class LoginGuiController extends UserBaseGuiController {
 
 
     @FXML
-    void loginMethod(ActionEvent event) {
+    void loginMethod(ActionEvent event) throws IOException {
+    	
+    	User loggedUser;
+    	boolean isOwner=ownerCheckbox.isSelected();
+    	String username= usernameField.getText();
+    	String pw=passwordField.getText();
+    	
     	
     	try
     	{
-	    	String username= usernameField.getText();
-	    	String pw=passwordField.getText();
-	    	boolean isOwner=ownerCheckbox.isSelected();
 	    	BeanUser bu= new BeanUser();
 	    	bu.setUsername(username);
 	    	bu.setOwner(isOwner);
 	    	bu.setPassword(pw);
 	    	Login loginAppContr= new Login();
-	    	User loggedtourist=loginAppContr.loginMethod(bu);		//try to login
+	    	System.out.println("Dragon Ball");
+	    	loggedUser=loginAppContr.loginMethod(bu);		//try to login
 	    	//TODO    call the homepage and pass the user	    	
-	    	
-	    	
+	      	this.bs.setUser(loggedUser);
+	      	System.out.println(loggedUser.getUsername());
+	      	if(isOwner) {
+	    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageOwnerView.fxml"));
+	        	loader.setControllerFactory(c -> {return new ControllerGuiHomePageOwner(this.bs);});
+	        	Parent rootParent = loader.load();
+	        	myAnchorPane.getChildren().setAll(rootParent);
+	    	}else {
+	    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageTouristView.fxml"));
+	        	loader.setControllerFactory(c -> {return new ControllerGuiHomePageTourist(this.bs);});
+	        	Parent rootParent = loader.load();
+	        	myAnchorPane.getChildren().setAll(rootParent);
+	    	}
     	}
     	catch(DataException de)		//when username or password fields are empty
     	{
     		setErrorLabelText(de.getCode());
+    		
     	}
     	catch(WrongUsernameOrPasswordException we)			//when username or password or both are wrong
     	{
@@ -85,9 +114,12 @@ public class LoginGuiController extends UserBaseGuiController {
     		this.dataError.setVisible(true);
     	}
     	catch (Exception e) {				//other unexpected exception that may occur
+    		e.printStackTrace();
     		this.genericError.setText(e.getMessage());
     		this.genericError.setVisible(true);
 		}
+  
+    	
     	
     }
     

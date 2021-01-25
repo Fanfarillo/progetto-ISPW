@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
 import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
+import logic.engineeringclasses.others.Session;
 
 /**
  * 
@@ -36,7 +37,8 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 	private int errorePiatto = -1;
 	private BeanErrorDish beanErrorDish;
 	
-	public ControllerGuiModifyDishView(String username, ArrayList<String> obs,ArrayList<String> obs2,int errorePiatto, BeanErrorDish beanErrorDish) {
+	public ControllerGuiModifyDishView(String username, ArrayList<String> obs,ArrayList<String> obs2,int errorePiatto, BeanErrorDish beanErrorDish,Session bs) {
+		super(bs);
 		this.username = username;
 		this.obs = obs;
 		this.obs2 = obs2;
@@ -141,7 +143,7 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
     	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
     	BeanAddDish beanAddDish = new BeanAddDish(piatto, ristorante, contenuto, vegano, celiaco, prezzo, 1);
-    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,beanAddDish);});
+    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,beanAddDish,bs);});
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }

@@ -6,6 +6,7 @@ package logic.controller.guicontroller.ManageMenuGuiController;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
 import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
+import logic.engineeringclasses.others.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,7 +34,8 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
 	private BeanErrorDish beanErrorDish;
 	private int errorePiatto = -1;
 	
-	public ControllerGuiDeleteDish(String username,ArrayList<String> obs1, ArrayList<String> obs2,int errorePiatto,BeanErrorDish beanErrorDish) {
+	public ControllerGuiDeleteDish(String username,ArrayList<String> obs1, ArrayList<String> obs2,int errorePiatto,BeanErrorDish beanErrorDish,Session bs) {
+		super(bs);
 		this.obs1 = obs1;
     	this.obs2 = obs2;
 		this.username = username;
@@ -96,7 +98,7 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
     	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
     	BeanDeleteDish beanDeleteDish = new BeanDeleteDish(ristorante, piatto,2);
-    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,beanDeleteDish);});
+    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,beanDeleteDish,bs);});
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }

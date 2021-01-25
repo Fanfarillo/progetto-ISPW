@@ -22,7 +22,7 @@ public class FavouriteRestDAO {
 //Note this is the USER on the DBMS that has proper privileges in order to access the specific DB 	
 	private static String DB_USER = "root";
     private static String DB_PASS = "password";
-    private static String DB_URL = "jdbc:mysql://localhost:3308/progettoispwfinaledatabase";
+    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
     private static String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 
     public static List<Restaurant> findFavourites(String tourist) throws Exception {
@@ -36,8 +36,8 @@ public class FavouriteRestDAO {
             Class.forName(DRIVER_CLASS_NAME);
 
             // STEP 3: apertura connessione
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-
+            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            conn = DriverManager.getConnection(connectionString);
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -87,7 +87,7 @@ public class FavouriteRestDAO {
             Class.forName(DRIVER_CLASS_NAME);
 
             // STEP 3: apertura connessione
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            conn = DriverManager.getConnection(connectionString);
 
             // STEP 4.1: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

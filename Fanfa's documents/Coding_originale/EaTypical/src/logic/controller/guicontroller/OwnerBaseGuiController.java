@@ -8,9 +8,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiRestaurantMenuView;
+import logic.engineeringclasses.others.Session;
 
 public class OwnerBaseGuiController extends BaseGuiController{
 
+	
+	public OwnerBaseGuiController(Session bs) {
+		super(bs);
+	}
 	@FXML
 	public Button manageMenuButton; 
 
@@ -29,7 +34,7 @@ public class OwnerBaseGuiController extends BaseGuiController{
 	@FXML
 	void goToManageMenu(ActionEvent e) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));
-		loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView("liuk");});
+		loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView("liuk",bs);});
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
 	}

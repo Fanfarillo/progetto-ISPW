@@ -13,12 +13,14 @@ import logic.engineeringclasses.exceptions.LoginDBException;
 import logic.engineeringclasses.factory.UserFactory;
 import logic.model.TouristNotification;
 import logic.model.Restaurant;
+import logic.model.Tourist;
 
 public class TouristDAO {
 		
 		private static String DB_USER = "root";
 	    private static String DB_PASS = "password";
 	    private static String DB_URL = "jdbc:mysql://localhost:3308/progettoispwfinaledatabase";
+	    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
 	    private static String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 
 	    public static User selectTourist(String user, String pw) throws Exception {
@@ -27,7 +29,8 @@ public class TouristDAO {
 	        User tourist;
 	        try {
 	            Class.forName(DRIVER_CLASS_NAME);
-	            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+	            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+	            conn = DriverManager.getConnection(connectionString);
 	            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 	                    ResultSet.CONCUR_READ_ONLY);
 	            
@@ -41,7 +44,7 @@ public class TouristDAO {
 	            String username=rs.getString("Username");
 	            List<Restaurant> favourites=FavouriteRestDAO.findFavourites(user);		//get the list with tourist favourite restaurants
 	            List<TouristNotification> notifications=NotificationsDAO.findTouristNotifications(user);	//get the list with tourist notifications to be loaded
-	            tourist=UserFactory.getFactory().createTourist(name,surname,username,favourites,notifications);		//compose the tourist entity using the factory	            
+	            tourist=new Tourist(name,surname,username,favourites,notifications);		//compose the tourist entity using the factory	            
 	            rs.close();
 	        	} 
 	        	finally 
@@ -64,7 +67,7 @@ public class TouristDAO {
 	        try {
 
 	            Class.forName(DRIVER_CLASS_NAME);
-	            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+	            conn = DriverManager.getConnection(connectionString);
 	            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 	                    ResultSet.CONCUR_READ_ONLY);	            
 	            

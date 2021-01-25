@@ -10,10 +10,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import logic.engineeringclasses.others.Session;
 
 public class ControllerGuiHomePageTourist extends UserBaseGuiController {
+	
+	
 
-    @FXML // ResourceBundle that was given to the FXMLLoader
+    public ControllerGuiHomePageTourist(Session bs) {
+		super(bs);
+		
+	}
+
+	@FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
@@ -51,6 +59,6 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert labelBenvenuto != null : "fx:id=\"labelBenvenuto\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
-
+        nomeUtenteLabel.setText(bs.getUser().getUsername());
     }
 }

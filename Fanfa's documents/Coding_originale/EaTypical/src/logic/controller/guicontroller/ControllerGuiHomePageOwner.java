@@ -2,7 +2,7 @@ package logic.controller.guicontroller;
 
 
 
-import java.io.IOException;
+
 
 /**
  * Sample Skeleton for 'HomePageOwnerView.fxml' Controller Class
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiNotificationsView;
 import logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling;
 import logic.engineeringclasses.dao.NotificationsOwnerDAO;
+import logic.engineeringclasses.others.Session;
 
 /**
  * 
@@ -31,12 +32,12 @@ import logic.engineeringclasses.dao.NotificationsOwnerDAO;
 
 public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
 	
-	private String username;
-	/*
-	public ControllerGuiHomePageOwner(String username) {
-		this.username = username;
+	
+	
+	public ControllerGuiHomePageOwner(Session bs) {
+		super(bs);
 	}
-*/
+
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -61,7 +62,7 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
  	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/NotificationsRestaurantViewScheduling.fxml"));
    	    	
  	   //setto il nuovo controller grafico
- 	   loader.setControllerFactory(c -> {return new ControllerGuiNotificationsView(beanListNotificationsScheduling,"liuk");});
+ 	   loader.setControllerFactory(c -> {return new ControllerGuiNotificationsView(beanListNotificationsScheduling,"liuk",bs);});
  	   Parent rootParent = loader.load();    	
    	
    	//cambio scena
@@ -78,7 +79,7 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert labelBenvenuto != null : "fx:id=\"labelBenvenuto\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert bottoneNotifiche != null : "fx:id=\"bottoneNotifiche\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
-        labelBenvenuto.setText("Luca");
-        nomeUtenteLabel.setText(username);
+        labelBenvenuto.setText(this.bs.getUser().getName());
+        nomeUtenteLabel.setText(this.bs.getUser().getUsername());
     }
 }

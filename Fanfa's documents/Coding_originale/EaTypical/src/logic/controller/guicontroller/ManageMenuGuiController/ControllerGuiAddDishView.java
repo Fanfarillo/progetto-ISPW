@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import logic.engineeringclasses.bean.manageMenu.*;
+import logic.engineeringclasses.others.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,8 +37,9 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 	private int errorePiatto;
 	private BeanErrorDishAlreadyExists beanErrorDishAlreadyExists;
 	
-	public ControllerGuiAddDishView(ArrayList<String> listP, ArrayList<String> listR,String username,int errorePiatto, BeanErrorDishAlreadyExists beanErrorDishAlreadyExists) {
-    	this.listaP = listP;
+	public ControllerGuiAddDishView(ArrayList<String> listP, ArrayList<String> listR,String username,int errorePiatto, BeanErrorDishAlreadyExists beanErrorDishAlreadyExists,Session bs) {
+    	super(bs);
+		this.listaP = listP;
     	this.listaR = listR;
     	this.username = username;
     	this.errorePiatto = errorePiatto;
@@ -141,7 +143,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     		campoMancantePiatto.setText("");
     	}
     	
-    	//verifico se vi Ã¨ almeno un campo che non Ã¨ stato riempito
+    	//verifico se vi ÃƒÂ¨ almeno un campo che non ÃƒÂ¨ stato riempito
     	if(count>0) return;
     	
     	//faccio la conversione del prezzo essendo sicuramente diverso da empty string
@@ -150,7 +152,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     	//cambio scena settando i giusti valori
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
     	BeanAddDish beanAddDish = new BeanAddDish(piatto, ristorante, contenuto, vegano, celiaco, prezzo, 0);
-    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,beanAddDish);});
+    	loader.setControllerFactory(c -> {return new ControllerGuiConfirmMessageView(username,beanAddDish,bs);});
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }
@@ -178,11 +180,11 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
         assert campoMancanteRicetta != null : "fx:id=\"campoMancanteRicetta\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert errorePiattoLabel != null : "fx:id=\"errorePiattoLabel\" was not injected: check your FXML file 'AddDish.fxml'.";
         
-        //carico i piatti che può scegliere
+        //carico i piatti che puÃ² scegliere
         for(int i = 0; i<this.listaP.size();i++) {
         	scegliPiattoBox.getItems().add(this.listaP.get(i));
         }
-        //carico i ristoranti che può scegliere
+        //carico i ristoranti che puÃ² scegliere
         for(int i = 0; i<this.listaR.size();i++) {
         	scegliRistorante.getItems().add(this.listaR.get(i));
         }

@@ -15,6 +15,7 @@ public class NotificationsDAO {
 	private static String DB_USER = "root";
     private static String DB_PASS = "password";
     private static String DB_URL = "jdbc:mysql://localhost:3308/progettoispwfinaledatabase";
+    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
     private static String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
     
     //get a list with user notifications
@@ -25,7 +26,8 @@ public class NotificationsDAO {
         
         try {
             Class.forName(DRIVER_CLASS_NAME);
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+           //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            conn = DriverManager.getConnection(connectionString);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             
@@ -66,9 +68,11 @@ public class NotificationsDAO {
         
         try {
             Class.forName(DRIVER_CLASS_NAME);
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            conn = DriverManager.getConnection(connectionString);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
+            
             
             ResultSet rs = QueryNotifications.ownerSchedulingNotifications(stmt,rest.getName());		//get owner notifications about scheduled trips
             if(rs.first())
@@ -76,6 +80,7 @@ public class NotificationsDAO {
 	            do{		//for each notification							
 	
 	                usernameTourist = rs.getString("UsernameTurista");
+	                //metti getString(..)
 	                isLunch = rs.getBoolean("PranzoVsCena");
 	                date = rs.getNString("Data");
 	                OwnerSchedulingNotification osn=new OwnerSchedulingNotification(usernameTourist,isLunch,date,rest);

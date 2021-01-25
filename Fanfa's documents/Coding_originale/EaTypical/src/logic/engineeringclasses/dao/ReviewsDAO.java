@@ -21,6 +21,7 @@ public class ReviewsDAO {
     private static String DB_PASS = "password";
     private static String DB_URL = "jdbc:mysql://localhost:3308/progettoispwfinaledatabase";
     private static String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
+    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
 
     public static List<Review> findRestaurantReviews(String restaurant) throws Exception {
         // STEP 1: dichiarazioni
@@ -33,8 +34,8 @@ public class ReviewsDAO {
             Class.forName(DRIVER_CLASS_NAME);
 
             // STEP 3: apertura connessione
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-
+            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            conn = DriverManager.getConnection(connectionString);
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -71,15 +72,16 @@ public class ReviewsDAO {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
-        List<Review> listOfReviews = new ArrayList<Review>();
         
+        ///List<Review> listOfReviews = new ArrayList<Review>();
+        Review rev;
         try {
             // STEP 2: loading dinamico del driver mysql
             Class.forName(DRIVER_CLASS_NAME);
 
             // STEP 3: apertura connessione
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-
+            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            conn = DriverManager.getConnection(connectionString);
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -89,7 +91,7 @@ public class ReviewsDAO {
 	            do{									//// SISTEMA TURISTA
 	                String text = rs.getString("Contenuto");
 	                int vote = rs.getInt("Voto");
-	                Review rev = new Review(text, vote);
+	                rev = new Review(text, vote);
 	            }while(rs.next());  
 	            
             
@@ -112,9 +114,10 @@ public class ReviewsDAO {
 
         return rev;
     }
+
     
 
-    public static void insertReview(Review review) throws Exception {
+    /*public static void insertReview(Review review) throws Exception {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -139,7 +142,7 @@ public class ReviewsDAO {
                 	throw e;                	
                 }
             }*/
-            
+            /*
             rs.close();
             stmt.close();
 
@@ -166,5 +169,5 @@ public class ReviewsDAO {
         }
     }
 
-    
+  */  
 }

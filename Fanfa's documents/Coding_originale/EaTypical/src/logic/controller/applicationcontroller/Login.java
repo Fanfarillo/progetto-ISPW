@@ -2,6 +2,9 @@ package logic.controller.applicationcontroller;
 
 
 import logic.model.User;
+
+import java.sql.SQLException;
+
 import logic.engineeringclasses.bean.login.BeanUser;
 import logic.engineeringclasses.dao.OwnerDAO;
 import logic.engineeringclasses.dao.TouristDAO;
@@ -13,30 +16,36 @@ import logic.engineeringclasses.factory.UserFactory;
 
 public class Login {
 	
-	private User user;
 	
-	public User loginMethod(BeanUser loggingUser) throws WrongUsernameOrPasswordException, Exception
+	
+	public User loginMethod(BeanUser loggingUser) throws  Exception
 	{		
+		User user;
+		
 		try		
 		{
 			if(loggingUser.isOwner())
 			{
-				this.user=OwnerDAO.selectOwner(loggingUser.getUsername(),loggingUser.getPassword());
+				user=OwnerDAO.selectOwner(loggingUser.getUsername(),loggingUser.getPassword());
+				System.out.println("Dragon Ball");
 			}
 			else
 			{
-				this.user=TouristDAO.selectTourist(loggingUser.getUsername(),loggingUser.getPassword());
+				user=TouristDAO.selectTourist(loggingUser.getUsername(),loggingUser.getPassword());
 			}
 		}
 		catch(LoginDBException dbe)		//exception came from the db: the username or the password are wrong
 		{
 			throw new WrongUsernameOrPasswordException("Invalid Username Or Password");
 		}
-		catch(Exception e)				//generic exception to handle that may occour if there is a bug or some not planned interaction
+		catch(SQLException e)				//generic exception to handle that may occour if there is a bug or some not planned interaction
 		{
-			throw new Exception("Please try again!");
+			e.printStackTrace();
+			throw new SQLException("Please try again!");
+			//throw new Exception();
+			//e.printStackTrace();
 		}
-		return this.user;
+		return user;
 	}
 	
 	public void registerMethod(BeanUser loggingUser) throws Exception

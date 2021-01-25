@@ -11,7 +11,7 @@ public class QueryRestaurant {
 	//look for all the restaurants of a specific owner
 	public static ResultSet selectOwnRestaurant(Statement stmt, String username) throws SQLException
 	{
-		String sql = "SELECT nome FROM ristorante WHERE UsernameProprietario = '"+ username + "';";
+		String sql = "SELECT * FROM ristorante WHERE UsernameProprietario = '"+ username + "';";
 		return stmt.executeQuery(sql);
 	}
 }
