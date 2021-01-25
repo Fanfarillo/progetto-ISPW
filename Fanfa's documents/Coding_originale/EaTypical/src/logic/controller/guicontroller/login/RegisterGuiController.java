@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -11,15 +13,24 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import logic.controller.applicationcontroller.Login;
+import logic.controller.guicontroller.ControllerGuiHomePageOwner;
+import logic.controller.guicontroller.ControllerGuiHomePageTourist;
 import logic.controller.guicontroller.UserBaseGuiController;
 import logic.engineeringclasses.bean.login.BeanUser;
 import logic.engineeringclasses.exceptions.AlreadyInUseUsernameException;
 import logic.engineeringclasses.exceptions.DataException;
 import logic.engineeringclasses.factory.UserFactory;
+import logic.engineeringclasses.others.Session;
+import logic.model.Owner;
+import logic.model.Tourist;
 import logic.model.User;
 
 public class RegisterGuiController extends UserBaseGuiController {
 	
+	public RegisterGuiController(Session bs)
+	{
+		super(bs);
+	}
 	private String userErrorMessage="The username can't be empty!";
 	private String passwordErrorMessage="The password can't be empty!";
 	private String nameErrorMessage="The name can't be empty!";
@@ -96,14 +107,25 @@ public class RegisterGuiController extends UserBaseGuiController {
 	    		User user;
 	    		if(isOwner)
 	    		{
-	    			user=UserFactory.getFactory().createOwner(name, surname, null, username, null, null);
+	    			user=new Owner(name, surname, null, username, null, null);
 	    		}
 	    		else
 	    		{
-	    			user=UserFactory.getFactory().createTourist(name, surname, username, null, null);
+	    			user=new Tourist(name, surname, username, null, null,null);
 	    		}			//create the correct user entity
 	    		
-	    		//TODO return user to homepage
+	    		this.bs.setUser(user);
+	    		if(isOwner) {
+		    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageOwnerView.fxml"));
+		        	loader.setControllerFactory(c -> {return new ControllerGuiHomePageOwner(this.bs);});
+		        	Parent rootParent = loader.load();
+		        	myAnchorPane.getChildren().setAll(rootParent);
+		    	}else {
+		    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageTouristView.fxml"));
+		        	loader.setControllerFactory(c -> {return new ControllerGuiHomePageTourist(this.bs);});
+		        	Parent rootParent = loader.load();
+		        	myAnchorPane.getChildren().setAll(rootParent);
+		    	}
     		}
     		catch(DataException de)				//one or more fields are empty
     		{

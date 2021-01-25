@@ -5,10 +5,18 @@ public class Scheduling {
 	private Tourist tourist;
 	private String date;
 	private boolean atLunch;
+	
 	private Restaurant rest;
 	
 	public Scheduling(Tourist tourist, String date, boolean atLunch, Restaurant rest) {
 		this.tourist=tourist;
+		this.date=date;
+		this.atLunch=atLunch;
+		this.rest=rest;
+	}
+	
+	public Scheduling( String date, boolean atLunch, Restaurant rest)
+	{
 		this.date=date;
 		this.atLunch=atLunch;
 		this.rest=rest;

@@ -13,6 +13,7 @@ import logic.engineeringclasses.exceptions.LoginDBException;
 import logic.engineeringclasses.factory.UserFactory;
 import logic.model.TouristNotification;
 import logic.model.Restaurant;
+import logic.model.Scheduling;
 import logic.model.Tourist;
 
 public class TouristDAO {
@@ -44,7 +45,8 @@ public class TouristDAO {
 	            String username=rs.getString("Username");
 	            List<Restaurant> favourites=FavouriteRestDAO.findFavourites(user);		//get the list with tourist favourite restaurants
 	            List<TouristNotification> notifications=NotificationsDAO.findTouristNotifications(user);	//get the list with tourist notifications to be loaded
-	            tourist=new Tourist(name,surname,username,favourites,notifications);		//compose the tourist entity using the factory	            
+	            List<Scheduling> scheduling=SchedulesDAO.findTouristScheduling(user);   //fai facade
+	            tourist=new Tourist(name,surname,username,favourites,notifications,scheduling);		//compose the tourist entity             
 	            rs.close();
 	        	} 
 	        	finally 

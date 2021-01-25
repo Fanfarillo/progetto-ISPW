@@ -14,4 +14,11 @@ public class QueryRestaurant {
 		String sql = "SELECT * FROM ristorante WHERE UsernameProprietario = '"+ username + "';";
 		return stmt.executeQuery(sql);
 	}
+	
+	//look for a restauran by his name
+	public static ResultSet selectRestaurant(Statement stmt, String name) throws SQLException
+	{
+		String sql = "SELECT * FROM ristorante WHERE Nome = '"+ name + "';";
+		return stmt.executeQuery(sql);
+	}
 }
