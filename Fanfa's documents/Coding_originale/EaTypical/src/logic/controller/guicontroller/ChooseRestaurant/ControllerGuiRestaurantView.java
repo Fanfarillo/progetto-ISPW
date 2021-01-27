@@ -1,6 +1,5 @@
-/**
- * Sample Skeleton for 'RestaurantView.fxml' Controller Class
- */
+
+ 
 
 package logic.controller.guicontroller.ChooseRestaurant;
 
@@ -12,7 +11,6 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,10 +26,10 @@ import logic.engineeringclasses.dao.FavouriteRestDAO;
 import logic.engineeringclasses.others.Session;
 public class ControllerGuiRestaurantView extends UserBaseGuiController{
 
-	private ArrayList<ArrayList<String>> allRestaurants;
-	private ArrayList<ArrayList<String>> celiacRestaurants;
-	private ArrayList<ArrayList<String>> veganRestaurants;
-	private ArrayList<ArrayList<String>> bothRestaurants;
+	private List<ArrayList<String>> allRestaurants;
+	private List<ArrayList<String>> celiacRestaurants;
+	private List<ArrayList<String>> veganRestaurants;
+	private List<ArrayList<String>> bothRestaurants;
 	private ObservableList<String> allRestaurantNames=FXCollections.observableArrayList();
 	private ObservableList<String> veganRestaurantNames=FXCollections.observableArrayList();
 	private ObservableList<String> celiacRestaurantNames=FXCollections.observableArrayList();
@@ -109,7 +107,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     
 
     @FXML
-    void goToReadreviewsPage(ActionEvent event) throws IOException {		//TO DO
+    void goToReadreviewsPage() throws IOException {		//TO DO
     	boolean restChosen=restChoice.getSelectionModel().isEmpty();
     	if(restChosen)
     	{
@@ -122,7 +120,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     }
     
     @FXML
-    void goToWriteReviewPage(ActionEvent event) throws IOException {		//TO Do
+    void goToWriteReviewPage() throws IOException {		//TO Do
     	boolean restChosen=restChoice.getSelectionModel().isEmpty();
     	if(!isLogged())
     	{   		
@@ -131,7 +129,6 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     	}
     	else if((!restChosen  &&  isLogged()))
     	{
-	    	System.out.print("WritereviewPage\n");
 	    	String restaurant = restChoice.getSelectionModel().getSelectedItem();
 	    	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.writeReviewPage));
 			loader.setControllerFactory(c -> new ControllerGuiWriteReview(restaurant, this.bs));
@@ -147,8 +144,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     }
     
     @FXML
-    void saveFavourites(ActionEvent event) {			//TO DO
-    	System.out.print("saveFav");
+    void saveFavourites() {			//TO DO
     	boolean restChosen=restChoice.getSelectionModel().isEmpty();
     	try
     	{
@@ -173,7 +169,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     }
     
     @FXML
-    void updateInfo(ActionEvent event) {
+    void updateInfo() {
     	String name;
     	if(!restChoice.getSelectionModel().isEmpty())
     	{
@@ -207,7 +203,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     
     
     @FXML
-    void updateRestaurants(ActionEvent event) {
+    void updateRestaurants() {
 
     	this.restChoice.getSelectionModel().clearSelection();
     	boolean celiac=this.celiacCheck.isSelected();
@@ -272,7 +268,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
 		return (this.bs.getUser()==null);
 	}
 	
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML 
     void initialize() {
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'RestaurantView.fxml'.";
         assert chooseRestaurantButton != null : "fx:id=\"chooseRestButton\" was not injected: check your FXML file 'RestaurantView.fxml'.";

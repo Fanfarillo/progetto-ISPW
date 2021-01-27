@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -20,6 +19,7 @@ import logic.controller.applicationcontroller.WriteReview;
 import logic.controller.guicontroller.UserBaseGuiController;
 import logic.engineeringclasses.bean.chooserestaurant.BeanNewReview;
 import logic.engineeringclasses.exceptions.EmptyReviewFieldException;
+import logic.engineeringclasses.exceptions.GenericException;
 import logic.engineeringclasses.others.Session;
 public class ControllerGuiWriteReview extends UserBaseGuiController {
 
@@ -67,7 +67,7 @@ public class ControllerGuiWriteReview extends UserBaseGuiController {
     private Button publishButton; // Value injected by FXMLLoader
     
     @FXML
-    void publishMethod(ActionEvent event) {
+    void publishMethod() {
 
     	try
     	{   		    	
@@ -83,9 +83,12 @@ public class ControllerGuiWriteReview extends UserBaseGuiController {
 			this.emptyText.setText(e.getMessage());
 			this.emptyText.setVisible(true);
 		} 
-    	catch (Exception e) 
+    	catch (GenericException e) 
     	{
-			this.genericError.setText("Error, please try again later");
+			this.genericError.setText(e.getMessage());
+			this.genericError.setVisible(true);
+		} catch (Exception e) {
+			this.genericError.setText(e.getMessage());
 			this.genericError.setVisible(true);
 		}
     
@@ -108,7 +111,7 @@ public class ControllerGuiWriteReview extends UserBaseGuiController {
     	return this.voteChoice.getValue().toString();
     }
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML 
     void initialize() {
         assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'WriteReviewView.fxml'.";
         assert chooseRestaurantButton != null : "fx:id=\"chooseRestButton\" was not injected: check your FXML file 'WriteReviewView.fxml'.";
