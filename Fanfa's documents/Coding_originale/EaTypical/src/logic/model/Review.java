@@ -5,6 +5,7 @@ public class Review {
 	private String text;
 	private Tourist tourist;
 	private Restaurant restaurant;
+	private int vote;
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
@@ -13,7 +14,7 @@ public class Review {
 		this.restaurant = restaurant;
 	}
 
-	private int vote;
+
 	
 	public Review(String text,Tourist tourist,int vote, Restaurant restaurant) {
 		this.vote = vote;

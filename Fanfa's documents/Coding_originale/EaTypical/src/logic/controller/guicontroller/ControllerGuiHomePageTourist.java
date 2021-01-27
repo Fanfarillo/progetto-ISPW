@@ -68,6 +68,9 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
         assert labelBenvenuto != null : "fx:id=\"labelBenvenuto\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert seeNotificationsButton != null : "fx:id=\"seeNotificationsButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert mustLoginLabel != null : "fx:id=\"mustLoginLabel\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
-        nomeUtenteLabel.setText(bs.getUser().getUsername());
+        if(this.bs.getUser()!=null)
+        	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
+        else
+        	nomeUtenteLabel.setText("Not logged");
     }
 }

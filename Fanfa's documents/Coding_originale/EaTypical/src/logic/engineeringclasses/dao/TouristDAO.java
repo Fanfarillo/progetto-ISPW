@@ -4,17 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.List;
+
 
 import logic.engineeringclasses.query.QueryLogin;
 import logic.model.User;
 import logic.engineeringclasses.exceptions.AlreadyInUseUsernameException;
 import logic.engineeringclasses.exceptions.LoginDBException;
-import logic.engineeringclasses.factory.UserFactory;
-import logic.model.TouristNotification;
-import logic.model.Restaurant;
-import logic.model.Scheduling;
-import logic.model.Tourist;
+import logic.engineeringclasses.facade.TouristCreatorFacade;
+
 
 public class TouristDAO {
 		
@@ -43,10 +40,7 @@ public class TouristDAO {
 	            String name=rs.getString("Nome");
 	            String surname=rs.getString("Cognome");
 	            String username=rs.getString("Username");
-	            List<Restaurant> favourites=FavouriteRestDAO.findFavourites(user);		//get the list with tourist favourite restaurants
-	            List<TouristNotification> notifications=NotificationsDAO.findTouristNotifications(user);	//get the list with tourist notifications to be loaded
-	            List<Scheduling> scheduling=SchedulesDAO.findTouristScheduling(user);   //fai facade
-	            tourist=new Tourist(name,surname,username,favourites,notifications,scheduling);		//compose the tourist entity             
+	            tourist=TouristCreatorFacade.getInstance().getTourist(name, surname, username);		//compose the tourist entity             
 	            rs.close();
 	        	} 
 	        	finally 

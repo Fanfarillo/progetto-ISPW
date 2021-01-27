@@ -15,12 +15,11 @@ public class QueryFavouriteRest {
 		return stmt.executeQuery(sql);
 	}
 	
-	public static int insertFavourite(Statement stmt, Restaurant rest) throws SQLException
+	public static int insertFavourite(Statement stmt, String rest, String tourist) throws SQLException
 	{		
-		        String insertStatement = String.format("INSERT INTO Preferiti (NomeRistorante, UsernameTurista) VALUES ('%s',%s)", rest.getName(), rest.getName());
+		        String insertStatement = String.format("INSERT INTO Preferiti (NomeRistorante, UsernameTurista) VALUES ('%s','%s')", rest, tourist);
 		        System.out.println("Ristorante inserito nei preferiti");			//FIXARE IL TURISTA!
-		        return stmt.executeUpdate(insertStatement);
-		    
+		        return stmt.executeUpdate(insertStatement);		    
 	}
 	 
 }
