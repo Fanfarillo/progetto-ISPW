@@ -17,7 +17,7 @@ public class ScheduleTripRestaurantDAO {
 
 	public List<Restaurant> select(String city, boolean vegan, boolean celiac) throws NoResultException, ClassNotFoundException, SQLException {
 		// Step 1: declarations
-		String driverClassName = "com.mysql.cj.jdbc.Driver";
+		String driverClassName = "com.mysql.jdbc.Driver";
 		Statement stmt=null;
 		Connection conn=null;
 		List<Restaurant> listOfRestaurants = new ArrayList<>();
@@ -52,11 +52,11 @@ public class ScheduleTripRestaurantDAO {
 					}
 				}
 				
-				while(rs.getString("Nome").equals(name)) {
+				do {
 					openingHours[rs.getInt("GiornoSettimana")-1][0] = rs.getBoolean("ApertoAPranzo");
-					openingHours[rs.getInt("GiornoSettimana")-1][1] = rs.getBoolean("ApertoACena");
-					rs.next();
-				}
+					openingHours[rs.getInt("GiornoSettimana")-1][1] = rs.getBoolean("ApertoACena");					
+				} while(rs.next() && rs.getString("Nome").equals(name));
+				
 				rs.previous();
 				
 				Restaurant rest = new Restaurant(owner, city, menu, address, name, avgVote, null, null, openingHours);

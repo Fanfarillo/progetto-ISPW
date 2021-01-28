@@ -40,6 +40,7 @@ public class Login {
 		}
 		catch(SQLException e)				//generic exception to handle that may occour if there is a bug or some not planned interaction
 		{
+			e.printStackTrace();
 			throw new SQLException("Please try again!");
 		}
 		return user;

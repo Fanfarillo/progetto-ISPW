@@ -15,7 +15,8 @@ public class NotificationsDAO {
 	private static String DB_USER = "root";
     private static String DB_PASS = "password";
     private static String DB_URL = "jdbc:mysql://localhost:3308/progettoispwfinaledatabase";
-    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
+    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
+    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Kp*d.!>3&serverTimezone=UTC";
     private static String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
     
     //get a list with user notifications

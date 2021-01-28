@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Scheduling` (
   `Giorno` VARCHAR(45) NOT NULL,
   `CenaVsPranzo` VARCHAR(45) NOT NULL,
   
-  PRIMARY KEY (`Ristorante`,`Giorno`,`Username`)
+  PRIMARY KEY (`CenaVsPranzo`,`Giorno`,`Username`)
 )
 ENGINE = InnoDB;
 

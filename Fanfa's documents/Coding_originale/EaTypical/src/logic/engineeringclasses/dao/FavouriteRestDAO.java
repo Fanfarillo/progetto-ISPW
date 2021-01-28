@@ -19,7 +19,8 @@ import logic.model.Restaurant;
 public class FavouriteRestDAO {
 
 //Note this is the USER on the DBMS that has proper privileges in order to access the specific DB 	
-    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
+    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
+    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Kp*d.!>3&serverTimezone=UTC";
     private static String driverClassName = "com.mysql.jdbc.Driver";
 
     public static List<Restaurant> findFavourites(String tourist) throws SQLException, ClassNotFoundException {

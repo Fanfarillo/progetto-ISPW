@@ -16,6 +16,7 @@ public class SchedulesDAO {
 	private static String DB_USER = "root";
     private static String DB_PASS = "password";
     private static String DB_URL = "jdbc:mysql://localhost:3308/progettoispwfinaledatabase";
+    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Kp*d.!>3&serverTimezone=UTC";
     private static String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
     
     //get a list with user notifications
@@ -26,9 +27,11 @@ public class SchedulesDAO {
         
         try {
             Class.forName(DRIVER_CLASS_NAME);
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            conn = DriverManager.getConnection(connectionString);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
+            
             String ristName;
             Restaurant rest;
             String address;
@@ -39,22 +42,29 @@ public class SchedulesDAO {
             boolean atLunch;
             
             ResultSet rs = QueryScheduling.selectSchedules(stmt,user); 
+
             if(rs.first())
             {
 	            do{									//for each notification
 	
 	                ResultSet rs2=QueryRestaurant.selectRestaurant(stmt, rs.getString("Ristorante"));
+	                rs2.first();
+	                
 	                ristName=rs2.getString("Nome");
 	                address=rs2.getString("Indirizzo");
 	                city=rs2.getString("Citta");
 	                vote=rs2.getDouble("VotoMedio");
 	                rest=new Restaurant(ristName,address,city,vote);
+	                
+	                // TO FIX
 	                date=rs.getString("Giorno");
 	                atLunch=(rs.getString("CenaVsPranzo").equals("Pranzo"));
 	                sched=new Scheduling(date,atLunch,rest);//vedi
-	                
 	                scheduling.add(sched);	//create a notification and add it to the list			//fix quando vedrai la tabella
-	            }while(rs.next());
+	                
+	                }while(rs.next());
+	            
+	        System.out.println("Due");
             }
             rs.close();
         	} 
