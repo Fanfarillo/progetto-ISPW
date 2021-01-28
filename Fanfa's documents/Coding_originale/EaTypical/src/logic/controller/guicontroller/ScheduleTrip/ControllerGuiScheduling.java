@@ -89,7 +89,7 @@ public class ControllerGuiScheduling extends SchedulingBaseGuiController {
     	// To complete
     	try {
     	ScheduleTrip scheduleTrip = new ScheduleTrip();
-    	scheduleTrip.saveScheduleTrip(this.convertedScheduling, this.username);
+    	scheduleTrip.saveScheduleTrip(this.convertedScheduling, this.bs.getUser().getUsername());
     	}
     	
     	catch(Exception e) {

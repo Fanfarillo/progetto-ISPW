@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Connect {
 	
-	private String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase3?user=root&password=Monte_20&serverTimezone=UTC";
+	private String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Kp*d.!>3&serverTimezone=UTC";
 	private static Connect instance=null;
 	private Connection conn=null;
 	

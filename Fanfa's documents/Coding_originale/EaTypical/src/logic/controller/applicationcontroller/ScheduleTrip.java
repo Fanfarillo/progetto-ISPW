@@ -24,9 +24,7 @@ public class ScheduleTrip {
 	
 	public BeanOutputSchedule[] generateScheduling(BeanRestaurantSchedule beanCRS) throws NoResultException, ClassNotFoundException, SQLException, NoSuchAlgorithmException {
 		
-		// Query of the restaurants that are in the selected city and satisfy tourist's eventual food requirements
-		ScheduleTripRestaurantDAO dao = new ScheduleTripRestaurantDAO();
-		List<Restaurant> listOfRestaurants = dao.select(beanCRS.getCity(), beanCRS.isVegan(), beanCRS.isCeliac());		// List of restaurants that satisfy the most important conditions given by the tourist.
+		List<Restaurant> listOfRestaurants = callDAO(beanCRS.getCity(), beanCRS.isVegan(), beanCRS.isCeliac());
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(beanCRS.getDate1());
@@ -80,6 +78,12 @@ public class ScheduleTrip {
 		}		
 		return scheduling;
 		
+	}
+	
+	public List<Restaurant> callDAO(String city, boolean isVegan, boolean isCeliac) throws ClassNotFoundException, NoResultException, SQLException {
+		// Query of the restaurants that are in the selected city and satisfy tourist's eventual food requirements
+		ScheduleTripRestaurantDAO dao = new ScheduleTripRestaurantDAO();
+		return dao.select(city, isVegan, isCeliac);		// List of restaurants that satisfy the most important conditions given by the tourist.	
 	}
 	
 	// Computation of number of days of the trip
@@ -393,7 +397,7 @@ public class ScheduleTrip {
 	
 	public void saveScheduleTrip(ConvertedBeanSchedule[] scheduling, String username) throws ClassNotFoundException, SQLException {
 		SchedulingDAO dao = new SchedulingDAO();
-		Tourist tourist = new Tourist(null, null, username, null, null);		
+		Tourist tourist = new Tourist(null, null, username, null, null, null);	
 		double doubleAvgPrice;
 		double doubleAvgVote;
 		boolean atLunch;

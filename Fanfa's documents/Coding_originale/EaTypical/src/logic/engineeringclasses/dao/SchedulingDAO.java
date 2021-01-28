@@ -13,7 +13,7 @@ public class SchedulingDAO {
 	
 	public void delete(Tourist tourist) throws ClassNotFoundException, SQLException {
 		// Step 1: declarations
-		String driverClassName = "com.mysql.jdbc.Driver";
+		String driverClassName = "com.mysql.cj.jdbc.Driver";
 		Statement stmt=null;
 		Connection conn=null;
 		
@@ -44,9 +44,14 @@ public class SchedulingDAO {
 		
 	}
 	
+	public void delete(String username) throws ClassNotFoundException, SQLException {
+		Tourist tourist = new Tourist(null, null, username, null, null, null);
+		delete(tourist);
+	}
+	
 	public void insert(Scheduling schedEntity) throws ClassNotFoundException, SQLException {
 		// Step 1: declarations
-		String driverClassName = "com.mysql.jdbc.Driver";
+		String driverClassName = "com.mysql.cj.jdbc.Driver";
 		Statement stmt=null;
 		Connection conn=null;
 		

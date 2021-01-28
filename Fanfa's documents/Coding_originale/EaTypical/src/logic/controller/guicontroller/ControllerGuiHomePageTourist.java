@@ -4,15 +4,24 @@
 
 package logic.controller.guicontroller;
 
+import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import logic.controller.guicontroller.seetrip.ControllerGuiSeeTrip;
+import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
+import logic.engineeringclasses.others.BeanConverter;
 import logic.engineeringclasses.others.Session;
 
 public class ControllerGuiHomePageTourist extends UserBaseGuiController {
+	
+	private String seeTripPage = "/logic/view/standalone/seetrip/SeeTripView.fxml";
 
     public ControllerGuiHomePageTourist(Session bs) {
 		super(bs);	
@@ -50,8 +59,24 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     }
 
     @FXML
-    void goToTripsPage(ActionEvent event) {
-    	//To do
+    void goToTripsPage(ActionEvent event) throws IOException {
+    	try {
+    		BeanConverter converter = new BeanConverter();
+    		BeanOutputSchedule[] scheduling = converter.convertScheduling(bs.getUser());
+    		String city = converter.getCityFromScheduling(bs.getUser());
+    		
+    		this.bs.getSizedStack().push(this.seeTripPage);
+        	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.seeTripPage));
+        	loader.setControllerFactory(c -> new ControllerGuiSeeTrip(city, scheduling, bs));
+        	Parent root=loader.load();
+        	myAnchorPane.getChildren().setAll(root);    
+    		
+    	}
+    	catch(ParseException e) {
+    		// To do
+    		e.printStackTrace();
+    	}
+    	
     }
     
 

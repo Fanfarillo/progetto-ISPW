@@ -17,7 +17,7 @@ public class ScheduleTripRestaurantDAO {
 
 	public List<Restaurant> select(String city, boolean vegan, boolean celiac) throws NoResultException, ClassNotFoundException, SQLException {
 		// Step 1: declarations
-		String driverClassName = "com.mysql.jdbc.Driver";
+		String driverClassName = "com.mysql.cj.jdbc.Driver";
 		Statement stmt=null;
 		Connection conn=null;
 		List<Restaurant> listOfRestaurants = new ArrayList<>();

@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Proprietario` (
   )
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `progettoispwfinaledb`.`Ristorante`
 -- -----------------------------------------------------
@@ -53,7 +52,18 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Ristorante` (
  )
 ENGINE = InnoDB;
 
-
+CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Apertura` (
+	`NomeRistorante` VARCHAR(45) NOT NULL,
+	`GiornoSettimana` INT,
+    `ApertoAPranzo` TINYINT,
+	`ApertoACena` TINYINT,
+    PRIMARY KEY (`NomeRistorante`, `GiornoSettimana`),
+    FOREIGN KEY (`NomeRistorante`)
+    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
+    ON DELETE cascade
+    ON UPDATE cascade)
+ENGINE = InnoDB;
+    
 -- -----------------------------------------------------
 -- Table `progettoispwfinaledb`.`Turista`
 -- -----------------------------------------------------
@@ -96,9 +106,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Scheduling` (
   `Ristorante` VARCHAR(45) NOT NULL,
   `Username` VARCHAR(45) NOT NULL,
-  `Giorno` INT NOT NULL,
+  `Giorno` VARCHAR(45) NOT NULL,
   `CenaVsPranzo` VARCHAR(45) NOT NULL,
-  
   
   PRIMARY KEY (`Ristorante`,`Giorno`,`Username`)
 )
@@ -111,7 +120,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`PiattoTipico` (
   `NomePiatto` VARCHAR(45) NOT NULL,
   
-  PRIMARY KEY (`NomePiatto`),
+  PRIMARY KEY (`NomePiatto`)
 )
 ENGINE = InnoDB;
 
@@ -135,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Piatto` (
 	FOREIGN KEY (`NomePiatto`)
     REFERENCES `progettoispwfinaledatabase`.`PiattoTipico` (`NomePiatto`)
     ON DELETE cascade
-    ON UPDATE cascade,
+    ON UPDATE cascade
 	)
 ENGINE = InnoDB;
 
@@ -279,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`NotificaMenuAggiornato`
     FOREIGN KEY (`UsernameTurista`)
     REFERENCES `progettoispwfinaledatabase`.`Turista` (`Username`)
     ON DELETE cascade
-    ON UPDATE cascade,
+    ON UPDATE cascade
   -- CONSTRAINT `fMA3`
   --   FOREIGN KEY (`NomeRistorante`,`NomePiatto`)
   --   REFERENCES `progettoispwfinaledatabase`.`Piatto` (`NomeRistorante`,`NomePiatto`)
