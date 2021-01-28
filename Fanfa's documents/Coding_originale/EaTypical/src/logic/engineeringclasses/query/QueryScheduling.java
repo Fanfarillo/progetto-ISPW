@@ -19,7 +19,7 @@ public class QueryScheduling {
 	public static ResultSet selectSchedules(Statement stmt, String username) throws SQLException
 	{
 		String query;
-		query="SELECT * FROM Scheduling WHERE NomeUtente = '" + username + "';";
+		query="SELECT * FROM Scheduling WHERE Username = '" + username + "';";
 		return stmt.executeQuery(query);
 	}
 }

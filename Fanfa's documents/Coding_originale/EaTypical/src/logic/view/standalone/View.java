@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import logic.controller.guicontroller.login.LoginGuiController;
+import logic.engineeringclasses.others.Session;
 
 public class View extends Application {
 
@@ -15,7 +17,9 @@ public class View extends Application {
 	@Override
 	public void start(Stage arg0) throws Exception {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageTouristView.fxml"));
+		Session session = new Session(false);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/login/LoginView.fxml"));
+		loader.setControllerFactory(c -> new LoginGuiController(session));
 		Parent rootParent = loader.load();
 		Scene scene = new Scene(rootParent);
 		arg0.setScene(scene);

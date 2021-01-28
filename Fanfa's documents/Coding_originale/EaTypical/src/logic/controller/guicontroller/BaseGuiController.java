@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import logic.controller.guicontroller.seetrip.ControllerGuiSeeTrip;
 import logic.engineeringclasses.others.Session;
 
 //Base Graphic Controller: every view page has a back button and a home button
@@ -19,7 +20,8 @@ public abstract class BaseGuiController {
 	 }
 	
 	
-	protected String homePage = "/logic/view/standalone/HomePageTouristView.fxml";
+	protected String homePageTourist = "/logic/view/standalone/HomePageTouristView.fxml";
+	protected String homePageOwner = "/logic/view/standalone/HomePageOwnerView.fxml";
     
 	@FXML
     protected AnchorPane myAnchorPane;
@@ -34,9 +36,13 @@ public abstract class BaseGuiController {
     void goHomePage(ActionEvent event) throws IOException {			//The Home Page button onAction method
 		
 		bs.getSizedStack().clearStack();
-    	bs.getSizedStack().push(this.homePage);
 		
-    	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.homePage));
+		// Bisogna aggiungere il controllo su se si tratta di un utente non loggato, un turista o un owner
+		
+    	bs.getSizedStack().push(this.homePageTourist);
+		
+    	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.homePageTourist));
+    	loader.setControllerFactory(c -> new ControllerGuiHomePageTourist(this.bs));
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);
     }
