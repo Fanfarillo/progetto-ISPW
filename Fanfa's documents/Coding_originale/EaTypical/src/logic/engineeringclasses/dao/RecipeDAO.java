@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.util.List;
 
 import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
 import logic.engineeringclasses.exceptions.DishAlreadyExists;
@@ -22,7 +22,7 @@ public class RecipeDAO {
 	 * Se ho tempo, crea un file di configurazione per le credenziali
 	 */
 	String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
-	private String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
+	private static String driverclassname = "com.mysql.jdbc.Driver";
 	
 	/**
 	 * Instaura la connessione al DBMS e richiede la lettura dei possibili piatti tipici
@@ -31,7 +31,7 @@ public class RecipeDAO {
 	 * 
 	 */
 	
-	public ArrayList<String> selectAllRecipe() throws ClassNotFoundException
+	public List<String> selectAllRecipe() throws ClassNotFoundException
 	{
 		ResultSet rs = null;
 		Statement stmt = null;
@@ -42,7 +42,7 @@ public class RecipeDAO {
 		try {
 			
 			//loading dinamico del driver del DBMS scelto
-			Class.forName(DRIVER_CLASS_NAME);
+			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
 			conn = DriverManager.getConnection(connectionString);
@@ -60,7 +60,6 @@ public class RecipeDAO {
 			String recipe;
 			do {
 				recipe = rs.getString(1);
-				System.out.println(recipe);
 				obs.add(recipe);
 			}
 			while(rs.next());
@@ -68,21 +67,18 @@ public class RecipeDAO {
 			
 			
 			
-		} catch (SQLException e) {			
-			System.out.print("Eccezione eliminazione piatto");		
+		} catch (SQLException e) {				
 			e.printStackTrace();
 		}finally {
 			try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-            	System.out.println("Errore chiusura Statement delete");
             }
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
-            	System.out.println("Errore chiusura Connessione delete");
                 se.printStackTrace();
             }
 		}
@@ -108,24 +104,18 @@ public class RecipeDAO {
 		try {
 			
 			//loading dinamico del driver del DBMS scelto
-			Class.forName(DRIVER_CLASS_NAME);
+			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
 			conn = DriverManager.getConnection(connectionString);
-			
-			
-			//creazione ed esecuzione dell'eliminazione
-			//stmt = conn.createStatement();			
+						
 			
 			QueryRecipe.deleteDish(conn, nomeRistorante, nomePiatto);
-			System.out.print("Procedura chiamata.\n!");
 				
 			
 			
 			
-		} catch (SQLException e) {			
-			//System.out.print("Eccezione eliminazione piatto");	
-			//e.printStackTrace();
+		} catch (SQLException e) {	
 			throw new InvalidDishDelete(nomePiatto, nomeRistorante);
 		}finally {
 			
@@ -133,7 +123,6 @@ public class RecipeDAO {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
-            	System.out.println("Errore chiusura Connessione delete");
                 se.printStackTrace();
             }
 		}
@@ -155,7 +144,7 @@ public class RecipeDAO {
 		try {
 			
 			//loading dinamico del driver del DBMS scelto
-			Class.forName(DRIVER_CLASS_NAME);
+			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
 			conn = DriverManager.getConnection(connectionString);
@@ -164,15 +153,13 @@ public class RecipeDAO {
 			
 			
 			QueryRecipe.addDish(conn, recipe.getDishName(), recipe.getRestaurant(), recipe.getContenuto(), recipe.getPrice(), recipe.isVegan(),recipe.isCeliac());
-			System.out.print("add completata.\n");
 			
 			
 			
 		} catch (SQLException e) {		
 			
-			//lancio l'eccezione per dire che il piatto ÃƒÂ¨ stato giÃƒÂ  inserito in precedenza
+			//lancio l'eccezione per dire che il piatto ÃƒÆ’Ã‚Â¨ stato giÃƒÆ’Ã‚Â  inserito in precedenza
 			throw new DishAlreadyExists(recipe.getDishName());
-			//e.printStackTrace();
 			
 		}finally {
 			
@@ -195,18 +182,17 @@ public class RecipeDAO {
 	 * 
 	 */
 	
-	public ArrayList<String> selectOwnRecipe(String username)
+	public List<String> selectOwnRecipe(String username)
 	{
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
 		ArrayList<String> obs = new ArrayList<>();
 		
-		System.out.println("Usernam : " + username);
 		try {
 			
 			//loading dinamico del driver del DBMS scelto
-			Class.forName(DRIVER_CLASS_NAME);
+			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
 			conn = DriverManager.getConnection(connectionString);
@@ -221,14 +207,12 @@ public class RecipeDAO {
 				
 			
 				
-			//System.out.print(rs.toString());
 			
 			//scansiono i risultati
 			rs.first();
 			String recipe;
 			do {
 				recipe = rs.getString(1);
-				//System.out.println(recipe);
 				obs.add(recipe);
 			}
 			while(rs.next());
@@ -237,7 +221,6 @@ public class RecipeDAO {
 			
 			
 		} catch (SQLException e) {			
-			System.out.print("Eccezione eliminazione piatto");	
 			e.printStackTrace();
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -246,13 +229,11 @@ public class RecipeDAO {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-            	System.out.println("Errore chiusura Statement delete");
             }
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
-            	System.out.println("Errore chiusura Connessione delete");
                 se.printStackTrace();
             }
 		}
@@ -268,14 +249,14 @@ public class RecipeDAO {
 		try {
 			
 			//loading dinamico del driver del DBMS scelto
-			Class.forName(DRIVER_CLASS_NAME);
+			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
 			conn = DriverManager.getConnection(connectionString);
 			
 		
 			QueryRecipe.updateDishes(beanAddDish.getContenuto(),beanAddDish.getRistorante(),conn,beanAddDish.getPiatto(),beanAddDish.getPrezzo(),beanAddDish.isVegano(),beanAddDish.isCeliaco());
-			//System.out.print("add completata.\n");
+			
 			
 			
 			
@@ -289,7 +270,6 @@ public class RecipeDAO {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
-            	System.out.println("Errore chiusura Connessione update");
                 se.printStackTrace();
             }
 		}
@@ -299,7 +279,7 @@ public class RecipeDAO {
 	 * OTTIENE LE RICETTA CHE NON SONO TRATTATE DAI RISTORANTI DELLO USER
 	 */
 	
-	public ArrayList<String> selectNoRecipe(String username) throws ClassNotFoundException
+	public List<String> selectNoRecipe(String username) throws ClassNotFoundException
 	{
 		ResultSet rs = null;
 		Statement stmt = null;
@@ -310,7 +290,7 @@ public class RecipeDAO {
 		try {
 			
 			//loading dinamico del driver del DBMS scelto
-			Class.forName(DRIVER_CLASS_NAME);
+			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
 			conn = DriverManager.getConnection(connectionString);
@@ -328,7 +308,6 @@ public class RecipeDAO {
 			String recipeMancante;
 			do {
 				recipeMancante = rs.getString(1);
-				//System.out.println(recipeMancante);
 				obs.add(recipeMancante);
 			}
 			while(rs.next());
@@ -336,21 +315,18 @@ public class RecipeDAO {
 			
 			
 			
-		} catch (SQLException e) {			
-			System.out.print("Eccezione eliminazione piatto");		
+		} catch (SQLException e) {		
 			e.printStackTrace();
 		}finally {
 			try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-            	System.out.println("Errore chiusura Statement delete");
             }
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
-            	System.out.println("Errore chiusura Connessione delete");
                 se.printStackTrace();
             }
 		}

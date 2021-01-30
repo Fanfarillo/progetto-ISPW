@@ -21,6 +21,8 @@ import logic.model.Review;
 import logic.model.User;
 
 public class OwnerDAO {
+	
+	private OwnerDAO() {}
     
     private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
 
@@ -36,7 +38,6 @@ public class OwnerDAO {
         String surname;
         String username;
         List<Restaurant> restaurants;
-        System.out.println("Dragon Ball");
         try {
             Class.forName(driverClassName);
 			//conn = Connect.getInstance().getDBConnection();
@@ -76,7 +77,6 @@ public class OwnerDAO {
                     stmt.close();
         	}                 
         owner = new Owner(name, surname, restaurants, username, ownerRev, ownerSched); //use the factory to return a owner object
-        System.out.println("Dragon Ball");
         return owner;
     }
     
