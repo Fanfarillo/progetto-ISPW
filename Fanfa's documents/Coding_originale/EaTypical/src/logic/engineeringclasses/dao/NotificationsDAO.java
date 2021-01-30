@@ -1,6 +1,7 @@
 package logic.engineeringclasses.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,7 +15,7 @@ import logic.model.Restaurant;
 import logic.model.TouristNotification;
 
 public class NotificationsDAO {
-    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
+    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
     //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Kp*d.!>3&serverTimezone=UTC";
     
     
@@ -27,7 +28,8 @@ public class NotificationsDAO {
         try {
             Class.forName(driverClassName);
            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-            conn = Connect.getInstance().getDBConnection();
+            //conn = Connect.getInstance().getDBConnection();
+            conn = DriverManager.getConnection(connectionString);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             
@@ -68,7 +70,8 @@ public class NotificationsDAO {
         try {
             Class.forName(driverClassName);
             //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-            conn = Connect.getInstance().getDBConnection();
+            //conn = Connect.getInstance().getDBConnection();
+            conn = DriverManager.getConnection(connectionString);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             

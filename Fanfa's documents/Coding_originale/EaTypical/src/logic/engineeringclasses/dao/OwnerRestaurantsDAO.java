@@ -1,6 +1,7 @@
 package logic.engineeringclasses.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +14,7 @@ import logic.model.Restaurant;
 
 public class OwnerRestaurantsDAO {
    
-    
+	private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
 
     public static List<Restaurant> findYourRestaurant(String owner) throws ClassNotFoundException, SQLException {
         Statement stmt = null;
@@ -23,8 +24,9 @@ public class OwnerRestaurantsDAO {
         
         
         try {
-            Class.forName(driverClassName);       
-            conn = Connect.getInstance().getDBConnection();
+            Class.forName(driverClassName);    
+            conn = DriverManager.getConnection(connectionString);
+            //conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             

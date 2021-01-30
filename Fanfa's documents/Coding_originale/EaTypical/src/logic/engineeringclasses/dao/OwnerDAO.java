@@ -1,6 +1,7 @@
 package logic.engineeringclasses.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,7 +22,7 @@ import logic.model.User;
 
 public class OwnerDAO {
     
-    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
+    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
 
     public static User selectOwner(String user, String pw) throws ClassNotFoundException, SQLException, LoginDBException 
     {
@@ -38,7 +39,8 @@ public class OwnerDAO {
         System.out.println("Dragon Ball");
         try {
             Class.forName(driverClassName);
-			conn = Connect.getInstance().getDBConnection();
+			//conn = Connect.getInstance().getDBConnection();
+            conn = DriverManager.getConnection(connectionString);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             

@@ -70,11 +70,7 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
     }
     
 
-    @FXML
-    void goToSponsorRestaurant(ActionEvent event) {
-
-    }
-
+   
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert myAnchorPane != null : "fx:id=\"myAnchorPane\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
