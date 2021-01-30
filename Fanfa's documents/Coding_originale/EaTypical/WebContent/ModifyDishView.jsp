@@ -5,7 +5,7 @@
 
 <%
 	if(request.getParameter("home4")!=null) {
-		SizedStack.getSizedStack(true).clearStack();
+		//SizedStack.getSizedStack(true).clearStack();
 		%>
 		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
 		<%
@@ -23,7 +23,7 @@
 
 <%
 	if(request.getParameter("sponsorRestaurant4")!=null) {
-		SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
+		//SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 		%>
 		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
 		<%

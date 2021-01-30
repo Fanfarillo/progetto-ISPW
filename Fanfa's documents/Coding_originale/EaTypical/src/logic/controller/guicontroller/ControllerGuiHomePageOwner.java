@@ -13,7 +13,6 @@ package logic.controller.guicontroller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -53,16 +52,15 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
     @FXML
     private Button bottoneNotifiche;
 
-    public void goToNotificationsView(ActionEvent e) throws ClassNotFoundException, IOException {
- 	   System.out.print("Colpito\n");
- 	  NotificationsOwnerDAO notificationsDAO = new NotificationsOwnerDAO();
+    public void goToNotificationsView() throws ClassNotFoundException, IOException {
+    	NotificationsOwnerDAO notificationsDAO = new NotificationsOwnerDAO();
  	   BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications("liuk");
  	   
  	   //carico la gerarchia dei nodi
  	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/NotificationsRestaurantViewScheduling.fxml"));
    	    	
  	   //setto il nuovo controller grafico
- 	   loader.setControllerFactory(c -> {return new ControllerGuiNotificationsView(beanListNotificationsScheduling,"liuk",bs);});
+ 	   loader.setControllerFactory(c -> new ControllerGuiNotificationsView(beanListNotificationsScheduling,"liuk",bs));
  	   Parent rootParent = loader.load();    	
    	
    	//cambio scena

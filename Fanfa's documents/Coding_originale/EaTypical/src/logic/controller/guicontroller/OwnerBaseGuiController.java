@@ -14,7 +14,7 @@ import logic.engineeringclasses.others.Session;
 public abstract class OwnerBaseGuiController extends BaseGuiController {
 
 	
-	public OwnerBaseGuiController(Session bs) {
+	protected OwnerBaseGuiController(Session bs) {
 		super(bs);
 	}
 	@FXML
@@ -23,19 +23,12 @@ public abstract class OwnerBaseGuiController extends BaseGuiController {
 	@FXML
 	public Button sponsorRestaurantButton;
 	
-	/*@FXML
-	@Override
-	public void goHomePage(ActionEvent event) throws IOException {
-		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageOwnerView.fxml"));
-    	Parent rootParent = loader.load();
-    	myAnchorPane.getChildren().setAll(rootParent);
-	}*/
+	
 	
 	@FXML
 	void goToManageMenu(ActionEvent e) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));
-		loader.setControllerFactory(c -> {return new ControllerGuiRestaurantMenuView("liuk",bs);});
+		loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView("liuk",bs));
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
 	}
@@ -43,7 +36,7 @@ public abstract class OwnerBaseGuiController extends BaseGuiController {
 	@FXML
 	void goToSponsorRestaurant(ActionEvent e) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/SponsorRestaurant/CreatingRestaurantView.fxml"));
-		loader.setControllerFactory(c -> {return new ControllerGuiCreatingRestaurant(bs);});
+		loader.setControllerFactory(c -> new ControllerGuiCreatingRestaurant(bs));
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
 	}

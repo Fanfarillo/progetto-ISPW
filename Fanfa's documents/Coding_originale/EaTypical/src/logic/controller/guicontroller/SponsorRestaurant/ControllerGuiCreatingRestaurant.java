@@ -6,6 +6,8 @@ package logic.controller.guicontroller.SponsorRestaurant;
 
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.others.Cities;
+import logic.engineeringclasses.others.Session;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -18,6 +20,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class ControllerGuiCreatingRestaurant extends OwnerBaseGuiController {
+	public ControllerGuiCreatingRestaurant(Session bs) {
+		super(bs);
+	}
+
 	private ObservableList<String> cityList=FXCollections.observableArrayList();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -44,7 +50,8 @@ public class ControllerGuiCreatingRestaurant extends OwnerBaseGuiController {
     @FXML // fx:id="choiceBox"
     private ChoiceBox<String> choiceBox; // Value injected by FXMLLoader
     
-    @FXML
+  
+	@FXML
     void goToOpeningHoursPage(ActionEvent event) {
     	// To do
     }

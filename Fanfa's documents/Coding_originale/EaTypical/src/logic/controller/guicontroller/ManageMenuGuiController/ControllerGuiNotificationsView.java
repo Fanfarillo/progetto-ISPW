@@ -83,7 +83,7 @@ public class ControllerGuiNotificationsView extends OwnerBaseGuiController {
   	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageOwnerView.fxml"));
     	    	
   	   //setto il nuovo controller grafico
-  	   loader.setControllerFactory(c -> {return new ControllerGuiHomePageOwner(bs);});
+  	   loader.setControllerFactory(c ->  new ControllerGuiHomePageOwner(bs));
   	   Parent rootParent = loader.load();    	
     	
     	//cambio scena
@@ -115,7 +115,6 @@ public class ControllerGuiNotificationsView extends OwnerBaseGuiController {
         for(int i = 0; i<beanListNotificationsScheduling.getNotifications().size();i++) {
         	observableList.add(beanListNotificationsScheduling.getNotifications().get(i));        	
         }
-        System.out.print(username);
         nomeUtente.setText(username);
         tabellaNotifiche.setItems(observableList);
     }
