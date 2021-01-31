@@ -9,7 +9,7 @@
 	System.out.println("-----------------------------------------------------------------------------");
 	if(request.getParameter("manage6")!=null) {
 		
-		SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%
@@ -18,7 +18,7 @@
 
 <%
 	if(request.getParameter("sponsor6")!=null) {
-		SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
+		//SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 		%>
 		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
 		<%
@@ -27,7 +27,7 @@
 
 <%
 	if(request.getParameter("logout")!=null) {
-		SizedStack.getSizedStack(true).push("HomePageOwner.jsp");
+		//SizedStack.getSizedStack(true).push("HomePageOwner.jsp");
 		%>
 		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
 		<%
