@@ -52,6 +52,10 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Ristorante` (
  )
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `progettoispwfinaledb`.`Apertura`
+-- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`Apertura` (
 	`NomeRistorante` VARCHAR(45) NOT NULL,
 	`GiornoSettimana` INT,
@@ -245,28 +249,7 @@ CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`NotificaRecensione` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `progettoispwfinaledb`.`RistorantiSponsorizzati`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `progettoispwfinaledatabase`.`RistorantiSponsorizzati` (
-  `UsernameProprietario` VARCHAR(45) NOT NULL,
-  -- `NomeProprietario` VARCHAR(45) NOT NULL,
-  -- `CognomeProprietario` VARCHAR(45) NOT NULL,
-  `NomeRistorante` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`UsernameProprietario`, `NomeRistorante`),
-  INDEX `fRS2_idx` (`UsernameProprietario` ASC) VISIBLE,
-  INDEX `fRS3_idx` (`NomeRistorante` ASC) VISIBLE,
-  CONSTRAINT `fRS1`
-    FOREIGN KEY (`UsernameProprietario`)
-    REFERENCES `progettoispwfinaledatabase`.`Proprietario` (`Username`)
-    ON DELETE cascade
-    ON UPDATE cascade,
-  CONSTRAINT `fRS3`
-    FOREIGN KEY (`NomeRistorante`)
-    REFERENCES `progettoispwfinaledatabase`.`Ristorante` (`Nome`)
-    ON DELETE cascade
-    ON UPDATE cascade)
-ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
