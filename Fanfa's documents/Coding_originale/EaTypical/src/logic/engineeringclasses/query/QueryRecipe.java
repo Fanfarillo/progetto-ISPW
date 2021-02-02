@@ -51,10 +51,10 @@ public class QueryRecipe {
 	
 	public static void addDish(Connection conn,String nomePiatto, String nomeRistorante, String contenuto, double prezzo, boolean vegano, boolean celiaco) throws SQLException  {
 		
-		CallableStatement cstmt = null;
+		PreparedStatement cstmt = null;
 		try {
 			
-			cstmt = (CallableStatement) conn.prepareCall("{call aggiungi_piatto4(?,?,?,?,?,?)}");
+			cstmt = (CallableStatement) conn.prepareStatement("{call aggiungi_piatto4(?,?,?,?,?,?)}");
 			cstmt.setString(1, nomeRistorante);
 			cstmt.setString(2, nomePiatto);
 			cstmt.setString(3, contenuto);
@@ -147,10 +147,10 @@ public class QueryRecipe {
 	 */
 	public static void updateDishes(String contenuto, String ristorante, Connection conn, String nomePiatto,double prezzo, boolean vegano, boolean celiaco) throws SQLException
 	{
-		CallableStatement cstmt = null;
+		PreparedStatement cstmt = null;
 		try {
 			
-			cstmt = (CallableStatement) conn.prepareCall("{call aggiorna_piatto4(?,?,?,?,?,?)}");
+			cstmt = (CallableStatement) conn.prepareStatement("{call aggiorna_piatto4(?,?,?,?,?,?)}");
 			cstmt.setString(1, ristorante);
 			cstmt.setString(2, nomePiatto);
 			cstmt.setString(3, contenuto);
