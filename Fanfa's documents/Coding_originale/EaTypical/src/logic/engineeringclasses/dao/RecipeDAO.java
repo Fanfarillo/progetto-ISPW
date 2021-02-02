@@ -66,14 +66,14 @@ public class RecipeDAO {
 			
 			
 			
-		} catch (SQLException e) {				
-			e.printStackTrace();
+		} catch (SQLException e8) {				
+			e8.printStackTrace();
 		}finally {
 			try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
-				se2.printStackTrace();
+            } catch (SQLException se6) {
+				se6.printStackTrace();
             }
 		}
 		
