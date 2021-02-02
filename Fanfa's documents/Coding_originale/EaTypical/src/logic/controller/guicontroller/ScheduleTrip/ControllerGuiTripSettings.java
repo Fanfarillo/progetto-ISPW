@@ -38,20 +38,14 @@ import javafx.scene.control.ToggleGroup;
 public class ControllerGuiTripSettings extends UserBaseGuiController {
 	ObservableList<String> list = FXCollections.observableArrayList();
 	
-	private String tripSettingsPage = "/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml";
 	private String schedulingPage = "/logic/view/standalone/ScheduleTrip/SchedulingView.fxml";
 	private String city;
-	private String errorMessage="";
+	private String message;
 	
 	public ControllerGuiTripSettings(String city, Session bs) {
 		super(bs);
 		this.city=city;
-	}
-	
-	public ControllerGuiTripSettings(String city, String errorMessage, Session bs) {
-		super(bs);
-		this.city=city;
-		this.errorMessage=errorMessage;
+		this.message="Budget and rating may not be satisfied if there are too few\nrestaurants that meet all the requirements.";
 	}
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -160,42 +154,22 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     	}
     	
     	catch(NumberFormatException e) {
-    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "Sorry, you entered an invalid budget.", bs));
-    		Parent root=loader.load();
-    		myAnchorPane.getChildren().setAll(root);    		
+    		errorLabel.setText("Sorry, you entered an invalid budget."); 		
     	}
     	catch(InvalidDateException e) {
-    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "Last meal cannot be before first meal; you cannot schedule trips which last more than 30 days;\nyou cannot schedule trips in the past.", bs));
-    		Parent root=loader.load();
-    		myAnchorPane.getChildren().setAll(root);   
+    		errorLabel.setText("Last meal cannot be before first meal; you cannot schedule trips which last more than 30 days;\nyou cannot schedule trips in the past.");
     	}
     	catch(ParseException e) {
-    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "Sorry, you entered a nonexistent date.", bs));
-    		Parent root=loader.load();
-    		myAnchorPane.getChildren().setAll(root);
+    		errorLabel.setText("Sorry, you entered a nonexistent date.");
     	}
     	catch(EmptyFieldException e) {
-    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "You need to specify both the first day of your trip and the last day of your trip.", bs));
-    		Parent root=loader.load();
-    		myAnchorPane.getChildren().setAll(root);   
+    		errorLabel.setText("You need to specify both the first day of your trip and the last day of your trip.");
     	}
     	catch(NoResultException e) {
-    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "No restaurant has been found.", bs));
-    		Parent root=loader.load();
-    		myAnchorPane.getChildren().setAll(root);   
+    		errorLabel.setText("No restaurant has been found.");
     	}
     	catch(Exception e) {
-    		e.printStackTrace();
-    		
-    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
-    		loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, "An unknown error occurred. Please, try again later.", bs));
-    		Parent root=loader.load();
-    		myAnchorPane.getChildren().setAll(root);
+    		errorLabel.setText("An unknown error occurred. Please, try again later.");
     	}
     	
     }
@@ -296,7 +270,7 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
         	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
         else
         	nomeUtenteLabel.setText("Not logged");
-        errorLabel.setText(this.errorMessage);
+        errorLabel.setText(this.message);
 
         loadDataDays();
         loadDataMonths();

@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import logic.engineeringclasses.exceptions.AlreadyInUseRestaurantNameException;
+import logic.engineeringclasses.others.Connect;
 import logic.engineeringclasses.query.QueryRestaurant;
 
 public class RestaurantDAO {
@@ -73,4 +75,45 @@ public class RestaurantDAO {
 		
 		return obs;
 	}
+	
+	public void insertRestaurant(String name, String address, String city, String owner, boolean[][] openingHours) throws SQLException, AlreadyInUseRestaurantNameException, ClassNotFoundException {
+		// Step 1: declarations
+		Statement stmt=null;
+		Connection conn=null;
+		
+		try {
+			// Step 2: dinamic loading of sql driver
+			Class.forName(driverclassname);
+			
+			// Step 3: connection opening
+			conn = Connect.getInstance().getDBConnection();
+			
+			// Step 4: creation and execution of a preliminary query which is useful to check if the restaurant already exists in the system
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = QueryRestaurant.selectRestaurant(stmt, name);
+			
+			if(rs.first()) {
+				throw new AlreadyInUseRestaurantNameException("This restaurant has already been sponsored.");
+			}
+			
+			// Step 4.2: creation and execution of insertion
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			QueryRestaurant.insertNewRestaurant(stmt, name, address, city, owner, openingHours);
+			
+		}
+			
+		finally {
+			try {
+				if(stmt!=null) {
+					stmt.close();
+				}
+			}
+			catch(SQLException se) {
+				se.printStackTrace();
+			}
+				
+		}
+		
+	}
+	
 }
