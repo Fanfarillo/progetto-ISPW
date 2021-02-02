@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.mysql.cj.jdbc.CallableStatement;
 
 
 
@@ -54,7 +53,7 @@ public class QueryRecipe {
 		PreparedStatement cstmt = null;
 		try {
 			
-			cstmt = (CallableStatement) conn.prepareStatement("{call aggiungi_piatto4(?,?,?,?,?,?)}");
+			cstmt = conn.prepareStatement("{call aggiungi_piatto4(?,?,?,?,?,?)}");
 			cstmt.setString(1, nomeRistorante);
 			cstmt.setString(2, nomePiatto);
 			cstmt.setString(3, contenuto);
@@ -150,7 +149,7 @@ public class QueryRecipe {
 		PreparedStatement cstmt = null;
 		try {
 			
-			cstmt = (CallableStatement) conn.prepareStatement("{call aggiorna_piatto4(?,?,?,?,?,?)}");
+			cstmt =  conn.prepareStatement("{call aggiorna_piatto4(?,?,?,?,?,?)}");
 			cstmt.setString(1, ristorante);
 			cstmt.setString(2, nomePiatto);
 			cstmt.setString(3, contenuto);

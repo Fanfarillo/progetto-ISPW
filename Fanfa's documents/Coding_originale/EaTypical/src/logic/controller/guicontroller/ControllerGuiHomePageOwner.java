@@ -11,6 +11,7 @@ package logic.controller.guicontroller;
 
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -19,8 +20,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiNotificationsView;
+import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiReviewNotificationsView;
 import logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling;
+import logic.engineeringclasses.bean.manageMenu.BeanListReviews;
 import logic.engineeringclasses.dao.NotificationsDAO;
+import logic.engineeringclasses.dao.ReviewsDAO;
 import logic.engineeringclasses.others.Session;
 
 /**
@@ -50,11 +54,14 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
     private Label labelBenvenuto; // Value injected by FXMLLoader
     
     @FXML
+    private Button bottoneNotificheRecensione;
+    
+    @FXML
     private Button bottoneNotifiche;
 
     public void goToNotificationsView() throws ClassNotFoundException, IOException {
     	NotificationsDAO notificationsDAO = new NotificationsDAO();
- 	   BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications("liuk");
+ 	   BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications(bs.getUser().getUsername());
  	   
  	   //carico la gerarchia dei nodi
  	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/NotificationsRestaurantViewScheduling.fxml"));
@@ -65,6 +72,23 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
    	
    	//cambio scena
    	myAnchorPane.getChildren().setAll(rootParent);
+    }
+    
+    @FXML
+    public void goToReviewNotificationsView() throws IOException, ClassNotFoundException, SQLException {
+    	
+    	BeanListReviews beanListReviews = ReviewsDAO.findOwnerReviews(bs.getUser().getUsername());
+
+
+    	//carico la gerarchia dei nodi
+  	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ReviewNotificationsView.fxml"));
+    	    	
+  	   //setto il nuovo controller grafico
+  	   loader.setControllerFactory(c -> new ControllerGuiReviewNotificationsView(bs,beanListReviews));
+  	   Parent rootParent = loader.load();    	
+    	
+    	//cambio scena
+    	myAnchorPane.getChildren().setAll(rootParent);
     }
     
 
@@ -79,6 +103,7 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert labelBenvenuto != null : "fx:id=\"labelBenvenuto\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert bottoneNotifiche != null : "fx:id=\"bottoneNotifiche\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
+        assert bottoneNotificheRecensione != null : "fx:id=\"bottoneNotificheRecensione\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         labelBenvenuto.setText(this.bs.getUser().getName());
         nomeUtenteLabel.setText(this.bs.getUser().getUsername());
     }
