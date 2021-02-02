@@ -122,13 +122,12 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	
     	//ottengo tutte le ricette di tutti i ristoranti dell'utente
     	RecipeDAO recipeDAO = new RecipeDAO();
-    	ArrayList<String> obs1;
-    	obs1 = (ArrayList<String>) recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
+    	ArrayList<String> obs1 = (ArrayList<String>) recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
     	
     	//ottengo tutti i ristoranti dell'utente
-    	ArrayList<String> obs2;   	
+    	  	
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
-    	obs2 = (ArrayList<String>) restaurantDAO.selectOwnRestaurant(nomeUtenteLabel.getText());
+    	ArrayList<String> obs2 = (ArrayList<String>) restaurantDAO.selectOwnRestaurant(nomeUtenteLabel.getText());
     	
     	//FXMLLoader e setto il nuovo controller grafico
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/DeleteDishView.fxml"));
