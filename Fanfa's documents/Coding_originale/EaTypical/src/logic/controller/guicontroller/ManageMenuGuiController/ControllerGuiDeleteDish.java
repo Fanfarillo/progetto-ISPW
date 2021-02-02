@@ -79,18 +79,19 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
     	String piatto = choiseDish.getValue(); 
     	int count = 0;
     	
-    	if(ristorante == null) {
-    		campoMancanteRistorante.setText(MANCANTE);
-    		count++;
-    	}else {
-			campoMancanteRistorante.setText("");
-		}
+    	
     	
     	if(piatto == null) {
     		campoMancantePiatto.setText(MANCANTE);
     		count++;
     	}else {
 			campoMancantePiatto.setText("");
+		}
+		if(ristorante == null) {
+    		campoMancanteRistorante.setText(MANCANTE);
+    		count++;
+    	}else {
+			campoMancanteRistorante.setText("");
 		}
     	
     	if(count>0) return;

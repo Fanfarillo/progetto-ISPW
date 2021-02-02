@@ -114,19 +114,19 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
     	}else {
     		campoMancateContenuto.setText("");
     	}
-    	
-    	if(prezzoString.equals("")) {
-    		campoMancantePrezzo.setText(MANCANTE);
-    		count++;
-    	}else {
-    		campoMancantePrezzo.setText("");
-    	}
     	if(ristorante==null) {
     		campoMancanteRistorante.setText(MANCANTE);
     		count++;
     	}else {
     		campoMancanteRistorante.setText("");
     	}
+    	if(prezzoString.equals("")) {
+    		campoMancantePrezzo.setText(MANCANTE);
+    		count++;
+    	}else {
+    		campoMancantePrezzo.setText("");
+    	}
+    	
     	if(piatto==null) {
     		campoMancantePiatto.setText(MANCANTE);
     		count++;
