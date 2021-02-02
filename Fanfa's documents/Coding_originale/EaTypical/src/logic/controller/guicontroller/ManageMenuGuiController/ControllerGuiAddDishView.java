@@ -161,12 +161,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        assert myAnchorPane != null : "fx:id=\"myAnchorPane\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert sponsorRestaurantButton != null : "fx:id=\"sponsorRestaurantButton\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert manageMenuButton != null : "fx:id=\"manageMenuButton\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'AddDish.fxml'.";
-        assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'AddDish.fxml'.";
+        
         assert scegliPiattoBox != null : "fx:id=\"scegliPiattoBox\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert priceTextField != null : "fx:id=\"priceTextField\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert veganCheckBox != null : "fx:id=\"veganCheckBox\" was not injected: check your FXML file 'AddDish.fxml'.";
@@ -179,6 +174,12 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
         assert campoMancantePrezzo != null : "fx:id=\"campoMancantePrezzo\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert campoMancanteRicetta != null : "fx:id=\"campoMancanteRicetta\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert errorePiattoLabel != null : "fx:id=\"errorePiattoLabel\" was not injected: check your FXML file 'AddDish.fxml'.";
+		assert myAnchorPane != null : "fx:id=\"myAnchorPane\" was not injected: check your FXML file 'AddDish.fxml'.";
+        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'AddDish.fxml'.";
+        assert sponsorRestaurantButton != null : "fx:id=\"sponsorRestaurantButton\" was not injected: check your FXML file 'AddDish.fxml'.";
+        assert manageMenuButton != null : "fx:id=\"manageMenuButton\" was not injected: check your FXML file 'AddDish.fxml'.";
+        assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'AddDish.fxml'.";
+        assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'AddDish.fxml'.";
         
         //carico i piatti che puÃƒÂ² scegliere
         for(int i = 0; i<this.listaP.size();i++) {
