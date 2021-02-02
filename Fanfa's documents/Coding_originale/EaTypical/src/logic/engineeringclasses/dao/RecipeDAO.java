@@ -73,13 +73,8 @@ public class RecipeDAO {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-            }/*
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }*/
+				se2.printStackTrace();
+            }
 		}
 		
 		return obs;
@@ -116,14 +111,6 @@ public class RecipeDAO {
 			
 		} catch (SQLException e) {	
 			throw new InvalidDishDelete(nomePiatto, nomeRistorante);
-		}finally {
-			/*
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }*/
 		}
 		
 	}
@@ -160,16 +147,6 @@ public class RecipeDAO {
 			//lancio l'eccezione per dire che il piatto ÃƒÆ’Ã‚Â¨ stato giÃƒÆ’Ã‚Â  inserito in precedenza
 			throw new DishAlreadyExists(recipe.getDishName());
 			
-		}finally {
-			
-			//chiudo la connessione al DBMS
-			/*
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }*/
 		}
 		
 	}
@@ -219,9 +196,7 @@ public class RecipeDAO {
 			
 			
 			
-		} catch (SQLException e) {			
-			e.printStackTrace();
-		}catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {			
 			e.printStackTrace();
 		}finally {
 			try {
@@ -321,13 +296,8 @@ public class RecipeDAO {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-            }/*
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }*/
+				se2.printStackTrace();
+            }
 		}
 		
 		return obs;
