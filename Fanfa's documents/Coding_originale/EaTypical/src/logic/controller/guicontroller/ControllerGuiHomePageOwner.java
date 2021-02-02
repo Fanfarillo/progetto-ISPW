@@ -20,7 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiNotificationsView;
 import logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling;
-import logic.engineeringclasses.dao.NotificationsOwnerDAO;
+import logic.engineeringclasses.dao.NotificationsDAO;
 import logic.engineeringclasses.others.Session;
 
 /**
@@ -53,7 +53,7 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
     private Button bottoneNotifiche;
 
     public void goToNotificationsView() throws ClassNotFoundException, IOException {
-    	NotificationsOwnerDAO notificationsDAO = new NotificationsOwnerDAO();
+    	NotificationsDAO notificationsDAO = new NotificationsDAO();
  	   BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications("liuk");
  	   
  	   //carico la gerarchia dei nodi
