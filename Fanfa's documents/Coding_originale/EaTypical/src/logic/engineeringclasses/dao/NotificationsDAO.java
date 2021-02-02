@@ -151,12 +151,6 @@ public BeanListNotificationsScheduling selectOwnerSchedulingNotifications(String
             } catch (SQLException se2) {
             	se2.printStackTrace();
             }
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
 		}
 		
 		return notifications;
