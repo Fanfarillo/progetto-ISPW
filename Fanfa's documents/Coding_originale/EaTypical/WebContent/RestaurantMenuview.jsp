@@ -108,7 +108,7 @@
     
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <link rel="stylesheet" type="text/css" href="styleRestaurantMenuView.css">
 <meta charset="ISO-8859-1">

@@ -94,7 +94,7 @@
 %>    
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <link rel="stylesheet" type="text/css" href="modifyDish.css">
 <meta charset="ISO-8859-1">
@@ -109,7 +109,7 @@
 			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant4" value="Sponsor Restaurant">
 			<input id="back" type="submit" name="back4" value="Back">
 			
-			<img id="fotoUtente" src="utente.jpg"/>
+			<img id="fotoUtente" alt="fotoUtente" src="utente.jpg"/>
 			<label id="nomeUtente">NomeUtente</label>  
 			
 			

@@ -96,7 +96,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
 
 <link rel="stylesheet" type="text/css" href="prova.css">

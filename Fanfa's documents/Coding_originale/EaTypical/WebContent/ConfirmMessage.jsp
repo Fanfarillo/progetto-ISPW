@@ -104,7 +104,7 @@
 %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Home page tourist</title>
@@ -124,7 +124,7 @@
 		<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant3" value="Sponsor Restaurant">
 		<input id="back" type="submit" name="back3" value="Back">
 			
-		<img id="fotoUtente" src="utente.jpg"/>
+		<img id="fotoUtente" alt="fotoUtente" src="utente.jpg"/>
 		
 		<label id="nomeUtente">nomeUtente</label>
 <%
