@@ -1,7 +1,6 @@
 package logic.engineeringclasses.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,6 +11,7 @@ import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
 import logic.engineeringclasses.exceptions.DishAlreadyExists;
 import logic.engineeringclasses.exceptions.InvalidDishDelete;
 import logic.engineeringclasses.exceptions.InvalidDishModify;
+import logic.engineeringclasses.others.Connect;
 import logic.engineeringclasses.query.QueryRecipe;
 import logic.model.Recipe;
 
@@ -45,8 +45,7 @@ public class RecipeDAO {
 			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
-			conn = DriverManager.getConnection(connectionString);
-			
+			conn = Connect.getInstance().getDBConnection();
 			
 			//creazione ed esecuzione dell'eliminazione
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -74,13 +73,13 @@ public class RecipeDAO {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-            }
+            }/*
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
                 se.printStackTrace();
-            }
+            }*/
 		}
 		
 		return obs;
@@ -107,7 +106,7 @@ public class RecipeDAO {
 			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
-			conn = DriverManager.getConnection(connectionString);
+			conn = Connect.getInstance().getDBConnection();
 						
 			
 			QueryRecipe.deleteDish(conn, nomeRistorante, nomePiatto);
@@ -118,13 +117,13 @@ public class RecipeDAO {
 		} catch (SQLException e) {	
 			throw new InvalidDishDelete(nomePiatto, nomeRistorante);
 		}finally {
-			
+			/*
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
                 se.printStackTrace();
-            }
+            }*/
 		}
 		
 	}
@@ -147,7 +146,7 @@ public class RecipeDAO {
 			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
-			conn = DriverManager.getConnection(connectionString);
+			conn = Connect.getInstance().getDBConnection();
 			
 			//eseguo l'inserimento
 			
@@ -164,12 +163,13 @@ public class RecipeDAO {
 		}finally {
 			
 			//chiudo la connessione al DBMS
+			/*
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
-            }
+            }*/
 		}
 		
 	}
@@ -195,8 +195,7 @@ public class RecipeDAO {
 			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
-			conn = DriverManager.getConnection(connectionString);
-			
+			conn = Connect.getInstance().getDBConnection();
 			
 			//creazione ed esecuzione dell'eliminazione
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -229,13 +228,13 @@ public class RecipeDAO {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-            }
+            }/*
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
                 se.printStackTrace();
-            }
+            }*/
 		}
 		
 		return obs;
@@ -252,7 +251,7 @@ public class RecipeDAO {
 			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
-			conn = DriverManager.getConnection(connectionString);
+			conn = Connect.getInstance().getDBConnection();
 			
 		
 			QueryRecipe.updateDishes(beanAddDish.getContenuto(),beanAddDish.getRistorante(),conn,beanAddDish.getPiatto(),beanAddDish.getPrezzo(),beanAddDish.isVegano(),beanAddDish.isCeliaco());
@@ -265,13 +264,13 @@ public class RecipeDAO {
 			throw new InvalidDishModify(beanAddDish.getPiatto(), beanAddDish.getRistorante());
 			
 		}finally {
-			
+			/*
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
                 se.printStackTrace();
-            }
+            }*/
 		}
 	}
 	
@@ -293,7 +292,7 @@ public class RecipeDAO {
 			Class.forName(driverclassname);
 			
 			//apro la connssione verso il DBMS
-			conn = DriverManager.getConnection(connectionString);
+			conn = Connect.getInstance().getDBConnection();
 			
 			
 			//creazione ed esecuzione dell'eliminazione
@@ -322,13 +321,13 @@ public class RecipeDAO {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-            }
+            }/*
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
                 se.printStackTrace();
-            }
+            }*/
 		}
 		
 		return obs;

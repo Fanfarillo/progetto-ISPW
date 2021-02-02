@@ -92,11 +92,11 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	
     	//ottengo le ricette che possono essere aggiunte
     	RecipeDAO recipeDAO = new RecipeDAO();
-    	ArrayList<String> obs1 = recipeDAO.selectAllRecipe(); 
+    	ArrayList<String> obs1 = (ArrayList<String>) recipeDAO.selectAllRecipe(); 
 
     	//ottengo i ristoranti dell'utente
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
-    	ArrayList<String> obs2 = restaurantDAO.selectOwnRestaurant("liuk");
+    	ArrayList<String> obs2 = (ArrayList<String>) restaurantDAO.selectOwnRestaurant("liuk");
     	
     	//carico la gerarchia dei nodi
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
@@ -123,12 +123,12 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	//ottengo tutte le ricette di tutti i ristoranti dell'utente
     	RecipeDAO recipeDAO = new RecipeDAO();
     	ArrayList<String> obs1;
-    	obs1 = recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
+    	obs1 = (ArrayList<String>) recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
     	
     	//ottengo tutti i ristoranti dell'utente
     	ArrayList<String> obs2;   	
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
-    	obs2 = restaurantDAO.selectOwnRestaurant(nomeUtenteLabel.getText());
+    	obs2 = (ArrayList<String>) restaurantDAO.selectOwnRestaurant(nomeUtenteLabel.getText());
     	
     	//FXMLLoader e setto il nuovo controller grafico
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/DeleteDishView.fxml"));
@@ -175,11 +175,11 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	RecipeDAO recipeDAO = new RecipeDAO();
     	
     	//ottengo le ricette dei ristoranti del proprietario
-    	ArrayList<String> obs = recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
+    	ArrayList<String> obs = (ArrayList<String>) recipeDAO.selectOwnRecipe(nomeUtenteLabel.getText());
     	
     	RestaurantDAO restaurantDAO = new RestaurantDAO();
     	
-    	ArrayList<String> obs2 = restaurantDAO.selectOwnRestaurant(username);
+    	ArrayList<String> obs2 = (ArrayList<String>) restaurantDAO.selectOwnRestaurant(username);
     
     	//FXMLLoader e setto il nuovo controller grafico
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ModifyDishView.fxml"));
