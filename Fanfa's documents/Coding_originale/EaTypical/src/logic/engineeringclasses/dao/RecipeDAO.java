@@ -202,14 +202,9 @@ public class RecipeDAO {
 			try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
-            }/*
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }*/
+            } catch (SQLException seStmt) {
+				seStmt.printStackTrace();
+            }
 		}
 		
 		return obs;
@@ -238,14 +233,6 @@ public class RecipeDAO {
 			//eccezione piatto non esistente
 			throw new InvalidDishModify(beanAddDish.getPiatto(), beanAddDish.getRistorante());
 			
-		}finally {
-			/*
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }*/
 		}
 	}
 	
@@ -289,14 +276,14 @@ public class RecipeDAO {
 			
 			
 			
-		} catch (SQLException e) {		
-			e.printStackTrace();
+		} catch (SQLException e3) {		
+			e3.printStackTrace();
 		}finally {
 			try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
-				se2.printStackTrace();
+            } catch (SQLException se3) {
+				se3.printStackTrace();
             }
 		}
 		

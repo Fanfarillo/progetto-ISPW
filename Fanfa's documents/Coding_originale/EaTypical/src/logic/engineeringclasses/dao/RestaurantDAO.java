@@ -62,6 +62,7 @@ public class RestaurantDAO {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
+				se2.printStackTrace();
             }
 		}
 		
