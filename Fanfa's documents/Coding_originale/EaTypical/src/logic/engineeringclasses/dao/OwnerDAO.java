@@ -66,9 +66,7 @@ public class OwnerDAO {
         
         try {
         	
-            Class.forName(driverClassName);
-
-            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            Class.forName(driverClassName);            
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);

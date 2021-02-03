@@ -80,8 +80,7 @@ public class FavouriteRestDAO {
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
+            
             
             QueryFavouriteRest.insertFavourite(stmt, rest, tourist); 
         } finally {     	

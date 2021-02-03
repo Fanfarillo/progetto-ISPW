@@ -26,8 +26,7 @@ public class OwnerRestaurantsDAO {
         
         try {
             Class.forName(driverClassName);    
-            conn = DriverManager.getConnection(connectionString);
-            //conn = Connect.getInstance().getDBConnection();
+            conn = DriverManager.getConnection(connectionString);      
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             
