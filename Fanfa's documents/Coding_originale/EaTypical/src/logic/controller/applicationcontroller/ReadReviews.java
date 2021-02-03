@@ -9,7 +9,7 @@ import logic.model.Review;
 
 public class ReadReviews {
 	
-	public BeanReadReviews findReviews(String name) throws Exception
+	public BeanReadReviews findReviews(String name) throws GenericException 
 	{
 		try
 		{

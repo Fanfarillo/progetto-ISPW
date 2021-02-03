@@ -53,7 +53,6 @@ public class Login {
 		String surname=loggingUser.getSurname();
 		String username=loggingUser.getUsername();
 		String password=loggingUser.getPassword();
-		System.out.println("name: "+name+" surname: "+surname+" username: "+username+" password: "+password+" "+loggingUser.isOwner());
 		try
 		{
 			if(loggingUser.isOwner())

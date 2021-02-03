@@ -97,7 +97,6 @@ public class LoginGuiController extends UserBaseGuiController {
 	    	bu.setPassword(pw);
 	    	Login loginAppContr= new Login();
 	    	loggedUser=loginAppContr.loginMethod(bu);		//try to login
-	    	System.out.println("Dragonball");
 	    	//   call the homepage and pass the user	    	
 	      	this.bs.setUser(loggedUser);
 	      	this.bs.getSizedStack().setFirstPage(isOwner);

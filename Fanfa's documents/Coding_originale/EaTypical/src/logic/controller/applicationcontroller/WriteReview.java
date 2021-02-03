@@ -7,7 +7,7 @@ import logic.model.Review;
 
 public class WriteReview {
 	
-	public void write(BeanNewReview bnr) throws Exception
+	public void write(BeanNewReview bnr) throws GenericException 
 	{
 		try {
 		Review newReview=bnr.getReview();
