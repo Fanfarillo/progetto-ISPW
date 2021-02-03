@@ -64,7 +64,11 @@ public class SchedulingDAO {
 			
 			// Step 4: creation and execution of query
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			QueryScheduling.insertScheduling(stmt, schedEntity.getTourist().getUsername(), schedEntity.getDate(), schedEntity.isAtLunch(), schedEntity.getRest().getName());
+			
+			String itaHour;
+			if(schedEntity.isAtLunch()) itaHour="Pranzo";
+			else itaHour="Cena";
+			QueryScheduling.insertScheduling(stmt, schedEntity.getTourist().getUsername(), schedEntity.getDate(), itaHour, schedEntity.getRest().getName());
 			
 		}
 		

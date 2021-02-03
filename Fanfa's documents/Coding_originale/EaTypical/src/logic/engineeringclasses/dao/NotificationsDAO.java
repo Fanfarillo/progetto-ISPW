@@ -95,8 +95,6 @@ public class NotificationsDAO {
         	{       	
                 if (stmt != null)
                     stmt.close();
-                if(conn!=null)
-                	conn.close();
         	}
 
         return listOfNotifications;

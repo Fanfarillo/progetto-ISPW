@@ -98,6 +98,11 @@ public class ControllerGuiCreatingRestaurant extends OwnerBaseGuiController {
         assert addrNameTextBox != null : "fx:id=\"addrNameTextBox\" was not injected: check your FXML file 'CreatingRestaurantView.fxml'.";
         assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'CreatingRestaurantView.fxml'.";
         
+        if(this.bs.getUser()!=null)
+        	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
+        else
+        	nomeUtenteLabel.setText("Not logged");
+        
         errorLabel.setText(this.errorMessage);
         
         for(Cities city:Cities.values())

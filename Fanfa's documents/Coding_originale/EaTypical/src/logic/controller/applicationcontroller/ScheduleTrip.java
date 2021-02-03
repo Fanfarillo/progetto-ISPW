@@ -412,7 +412,7 @@ public class ScheduleTrip {
 			Restaurant r = new Restaurant(null, scheduling[i].getCity(), menu, scheduling[i].getAddress(), scheduling[i].getName(), doubleAvgVote, null, null, null);
 			
 			if(scheduling[i].getStrHour().equals("Lunch")) atLunch=true;
-			else atLunch = false;
+			else atLunch=false;
 			
 			Scheduling schedEntity = new Scheduling(tourist, scheduling[i].getStrDate(), atLunch, r);
 			dao.insert(schedEntity);

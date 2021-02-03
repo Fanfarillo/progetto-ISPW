@@ -61,8 +61,6 @@ public class FavouriteRestDAO {
             
                 if (stmt != null)
                     stmt.close(); 
-                if(conn !=null)
-                	conn.close();
         }
 
         return listOfRestaurants;
@@ -86,8 +84,6 @@ public class FavouriteRestDAO {
         } finally {     	
                 if (stmt != null)
                     stmt.close();
-                if(conn!=null)
-                	conn.close();
         }
     }
 

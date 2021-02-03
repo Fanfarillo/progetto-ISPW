@@ -10,6 +10,7 @@ import java.util.List;
 import logic.engineeringclasses.others.Connect;
 import logic.engineeringclasses.query.QueryRestaurant;
 import logic.engineeringclasses.query.QueryScheduling;
+import logic.model.Menu;
 import logic.model.Restaurant;
 import logic.model.Scheduling;
 
@@ -31,9 +32,11 @@ public class SchedulesDAO {
             
             String ristName;
             Restaurant rest;
+            Menu menu;
             String address;
             String city;
             double vote;
+            double price;
             String date;
             Scheduling sched;
             boolean atLunch;
@@ -56,12 +59,16 @@ public class SchedulesDAO {
             for( List<String> eachSchedule: schedules ) {
             	
             	rs=QueryRestaurant.selectRestaurant(stmt, eachSchedule.get(0));               
-                
+                rs.first();
+            	
                 ristName=rs.getString("Nome");
                 address=rs.getString("Indirizzo");
                 city=rs.getString("Citta");
                 vote=rs.getDouble("VotoMedio");
+                price=rs.getDouble("Totale");
                 rest=new Restaurant(ristName,address,city,vote);
+                menu=new Menu(null,price);
+                rest.setMenu(menu);
                 
 
                 date=eachSchedule.get(1);

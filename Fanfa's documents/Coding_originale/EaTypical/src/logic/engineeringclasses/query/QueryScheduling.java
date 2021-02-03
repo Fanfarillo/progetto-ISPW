@@ -12,8 +12,8 @@ public class QueryScheduling {
 		stmt.executeUpdate("DELETE FROM Scheduling WHERE Username = '" +username+ "'");
 	}
 	
-	public static void insertScheduling(Statement stmt, String username, String date, boolean atLunch, String nameRest) throws SQLException {
-		stmt.executeUpdate("INSERT INTO Scheduling VALUES('" +nameRest+ "', '" +username+ "', '" +date+ "', '" +atLunch+ "')");
+	public static void insertScheduling(Statement stmt, String username, String date, String itaHour, String nameRest) throws SQLException {
+		stmt.executeUpdate("INSERT INTO Scheduling VALUES('" +nameRest+ "', '" +username+ "', '" +date+ "', '" +itaHour+ "')");
 	}
 	
 	public static ResultSet selectSchedules(Statement stmt, String username) throws SQLException

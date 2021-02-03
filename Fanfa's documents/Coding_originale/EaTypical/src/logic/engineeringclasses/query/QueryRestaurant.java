@@ -18,7 +18,7 @@ public class QueryRestaurant {
 	//look for a restaurant by his name
 	public static ResultSet selectRestaurant(Statement stmt, String name) throws SQLException
 	{
-		String sql = "SELECT * FROM ristorante WHERE Nome = '"+ name + "';";
+		String sql = "SELECT * FROM ristorante, menu WHERE Nome = '"+ name + "' and NomeRistorante = '"+ name + "';";
 		return stmt.executeQuery(sql);
 	}
 	

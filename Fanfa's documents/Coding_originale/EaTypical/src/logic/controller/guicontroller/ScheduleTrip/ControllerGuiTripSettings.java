@@ -41,7 +41,7 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
 	public ControllerGuiTripSettings(String city, Session bs) {
 		super(bs);
 		this.city=city;
-		this.message="Budget and rating may not be satisfied if there are too few\nrestaurants that meet all the requirements.";
+		this.message="Budget and rating may not be satisfied if there are too few restaurants that meet all\nthe requirements.";
 	}
 
     @FXML // ResourceBundle that was given to the FXMLLoader

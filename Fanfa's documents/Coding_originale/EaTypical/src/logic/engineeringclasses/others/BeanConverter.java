@@ -35,7 +35,8 @@ public class BeanConverter {
 		while(iter.hasNext()) {
 			Scheduling schedEntity = iter.next();
 			Restaurant rest = schedEntity.getRest();
-			beanRest = new BeanOutputRestaurant(rest.getOwner().getUsername(), rest.getName(), rest.getAddress(), rest.getCity(), rest.getMenu().getTotalPrice(), rest.getAvgVote(), rest.getOpeningHours());
+			
+			beanRest = new BeanOutputRestaurant(null, rest.getName(), rest.getAddress(), rest.getCity(), rest.getMenu().getTotalPrice(), rest.getAvgVote(), rest.getOpeningHours());
 			
 			date = df.parse(schedEntity.getDate());
 			beanSched = new BeanOutputSchedule(date, schedEntity.isAtLunch(), beanRest);

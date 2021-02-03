@@ -70,16 +70,21 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     @FXML
     void goToTripsPage(ActionEvent event) throws IOException {
     	try {
-    		BeanConverter converter = new BeanConverter();
-    		BeanOutputSchedule[] scheduling = converter.convertScheduling(bs.getUser());
-    		String city = converter.getCityFromScheduling(bs.getUser());
+    		if(this.bs.getUser()!=null) {
+    			BeanConverter converter = new BeanConverter();
+    			BeanOutputSchedule[] scheduling = converter.convertScheduling(bs.getUser());
+    			String city = converter.getCityFromScheduling(bs.getUser());
     		
-    		this.bs.getSizedStack().push(this.seeTripPage);
-        	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.seeTripPage));
-        	loader.setControllerFactory(c -> new ControllerGuiSeeTrip(city, scheduling, bs));
-        	Parent root=loader.load();
-        	myAnchorPane.getChildren().setAll(root);    
-    		
+    			this.bs.getSizedStack().push(this.seeTripPage);
+    			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.seeTripPage));
+    			loader.setControllerFactory(c -> new ControllerGuiSeeTrip(city, scheduling, bs));
+    			Parent root=loader.load();
+    			myAnchorPane.getChildren().setAll(root);    
+    		}
+    		else {
+        		mustLoginLabel.setText(mustLoginMessage);
+        		mustLoginLabel.setVisible(true);
+    		}
     	}
     	catch(ParseException e) {
     		this.errorMessage = "An unknown error occurred. Please, try again later.";
@@ -119,6 +124,7 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
         assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         
         if(this.bs.getUser()!=null) {
+        	labelBenvenuto.setText(this.bs.getUser().getName());
         	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
         	this.logButton.setText("Logout");
         }

@@ -15,12 +15,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import logic.controller.applicationcontroller.SponsorRestaurant;
-import logic.controller.guicontroller.UserBaseGuiController;
+import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.bean.sponsorrestaurant.BeanNewRestaurant;
 import logic.engineeringclasses.exceptions.AlreadyInUseRestaurantNameException;
 import logic.engineeringclasses.others.Session;
 
-public class ControllerGuiSetOpeningHours extends UserBaseGuiController {
+public class ControllerGuiSetOpeningHours extends OwnerBaseGuiController {
 	private BeanNewRestaurant bnr;
 	private String savedMessage = "Restaurant saved successfully.";
 	private String creatingRestPage = "/logic/view/standalone/SponsorRestaurant/CreatingRestaurantView.fxml";
@@ -147,6 +147,11 @@ public class ControllerGuiSetOpeningHours extends UserBaseGuiController {
         assert fridayDinner != null : "fx:id=\"fridayDinner\" was not injected: check your FXML file 'SetOpeningHoursView.fxml'.";
         assert saturdayDinner != null : "fx:id=\"saturdayDinner\" was not injected: check your FXML file 'SetOpeningHoursView.fxml'.";
         assert savedLabel != null : "fx:id=\"savedLabel\" was not injected: check your FXML file 'SetOpeningHoursView.fxml'.";
+        
+        if(this.bs.getUser()!=null)
+        	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
+        else
+        	nomeUtenteLabel.setText("Not logged");
         
     }
 }
