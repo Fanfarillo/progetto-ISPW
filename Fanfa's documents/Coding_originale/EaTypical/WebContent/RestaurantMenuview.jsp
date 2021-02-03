@@ -9,6 +9,8 @@
  <%@page import="logic.engineeringclasses.others.SizedStack" %>
 
 <%
+	//Session sessione = (Session)session.getAttribute("sessione");
+	//System.out.print(sessione.getUser());
 	if(request.getParameter("home5")!=null) {
 		
 		%>
