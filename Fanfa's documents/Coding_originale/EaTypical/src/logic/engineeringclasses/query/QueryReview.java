@@ -25,5 +25,14 @@ public class QueryReview {
 		return stmt.executeUpdate(insertStatement);
 		    
 	}
+	public static ResultSet getAvg(Statement stmt, String name) throws SQLException {
+		String selectStatement="SELECT AVG(Voto) FROM Recensione WHERE NomeRistorante = '"+name+"';";
+		return stmt.executeQuery(selectStatement);
+	}
+	
+	public static int insertAvg(Statement stmt, Double vote, String name) throws SQLException {
+		String insertStatement=String.format("UPDATE Ristorante SET VotoMedio = %d WHERE Nome='%s';",vote,name);
+		return stmt.executeUpdate(insertStatement);
+	}
 	 
 }

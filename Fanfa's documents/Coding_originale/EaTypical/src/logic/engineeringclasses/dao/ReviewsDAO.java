@@ -56,6 +56,27 @@ public class ReviewsDAO {
 
         return listOfReviews;
     }
+
+
+public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException, SQLException  {
+        Statement stmt = null;
+        Connection conn = null;
+        String driverClassName = "com.mysql.jdbc.Driver";
+        String name=rest.getName();
+        Class.forName(driverClassName);
+        conn = Connect.getInstance().getDBConnection();
+
+        stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            
+        ResultSet rs=QueryReview.getAvg(stmt,name); 
+        Double avgVote=rs.getDouble(0);
+        
+        QueryReview.insertAvg(stmt,avgVote,name);                
+        stmt.close();
+        rs.close();
+    }
+
     public static Review findRestaurantReviews(String restaurant,String username) throws ClassNotFoundException, SQLException {		//recensione di un certo ristorante e di un certo utente
         Statement stmt = null;
         Connection conn = null;

@@ -12,6 +12,7 @@ public class WriteReview {
 		try {
 		Review newReview=bnr.getReview();
 		ReviewsDAO.insertReview(newReview);
+		ReviewsDAO.updateAvgVote(newReview.getRestaurant());
 		}
 		catch(Exception e)
 		{

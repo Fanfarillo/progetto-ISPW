@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import logic.controller.guicontroller.ChooseRestaurant.ControllerGuiItalianViewCityCR;
 import logic.controller.guicontroller.ScheduleTrip.*;
 
 //The second layer of Graphic Controllers: every normal user has the ChooseResytaurant Button and the Schedule Trip Page button
@@ -34,8 +35,11 @@ public  class UserBaseGuiController extends BaseGuiController {
 	@FXML
 	void goToChooseRestaurantPage(ActionEvent event) throws IOException {	//The Choose Restaurant Page button onAction method
 	
-		bs.getSizedStack().push(this.chooseRestPage);
+	bs.getSizedStack().push(this.chooseRestPage);
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.chooseRestPage));
+    	System.out.println("giorgio");
+    	loader.setControllerFactory(c -> new ControllerGuiItalianViewCityCR(bs));
+    	System.out.println("giorgiol");
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);
     }
