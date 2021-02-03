@@ -4,13 +4,19 @@
 <%@page import="logic.engineeringclasses.others.SizedStack" %>
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule" %>
+<%@page import="logic.controller.applicationcontroller.ScheduleTrip" %>
+<%@page import="logic.engineeringclasses.others.BeanConverter" %>
+<%@page import="logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule" %>
 
 <%
 	Session bs = (Session)session.getAttribute("session");
 	String city = (String)session.getAttribute("city");
 	BeanOutputSchedule[] scheduling = (BeanOutputSchedule[])session.getAttribute("trip");
-	String errorString = "";
+	String errorString="";
 	String savedScheduling="";
+	
+	BeanConverter converter = new BeanConverter();
+	ConvertedBeanSchedule[] convertedScheduling = converter.convertDataType(scheduling, city);
 %>
 
 <%    	
@@ -40,21 +46,31 @@
     	}
     	if(request.getParameter("Change Settings")!=null) {
     		session.setAttribute("session", bs);
+    		session.setAttribute("city", city);
 %>
 			<jsp:forward page="TripSettingsView.jsp"/>
 <%
     	}
     	if(request.getParameter("Generate New Scheduling")!=null) {
+    		for(int i=0; i<scheduling.length; i++) {
+    			scheduling[i].setRestFromList();
+    		}   		
     		session.setAttribute("session", bs);
+    		session.setAttribute("city", city);
+    		session.setAttribute("trip", scheduling);
 %>
 			<jsp:forward page="SchedulingView.jsp"/>
 <%
     	}
     	if(request.getParameter("Save Scheduling")!=null) {
-    		session.setAttribute("session", bs);
-%>
-			<jsp:forward page="SchedulingView.jsp"/>
-<%
+    		try {
+    			ScheduleTrip scheduleTrip = new ScheduleTrip();
+    			scheduleTrip.saveScheduleTrip(convertedScheduling, bs.getUser().getUsername());		
+				savedScheduling="Scheduling saved successfully.";
+    		}
+    		catch(Exception e) {
+    			errorString="An unknown error occurred. Please, try again later.";
+    		}
     	}
 %>
     
@@ -81,6 +97,33 @@
 		<label id="citta"><%=city%></label>		
 		<label id="errorMsg"><%=errorString%></label>
 		<label id="savedMsg"><%=savedScheduling%></label>
+		
+		<div class="box">
+			<table>
+				<tr>
+					<th class="date">Date</th>
+					<th class="hour">Hour</th>
+					<th class="restName">Restaurant</th>
+					<th class="address">Address</th>
+					<th class="avgPrice">Avg Price</th>
+					<th class="avgVote">Avg Vote</th>
+				</tr>
+<%
+				for(int i=0; i<convertedScheduling.length; i++) {
+%>
+					<tr>
+						<td class="date"><%=convertedScheduling[i].getStrDate() %></td>
+						<td class="hour"><%=convertedScheduling[i].getStrHour() %></td>
+						<td class="restName"><%=convertedScheduling[i].getName() %></td>
+						<td class="address"><%=convertedScheduling[i].getAddress() %></td>
+						<td class="avgPrice"><%=convertedScheduling[i].getStrAvgPrice() %></td>
+						<td class="avgVote"><%=convertedScheduling[i].getStrAvgVote() %></td>
+					</tr>
+<%					
+				}
+%>								
+			</table>
+		</div>
 		
 		<input id="changeSettings" class="buttonBelow" type="submit" name="Change Settings" value="Change Settings">
 		<input id="generateNewScheduling" class="buttonBelow" type="submit" name="Generate New Scheduling" value="Generate New Scheduling">

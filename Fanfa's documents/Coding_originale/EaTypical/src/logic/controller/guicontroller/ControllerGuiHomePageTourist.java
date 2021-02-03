@@ -24,6 +24,7 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
 	
 	private String seeTripPage = "/logic/view/standalone/seetrip/SeeTripView.fxml";
 	private String loginPage = "/logic/view/standalone/login/loginView.fxml";
+	private String errorMessage = "";
 
     public ControllerGuiHomePageTourist(Session bs) {
 		super(bs);	
@@ -53,6 +54,9 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     @FXML // fx:id="seeNotificationsButton"
     private Button seeNotificationsButton; // Value injected by FXMLLoader
     
+    @FXML // fx:id="errorLabel"
+    private Label errorLabel; // Value injected by FXMLLoader
+    
     @FXML
     void goToNotificationsPage(ActionEvent event) {
     	// To do
@@ -78,8 +82,8 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     		
     	}
     	catch(ParseException e) {
-    		// To do
-    		e.printStackTrace();
+    		this.errorMessage = "An unknown error occurred. Please, try again later.";
+    		errorLabel.setText(this.errorMessage);
     	}
     	
     }
@@ -111,7 +115,9 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
         assert labelBenvenuto != null : "fx:id=\"labelBenvenuto\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert seeNotificationsButton != null : "fx:id=\"seeNotificationsButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
         assert mustLoginLabel != null : "fx:id=\"mustLoginLabel\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
-        assert logButton != null : "fx:id=\"logButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";       
+        assert logButton != null : "fx:id=\"logButton\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
+        assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'HomePageTouristView.fxml'.";
+        
         if(this.bs.getUser()!=null) {
         	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
         	this.logButton.setText("Logout");
@@ -121,5 +127,6 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
         	this.logButton.setText("Login");
         }
         
+        errorLabel.setText(this.errorMessage);
     }
 }

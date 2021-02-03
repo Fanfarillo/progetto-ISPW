@@ -79,3 +79,40 @@ body {
 	font-size: 11px;
 	background-color: rgba(0,0,0,0.7);
 }
+
+div.box {
+	width: 91.43%;
+	height: 52.14%;
+	position: absolute;
+	left: 4.29%;
+	top: 25.43%;
+	padding: 4px;
+	border: 1px solid #EEE;
+	border-right: 0 solid;
+	background-color: white;
+	overflow: auto;
+}
+
+.date {
+	width: 14.06%;
+}
+
+.hour {
+	width: 14.06%;
+}
+
+.restaurant {
+	width: 23.44%;
+}
+
+.address {
+	width: 23.44%;
+}
+
+.avgPrice {
+	width: 12.5%;
+}
+
+.avgVote {
+	width: 12.5%;
+}

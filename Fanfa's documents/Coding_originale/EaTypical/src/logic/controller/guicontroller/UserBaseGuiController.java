@@ -14,7 +14,7 @@ import logic.controller.guicontroller.ScheduleTrip.*;
 //The second layer of Graphic Controllers: every normal user has the ChooseResytaurant Button and the Schedule Trip Page button
 public  class UserBaseGuiController extends BaseGuiController {
 	
-	protected String errorMessage = "You must login to use this function.";
+	protected String mustLoginMessage = "You must login to use this function.";
 	protected String chooseRestPage = "/logic/view/standalone/ChooseRestaurant/ItalianViewCity.fxml";
 	protected String scheduleTripPage = "/logic/view/standalone/ScheduleTrip/ItalianViewCity.fxml";
 	
@@ -50,7 +50,7 @@ public  class UserBaseGuiController extends BaseGuiController {
     		myAnchorPane.getChildren().setAll(root);
     	}
     	else {
-    		mustLoginLabel.setText(errorMessage);
+    		mustLoginLabel.setText(mustLoginMessage);
     		mustLoginLabel.setVisible(true);
     	}
     	

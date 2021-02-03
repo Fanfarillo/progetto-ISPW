@@ -14,7 +14,17 @@ bs=new Session(true);
 }
 else{
 bs=(Session)session.getAttribute("session");
-} %>
+} 
+
+String errorString = "";
+String userString;
+if(bs.getUser()!=null) {
+	userString = bs.getUser().getUsername();
+}
+else {
+	userString = "Not logged";
+}
+%>
 
 
 <%    	
@@ -32,10 +42,15 @@ bs=(Session)session.getAttribute("session");
 <%
 		}
     	if(request.getParameter("Schedule Trip HT")!=null) {
-    		session.setAttribute("session", bs);
+    		if(bs.getUser()!=null) {	
+    			session.setAttribute("session", bs);
 %>
-			<jsp:forward page="ItalianViewCity.jsp"/>
+				<jsp:forward page="ItalianViewCity.jsp"/>
 <%
+    		}
+    		else {
+    			errorString = "You must login to use this function.";
+    		}
     	}
     	if(request.getParameter("Choose Restaurant HT")!=null) {
     		session.setAttribute("session", bs);
@@ -61,8 +76,7 @@ bs=(Session)session.getAttribute("session");
 <%
     		}
     		catch(ParseException e) {
-    			// To do
-    				e.printStackTrace();
+    			errorString = "An unknown error occurred. Please, try again later.";
     		}
     	}
 %>    
@@ -84,7 +98,7 @@ bs=(Session)session.getAttribute("session");
 	
 	<form action="HomePageTouristView.jsp" name="myform" method="get">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
-		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
+		<label id="nomeUtente"><%=userString%></label>
 		<div class="box">
 			<p>Hi!</p>
 		</div>
@@ -94,6 +108,7 @@ bs=(Session)session.getAttribute("session");
 		<input id="seeTrip" class="button" type="submit" name="See Your Trip" value="See Your Trip">
 		<input id="logout" class="button" type="submit" name="Logout" value="Logout">
 		<input id="seeNotifications" class="button" type="submit" name="See Notifications" value="See Notifications">
+		<label id="errorMsg"><%=errorString%></label>
 	</form>
 </div>
 </body>

@@ -4,12 +4,32 @@
 <%@page import="logic.engineeringclasses.others.SizedStack" %>
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule" %>
+<%@page import="logic.engineeringclasses.others.BeanConverter" %>
+<%@page import="logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule" %>
+<%@page import="logic.engineeringclasses.dao.SchedulingDAO" %>
 
 <%
 	Session bs = (Session)session.getAttribute("session");
 	String city = (String)session.getAttribute("city");
 	BeanOutputSchedule[] scheduling = (BeanOutputSchedule[])session.getAttribute("scheduling");
 	String errorString = "";
+	
+	BeanConverter converter = new BeanConverter();
+	ConvertedBeanSchedule[] convertedScheduling;
+	if(scheduling!=null) {
+		convertedScheduling = converter.convertDataType(scheduling, city);
+	}
+	else {
+		convertedScheduling = converter.emptyScheduling();
+	}
+	
+	String userString;
+	if(bs.getUser()!=null) {
+		userString = bs.getUser().getUsername();
+	}
+	else {
+		userString = "Not logged";
+	}
 %>
 
 <%    	
@@ -38,10 +58,19 @@
 <%    		
     	}
     	if(request.getParameter("Delete Scheduling")!=null) {
-    		session.setAttribute("session", bs);
+    		try {
+    			SchedulingDAO dao = new SchedulingDAO();
+    			dao.delete(bs.getUser().getUsername());
+    			session.setAttribute("session", bs);
+    			session.setAttribute("city", city);
+    			session.setAttribute("scheduling", null);
 %>
-			<jsp:forward page="SchedulingView.jsp"/>
+				<jsp:forward page="SeeTripView.jsp"/>
 <%
+    		}
+    		catch(Exception e) {
+    			errorString="An unknown error occurred. Please, try again later.";
+    		}
     	}
 %>
     
@@ -64,9 +93,36 @@
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant See" value="Choose Restaurant">
 		<input id="back" type="submit" name="Back See" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
-		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
+		<label id="nomeUtente"><%=userString%></label>
 		<label id="citta"><%=city%></label>
 		<label id="errorMsg"><%=errorString%></label>
+		
+		<div class="box">
+			<table>
+				<tr>
+					<th class="date">Date</th>
+					<th class="hour">Hour</th>
+					<th class="restName">Restaurant</th>
+					<th class="address">Address</th>
+					<th class="avgPrice">Avg Price</th>
+					<th class="avgVote">Avg Vote</th>
+				</tr>
+<%
+				for(int i=0; i<convertedScheduling.length; i++) {
+%>
+					<tr>
+						<td class="date"><%=convertedScheduling[i].getStrDate() %></td>
+						<td class="hour"><%=convertedScheduling[i].getStrHour() %></td>
+						<td class="restName"><%=convertedScheduling[i].getName() %></td>
+						<td class="address"><%=convertedScheduling[i].getAddress() %></td>
+						<td class="avgPrice"><%=convertedScheduling[i].getStrAvgPrice() %></td>
+						<td class="avgVote"><%=convertedScheduling[i].getStrAvgVote() %></td>
+					</tr>
+<%					
+				}
+%>								
+			</table>
+		</div>
 		
 		<input id="deleteScheduling" type="submit" name="Delete Scheduling" value="Delete Scheduling">
 	</form>
