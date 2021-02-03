@@ -3,6 +3,8 @@
     
 <%@page import="logic.engineeringclasses.others.SizedStack" %>
 <%@page import="logic.engineeringclasses.others.Session" %>
+<%@page import="java.text.ParseException" %>
+<%@page import="logic.engineeringclasses.others.BeanConverter" %>
 
 <%
 Session bs;
@@ -23,6 +25,12 @@ bs=(Session)session.getAttribute("session");
 			<jsp:forward page="HomePageTouristView.jsp"/>
 <%
     	}
+		if(request.getParameter("See Notifications")!=null) {
+			session.setAttribute("session", bs);
+%>
+			<jsp:forward page="HomePageTouristView.jsp"/>
+<%
+		}
     	if(request.getParameter("Schedule Trip HT")!=null) {
     		session.setAttribute("session", bs);
 %>
@@ -42,10 +50,20 @@ bs=(Session)session.getAttribute("session");
 <%
     	}
     	if(request.getParameter("See Your Trip")!=null) {
-    		session.setAttribute("session", bs);
+    		try {
+    			BeanConverter converter = new BeanConverter();
+    			
+    			session.setAttribute("city", converter.getCityFromScheduling(bs.getUser()));
+    			session.setAttribute("scheduling", converter.convertScheduling(bs.getUser()));
+    			session.setAttribute("session", bs);
 %>
-			<jsp:forward page="HomePageTouristView.jsp"/>
+				<jsp:forward page="SeeTripView.jsp"/>
 <%
+    		}
+    		catch(ParseException e) {
+    			// To do
+    				e.printStackTrace();
+    		}
     	}
 %>    
     
@@ -66,7 +84,7 @@ bs=(Session)session.getAttribute("session");
 	
 	<form action="HomePageTouristView.jsp" name="myform" method="get">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
-		<label id="nomeUtente">nomeUtente</label>
+		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
 		<div class="box">
 			<p>Hi!</p>
 		</div>
@@ -75,6 +93,7 @@ bs=(Session)session.getAttribute("session");
 		<input id="seeFavRestaurants" class="button" type="submit" name="See Your Favourite Restaurants" value="See Your Favourite Restaurants">
 		<input id="seeTrip" class="button" type="submit" name="See Your Trip" value="See Your Trip">
 		<input id="logout" class="button" type="submit" name="Logout" value="Logout">
+		<input id="seeNotifications" class="button" type="submit" name="See Notifications" value="See Notifications">
 	</form>
 </div>
 </body>

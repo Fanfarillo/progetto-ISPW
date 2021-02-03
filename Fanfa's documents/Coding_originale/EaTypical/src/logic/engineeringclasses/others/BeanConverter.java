@@ -8,6 +8,7 @@ import java.util.List;
 
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputRestaurant;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
+import logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule;
 import logic.model.Restaurant;
 import logic.model.Scheduling;
 import logic.model.Tourist;
@@ -57,5 +58,55 @@ public class BeanConverter {
 		return schedEntity.getRest().getCity();
 		
 	}
+	
+    public ConvertedBeanSchedule[] convertDataType(BeanOutputSchedule[] scheduling, String city) {
+    	ConvertedBeanSchedule[] convertedBeanSchedule = new ConvertedBeanSchedule[scheduling.length];
+
+    	String[] dateAndHour;
+    	String[] restInfo;
+    	String strAvgPrice;
+    	String strAvgVote;
+    	
+    	DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+    	
+    	for(int i=0; i<scheduling.length; i++) {	
+    		dateAndHour = new String[2];
+    		dateAndHour[0] = df.format(scheduling[i].getDate());
+    		
+    		if(scheduling[i].isAtLunch()) dateAndHour[1]="Lunch";
+    		else dateAndHour[1]="Dinner";
+    		
+    		restInfo = new String[4];
+    		restInfo[0] = scheduling[i].getRest().getUsernameOwner();
+    		restInfo[1] = scheduling[i].getRest().getName();
+    		restInfo[2] = scheduling[i].getRest().getAddress();
+    		restInfo[3] = city;
+    		
+    		strAvgPrice = Double.toString(scheduling[i].getRest().getAvgPrice());
+    		strAvgVote = Double.toString(scheduling[i].getRest().getAvgVote());
+    		
+    		convertedBeanSchedule[i] = new ConvertedBeanSchedule(dateAndHour, restInfo, strAvgPrice, strAvgVote);    	
+    		
+    	}
+    	return convertedBeanSchedule;
+    }
+    
+    public ConvertedBeanSchedule[] emptyScheduling() {
+    	ConvertedBeanSchedule[] convertedScheduling = new ConvertedBeanSchedule[1];
+    	
+    	String[] dateAndHour = new String[2];
+    	for(int i=0; i<2; i++) {
+    		dateAndHour[i] = "";
+    	}
+    	
+    	String[] restInfo = new String[4];
+    	restInfo[0]="";
+    	restInfo[1]="There is no scheduling";
+    	restInfo[2]="";
+    	restInfo[3]="";
+    	
+    	convertedScheduling[0] = new ConvertedBeanSchedule(dateAndHour, restInfo, "", "");
+    	return convertedScheduling;
+    }
 	
 }

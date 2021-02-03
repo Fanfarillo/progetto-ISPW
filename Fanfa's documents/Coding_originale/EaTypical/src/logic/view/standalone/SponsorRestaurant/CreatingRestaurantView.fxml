@@ -69,7 +69,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="savedLabel" layoutX="70.0" layoutY="572.0" opacity="0.9" style="-fx-background-color: black;" textFill="#34ff74">
+      <Label fx:id="savedLabel" layoutX="70.0" layoutY="590.0" opacity="0.9" style="-fx-background-color: black;" textFill="#34ff74">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
