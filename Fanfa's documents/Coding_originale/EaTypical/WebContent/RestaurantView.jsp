@@ -159,7 +159,7 @@
     	
 %>   
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 <title>Select Restaurant</title>
@@ -175,7 +175,7 @@
 			<input id="saveFavourite" class="button" type="submit" name="Save Restaurant into Favourite restv" value="Save Restaurant into Favourites">
 			<input id="readReviews" class="button" type="submit" name="Read Reviews restv" value="Read Reviews">
 			<input id="writeReview" class="button" type="submit" name="Write Review restv" value="Write Review">
-			<img id="fotoUtente" src="utente.jpg"/>
+			<img id="fotoUtente" src="utente.jpg" alt="user"/>
 			<label id="nomeUtente"><%if(bs!=null&&bs.getUser()!=null){
 					%>=bs.getUser().getUsername()<%
 		}

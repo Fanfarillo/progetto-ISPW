@@ -63,7 +63,7 @@
 	    		User user;
 	    		if(isOwner)
 	    		{
-	    			user=new Owner(name, surname, null, username, null, null);
+	    			user=new Owner(name, surname,username);
 	    			
 	    		}
 	    		else
@@ -106,7 +106,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 	<title>Register</title>
@@ -122,7 +122,7 @@
 		<input id="scheduleTrip" type="submit" name="Schedule Trip rg" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant rg" value="Choose Restaurant" disabled>
 		<input id="back" type="submit" name="Back rg" value="Back">
-		<img id="fotoUtente" src="utente.jpg"/>
+		<img id="fotoUtente" src="utente.jpg"  alt="user"/>
 		<label id="nomeUtente">nomeUtente</label>
 		
 				

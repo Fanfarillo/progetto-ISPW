@@ -52,8 +52,10 @@ public class FavouriteRestDAO {
 	                Restaurant r=new Restaurant(name,address,city,avgVote);		//make a new restaurant
 	                listOfRestaurants.add(r);		//add the restaurant in the list
 	            }while(rs.next());
+	            
             }
             
+            stmt.close();
             
             rs.close();
         	} finally {

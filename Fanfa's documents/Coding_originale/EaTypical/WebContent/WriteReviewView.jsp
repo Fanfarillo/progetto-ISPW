@@ -76,7 +76,7 @@
     	}
 %> 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 <title>Select Restaurant</title>
@@ -90,7 +90,7 @@
 			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant ww" value="Choose Restaurant">
 			<input id="back" class="button" type="submit" name="Back ww" value="Back">
 			<input id="submitReview" class="button" type="submit" name="Submit Review ww" value="Submit Review">
-			<img id="fotoUtente" src="utente.jpg"/>
+			<img id="fotoUtente" src="utente.jpg" alt="user"/>
 			<label id="nomeUtente"><%if(bs!=null&&bs.getUser()!=null){
 					%>=bs.getUser().getUsername()<%
 		}

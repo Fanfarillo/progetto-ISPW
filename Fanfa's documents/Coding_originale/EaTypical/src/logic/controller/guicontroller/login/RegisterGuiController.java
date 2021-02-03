@@ -110,7 +110,7 @@ public class RegisterGuiController extends UserBaseGuiController {
 	    		User user;
 	    		if(isOwner)
 	    		{
-	    			user=new Owner(name, surname, null, username, null, null);
+	    			user=new Owner(name, surname, username);
 	    			
 	    		}
 	    		else
