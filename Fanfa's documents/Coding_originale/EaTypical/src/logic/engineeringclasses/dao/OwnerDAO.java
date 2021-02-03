@@ -1,7 +1,6 @@
 package logic.engineeringclasses.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +16,7 @@ public class OwnerDAO {
 	
 	private OwnerDAO() {}
     
-    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase4?user=root&password=Monte_2020.&serverTimezone=UTC";
+    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase4?user=root&password=Monte_2020.&serverTimezone=UTC";
     //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Kp*d.!>3&serverTimezone=UTC";
 
     public static User selectOwner(String user, String pw) throws ClassNotFoundException, SQLException, LoginDBException 
@@ -31,8 +30,7 @@ public class OwnerDAO {
         String username;
         try {
             Class.forName(driverClassName);
-			//conn = Connect.getInstance().getDBConnection();
-            conn = DriverManager.getConnection(connectionString);
+			conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             
@@ -48,8 +46,6 @@ public class OwnerDAO {
         	} finally {	      	
                 if (stmt != null)
                     stmt.close();
-                if(conn!=null)
-                	conn.close();
         	}         
         owner = new Owner(name, surname, username); //use the factory to return a owner object
         return owner;
@@ -83,8 +79,6 @@ public class OwnerDAO {
         } finally {    	
                 if (stmt != null)
                     stmt.close();
-                if(conn!=null)
-                	conn.close();
         }
     }
 }

@@ -106,6 +106,14 @@ public class ReviewsDAO {
          
     }
     
+    /**
+     * Il metodo restituisce un oggetto avente quattro liste: una per i touristi, una per i ristoranti, una per il contenuto delle recensioni,
+     * una per il voto al ristorante
+     * @param username
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static BeanListReviews findOwnerReviews(String username) throws SQLException, ClassNotFoundException
     {
     	Statement stmt = null;

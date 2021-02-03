@@ -144,7 +144,7 @@ public class RecipeDAO {
 			
 		} catch (SQLException e) {		
 			
-			//lancio l'eccezione per dire che il piatto ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨ stato giÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  inserito in precedenza
+			//lancio l'eccezione per dire che il piatto ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato giÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  inserito in precedenza
 			throw new DishAlreadyExists(recipe.getDishName());
 			
 		}

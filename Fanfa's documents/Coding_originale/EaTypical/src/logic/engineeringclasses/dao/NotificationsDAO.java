@@ -1,7 +1,6 @@
 package logic.engineeringclasses.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +16,7 @@ import logic.model.Restaurant;
 import logic.model.TouristNotification;
 
 public class NotificationsDAO {
-    private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
+    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
     //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Kp*d.!>3&serverTimezone=UTC";
     
     
@@ -25,13 +24,12 @@ public class NotificationsDAO {
     public static List<TouristNotification> findTouristNotifications(String user) throws ClassNotFoundException, SQLException  {
         Statement stmt = null;
         Connection conn = null;
-        List<TouristNotification> listOfNotifications = new ArrayList<TouristNotification>();
+        List<TouristNotification> listOfNotifications = new ArrayList<>();
         String driverClassName = "com.mysql.jdbc.Driver";
         try {
             Class.forName(driverClassName);
            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-            //conn = Connect.getInstance().getDBConnection();
-            conn = DriverManager.getConnection(connectionString);
+            conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             
@@ -54,15 +52,13 @@ public class NotificationsDAO {
         	{       	
                 if (stmt != null)
                     stmt.close();
-                if(conn!=null)
-                	conn.close();
         
         	}
 
         return listOfNotifications;
     }
     
-    
+    //eliminare questo metodo perchè non serve più
     public static List<OwnerSchedulingNotification> findOwnerNotifications(Restaurant rest) throws ClassNotFoundException, SQLException {
     	String driverClassName = "com.mysql.jdbc.Driver";
         Statement stmt = null;
@@ -75,7 +71,7 @@ public class NotificationsDAO {
         try {
             Class.forName(driverClassName);
             //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-            //conn = Connect.getInstance().getDBConnection();
+            
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -120,7 +116,6 @@ public BeanListNotificationsScheduling selectOwnerSchedulingNotifications(String
 			Class.forName(driverClassName);
 			
 			//apro la connssione verso il DBMS
-			//conn = DriverManager.getConnection(connectionString);
 			conn = Connect.getInstance().getDBConnection();
 			
 			//creazione ed esecuzione dell'eliminazione
