@@ -20,7 +20,7 @@ public class BeanConverter {
 		
 		Tourist tourist = (Tourist) user;
 		List<Scheduling> tripList = tourist.getTrip();
-		if(tripList.isEmpty()) return null;
+		if(tripList==null || tripList.isEmpty()) return null;
 		
 		BeanOutputSchedule[] tripArray = new BeanOutputSchedule[tripList.size()];
 		Iterator<Scheduling> iter = tripList.iterator();
@@ -52,7 +52,7 @@ public class BeanConverter {
 	public String getCityFromScheduling(User user) {
 		Tourist tourist = (Tourist) user;
 		List<Scheduling> tripList = tourist.getTrip();
-		if(tripList.isEmpty()) return "";
+		if(tripList==null || tripList.isEmpty()) return "";
 		
 		Iterator<Scheduling> iter = tripList.iterator();
 		Scheduling schedEntity = iter.next();
