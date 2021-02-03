@@ -48,11 +48,14 @@ public class NotificationsDAO {
 	            }while(rs.next());
             }
             rs.close();
+            
         	} 
         	finally 
         	{       	
                 if (stmt != null)
                     stmt.close();
+                if(conn!=null)
+                	conn.close();
         
         	}
 
@@ -96,6 +99,8 @@ public class NotificationsDAO {
         	{       	
                 if (stmt != null)
                     stmt.close();
+                if(conn!=null)
+                	conn.close();
         	}
 
         return listOfNotifications;

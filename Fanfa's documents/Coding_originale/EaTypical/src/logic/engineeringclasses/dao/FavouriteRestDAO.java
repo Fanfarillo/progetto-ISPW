@@ -55,14 +55,14 @@ public class FavouriteRestDAO {
 	            
             }
             
-            stmt.close();
-            
             rs.close();
         	} finally {
             
             
                 if (stmt != null)
                     stmt.close(); 
+                if(conn !=null)
+                	conn.close();
         }
 
         return listOfRestaurants;
@@ -84,10 +84,13 @@ public class FavouriteRestDAO {
                     ResultSet.CONCUR_READ_ONLY);
             
             QueryFavouriteRest.insertFavourite(stmt, rest, tourist); 
-
+            stmt.close();
+            conn.close();
         } finally {     	
                 if (stmt != null)
                     stmt.close();
+                if(conn!=null)
+                	conn.close();
         }
     }
 

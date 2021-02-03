@@ -142,7 +142,7 @@
 		
 		
 		<div class="box-2">
-			<img id="fotoItalia" src="Cartina.jpg"/>
+			<img id="fotoItalia" src="Cartina.jpg" alt="cartina"/>
 		    <img id="AO_img" class="city" name="Aosta" src="placeicon.png" alt="city">
 			<img id="TO_img" class="city"  name="Torino"  src="placeicon.png" alt="city">
 			<img id="GE_img" class="city"  name="Genova"  src="placeicon.png" alt="city">
@@ -155,7 +155,7 @@
 			<img id="AN_img" class="city"  name="Ancona" src="placeicon.png" alt="city">
 			<img id="PG_img" class="city"  name="Perugia"  src="placeicon.png" alt="city">
 			<img id="RM_img" class="city"  name="Roma"  src="placeicon.png" alt="city">
-			<img id="AQ_img" class="city"  name="L'Aquila" src="placeicon.png" alt="city">
+			<img id="AQ_img" class="city"  name="LAquila" src="placeicon.png" alt="city">
 			<img id="CB_img" class="city"  name="Campobasso"  src="placeicon.png" alt="city">
 			<img id="NA_img" class="city"  name="Napoli" src="placeicon.png" alt="city">
 			<img id="PZ_img" class="city"  name="Potenza"  src="placeicon.png" alt="city">

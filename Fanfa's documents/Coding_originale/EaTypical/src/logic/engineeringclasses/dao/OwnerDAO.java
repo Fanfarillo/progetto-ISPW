@@ -49,6 +49,8 @@ public class OwnerDAO {
         	} finally {	      	
                 if (stmt != null)
                     stmt.close();
+                if(conn!=null)
+                	conn.close();
         	}         
         owner = new Owner(name, surname, username); //use the factory to return a owner object
         return owner;
@@ -85,6 +87,8 @@ public class OwnerDAO {
         } finally {    	
                 if (stmt != null)
                     stmt.close();
+                if(conn!=null)
+                	conn.close();
         }
     }
 }
