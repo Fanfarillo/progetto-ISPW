@@ -10,13 +10,6 @@ public class BeanSchedulingNotification {
 	private String ristorante;
 	private String data;
 	private String pranzoVsCena;
-	/*
-	public BeanSchedulingNotification(String username, String ristorante, String data, boolean quando) {
-		this.username = username;
-		this.ristorante = ristorante;
-		this.data = data;
-		this.pranzoVsCena = quando;
-	}*/
 
 	public String getUsername() {
 		return username;

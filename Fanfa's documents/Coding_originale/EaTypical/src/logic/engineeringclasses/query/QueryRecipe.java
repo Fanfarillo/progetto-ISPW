@@ -150,19 +150,20 @@ public class QueryRecipe {
 		try {
 			
 			cstmt =  conn.prepareStatement("{call aggiorna_piatto4(?,?,?,?,?,?)}");
-			cstmt.setString(1, ristorante);
-			cstmt.setString(2, nomePiatto);
-			cstmt.setString(3, contenuto);
+			
 			cstmt.setDouble(4, prezzo);
 			cstmt.setBoolean(5, vegano);
 			cstmt.setBoolean(6, celiaco);
+			cstmt.setString(1, ristorante);
+			cstmt.setString(2, nomePiatto);
+			cstmt.setString(3, contenuto);
 			
 			cstmt.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (SQLException e11) {
 			
 			//stampa stack
-			e.printStackTrace();			
+			e11.printStackTrace();			
 			throw e;
 			
 		}finally {
@@ -174,9 +175,9 @@ public class QueryRecipe {
 				cstmt.close();
 				
 				}
-			} catch (Exception e2) {
+			} catch (Exception e21) {
 				
-				e2.printStackTrace();
+				e21.printStackTrace();
 				
 			}
 			
