@@ -45,7 +45,6 @@ public class OwnerDAO {
             name=rs.getString("Nome");
             surname=rs.getString("Cognome");
             username=rs.getString("Username");   
-            stmt.close();
         	} finally {	      	
                 if (stmt != null)
                     stmt.close();
@@ -83,7 +82,6 @@ public class OwnerDAO {
             }
             
             QueryLogin.registerOwner(stmt, user , pw);
-            stmt.close();
         } finally {    	
                 if (stmt != null)
                     stmt.close();

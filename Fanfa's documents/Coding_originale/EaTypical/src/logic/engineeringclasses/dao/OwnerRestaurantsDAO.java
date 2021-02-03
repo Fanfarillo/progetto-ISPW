@@ -46,7 +46,6 @@ public class OwnerRestaurantsDAO {
             }
             
             rs.close();
-            stmt.close();
         	} catch(SQLException e) {
         		e.printStackTrace();
         	}
