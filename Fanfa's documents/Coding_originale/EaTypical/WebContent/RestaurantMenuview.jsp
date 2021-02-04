@@ -70,11 +70,11 @@
 		RestaurantDAO restaurantDAO = new RestaurantDAO();		
 		ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
 		//setto i ristoranti
-		request.setAttribute("listaRistoranti", obs2);
+		session.setAttribute("listaRistoranti", obs2);
 		RecipeDAO recipeDAO = new RecipeDAO();
 		//setto le ricette
 		ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
-		request.setAttribute("listaPiatti", obs1);
+		session.setAttribute("listaPiatti", obs1);
 		
 		%>
 		
@@ -89,11 +89,11 @@
 		RestaurantDAO restaurantDAO = new RestaurantDAO();		
 		ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
 		//setto i ristoranti
-		request.setAttribute("listaRistoranti", obs2);
+		session.setAttribute("listaRistoranti", obs2);
 		RecipeDAO recipeDAO = new RecipeDAO();
 		//setto le ricette
 		ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
-		request.setAttribute("listaPiatti", obs1);
+		session.setAttribute("listaPiatti", obs1);
 		%>
 		<jsp:forward page="ModifyDishView.jsp"></jsp:forward>
 		<%

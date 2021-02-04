@@ -50,7 +50,7 @@
 <body>
 
 <div class="container">
-		<form action="ReviewNotificationsView.jsp" method="get">
+		<form action="SchedulingOwnerNotification.jsp" method="get">
 		
 			<input id="home" type="submit" name="home11" value="Home">
 			<input id="manageMenu" type="submit" name="manageMenu11" value="Manage Menu">

@@ -6,7 +6,12 @@
     
 <%@page import="logic.engineeringclasses.others.SizedStack" %>
 
+<%	ArrayList<String> obs1;
+	obs1=(ArrayList<String>) session.getAttribute("listaPiatti");
+	ArrayList<String> obs2;
+	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); %>
 <%
+	
 	if(request.getParameter("home1")!=null) {
 		//SizedStack.getSizedStack(true).clearStack();
 		%>
@@ -36,7 +41,7 @@
 %>
 
 <%
-
+	int refresh = 0;
 	
 	if(request.getParameter("continue1")!=null) {
 		int ricettaVuota = 0;
@@ -63,7 +68,7 @@
 			celiaco=true;
 		}
 		if(request.getParameter("prezzo").equals("")){
-			//se Ã¨ la stringa vuota significa che non ho inserito il prezzo
+			//se ÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
 			prezzoVuoto = 1;
 		}else{
 			//setto a stringa vuota
@@ -80,7 +85,10 @@
 		%>
 		<jsp:forward page="ConfirmMessage.jsp"></jsp:forward>
 		<%
+		
 		}
+		
+		refresh = 1;
 	}
 %>
 
@@ -99,7 +107,7 @@
 <html lang="en">
 <head>
 
-<link rel="stylesheet" type="text/css" href="prova.css">
+<link rel="stylesheet" type="text/css" href="StyleAddDish.css">
 <meta charset="ISO-8859-1">
 <title>Add Dish</title>
 </head>
@@ -125,14 +133,16 @@
 			<div id="containerSelect">
 				<select id="select" name="piatto">
 <%
-
-		ArrayList<String> obs1 = (ArrayList<String>) request.getAttribute("listaPiatti");
+		
+		
+		
+		
+			 //session.setAttribute("listaPiattiR",obs1); 
+		
 		String value1;
-		while(!obs1.isEmpty()){
-			value1 = obs1.get(0);
-			obs1.remove(0);
+		for(String elem: obs1){
 			%>
-			<option><%=value1%></option>
+			<option><%=elem%></option>
 			<%
 }
 		
@@ -140,28 +150,33 @@
 				</select>				
 			</div>	
 			
+			
 			<div id="cont">
 				<select id="sel" name="ristorante">
-					<%
+				
+<%
+					
+						
 		
-			ArrayList<String> obs2 = (ArrayList<String>)request.getAttribute("listaRistoranti");
+			//ArrayList<String> obs2 = (ArrayList<String>)request.getAttribute("listaRistoranti");
 			String value2;
-			while(!obs2.isEmpty()){
-				value2 = obs2.get(0);
-				obs2.remove(0);
+			for(String elem : obs2){
 				%>
-				<option><%=value2%></option>
+				<option><%=elem%></option>
 				<%
 			}
+			
 			
 		
 %>
 				</select>				
 			</div>
+	
 			
-			
-			
-			
+			<label id="campovuoto"><%if(refresh==1) out.print("Mancante"); %></label>
+			<label id="prezzovuoto"><%if(refresh==1) out.print("Mancante"); %></label>
+			<label id="piattomancante"><%if(refresh==1) out.print("Mancante"); %></label>
+			<label id="ristorantemancante"><%if(refresh==1) out.print("Mancante"); %></label>
 			
 			<div id="price">
 				<input type="text" id="priceInput" name="prezzo" value="">
@@ -175,7 +190,7 @@
 			</div>
 			
 			<div>
-				<textarea id = "area" rows="15" cols="76" name="ricetta">Scrivi ricetta...</textarea>
+				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Scrivi ricetta..."></textarea>
 			</div>
 			
 			<div>

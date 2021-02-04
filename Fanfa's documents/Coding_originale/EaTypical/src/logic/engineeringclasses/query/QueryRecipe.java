@@ -164,7 +164,7 @@ public class QueryRecipe {
 			
 			//stampa stack
 			e11.printStackTrace();			
-			throw e;
+			throw e11;
 			
 		}finally {
 			

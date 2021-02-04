@@ -12,9 +12,10 @@
  <%@page import="logic.engineeringclasses.others.SizedStack" %>
 
 <%
-	Session sessione = new Session(true);
-	sessione.setUser(new Owner("Luca","Capotombolo","liuk"));
-	session.setAttribute("sessione", sessione);
+	Session s;
+	s = (Session)session.getAttribute("session");
+	System.out.println("AAAaaaa   "+s.getUser().getUsername());
+	
 	if(request.getParameter("manage6")!=null) {
 		
 		
@@ -70,7 +71,7 @@
 <html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Home page tourist</title>
+	<title>Home page owner</title>
 	<link rel="stylesheet" type="text/css" href="HomePageOwnerStyle.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="js/jquery-3.5.1.min.js"></script>

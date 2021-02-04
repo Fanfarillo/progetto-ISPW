@@ -8,6 +8,12 @@
 <%@page import="com.mysql.cj.Session.SessionEventListener"%>
 <%@page import="logic.engineeringclasses.bean.manageMenu.BeanAddDish"%>
 
+
+<%	ArrayList<String> obs1;
+	obs1=(ArrayList<String>) session.getAttribute("listaPiatti");
+	ArrayList<String> obs2;
+	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); %>
+	
 <%
 	if(request.getParameter("home4")!=null) {
 		//SizedStack.getSizedStack(true).clearStack();
@@ -36,10 +42,11 @@
 %>
 
 <%
+	boolean refresh = false;
 	if(request.getParameter("continue4")!=null) {
-		int ricettaNonInserita = 0;
+		boolean ricettaNonInserita = false;
 		//int count=0;
-		int prezzoNonInserito = 0;
+		boolean prezzoNonInserito = false;
 		if(request.getParameter("continue4")!=null) {
 			//SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
 			//mi porto appresso le informazioni per l'inserimento del piatto
@@ -62,25 +69,25 @@
 				perCeliaco=true;
 			}
 			if(request.getParameter("priceInput").equals("")){
-				//se Ã¨ la stringa vuota significa che non ho inserito il prezzo
-				prezzoNonInserito = 1;
+				//se ÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
+				prezzoNonInserito = true;
 			}else{
 				//setto a stringa vuota
 			}
 			if(request.getParameter("ricetta").equals("")){
 				// se la stringa vuota allora non ha inserito nessuna ricetta
-				ricettaNonInserita = 1;
+				ricettaNonInserita = true;
 			}
 			
 			
-			if(ricettaNonInserita==0 && prezzoNonInserito ==0){
+			if(ricettaNonInserita==false && prezzoNonInserito ==false){
 				BeanDishWeb beanWebDish = new BeanDishWeb(piatto,ristorante,(String)request.getParameter("ricetta"),perVegano,perCeliaco,Double.parseDouble(request.getParameter("priceInput")),1);
 				request.setAttribute("bean", beanWebDish);
 			%>
 			<jsp:forward page="ConfirmMessage.jsp"></jsp:forward>
 			<%
 			}
-		
+		refresh=true;
 		}
 	}
 %>
@@ -96,7 +103,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" type="text/css" href="modifyDish.css">
+<link rel="stylesheet" type="text/css" href="StyleModifyDish.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -121,15 +128,13 @@
 			<div id="containerSelect">
 				<select id="select" name="piatto">
 <%
-		ArrayList<String> obs1 = (ArrayList<String>) request.getAttribute("listaPiatti");
+		
 		String value1;
-		while(!obs1.isEmpty()){
-			value1 = obs1.get(0);
-			obs1.remove(0);
+		for(String elem: obs1){
 			%>
-			<option><%=value1%></option>
+			<option><%=elem%></option>
 			<%
-}
+		}
 		
 %>
 				</select>
@@ -139,13 +144,11 @@
 				<select id="sel" name="ristorante">
 				<%
 		
-			ArrayList<String> obs2 = (ArrayList<String>)request.getAttribute("listaRistoranti");
+			
 			String value2;
-			while(!obs2.isEmpty()){
-				value2 = obs2.get(0);
-				obs2.remove(0);
+			for(String elem:obs2){
 				%>
-				<option><%=value2%></option>
+				<option><%=elem%></option>
 				<%
 			}
 %>
@@ -170,6 +173,11 @@
 			<div>
 				<input type="submit" id="continue" value="CONTINUE" name="continue4">
 			</div>
+			
+			<label id="campovuoto"><%if(refresh) out.print("Mancante"); %></label>
+			<label id="prezzovuoto"><%if(refresh) out.print("Mancante"); %></label>
+			<label id="piattomancante"><%if(refresh) out.print("Mancante"); %></label>
+			<label id="ristorantemancante"><%if(refresh) out.print("Mancante"); %></label>
 			
 		</form>
 		
