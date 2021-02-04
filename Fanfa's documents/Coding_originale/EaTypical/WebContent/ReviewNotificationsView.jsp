@@ -67,6 +67,7 @@
 			
 			
 			<table >
+			<caption>Recensioni</caption>
 				<tr>
 					<th id="turistath">Turista</th>
 					<th id="ristoranteth">Ristorante</th>
