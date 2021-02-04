@@ -18,16 +18,16 @@ import logic.model.Tourist;
 
 public class ReviewsDAO {
 
-	private ReviewsDAO() {};
+	public static final String DRIVER = "com.mysql.jdbc.Driver";
+	public static final String CONTENUTO = "Contenuto";
 
 
     public static List<Review> findRestaurantReviews(String restaurant) throws ClassNotFoundException, SQLException   {
         Statement stmt = null;
         Connection conn = null;
-        String driverClassName = "com.mysql.jdbc.Driver";
         List<Review> listOfReviews = new ArrayList<>();
         try {
-            Class.forName(driverClassName);
+            Class.forName(DRIVER);
 
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -37,7 +37,7 @@ public class ReviewsDAO {
 	            rs = QueryReview.selectReviews(stmt,restaurant);
 	            if(rs.first()) {
 		            do{								
-		                String text = rs.getString("Contenuto");
+		                String text = rs.getString(CONTENUTO);
 		                int vote = rs.getInt("Voto");
 		                Tourist tourist=new Tourist(null,null,rs.getString("UsernameTurista"),null,null,null);
 		                Review rev = new Review(text,tourist, vote,null);
@@ -63,9 +63,8 @@ public class ReviewsDAO {
 public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException, SQLException  {
         Statement stmt = null;
         Connection conn = null;
-        String driverClassName = "com.mysql.jdbc.Driver";
         String name=rest.getName();
-        Class.forName(driverClassName);
+        Class.forName(DRIVER);
         conn = Connect.getInstance().getDBConnection();
 
         stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -90,11 +89,10 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
     public static Review findRestaurantReviews(String restaurant,String username) throws ClassNotFoundException, SQLException {		//recensione di un certo ristorante e di un certo utente
         Statement stmt = null;
         Connection conn = null;
-        String driverClassName = "com.mysql.jdbc.Driver";
         
         Review rev;
         
-            Class.forName(driverClassName);
+            Class.forName(DRIVER);
 
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -103,7 +101,7 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
             
 	            rs = QueryReview.selectReviewsByName(stmt,restaurant, username);
 	            do{									
-	                String text = rs.getString("Contenuto");
+	                String text = rs.getString(CONTENUTO);
 	                int vote = rs.getInt("Voto");
 	                rev = new Review(text, vote);
 	            }while(rs.next());  
@@ -117,13 +115,12 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
     public static void insertReview(Review review) throws ClassNotFoundException, SQLException  {
         Statement stmt = null;
         Connection conn = null;
-        String driverClassName = "com.mysql.jdbc.Driver";
         String username=review.getTourist().getUsername();
         String restaurant=review.getRestaurant().getName();
         String content=review.getText();
         
         int vote=review.getVote();        
-            Class.forName(driverClassName);
+            Class.forName(DRIVER);
             conn = Connect.getInstance().getDBConnection();
 
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -145,12 +142,11 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
     {
     	Statement stmt = null;
         Connection conn = null;
-        String driverClassName = "com.mysql.jdbc.Driver";
         ArrayList<String> restaurants = new ArrayList<>();
         BeanListReviews beanListReviews; 
         
         try {
-            Class.forName(driverClassName);
+            Class.forName(DRIVER);
 
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -172,7 +168,7 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
 	        	while(rs.next()) {
 	        		//creo le recensioni
 	        		beanListReviews.getRestaurants().add(restaurants.get(i));
-	        		beanListReviews.getContents().add(rs.getString("Contenuto"));
+	        		beanListReviews.getContents().add(rs.getString(CONTENUTO));
 	        		beanListReviews.getTourists().add(rs.getString("UsernameTurista"));
 	        		beanListReviews.getVotes().add(rs.getString("Voto"));
 	        	}

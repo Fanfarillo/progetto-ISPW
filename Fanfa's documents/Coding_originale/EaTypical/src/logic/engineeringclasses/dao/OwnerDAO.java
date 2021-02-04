@@ -16,8 +16,7 @@ public class OwnerDAO {
 	
 	private OwnerDAO() {}
     
-    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase4?user=root&password=Monte_2020.&serverTimezone=UTC";
-    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Kp*d.!>3&serverTimezone=UTC";
+    
 
     public static User selectOwner(String user, String pw) throws ClassNotFoundException, SQLException, LoginDBException 
     {
