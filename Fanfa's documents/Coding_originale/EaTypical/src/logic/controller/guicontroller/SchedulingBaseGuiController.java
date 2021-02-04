@@ -20,7 +20,7 @@ public abstract class SchedulingBaseGuiController extends UserBaseGuiController 
 	protected ConvertedBeanSchedule[] convertedScheduling;
 	protected String errorMessage="";
 	
-	public SchedulingBaseGuiController(Session bs) {
+	protected SchedulingBaseGuiController(Session bs) {
 		super(bs);
 	}
 	

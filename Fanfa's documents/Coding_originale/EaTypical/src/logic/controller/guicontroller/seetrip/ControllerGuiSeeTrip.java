@@ -22,13 +22,18 @@ public class ControllerGuiSeeTrip extends SchedulingBaseGuiController {
 	public ControllerGuiSeeTrip(String city, BeanOutputSchedule[] scheduling, Session bs) {
 		super(bs);
 		this.city=city;
-		this.scheduling=scheduling;
+		
+		if(scheduling!=null && scheduling.length==0) this.scheduling=null;
+		else this.scheduling=scheduling;
 	}
 	
 	public ControllerGuiSeeTrip(String city, BeanOutputSchedule[] scheduling, String errorMessage, Session bs) {
 		super(bs);
 		this.city=city;
-		this.scheduling=scheduling;
+		
+		if(scheduling!=null && scheduling.length==0) this.scheduling=null;
+		else this.scheduling=scheduling;
+		
 		this.errorMessage=errorMessage;
 	}
 

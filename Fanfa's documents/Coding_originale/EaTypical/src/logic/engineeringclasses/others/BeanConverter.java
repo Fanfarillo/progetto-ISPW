@@ -20,7 +20,7 @@ public class BeanConverter {
 		
 		Tourist tourist = (Tourist) user;
 		List<Scheduling> tripList = tourist.getTrip();
-		if(tripList==null || tripList.isEmpty()) return null;
+		if(tripList==null || tripList.isEmpty()) return new BeanOutputSchedule[0];
 		
 		BeanOutputSchedule[] tripArray = new BeanOutputSchedule[tripList.size()];
 		Iterator<Scheduling> iter = tripList.iterator();

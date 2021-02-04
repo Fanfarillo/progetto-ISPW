@@ -80,7 +80,7 @@
 		<input id="sponsorRestaurant" type="submit" name="Sponsor Restaurant SR1" value="Sponsor Restaurant" disabled>
 		<input id="manageMenu" type="submit" name="Manage Menu SR1" value="Manage Menu">
 		<input id="back" type="submit" name="Back SR1" value="Back">
-		<img id="fotoUtente" src="utente.jpg"/>
+		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
 		<div class="box-1">
 			<p>Please, insert name, address and city of your restaurant:</p>

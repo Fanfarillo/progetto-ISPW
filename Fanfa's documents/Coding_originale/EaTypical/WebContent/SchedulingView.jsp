@@ -98,13 +98,14 @@
 		
 		<div class="box">
 			<table>
+			<caption>Your scheduling</caption>
 				<tr>
-					<th class="date">Date</th>
-					<th class="hour">Hour</th>
-					<th class="restName">Restaurant</th>
-					<th class="address">Address</th>
-					<th class="avgPrice">Avg Price</th>
-					<th class="avgVote">Avg Vote</th>
+					<th class="date" scope="col">Date</th>
+					<th class="hour" scope="col">Hour</th>
+					<th class="restName" scope="col">Restaurant</th>
+					<th class="address" scope="col">Address</th>
+					<th class="avgPrice" scope="col">Avg Price</th>
+					<th class="avgVote" scope="col">Avg Vote</th>
 				</tr>
 <%
 				for(int i=0; i<convertedScheduling.length; i++) {

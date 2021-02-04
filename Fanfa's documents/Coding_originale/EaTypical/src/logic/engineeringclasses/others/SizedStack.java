@@ -91,7 +91,7 @@ public class SizedStack {
 		{
 			this.firstPage=this.webHomeTourist;
 		}
-		else if(!this.isWeb&&isOwner)
+		else if(isOwner)
 		{
 			this.firstPage=this.homeOwner;
 		}

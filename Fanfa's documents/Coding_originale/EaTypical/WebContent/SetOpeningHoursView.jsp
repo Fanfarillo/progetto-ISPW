@@ -134,7 +134,7 @@
 		<input id="sponsorRestaurant" type="submit" name="Sponsor Restaurant SR2" value="Sponsor Restaurant">
 		<input id="manageMenu" type="submit" name="Manage Menu SR2" value="Manage Menu">
 		<input id="back" type="submit" name="Back SR2" value="Back">
-		<img id="fotoUtente" src="utente.jpg"/>
+		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
 		
 		<input id="checkSunLunch" class="checkLunch" type="checkbox" name="checkSunLunch">

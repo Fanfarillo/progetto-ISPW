@@ -109,7 +109,7 @@ public class ControllerGuiSetOpeningHours extends OwnerBaseGuiController {
     	
     		bnr.setOpeningHours(openingHours);
     		SponsorRestaurant sponsorRest = new SponsorRestaurant();
-    		sponsorRest.saveRestaurant(this.bnr);;
+    		sponsorRest.saveRestaurant(this.bnr);
     		savedLabel.setText(this.savedMessage);
     	}
     	
@@ -125,7 +125,7 @@ public class ControllerGuiSetOpeningHours extends OwnerBaseGuiController {
     		Parent root=loader.load();
     		myAnchorPane.getChildren().setAll(root);
     	}
-    	;
+    	
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

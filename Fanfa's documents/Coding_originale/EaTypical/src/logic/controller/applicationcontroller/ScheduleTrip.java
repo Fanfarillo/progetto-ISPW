@@ -211,7 +211,7 @@ public class ScheduleTrip {
 			// If number of restaurants in validRestaurants is not lower than mt, then we are already satisfied for this array-list.
 			// Else, we have to add some other restaurant in validRestaurants to reach the minimum threshold.
 			if(validRestaurants.size() < mt) {
-				validRestaurants = addValidRestaurants(beanCRS, listOfRestaurants, validRestaurants, mt);
+				return addValidRestaurants(beanCRS, listOfRestaurants, validRestaurants, mt);
 			}
 			
 		}
@@ -255,18 +255,16 @@ public class ScheduleTrip {
 			
 			// If minimum threshold is reached, then we will accept only a part of restaurant whose quality (but not budget) is compliant with tourist's request.
 			// Else, we will accept all these restaurants and we will look for restaurants whose quality and budget are NOT compliant with tourist's request.
-			List<Restaurant> validRestaurants2;
 			if(temporaryList.size() >= remainingRestaurants) {
-				validRestaurants2 = addValidRestaurantsNotRespectingBudget(validRestaurants, temporaryList, remainingRestaurants);
+				return addValidRestaurantsNotRespectingBudget(validRestaurants, temporaryList, remainingRestaurants);
 			}			
 			else {
 				validRestaurants.addAll(temporaryList);
 				remainingRestaurants = mt-validRestaurants.size();
 				
 				temporaryList.clear();										// Clear of temporaryList
-				validRestaurants2 = addValidRestaurantsNotRespectingBudgetVote(validRestaurants, temporaryList, listOfRestaurants, remainingRestaurants, mt);				
+				return addValidRestaurantsNotRespectingBudgetVote(validRestaurants, temporaryList, listOfRestaurants, remainingRestaurants, mt);				
 			}
-			validRestaurants=validRestaurants2;
 			
 		}
 		return validRestaurants;		
