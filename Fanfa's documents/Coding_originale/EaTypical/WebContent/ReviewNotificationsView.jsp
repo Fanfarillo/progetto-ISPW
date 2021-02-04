@@ -68,10 +68,10 @@
 			
 			<table >
 				<tr>
-					<th>Turista</th>
-					<th>Ristorante</th>
-					<th>Leggi recensione</th>
-					<th>Voto</th>
+					<th id="turistath">Turista</th>
+					<th id="ristoranteth">Ristorante</th>
+					<th id="recensioneth">Leggi recensione</th>
+					<th id="vototh">Voto</th>
 				</tr>
 <%
 			BeanReview beanReview;
@@ -80,10 +80,10 @@
 				System.out.print(beanListReviews.getTourists().get(i) +beanListReviews.getRestaurants().get(i)+ beanListReviews.getContents().get(i)+ beanListReviews.getVotes().get(i));
 				%>
 				<tr>
-					<th><%=beanReview.getTourist() %></th>
-					<th><%=beanReview.getRestaurant() %></th>
-					<th><%=beanReview.getContent() %></th>
-					<th><%=beanReview.getVoto() %></th>
+					<th id="riga1"><%=beanReview.getTourist() %></th>
+					<th id="riga2"><%=beanReview.getRestaurant() %></th>
+					<th id="riga3"><%=beanReview.getContent() %></th>
+					<th id="riga4"><%=beanReview.getVoto() %></th>
 				</tr>
 				<%
 			}

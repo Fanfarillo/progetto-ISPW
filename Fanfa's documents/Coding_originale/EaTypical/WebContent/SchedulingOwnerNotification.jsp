@@ -68,10 +68,10 @@
 			
 			<table >
 				<tr>
-					<th>Turista</th>
-					<th>Ristorante</th>
-					<th>Data</th>
-					<th>Momento giornata</th>
+					<th id="thturista">Turista</th>
+					<th id="thristorante">Ristorante</th>
+					<th id="thdata">Data</th>
+					<th id="thgiornata">Momento giornata</th>
 				</tr>
 <%
 			BeanReview beanReview;
@@ -80,10 +80,10 @@
 
 				%>
 				<tr>
-					<th><%=beanListNotificationsScheduling.getNotifications().get(i).getUsername() %></th>
-					<th><%=beanListNotificationsScheduling.getNotifications().get(i).getRistorante() %></th>
-					<th><%=beanListNotificationsScheduling.getNotifications().get(i).getData() %></th>
-					<th><%=beanListNotificationsScheduling.getNotifications().get(i).isPranzoVsCena() %></th>
+					<th id="riga4"><%=beanListNotificationsScheduling.getNotifications().get(i).getUsername() %></th>
+					<th id="riga3"><%=beanListNotificationsScheduling.getNotifications().get(i).getRistorante() %></th>
+					<th id="riga2"><%=beanListNotificationsScheduling.getNotifications().get(i).getData() %></th>
+					<th id="riga1"><%=beanListNotificationsScheduling.getNotifications().get(i).isPranzoVsCena() %></th>
 					
 				</tr>
 				<%
