@@ -9,7 +9,9 @@
 <%	ArrayList<String> obs1;
 	obs1=(ArrayList<String>) session.getAttribute("listaPiatti");
 	ArrayList<String> obs2;
-	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); %>
+	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); 
+	String errore = "N";
+	errore = (String)session.getAttribute("errore");%>
 <%
 	
 	if(request.getParameter("home1")!=null) {
@@ -41,12 +43,12 @@
 %>
 
 <%
-	int refresh = 0;
+	boolean refresh = false;
 	
 	if(request.getParameter("continue1")!=null) {
-		int ricettaVuota = 0;
+		boolean ricettaVuota = false;
 		//int count=0;
-		int prezzoVuoto = 0;
+		boolean prezzoVuoto = false;
 		//SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
 		//mi porto appresso le informazioni per l'inserimento del piatto
 		
@@ -68,18 +70,18 @@
 			celiaco=true;
 		}
 		if(request.getParameter("prezzo").equals("")){
-			//se ÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
-			prezzoVuoto = 1;
+			//se ÃÂÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
+			prezzoVuoto = true;
 		}else{
 			//setto a stringa vuota
 		}
 		if(request.getParameter("ricetta").equals("")){
 			// se la stringa vuota allora non ha inserito nessuna ricetta
-			ricettaVuota = 1;
+			ricettaVuota = true;
 		}
 		
 		
-		if(ricettaVuota==0 && prezzoVuoto ==0){
+		if(ricettaVuota==false && prezzoVuoto ==false){
 			BeanDishWeb beanWebDish = new BeanDishWeb(piatto,ristorante,(String)request.getParameter("ricetta"),vegano,celiaco,Double.parseDouble(request.getParameter("prezzo")),0);
 			request.setAttribute("bean", beanWebDish);
 		%>
@@ -88,7 +90,7 @@
 		
 		}
 		
-		refresh = 1;
+		refresh = true;
 	}
 %>
 
@@ -173,10 +175,16 @@
 			</div>
 	
 			
-			<label id="campovuoto"><%if(refresh==1) out.print("Mancante"); %></label>
-			<label id="prezzovuoto"><%if(refresh==1) out.print("Mancante"); %></label>
-			<label id="piattomancante"><%if(refresh==1) out.print("Mancante"); %></label>
-			<label id="ristorantemancante"><%if(refresh==1) out.print("Mancante"); %></label>
+			<label id="campovuoto"><%if(refresh){
+										out.print("Mancante");
+									}
+									if(refresh==false && errore.equals("S")){
+										out.print("Il piatto da modificare già appartiene al ristorante selezionato.");
+									}
+									%></label>
+			<label id="prezzovuoto"><%if(refresh) out.print("Mancante"); %></label>
+			<label id="piattomancante"><%if(refresh) out.print("Mancante"); %></label>
+			<label id="ristorantemancante"><%if(refresh) out.print("Mancante"); %></label>
 			
 			<div id="price">
 				<input type="text" id="priceInput" name="prezzo" value="">

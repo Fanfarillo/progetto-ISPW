@@ -1,3 +1,6 @@
+<%@page import="logic.engineeringclasses.dao.RestaurantDAO"%>
+<%@page import="logic.engineeringclasses.dao.RecipeDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="logic.engineeringclasses.exceptions.InvalidDishDelete"%>
 <%@page import="logic.engineeringclasses.bean.manageMenu.BeanDeleteDish"%>
 <%@page import="logic.engineeringclasses.exceptions.InvalidDishModify"%>
@@ -69,7 +72,20 @@
 			try{
 				m.addDish(beanAddDish);
 			}catch(DishAlreadyExists e){
-				System.out.print("Gia esiste\n");
+				//System.out.print("Gia esiste\n");
+				RestaurantDAO restaurantDAO = new RestaurantDAO();		
+				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
+				//setto i ristoranti
+				session.setAttribute("listaRistoranti", obs2);
+				RecipeDAO recipeDAO = new RecipeDAO();
+				//setto le ricette
+				ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
+				session.setAttribute("listaPiatti", obs1);
+				session.setAttribute("errore", "S");
+				%>
+				<jsp:forward page="AddDishView.jsp"></jsp:forward>
+				<%
+				
 			}
 		}else if(b.getTipoModifica() == 1){
 			BeanAddDish beanAddDish = new BeanAddDish(b.getPiatto(),b.getRistorante(),b.getContenuto(),b.isVegano(),b.isCeliaco(),b.getPrezzo(),1);
@@ -77,7 +93,19 @@
 			try{
 				m.modifyDishes(beanAddDish);
 			}catch(InvalidDishModify e2){
-				System.out.print("Non esiste\n");
+				System.out.print("Non esiste\n");				
+				RecipeDAO recipeDAO = new RecipeDAO();
+				//setto le ricette
+				ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
+				session.setAttribute("listaPiatti", obs1);
+				session.setAttribute("errore", "S");
+				RestaurantDAO restaurantDAO = new RestaurantDAO();		
+				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
+				//setto i ristoranti
+				session.setAttribute("listaRistoranti", obs2);
+				%>
+				<jsp:forward page="ModifyDishView.jsp"></jsp:forward>
+				<%
 			}
 		}else if(b.getTipoModifica() == 2){
 			BeanDeleteDish beanDeleteDish = new BeanDeleteDish(b.getRistorante(),b.getPiatto(),2);
@@ -85,7 +113,19 @@
 			try{
 				m.deleteDish(beanDeleteDish);
 			}catch(InvalidDishDelete e3){
-				System.out.println("Non esiste da eliminare");
+				//System.out.println("Non esiste da eliminare");
+				session.setAttribute("errore", "S");
+				RestaurantDAO restaurantDAO = new RestaurantDAO();		
+				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
+				//setto i ristoranti
+				session.setAttribute("listaRistoranti", obs2);
+				RecipeDAO recipeDAO = new RecipeDAO();
+				//setto le ricette
+				ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
+				session.setAttribute("listaPiatti", obs1);
+				%>
+				<jsp:forward page="DeleteDishView.jsp"></jsp:forward>
+				<%
 			}
 		}
 		%>

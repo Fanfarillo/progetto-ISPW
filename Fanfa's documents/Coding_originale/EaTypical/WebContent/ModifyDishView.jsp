@@ -12,7 +12,9 @@
 <%	ArrayList<String> obs1;
 	obs1=(ArrayList<String>) session.getAttribute("listaPiatti");
 	ArrayList<String> obs2;
-	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); %>
+	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); 
+	String errore = "N";
+	errore = (String)session.getAttribute("errore");%>
 	
 <%
 	if(request.getParameter("home4")!=null) {
@@ -69,7 +71,7 @@
 				perCeliaco=true;
 			}
 			if(request.getParameter("priceInput").equals("")){
-				//se ÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
+				//se ÃÂÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
 				prezzoNonInserito = true;
 			}else{
 				//setto a stringa vuota
@@ -160,7 +162,7 @@
 			</div>
 			
 			<div>
-				<textarea id = "area" rows="15" cols="76" name="ricetta">Inserire la nuova ricetta ...</textarea>	
+				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Scrivi la nuova ricetta..."></textarea>	
 			</div>
 			
 			<div id="check">
@@ -174,7 +176,14 @@
 				<input type="submit" id="continue" value="CONTINUE" name="continue4">
 			</div>
 			
-			<label id="campovuoto"><%if(refresh) out.print("Mancante"); %></label>
+			<label id="campovuoto"><%if(refresh){
+										out.print("Mancante");
+									}
+									if(refresh!=true && errore.equals("S")){
+										out.print("Il piatto da modificare non appartiene al ristorante selezionato.");
+									}
+									%></label>
+			}
 			<label id="prezzovuoto"><%if(refresh) out.print("Mancante"); %></label>
 			<label id="piattomancante"><%if(refresh) out.print("Mancante"); %></label>
 			<label id="ristorantemancante"><%if(refresh) out.print("Mancante"); %></label>

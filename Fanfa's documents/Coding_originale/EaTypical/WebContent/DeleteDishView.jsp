@@ -6,6 +6,14 @@
     
 <%@page import="logic.engineeringclasses.others.SizedStack" %>
 
+<%	ArrayList<String> obs1;
+	obs1=(ArrayList<String>) session.getAttribute("listaPiatti");
+	ArrayList<String> obs2;
+	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); 
+	String errore = "N";
+	errore = (String)session.getAttribute("errore");%>
+	
+
 <%
 	if(request.getParameter("home7")!=null) {
 		//SizedStack.getSizedStack(true).clearStack();
@@ -66,7 +74,7 @@
 <html lang="en">
 <head>
 
-<link rel="stylesheet" type="text/css" href="DeleteDish.css">
+<link rel="stylesheet" type="text/css" href="StyleDeleteDish.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -96,13 +104,11 @@
 				<select id="select" name="piatto">
 				<%
 
-		ArrayList<String> obs1 = (ArrayList<String>) request.getAttribute("listaPiatti");
+		
 		String value1;
-		while(!obs1.isEmpty()){
-			value1 = obs1.get(0);
-			obs1.remove(0);
+		for(String elem: obs1){
 			%>
-			<option><%=value1%></option>
+			<option><%=elem%></option>
 			<%
 }
 		
@@ -114,13 +120,11 @@
 				<select id="select" name="ristorante">
 				<%
 		
-			ArrayList<String> obs2 = (ArrayList<String>)request.getAttribute("listaRistoranti");
+			
 			String value2;
-			while(!obs2.isEmpty()){
-				value2 = obs2.get(0);
-				obs2.remove(0);
+			for(String elem: obs2){
 				%>
-				<option><%=value2%></option>
+				<option><%=elem%></option>
 				<%
 			}
 			
@@ -128,6 +132,8 @@
 %>
 				</select>
 			</div>	
+			
+			<label id="errore"><% if(errore.equals("S"))out.print("Il piatto inserito non appartiene al ristorante");%></label>
 			
 			<input id="delete" name="delete2" value="DELETE" type="submit">
 			
