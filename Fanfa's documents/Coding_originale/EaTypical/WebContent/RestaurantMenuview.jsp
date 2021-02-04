@@ -73,7 +73,7 @@
 		session.setAttribute("listaRistoranti", obs2);
 		RecipeDAO recipeDAO = new RecipeDAO();
 		//setto le ricette
-		ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
+		ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectAllRecipe("liuk");
 		session.setAttribute("listaPiatti", obs1);
 		
 		%>
