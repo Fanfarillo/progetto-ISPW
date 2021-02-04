@@ -10,9 +10,17 @@
 <%@page import="logic.engineeringclasses.dao.FavouriteRestDAO"%>
  <%@page import="logic.engineeringclasses.others.Session" %>
  <%Session bs;
- bs=(Session)session.getAttribute("session"); %>
+ bs=(Session)session.getAttribute("session"); 
+ String userString;
+ if(bs!=null&&bs.getUser()!=null) {
+ 	userString=bs.getUser().getUsername();
+ }
+ else {
+ 	userString = "Not logged";
+ }
+ 
+ %>
 <%
-	 
 	 boolean genericError=false;
 	 boolean loginError=false;
 	 boolean notSelectedRest=false;
@@ -26,6 +34,7 @@
 	 String city=(String)session.getAttribute("city");
 	 String addr="";
 	 String vote="";
+	 String actualRest="";
 	 
 	 ChooseRestaurant cr=new ChooseRestaurant();
 		try {
@@ -39,8 +48,6 @@
 		{
 			genericError=true;
 		}
-		
-		
 		
 		celiacs= (request.getParameterValues("celFilter")!=null&&request.getParameterValues("celFilter")[0].equals("forCeliacs"));
 		vegans= (request.getParameterValues("vegFilter")!=null&&request.getParameterValues("vegFilter")[0].equals("forVegans"));
@@ -86,6 +93,7 @@
     	if(request.getParameter("Update info val")!=null) {
     			   String rest=request.getParameter("restScroll");
     		   	   if(rest!=null){
+    		   		  actualRest=rest;
     		   		  for(ArrayList<String> restName : allRestaurants){
     		   			  if(restName.get(0).equals(rest)){
     		   				  addr=restName.get(1);
@@ -127,7 +135,7 @@
 			}
 			else{
 				String rest=request.getParameter("restScroll");
-				session.setAttribute("restaurant",rest);			
+				session.setAttribute("restaurantName",rest);			
     		%>
     			<jsp:forward page="ReadReviewsView.jsp"/>
     		<%
@@ -159,7 +167,7 @@
     	
 %>   
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Select Restaurant</title>
@@ -176,11 +184,7 @@
 			<input id="readReviews" class="button" type="submit" name="Read Reviews restv" value="Read Reviews">
 			<input id="writeReview" class="button" type="submit" name="Write Review restv" value="Write Review">
 			<img id="fotoUtente" src="utente.jpg" alt="user"/>
-			<label id="nomeUtente"><%if(bs!=null&&bs.getUser()!=null){
-					%>=bs.getUser().getUsername()<%
-		}
-		else{
-		%>not logged<%		}	%></label>
+			<label id="nomeUtente"><%=userString%></label>
 			
 			<input type="checkbox" id="celFilter" name="celFilter" value="forCeliacs">
 			<input type="checkbox" id="vegFilter" name="vegFilter" value="forVegans">
@@ -218,7 +222,7 @@
 					{
 						name=rest.get(0);
 						%>
-				        <option value="<%=name %>"><%=name %></option>
+				        <option <%if(name.equals(actualRest)){ %>selected="selected" <% }  %> value="<%=name %>"><%=name %></option>
 				        <%				        
 					}								
 				}
@@ -228,7 +232,7 @@
 				{
 					name=rest.get(0);
 					%>
-			        <option value="<%=name %>"><%=name %></option>
+			        <option <%if(name.equals(actualRest)){ %>selected="selected" <% }  %> value="<%=name %>"><%=name %></option>
 			        <%				        
 				}								
 			}
@@ -238,7 +242,7 @@
 				{
 					name=rest.get(0);
 					%>
-			        <option value="<%=name %>"><%=name %></option>
+			        <option <%if(name.equals(actualRest)){ %>selected="selected" <% }  %> value="<%=name %>"><%=name %></option>
 			        <%				        
 				}								
 			}
@@ -248,7 +252,7 @@
 				{
 					name=rest.get(0);
 					%>
-			        <option value="<%=name %>"><%=name %></option>
+			        <option <%if(name.equals(actualRest)){ %>selected="selected" <% }  %> value="<%=name %>"><%=name %></option>
 			        <%				        
 				}								
 			}
@@ -258,7 +262,7 @@
 			
 			</select>
 			
-			<input type="text" id="addrtx" name="addrtx"  readonly value=<%=addr %>>
+			<input type="text" id="addrtx" name="addrtx"  readonly value="<%=addr%>">
 			<input type="text" id="votetx" name="votetx" readonly  value=<%=vote %>>
 			
 		</form>

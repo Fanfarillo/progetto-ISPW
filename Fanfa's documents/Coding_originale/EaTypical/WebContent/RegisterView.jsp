@@ -69,7 +69,6 @@
 	    		else
 	    		{
 	    			user=new Tourist(name, surname, username, null, null,null);
-	    			System.out.println("DragonBall 1");
 	    		}			//create the correct user entity
 	    		
 	    		

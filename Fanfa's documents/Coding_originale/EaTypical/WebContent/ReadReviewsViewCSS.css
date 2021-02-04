@@ -74,6 +74,14 @@ body {
 	color: red;
 	font-size: 20px;
 }
+
+#loginError {
+	position: absolute;
+	left: 38%;
+	top: 15%;
+	color: red;
+}
+
 #ristName {
 	position: absolute;
 	left: 50%;

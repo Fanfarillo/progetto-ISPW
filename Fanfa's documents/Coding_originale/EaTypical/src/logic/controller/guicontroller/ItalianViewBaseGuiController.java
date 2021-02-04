@@ -85,7 +85,7 @@ public abstract class ItalianViewBaseGuiController extends UserBaseGuiController
     	String selection;
     	if(imageId.equals("laquila"))
     	{
-    		selection="L'Aquila";
+    		selection="L Aquila";
     	}
     	else
     	{

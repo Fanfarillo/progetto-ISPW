@@ -13,7 +13,7 @@ public enum Cities {
 	ANCONA("Ancona"),
 	PERUGIA("Perugia"),
 	ROMA("Roma"),
-	AQUILA("L'Aquila"),
+	AQUILA("L Aquila"),
 	CAMPOBASSO("Campobasso"),
 	NAPOLI("Napoli"),
 	BARI("Bari"),

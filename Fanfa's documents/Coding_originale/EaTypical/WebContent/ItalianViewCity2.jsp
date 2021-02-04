@@ -4,7 +4,17 @@
 
 <%@page import="logic.engineeringclasses.others.Session" %>
  <%Session bs;
-  bs=(Session)session.getAttribute("session"); %>
+  bs=(Session)session.getAttribute("session"); 
+  String userString;
+  boolean loginError=false;
+  if(bs!=null&&bs.getUser()!=null) {
+  	userString=bs.getUser().getUsername();
+  }
+  else {
+  	userString = "Not logged";
+  }
+  
+  %>
 
 
 <% boolean notSelectedCity=false; %>
@@ -15,9 +25,12 @@
 <%
     	}
     	if(request.getParameter("Schedule Trip ivc2")!=null) {
+    		if(bs==null||bs.getUser()==null) loginError=true;
+    		else{
 %>
 			<jsp:forward page="ItalianViewCity.jsp"/>
 <%
+    		}
     	}
     	
     	if(request.getParameter("Back ivc2")!=null) {
@@ -56,7 +69,7 @@
     			else if(city.equals("RM")){
     				city="Roma";}
     			else if(city.equals("AQ")){
-    				city="L'Aquila";}
+    				city="L Aquila";}
     			else if(city.equals("CB")){
     				city="Campobasso";}
     			else if(city.equals("NA")){
@@ -72,7 +85,7 @@
     			else{
     				city="Cagliari";}
     			
-    			session.setAttribute("citta",city);
+    			session.setAttribute("city",city);
     			%>
     				 <jsp:forward page="RestaurantView.jsp"/> 
     			<%
@@ -85,7 +98,7 @@
 
     
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>City selection</title>
@@ -105,13 +118,9 @@
 		<input id="back" type="submit" name="Back ivc2" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="userphoto"/>
 		
-		<label id="nomeUtente"><%if(bs!=null&&bs.getUser()!=null){
-					%>=bs.getUser().getUsername()<%
-		}
-		else{
-		%>not logged<%		}	%></label>
+		<label id="nomeUtente"><%=userString %></label>
 		<label id="selectCity">Click on the map or select a city from the drop-down menu:</label>
-		
+		<% if(loginError){ %><label id="loginError">you must be logged to use this function.</label><% } %>
 		
 		<select id="scrollbar" name="Scroll">
 			<option disabled selected>City</option>
@@ -127,7 +136,7 @@
 			<option value="AN">Ancona</option>
 			<option value="PG">Perugia</option>
 			<option value="RM">Roma</option>
-			<option value="AQ">L'Aquila</option>
+			<option value="AQ">L Aquila</option>
 			<option value="CB">Campobasso</option>
 			<option value="NA">Napoli</option>
 			<option value="PZ">Potenza</option>

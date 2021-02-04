@@ -37,7 +37,8 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
 	private String writeReviewPage="/logic/view/standalone/ChooseRestaurant/WriteReviewView.fxml";
 	private String readReviewsPage="/logic/view/standalone/ChooseRestaurant/ReadReviewsView.fxml";
 	private String genericErrortext="Please try again!";
-	
+    private ChooseRestaurant cr;
+    private String city;
 	
 	
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -88,27 +89,13 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     @FXML // fx:id="writeReviewButton"
     private Button writeReviewButton; // Value injected by FXMLLoader
     
-    
+
     public ControllerGuiRestaurantView(String city, Session bs)
    	{
    		super(bs);
-   		ChooseRestaurant cr=new ChooseRestaurant();
-   		try {
-   		ChooseRestaurantBean cb=cr.getallRestaurants(city);
-   		this.allRestaurants=cb.getAllRestaurants();
-   		this.celiacRestaurants=cb.getCeliacRestaurants();
-   		this.veganRestaurants=cb.getVeganRestaurants();
-   		this.bothRestaurants=cb.getBothRestaurants();
-   		setAllNames();
-   		setVeganNames();
-   		setCeliacNames();
-   		setBothNames();
-   		}
-   		catch(Exception e)
-   		{
-   			setGenericError("Please try again");
-   		}
-
+   		this.city=city;
+   		cr=new ChooseRestaurant();
+   		
    	}
     
     private void setGenericError(String m)
@@ -121,12 +108,13 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
 
     @FXML
     void goToReadreviewsPage() throws IOException {		//TO DO
+    	
     	boolean restChosen=restChoice.getSelectionModel().isEmpty();
     	if(!restChosen)
     	{
     		String restaurant = restChoice.getSelectionModel().getSelectedItem();
 	    	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.readReviewsPage));
-			loader.setControllerFactory(c -> new ControllerGuiWriteReview(restaurant, this.bs));
+			loader.setControllerFactory(c -> new ControllerGuiReadReviews(restaurant, this.bs));
 			Parent root=loader.load();
 			myAnchorPane.getChildren().setAll(root);
     	}
@@ -137,7 +125,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     	boolean restChosen=restChoice.getSelectionModel().isEmpty();
     	if(!isLogged())
     	{   		
-        	this.mustLoginLabel.setText(errorMessage);
+        	this.mustLoginLabel.setText(mustLoginMessage);
         	this.mustLoginLabel.setVisible(true);  
     	}
     	else if((!restChosen  &&  isLogged()))
@@ -149,8 +137,8 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
 			myAnchorPane.getChildren().setAll(root);
     	}
     	else
-    	{   		
-    		mustLoginLabel.setText(errorMessage);
+    	{
+    		mustLoginLabel.setText("You have to choose a restaurant!");
         	mustLoginLabel.setVisible(true);  
         	
     	}
@@ -163,7 +151,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     	{
 	    	if(!isLogged())
 	    	{   		
-	        	this.mustLoginLabel.setText(errorMessage);
+	        	this.mustLoginLabel.setText(mustLoginMessage);
 	        	this.mustLoginLabel.setVisible(true);  
 	    	}
 	    	else if((!restChosen  &&  isLogged()))
@@ -188,10 +176,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
     	{
     		name=restChoice.getValue();
     		checkName(name);
-    		for(List<String> rest : this.allRestaurants)
-    		{
-    			this.allRestaurantNames.add(rest.get(0));
-    		}
+    		
     		
     	}
 
@@ -306,8 +291,25 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
         	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
         else
         	nomeUtenteLabel.setText("Not logged");
-        restChoice.setItems(allRestaurantNames);
         
+        try {
+       		ChooseRestaurantBean cb=cr.getallRestaurants(city);
+       		this.allRestaurants=cb.getAllRestaurants();
+       		this.celiacRestaurants=cb.getCeliacRestaurants();
+       		this.veganRestaurants=cb.getVeganRestaurants();
+       		this.bothRestaurants=cb.getBothRestaurants();
+       		setAllNames();
+       		setVeganNames();
+       		setCeliacNames();
+       		setBothNames();
+       		restChoice.setItems(allRestaurantNames);
+       		}
+	        
+       		catch(Exception e)
+       		{
+       			setGenericError("Please try again");
+       		}
+
         
     }
 }

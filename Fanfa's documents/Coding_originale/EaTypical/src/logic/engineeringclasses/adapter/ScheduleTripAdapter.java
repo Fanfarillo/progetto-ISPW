@@ -1,6 +1,7 @@
 package logic.engineeringclasses.adapter;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import logic.controller.applicationcontroller.ScheduleTrip;
@@ -16,23 +17,39 @@ public class ScheduleTripAdapter implements ChooseSpecificRestaurants{
 		this.st=st;
 	}
 	
-	public List<Restaurant> findallRestaurants(String city) throws ClassNotFoundException, NoResultException, SQLException
+	public List<Restaurant> findAllRestaurants(String city) throws ClassNotFoundException, SQLException
 	{
-		return this.st.callDAO(city,false,false);
+		List<Restaurant> rest= new ArrayList<>();
+		try {
+		rest= this.st.callDAO(city,false,false);
+		}catch(NoResultException ne) {}
+		return rest;
 	}
 	
-	public List<Restaurant> findCeliacRestaurants(String city) throws ClassNotFoundException, NoResultException, SQLException
+	public List<Restaurant> findCeliacRestaurants(String city) throws ClassNotFoundException, SQLException
 	{
-		return this.st.callDAO(city,false,true);
+		List<Restaurant> rest= new ArrayList<>();
+		try {
+		rest= this.st.callDAO(city,false,true);
+		}catch(NoResultException ne) {}
+		return rest;
 	}
 	
-	public List<Restaurant> findVeganRestaurants(String city) throws ClassNotFoundException, NoResultException, SQLException
+	public List<Restaurant> findVeganRestaurants(String city) throws ClassNotFoundException, SQLException
 	{
-		return this.st.callDAO(city,true,false);
+		List<Restaurant> rest= new ArrayList<>();
+		try {
+		rest= this.st.callDAO(city,true,false);
+		}catch(NoResultException ne) {}
+		return rest;
 	}
 	
-	public List<Restaurant> findBothRestaurants(String city) throws ClassNotFoundException, NoResultException, SQLException
+	public List<Restaurant> findBothRestaurants(String city) throws ClassNotFoundException, SQLException
 	{
-		return this.st.callDAO(city,true,true);
+		List<Restaurant> rest= new ArrayList<>();
+		try {
+		rest= this.st.callDAO(city,true,true);
+		}catch(NoResultException ne) {}
+		return rest;
 	}
 }

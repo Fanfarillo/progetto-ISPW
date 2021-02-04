@@ -42,7 +42,7 @@
             <Image url="@../utente.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="591.0" layoutY="150.0" text="NomeUtente" textFill="WHITE">
+      <Label fx:id="nomeUtente" layoutX="591.0" layoutY="150.0" text="NomeUtente" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -97,5 +97,6 @@
       <Label fx:id="passwordError" layoutX="335.0" layoutY="341.0" prefHeight="18.0" prefWidth="162.0" textFill="RED" visible="false" />
       <Label fx:id="newUsernameError" layoutX="280.0" layoutY="134.0" textFill="RED" />
       <Label fx:id="genericError" layoutX="266.0" layoutY="109.0" textFill="RED" />
+      <Label fx:id="mustLoginLabel" layoutX="291.0" layoutY="84.0" textFill="RED" visible="false" />
    </children>
 </AnchorPane>

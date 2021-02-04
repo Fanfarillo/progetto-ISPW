@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.controller.guicontroller.ChooseRestaurant.ControllerGuiItalianViewCity">
+<AnchorPane fx:id="myAnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.controller.guicontroller.ChooseRestaurant.ControllerGuiItalianViewCityCR">
    <children>
       <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true">
          <image>
@@ -41,9 +41,9 @@
             <Image url="@../utente.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="nomeUtente" layoutX="613.0" layoutY="143.0" textFill="#eeeeee">
+      <Label fx:id="nomeUtente" layoutX="591.0" layoutY="150.0" textFill="#eeeeee">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <ChoiceBox fx:id="choiceBox" layoutX="105.0" layoutY="328.0" prefWidth="150.0" />
@@ -56,11 +56,6 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label layoutX="591.0" layoutY="150.0" text="NomeUtente" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
       <ImageView fx:id="torino" fitHeight="26.0" fitWidth="26.0" layoutX="394.0" layoutY="255.0" onMouseClicked="#selectCityChoiceBox" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../placeicon.png" />

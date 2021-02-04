@@ -37,6 +37,9 @@ public class RegisterGuiController extends UserBaseGuiController {
 
 	@FXML
 	private ResourceBundle resources;
+	
+	@FXML
+	private Label nomeUtente;
 		
 	@FXML
 	private AnchorPane myAnchorPane;
@@ -198,6 +201,8 @@ public class RegisterGuiController extends UserBaseGuiController {
         assert passwordError != null : "fx:id=\"passwordError\" was not injected: check your FXML file 'RegisterView.fxml'.";
         assert newUsernameError != null : "fx:id=\"newUsernameError\" was not injected: check your FXML file 'RegisterView.fxml'.";
         assert genericError != null : "fx:id=\"genericError\" was not injected: check your FXML file 'RegisterView.fxml'.";
-
+        assert nomeUtente != null : "fx:id=\"nomeUtente\" was not injected: check your FXML file 'RegisterView.fxml'.";
+        assert mustLoginLabel != null : "fx:id=\"mustLoginLabel\" was not injected: check your FXML file 'RegisterView.fxml'.";
+        
     }
 }

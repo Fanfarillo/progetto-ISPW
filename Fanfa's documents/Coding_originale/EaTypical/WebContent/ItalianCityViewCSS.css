@@ -208,7 +208,12 @@ body {
 	background-color: rgba(0,0,0,0.7);
 }
 
-
+#loginError {
+	position: absolute;
+	left: 30%;
+	top: 15%;
+	color: red;
+}
 
 
 

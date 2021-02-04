@@ -11,6 +11,7 @@ import logic.engineeringclasses.bean.manageMenu.BeanListReviews;
 import logic.engineeringclasses.others.Connect;
 import logic.engineeringclasses.query.QueryRestaurant;
 import logic.engineeringclasses.query.QueryReview;
+import logic.model.Restaurant;
 import logic.model.Review;
 import logic.model.Tourist;
 
@@ -25,7 +26,6 @@ public class ReviewsDAO {
         Connection conn = null;
         String driverClassName = "com.mysql.jdbc.Driver";
         List<Review> listOfReviews = new ArrayList<>();
-        
         try {
             Class.forName(driverClassName);
 
@@ -35,13 +35,15 @@ public class ReviewsDAO {
             ResultSet rs;
             
 	            rs = QueryReview.selectReviews(stmt,restaurant);
-	            do{								
-	                String text = rs.getString("Contenuto");
-	                int vote = rs.getInt("Voto");
-	                Tourist tourist=new Tourist(null,null,rs.getString("UsernameTurista"),null,null,null);
-	                Review rev = new Review(text,tourist, vote,null);
-	                listOfReviews.add(rev);
-	            }while(rs.next());            
+	            if(rs.first()) {
+		            do{								
+		                String text = rs.getString("Contenuto");
+		                int vote = rs.getInt("Voto");
+		                Tourist tourist=new Tourist(null,null,rs.getString("UsernameTurista"),null,null,null);
+		                Review rev = new Review(text,tourist, vote,null);
+		                listOfReviews.add(rev);
+		            }while(rs.next());
+	            }
             
 
             rs.close();
@@ -70,9 +72,17 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
                     ResultSet.CONCUR_READ_ONLY);
             
         ResultSet rs=QueryReview.getAvg(stmt,name); 
-        Double avgVote=rs.getDouble(0);
-        
-        QueryReview.insertAvg(stmt,avgVote,name);                
+        int cont=0;
+        double avg=0;
+        if(rs.first()) {
+        	do {
+        		cont++;
+        		avg+=rs.getInt("Voto");
+        	}while(rs.next());
+        }
+        if(avg!=0)       	
+        	avg=avg/cont;
+        QueryReview.insertAvg(stmt,avg,name);  
         stmt.close();
         rs.close();
     }
@@ -111,18 +121,14 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
         String username=review.getTourist().getUsername();
         String restaurant=review.getRestaurant().getName();
         String content=review.getText();
-        int vote=review.getVote();
         
-        
-        
+        int vote=review.getVote();        
             Class.forName(driverClassName);
             conn = Connect.getInstance().getDBConnection();
 
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            
-            QueryReview.insertReview(stmt, username, restaurant, content, vote);            
-                        
+            QueryReview.insertReview(stmt, username, restaurant, content, vote);                                  
         stmt.close();
          
     }

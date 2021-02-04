@@ -8,6 +8,7 @@
 
 <%
 Session bs;
+String login;
 if( session.getAttribute("session")==null) 
 {
 bs=new Session(true);
@@ -18,8 +19,8 @@ bs=(Session)session.getAttribute("session");
 
 String errorString = "";
 String userString;
-if(bs.getUser()!=null) {
-	userString = bs.getUser().getUsername();
+if(bs!=null&&bs.getUser()!=null) {
+	userString=bs.getUser().getUsername();
 }
 else {
 	userString = "Not logged";
@@ -28,8 +29,16 @@ else {
 
 
 <%    	
-    	if(request.getParameter("Logout")!=null) {   		
+    	if(request.getParameter("Logout")!=null) { 
+    		if(bs!=null&&bs.getUser()!=null)
+    		{
+    			session.setAttribute("session", new Session(true));
+    			%><jsp:forward page="HomePageTouristView.jsp"/><%
+    		}
+    		else{
     		session.setAttribute("session", bs);
+    		%><jsp:forward page="LoginView.jsp"/><% 
+    		}
 
     	}
 		if(request.getParameter("See Notifications")!=null) {
@@ -104,9 +113,10 @@ else {
 		<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip HT" value="Schedule Trip">
 		<input id="seeFavRestaurants" class="button" type="submit" name="See Your Favourite Restaurants" value="See Your Favourite Restaurants">
 		<input id="seeTrip" class="button" type="submit" name="See Your Trip" value="See Your Trip">
-		<input id="logout" class="button" type="submit" name="Logout" value="Logout">
+		<% if(bs!=null&&bs.getUser()!=null) login="Logout"; else login="Login"; %>
+		<input id="logout" class="button" type="submit" name="Logout" value=<%=login %>>
 		<input id="seeNotifications" class="button" type="submit" name="See Notifications" value="See Notifications">
-		<label id="errorMsg"><%=errorString%></label>
+		<label id="errorMsg"><%=errorString %></label>
 	</form>
 </div>
 </body>

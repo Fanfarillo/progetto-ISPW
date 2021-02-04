@@ -131,8 +131,8 @@ public class ControllerGuiWriteReview extends UserBaseGuiController {
         else
         	nomeUtenteLabel.setText("Not logged");
         
-        this.voteChoice.setItems(this.votes);
-        this.voteChoice.getSelectionModel().select(2);
+        voteChoice.setItems(votes);
+        voteChoice.getSelectionModel().select(2);
 
     }
 }

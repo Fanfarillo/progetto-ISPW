@@ -10,11 +10,21 @@
 <%@page import="logic.engineeringclasses.others.Session" %>
  <%Session bs;
   bs=(Session)session.getAttribute("session"); 
+  
+  String userString;
+  if(bs!=null&&bs.getUser()!=null) {
+  	userString=bs.getUser().getUsername();
+  }
+  else {
+  	userString = "Not logged";
+  }
+  
   String restaurant;
   String textAreaString="";
-  restaurant=(String)request.getAttribute("restaurant");
+  restaurant=(String)session.getAttribute("restaurantName");
   List<ArrayList<String>> reviews;
   boolean genericError=false;
+  boolean loginError=false;
   try{
   ReadReviews rv=new ReadReviews();
   BeanReadReviews b=rv.findReviews(restaurant);
@@ -29,9 +39,9 @@
 	  username=review.get(0);
 	  vote=review.get(2);
 	  content=review.get(1);
-      userInfo="User" + username + "  vote: " + vote + " \n";
+      userInfo="User: " + username + "  Vote: " + vote + " \n";
 	  contentRow="This user said: "+content+"\n \n \n";
-	  textAreaString=textAreaString+userInfo+contentRow;	  
+	  textAreaString=textAreaString+userInfo+contentRow;
 	}
   
   }
@@ -57,9 +67,12 @@
 <%
     	}
     	if(request.getParameter("Schedule Trip rr")!=null) {
+    		if(bs==null||bs.getUser()==null)	loginError=true;
+    		else{
 %>
 			<jsp:forward page="ItalianViewCity.jsp"/>
 <%
+    		}
     	}
     	if(request.getParameter("Back rr")!=null) {
 
@@ -71,7 +84,7 @@
     	
 %>   
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Select Restaurant</title>
@@ -85,18 +98,14 @@
 			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant rr" value="Choose Restaurant">
 			<input id="back" class="button" type="submit" name="Back rr" value="Back">
 			<img id="fotoUtente" src="utente.jpg" alt="user"/>
-			<label id="nomeUtente"><%if(bs!=null&&bs.getUser()!=null){
-					%>=bs.getUser().getUsername()<%
-		}
-		else{
-		%>not logged<%		}	%></label>
-			<label id="ristName"><%=restaurant %></label>
+			<label id="nomeUtente"><%=userString%></label>
 			
 			<%if(genericError){
 				%><label id="genericError">Please try again later.</label><%
 			}
 				%>
 			
+			<% if(loginError){ %><label id="loginError">you must login to use this function.</label><% } %>
 			
 			
 			

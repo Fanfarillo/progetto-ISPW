@@ -12,6 +12,14 @@
  <%@page import="logic.engineeringclasses.others.Session" %>
  <%Session bs;
  bs=(Session)session.getAttribute("session"); 
+ String userString;
+ if(bs!=null&&bs.getUser()!=null) {
+ 	userString=bs.getUser().getUsername();
+ }
+ else {
+ 	userString = "Not logged";
+ }
+ 
  String restaurant=(String)session.getAttribute("restaurant");
  boolean emptyReview=false;
  boolean genericError=false;
@@ -47,7 +55,6 @@
     	}
     	if(request.getParameter("Submit Review ww")!=null) {
     		
-    		System.out.println("lunghezza: "+request.getParameter("Write Review").length());
     		try
         	{   		    	
     	    	BeanNewReview bnr= new BeanNewReview();
@@ -76,7 +83,7 @@
     	}
 %> 
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Select Restaurant</title>
@@ -91,11 +98,7 @@
 			<input id="back" class="button" type="submit" name="Back ww" value="Back">
 			<input id="submitReview" class="button" type="submit" name="Submit Review ww" value="Submit Review">
 			<img id="fotoUtente" src="utente.jpg" alt="user"/>
-			<label id="nomeUtente"><%if(bs!=null&&bs.getUser()!=null){
-					%>=bs.getUser().getUsername()<%
-		}
-		else{
-		%>not logged<%		}	%></label>
+			<label id="nomeUtente"><%=userString%></label>
 			
 			<% if(genericError){
 				%><label id="genericError">please try again!</label><%
@@ -110,7 +113,7 @@
 			%>
 			
 			<% if(success){
-				%><label id="sucessLabel">Review successfully saved</label><%
+				%><label id="successLabel">Review successfully saved</label><%
 			}
 				
 			%>

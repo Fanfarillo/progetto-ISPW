@@ -43,7 +43,7 @@ public class ControllerGuiReadReviews extends UserBaseGuiController{
 			username=review.get(0);
 			vote=review.get(2);
 			content=review.get(1);
-			userInfo="User" + username + "  vote: " + vote + "\n \n";
+			userInfo="User: " + username + "  Vote: " + vote + "\n \n";
 			contentRow="This user said: "+content+"\n \n \n";
 			this.reviewArea.appendText(userInfo);
 			this.reviewArea.appendText(contentRow);
@@ -79,6 +79,8 @@ public class ControllerGuiReadReviews extends UserBaseGuiController{
         assert voteLabel != null : "fx:id=\"voteLabel\" was not injected: check your FXML file 'ReadReviewsView.fxml'.";
         assert nomeRistLabel != null : "fx:id=\"nomeRistLabel\" was not injected: check your FXML file 'ReadReviewsView.fxml'.";
         assert reviewArea != null : "fx:id=\"reviewArea\" was not injected: check your FXML file 'ReadReviewsView.fxml'.";
+        assert mustLoginLabel != null : "fx:id=\"mustLoginLabel\" was not injected: check your FXML file 'ReadReviewsView.fxml'.";
+
         if(this.bs.getUser()!=null)
         	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
         else
@@ -88,12 +90,17 @@ public class ControllerGuiReadReviews extends UserBaseGuiController{
         
         try
 		{		
-			
+        	System.out.println("pippo");
 			ReadReviews rv=new ReadReviews();
-			BeanReadReviews b=rv.findReviews(restaurant);
+			System.out.println("pippo");
+			BeanReadReviews b=rv.findReviews(this.restaurant);
+			System.out.println("pippo");
 			this.reviews=b.getReviews();
+			System.out.println("pippo");
 			this.nomeRistLabel.setText(restaurant);
+			System.out.println("pippo");
 			writeReviews();
+			System.out.println("pippo");
 		}
 		catch(Exception e)
 		{

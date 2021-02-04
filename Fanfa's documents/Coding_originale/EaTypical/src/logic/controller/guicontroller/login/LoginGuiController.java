@@ -41,6 +41,9 @@ public class LoginGuiController extends UserBaseGuiController {
     private URL location;
     
     @FXML
+    private Label nomeUtente;
+    
+    @FXML
     private CheckBox ownerCheckbox;
     
     @FXML
@@ -168,6 +171,9 @@ public class LoginGuiController extends UserBaseGuiController {
         assert ownerCheckbox != null : "fx:id=\"ownerCheckbox\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert genericError != null : "fx:id=\"genericError\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert registerButton != null : "fx:id=\"registerButton\" was not injected: check your FXML file 'LoginView.fxml'.";
+        assert nomeUtente != null : "fx:id=\"nomeUtente\" was not injected: check your FXML file 'LoginView.fxml'.";
+        assert mustLoginLabel != null : "fx:id=\"mustLoginLabel\" was not injected: check your FXML file 'LoginView.fxml'.";
 
+        
     }
 }
