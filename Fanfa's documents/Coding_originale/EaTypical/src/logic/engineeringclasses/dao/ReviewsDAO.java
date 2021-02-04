@@ -20,6 +20,10 @@ public class ReviewsDAO {
 
 	public static final String DRIVER = "com.mysql.jdbc.Driver";
 	public static final String CONTENUTO = "Contenuto";
+	
+	private ReviewsDAO(){
+			throw new IllegalStateException("Utility class");
+	}
 
 
     public static List<Review> findRestaurantReviews(String restaurant) throws ClassNotFoundException, SQLException   {
