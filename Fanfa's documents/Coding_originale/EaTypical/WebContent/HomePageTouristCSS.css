@@ -73,3 +73,12 @@ p {
 	left: 52.86%;
 	top: 68.57%;
 }
+
+#errorMsg {
+	position: absolute;
+	left: 7.14%;
+	top: 83.57%;
+	color: red;
+	font-size: 13px;
+	background-color: rgba(0,0,0,0.7);
+}

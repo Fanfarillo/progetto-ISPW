@@ -73,11 +73,11 @@
     			String[] budgetAndQuality = new String[2];
     			budgetAndQuality[0] = request.getParameter("budget");
     			
-    			if(request.getParameter("ScrollVoto").equals("")) budgetAndQuality[1] = null;
+    			if(request.getParameter("ScrollVoto")==null) budgetAndQuality[1] = null;
     			else budgetAndQuality[1] = request.getParameter("ScrollVoto");
     			
     			for(int i=0; i<3; i++) {
-    				if(meal1[i].equals("") || meal2[i].equals("")) {
+    				if(meal1[i]==null || meal2[i]==null) {
     					throw new EmptyFieldException("You need to specify both the first day of your trip and the last day of your trip.");
     				}
     			}
@@ -110,6 +110,7 @@
     			errorString = "No restaurant has been found.";
     		}
     		catch(Exception e) {
+    			e.printStackTrace();
     			errorString = "An unknown error occurred. Please, try again later.";
     		}
     		
@@ -135,72 +136,72 @@
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST2" value="Choose Restaurant">
 		<input id="back" type="submit" name="Back ST2" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
-		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
+		<label id="nomeUtente">Not logged</label>
 		<div class="box-1">
 			<p>Choose the first day of your trip:</p>
 			<select class="scrollGiorni" name="FirstDay">
 				<option disabled selected>Day</option>
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-				<option>8</option>
-				<option>9</option>
-				<option>10</option>
-				<option>11</option>
-				<option>12</option>
-				<option>13</option>
-				<option>14</option>
-				<option>15</option>
-				<option>16</option>
-				<option>17</option>
-				<option>18</option>
-				<option>19</option>
-				<option>20</option>
-				<option>21</option>
-				<option>22</option>
-				<option>23</option>
-				<option>24</option>
-				<option>25</option>
-				<option>26</option>
-				<option>27</option>
-				<option>28</option>
-				<option>29</option>
-				<option>30</option>
-				<option>31</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27">27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+				<option value="31">31</option>
 			</select>
 			<select class="scrollMesi" name="FirstMonth">
 				<option disabled selected>Month</option>
-				<option>January</option>
-				<option>February</option>
-				<option>March</option>
-				<option>April</option>
-				<option>May</option>
-				<option>June</option>
-				<option>July</option>
-				<option>August</option>
-				<option>September</option>
-				<option>October</option>
-				<option>November</option>
-				<option>December</option>				
+				<option value="January">January</option>
+				<option value="February">February</option>
+				<option value="March">March</option>
+				<option value="April">April</option>
+				<option value="May">May</option>
+				<option value="June">June</option>
+				<option value="July">July</option>
+				<option value="August">August</option>
+				<option value="September">September</option>
+				<option value="October">October</option>
+				<option value="November">November</option>
+				<option value="December">December</option>				
 			</select>
 			<select class="scrollAnni" name="FirstYear">
 				<option disabled selected>Year</option>
-				<option>2021</option>
-				<option>2022</option>
-				<option>2023</option>
-				<option>2024</option>
-				<option>2025</option>
-				<option>2026</option>
-				<option>2027</option>
-				<option>2028</option>
-				<option>2029</option>
-				<option>2030</option>
+				<option value="2021">2021</option>
+				<option value="2022">2022</option>
+				<option value="2023">2023</option>
+				<option value="2024">2024</option>
+				<option value="2025">2025</option>
+				<option value="2026">2026</option>
+				<option value="2027">2027</option>
+				<option value="2028">2028</option>
+				<option value="2029">2029</option>
+				<option value="2030">2030</option>
 			</select>
-			<input id="lunch1" class="lunch" type="radio" name="radio1" value="lunch1">
+			<input id="lunch1" class="lunch" type="radio" name="radio1" value="lunch1" checked>
 			<label class="lunchLabel" for="lunch1">Lunch</label>
 			<input id="dinner1" class="dinner" type="radio" name="radio1" value="dinner1">
 			<label class="dinnerLabel" for="dinner1">Dinner</label>
@@ -209,67 +210,67 @@
 			<p>Choose the last day of your trip:</p>
 			<select class="scrollGiorni" name="LastDay">
 				<option disabled selected>Day</option>
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-				<option>8</option>
-				<option>9</option>
-				<option>10</option>
-				<option>11</option>
-				<option>12</option>
-				<option>13</option>
-				<option>14</option>
-				<option>15</option>
-				<option>16</option>
-				<option>17</option>
-				<option>18</option>
-				<option>19</option>
-				<option>20</option>
-				<option>21</option>
-				<option>22</option>
-				<option>23</option>
-				<option>24</option>
-				<option>25</option>
-				<option>26</option>
-				<option>27</option>
-				<option>28</option>
-				<option>29</option>
-				<option>30</option>
-				<option>31</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27">27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+				<option value="31">31</option>
 			</select>
 			<select class="scrollMesi" name="LastMonth">
 				<option disabled selected>Month</option>
-				<option>January</option>
-				<option>February</option>
-				<option>March</option>
-				<option>April</option>
-				<option>May</option>
-				<option>June</option>
-				<option>July</option>
-				<option>August</option>
-				<option>September</option>
-				<option>October</option>
-				<option>November</option>
-				<option>December</option>				
+				<option value="January">January</option>
+				<option value="February">February</option>
+				<option value="March">March</option>
+				<option value="April">April</option>
+				<option value="May">May</option>
+				<option value="June">June</option>
+				<option value="July">July</option>
+				<option value="August">August</option>
+				<option value="September">September</option>
+				<option value="October">October</option>
+				<option value="November">November</option>
+				<option value="December">December</option>		
 			</select>
 			<select class="scrollAnni" name="LastYear">
 				<option disabled selected>Year</option>
-				<option>2021</option>
-				<option>2022</option>
-				<option>2023</option>
-				<option>2024</option>
-				<option>2025</option>
-				<option>2026</option>
-				<option>2027</option>
-				<option>2028</option>
-				<option>2029</option>
-				<option>2030</option>
+				<option value="2021">2021</option>
+				<option value="2022">2022</option>
+				<option value="2023">2023</option>
+				<option value="2024">2024</option>
+				<option value="2025">2025</option>
+				<option value="2026">2026</option>
+				<option value="2027">2027</option>
+				<option value="2028">2028</option>
+				<option value="2029">2029</option>
+				<option value="2030">2030</option>
 			</select>
-			<input id="lunch2" class="lunch" type="radio" name="radio2" value="lunch2">
+			<input id="lunch2" class="lunch" type="radio" name="radio2" value="lunch2" checked>
 			<label class="lunchLabel" for="lunch2">Lunch</label>
 			<input id="dinner2" class="dinner" type="radio" name="radio2" value="dinner2">
 			<label class="dinnerLabel" for="dinner2">Dinner</label>
@@ -283,11 +284,11 @@
 		<label id="labelVoto">Select the minimum rating of restaurants</label>
 		<select id="scrollVoto" name="ScrollVoto">
 			<option disabled selected>Vote</option>
-			<option>1 star</option>
-			<option>2 stars</option>
-			<option>3 stars</option>
-			<option>4 stars</option>
-			<option>5 stars</option>
+			<option value="1 star">1 star</option>
+			<option value="2 stars">2 stars</option>
+			<option value="3 stars">3 stars</option>
+			<option value="4 stars">4 stars</option>
+			<option value="5 stars">5 stars</option>
 		</select>
 		<label id="errorMsg"><%=errorString%></label>
 		<input id="generate" type="submit" name="Generate Scheduling" value="Generate Scheduling">

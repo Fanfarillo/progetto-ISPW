@@ -22,6 +22,10 @@ public class ScheduleTripRestaurantDAO {
 		Connection conn=null;
 		List<Restaurant> listOfRestaurants = new ArrayList<>();
 		
+		System.out.println(city);
+		System.out.println(vegan);
+		System.out.println(celiac);
+		
 		try {
 			// Step 2: dinamic loading of sql driver
 			Class.forName(driverClassName);

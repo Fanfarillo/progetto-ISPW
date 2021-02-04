@@ -58,9 +58,7 @@
     		session.setAttribute("session", bs);
     		session.setAttribute("city", city);
     		session.setAttribute("trip", scheduling);
-%>
-			<jsp:forward page="SchedulingView.jsp"/>
-<%
+    		
     	}
     	if(request.getParameter("Save Scheduling")!=null) {
     		try {
@@ -93,7 +91,7 @@
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST3" value="Choose Restaurant">
 		<input id="back" type="submit" name="Back ST3" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
-		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
+		<label id="nomeUtente">Not logged</label>
 		<label id="citta"><%=city%></label>		
 		<label id="errorMsg"><%=errorString%></label>
 		<label id="savedMsg"><%=savedScheduling%></label>

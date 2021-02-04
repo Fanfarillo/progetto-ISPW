@@ -43,7 +43,7 @@
     			String address = request.getParameter("Restaurant Address");
     			String city = request.getParameter("Scroll");
     			
-    			if(name.equals("") || address.equals("") || city.equals("")) {
+    			if(name.equals("") || address.equals("") || city==null) {
     				throw new EmptyFieldException("You need to insert name, address and city of your restaurant before setting the opening hours");
     			}
     			
@@ -92,26 +92,26 @@
 		<input id="restAddress" class="inputbox" type="text" placeholder="Restaurant address" name="Restaurant Address">
 		<select id="scrollbar" class="inputbox" name="Scroll">
 			<option disabled selected>City</option>
-			<option value="AO">Aosta</option>
-			<option value="TO">Torino</option>
-			<option value="GE">Genova</option>
-			<option value="MI">Milano</option>
-			<option value="TN">Trento</option>
-			<option value="VE">Venezia</option>
-			<option value="TR">Trieste</option>
-			<option value="BO">Bologna</option>
-			<option value="FI">Firenze</option>
-			<option value="AN">Ancona</option>
-			<option value="PG">Perugia</option>
-			<option value="RM">Roma</option>
-			<option value="AQ">L'Aquila</option>
-			<option value="CB">Campobasso</option>
-			<option value="NA">Napoli</option>
-			<option value="PZ">Potenza</option>
-			<option value="BA">Bari</option>
-			<option value="CZ">Catanzaro</option>
-			<option value="PA">Palermo</option>
-			<option value="CG">Cagliari</option>
+			<option value="Aosta">Aosta</option>
+			<option value="Torino">Torino</option>
+			<option value="Genova">Genova</option>
+			<option value="Milano">Milano</option>
+			<option value="Trento">Trento</option>
+			<option value="Venezia">Venezia</option>
+			<option value="Trieste">Trieste</option>
+			<option value="Bologna">Bologna</option>
+			<option value="Firenze">Firenze</option>
+			<option value="Ancona">Ancona</option>
+			<option value="Perugia">Perugia</option>
+			<option value="Roma">Roma</option>
+			<option value="L'Aquila">L'Aquila</option>
+			<option value="Campobasso">Campobasso</option>
+			<option value="Napoli">Napoli</option>
+			<option value="Potenza">Potenza</option>
+			<option value="Bari">Bari</option>
+			<option value="Catanzaro">Catanzaro</option>
+			<option value="Palermo">Palermo</option>
+			<option value="Cagliari">Cagliari</option>
 		</select>
 		<label id="errorMsg"><%=errorString%></label>
 		<input id="setOpeningHours" type="submit" name="Set Opening Hours" value="Set Opening Hours">

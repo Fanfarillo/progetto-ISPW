@@ -30,27 +30,22 @@ else {
 <%    	
     	if(request.getParameter("Logout")!=null) {   		
     		session.setAttribute("session", bs);
-%>
-			
-			<jsp:forward page="HomePageTouristView.jsp"/>
-<%
+
     	}
 		if(request.getParameter("See Notifications")!=null) {
 			session.setAttribute("session", bs);
-%>
-			<jsp:forward page="HomePageTouristView.jsp"/>
-<%
+
 		}
     	if(request.getParameter("Schedule Trip HT")!=null) {
-    		if(bs.getUser()!=null) {	
+    		//if(bs.getUser()!=null) {	
     			session.setAttribute("session", bs);
 %>
 				<jsp:forward page="ItalianViewCity.jsp"/>
 <%
-    		}
-    		else {
-    			errorString = "You must login to use this function.";
-    		}
+    		//}
+    		//else {
+    			//errorString = "You must login to use this function.";
+    		//}
     	}
     	if(request.getParameter("Choose Restaurant HT")!=null) {
     		session.setAttribute("session", bs);
@@ -60,21 +55,24 @@ else {
     	}
     	if(request.getParameter("See Your Favourite Restaurants")!=null) {
     		session.setAttribute("session", bs);
-%>
-			<jsp:forward page="HomePageTouristView.jsp"/>
-<%
+
     	}
     	if(request.getParameter("See Your Trip")!=null) {
     		try {
-    			BeanConverter converter = new BeanConverter();
+    			if(bs.getUser()!=null) {
+    				BeanConverter converter = new BeanConverter();
     			
-    			session.setAttribute("city", converter.getCityFromScheduling(bs.getUser()));
-    			session.setAttribute("scheduling", converter.convertScheduling(bs.getUser()));
-    			session.setAttribute("session", bs);
+    				session.setAttribute("city", converter.getCityFromScheduling(bs.getUser()));
+    				session.setAttribute("scheduling", converter.convertScheduling(bs.getUser()));
+    				session.setAttribute("session", bs);
 %>
-				<jsp:forward page="SeeTripView.jsp"/>
+					<jsp:forward page="SeeTripView.jsp"/>
 <%
-    		}
+    			}
+    			else {
+    				errorString = "You must login to use this function.";
+    			}
+    		}	
     		catch(ParseException e) {
     			errorString = "An unknown error occurred. Please, try again later.";
     		}

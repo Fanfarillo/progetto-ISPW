@@ -64,9 +64,7 @@
     			session.setAttribute("session", bs);
     			session.setAttribute("city", city);
     			session.setAttribute("scheduling", null);
-%>
-				<jsp:forward page="SeeTripView.jsp"/>
-<%
+%
     		}
     		catch(Exception e) {
     			errorString="An unknown error occurred. Please, try again later.";
