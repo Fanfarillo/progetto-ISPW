@@ -77,7 +77,7 @@
 	    		bs.setOwner(isOwner);
 	    		session.setAttribute("session", bs);
 	    		if(isOwner) {
-    	      		%> <jsp:forward page="HomePageOwnerView.jsp"/>
+    	      		%> <jsp:forward page="HomePageOwner.jsp"/>
     	      		<%   	        	
     	    	}else {
     	    		%> <jsp:forward page="HomePageTouristView.jsp"/>
