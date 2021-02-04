@@ -13634,7 +13634,7 @@
 											"font": "Arial;13;0",
 											"left": 341,
 											"top": 797,
-											"width": 211.9482421875,
+											"width": 218.1943359375,
 											"height": 13,
 											"text": "«Entity»"
 										},
@@ -13647,7 +13647,7 @@
 											"font": "Arial;13;1",
 											"left": 341,
 											"top": 812,
-											"width": 211.9482421875,
+											"width": 218.1943359375,
 											"height": 13,
 											"text": "Owner"
 										},
@@ -13682,7 +13682,7 @@
 									"font": "Arial;13;0",
 									"left": 336,
 									"top": 792,
-									"width": 221.9482421875,
+									"width": 228.1943359375,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF3WDT9FuU0uhU="
@@ -13719,7 +13719,7 @@
 											"font": "Arial;13;0",
 											"left": 341,
 											"top": 835,
-											"width": 211.9482421875,
+											"width": 218.1943359375,
 											"height": 13,
 											"text": "-ownRestaurants: List<Restaurant>",
 											"horizontalAlignment": 0
@@ -13736,9 +13736,9 @@
 											"font": "Arial;13;0",
 											"left": 341,
 											"top": 850,
-											"width": 211.9482421875,
+											"width": 218.1943359375,
 											"height": 13,
-											"text": "-reviewNotif: List<NotificationView>",
+											"text": "-reviewNotif: List<NotificationReview>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -13753,7 +13753,7 @@
 											"font": "Arial;13;0",
 											"left": 341,
 											"top": 865,
-											"width": 211.9482421875,
+											"width": 218.1943359375,
 											"height": 13,
 											"text": "-scheduleNotif: List<NotificationTrip>",
 											"horizontalAlignment": 0
@@ -13762,7 +13762,7 @@
 									"font": "Arial;13;0",
 									"left": 336,
 									"top": 830,
-									"width": 221.9482421875,
+									"width": 228.1943359375,
 									"height": 53
 								},
 								{
@@ -13777,7 +13777,7 @@
 									"font": "Arial;13;0",
 									"left": 336,
 									"top": 883,
-									"width": 221.9482421875,
+									"width": 228.1943359375,
 									"height": 10
 								},
 								{
@@ -13817,7 +13817,7 @@
 							"containerChangeable": true,
 							"left": 336,
 							"top": 792,
-							"width": 221.9482421875,
+							"width": 228.1943359375,
 							"height": 101,
 							"nameCompartment": {
 								"$ref": "AAAAAAF3WDT9FuUzLiw="
@@ -14086,7 +14086,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 374,
+									"left": 376,
 									"top": 722,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -14107,7 +14107,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 386,
+									"left": 388,
 									"top": 713,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -14128,7 +14128,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 351,
+									"left": 353,
 									"top": 741,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -14147,7 +14147,7 @@
 								"$ref": "AAAAAAF2MwUsFMUlXRo="
 							},
 							"lineStyle": 1,
-							"points": "322:686;405:791",
+							"points": "323:686;408:791",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF3WDbOcBMg9Ew="
@@ -14180,7 +14180,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 461,
+									"left": 463,
 									"top": 915,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -14201,8 +14201,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 476,
-									"top": 914,
+									"left": 478,
+									"top": 915,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -14222,7 +14222,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 432,
+									"left": 434,
 									"top": 916,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -14241,7 +14241,7 @@
 								"$ref": "AAAAAAF3WDT9FeUy1cI="
 							},
 							"lineStyle": 1,
-							"points": "447:893;448:951",
+							"points": "449:893;449:951",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF3WDbi5xV6u7Q="
@@ -21437,7 +21437,7 @@
 							},
 							"name": "reviewNotif",
 							"visibility": "private",
-							"type": "List<NotificationView>"
+							"type": "List<NotificationReview>"
 						},
 						{
 							"_type": "UMLAttribute",
