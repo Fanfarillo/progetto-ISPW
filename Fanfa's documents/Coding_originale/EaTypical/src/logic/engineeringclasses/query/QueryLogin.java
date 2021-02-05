@@ -7,7 +7,7 @@ import logic.model.User;
 
 
 public class QueryLogin {
-	
+	private QueryLogin(){throw new IllegalStateException("Utility class");};
 	//look for a tourist account in the database, by username and password
 	public static ResultSet loginTourist(Statement stmt, String user, String pw) throws SQLException
 	{
@@ -47,8 +47,7 @@ public class QueryLogin {
 		String name=user.getName();
 		String surname=user.getSurname();
 		String username=user.getUsername();
-		insertStatement = String.format("INSERT INTO Turista (Nome, Cognome, Username, Password) VALUES ('%s','%s','%s','%s')", name, surname, username , pw);
-		System.out.println("Turista Registrato");				        	
+		insertStatement = String.format("INSERT INTO Turista (Nome, Cognome, Username, Password) VALUES ('%s','%s','%s','%s')", name, surname, username , pw);				        	
 		return stmt.executeUpdate(insertStatement);
 	}
 	
@@ -59,7 +58,6 @@ public class QueryLogin {
 		String surname=user.getSurname();
 		String username=user.getUsername();
 		insertStatement = String.format("INSERT INTO Proprietario (Nome, Cognome, Username, Password) VALUES ('%s','%s','%s','%s')", name, surname, username , pw);
-		System.out.println("Proprietario Registrato");
 		return stmt.executeUpdate(insertStatement);
 	}
 	

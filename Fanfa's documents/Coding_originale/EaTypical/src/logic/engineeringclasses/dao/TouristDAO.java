@@ -14,7 +14,7 @@ import logic.engineeringclasses.others.Connect;
 
 
 public class TouristDAO {
-
+	    private TouristDAO(){throw new IllegalStateException("Utility class");}
 	    
 	    public static User selectTourist(String user, String pw) throws ClassNotFoundException, SQLException,LoginDBException   {
 	        Statement stmt = null;

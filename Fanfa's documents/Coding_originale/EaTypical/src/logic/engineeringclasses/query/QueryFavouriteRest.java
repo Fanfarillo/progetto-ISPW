@@ -3,11 +3,10 @@ package logic.engineeringclasses.query;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import logic.model.Restaurant;
 
 
 public class QueryFavouriteRest {
-	
+	private QueryFavouriteRest(){throw new IllegalStateException("Utility class");};
 	//get a result set with the favourite restaurants of an user from the database
 	public static ResultSet selectFavourites(Statement stmt, String tourist) throws SQLException
 	{
@@ -17,8 +16,7 @@ public class QueryFavouriteRest {
 	
 	public static int insertFavourite(Statement stmt, String rest, String tourist) throws SQLException
 	{		
-		        String insertStatement = String.format("INSERT INTO Preferiti (NomeRistorante, UsernameTurista) VALUES ('%s','%s')", rest, tourist);
-		        System.out.println("Ristorante inserito nei preferiti");			//FIXARE IL TURISTA!
+		        String insertStatement = String.format("INSERT INTO Preferiti (NomeRistorante, UsernameTurista) VALUES ('%s','%s')", rest, tourist);		      
 		        return stmt.executeUpdate(insertStatement);		    
 	}
 	 

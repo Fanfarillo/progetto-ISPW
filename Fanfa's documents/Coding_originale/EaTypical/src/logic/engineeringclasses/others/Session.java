@@ -39,22 +39,17 @@ public class Session {
 
 	public void setFirstPage(boolean isOwner)
 	{
-		if(this.isWeb&&isOwner)
-		{
-			this.firstPage=this.webHomeOwner;
-		}
-		else if(this.isWeb&&!isOwner)
-		{
-			this.firstPage=this.webHomeTourist;
-		}
-		else if(isOwner)
-		{
-			this.firstPage=this.homeOwner;
-		}
-		else
-		{
-			this.firstPage=this.homeTourist;
-		}
+		int page=0;
+		if(this.isWeb&&isOwner) page=1;
+		if(this.isWeb&&!isOwner) page=2;
+		if(!this.isWeb&&isOwner) page=3;
+		if(!this.isWeb&&!isOwner) page=4;
+		switch(page){
+		case 1: this.firstPage=this.webHomeOwner; break;
+		case 2: this.firstPage=this.webHomeTourist; break;
+		case 3: this.firstPage=this.homeOwner; break;
+		case 4: this.firstPage=this.homeTourist; break;
+		default: break;}		
 		setOwner(isOwner);
 			
 	}

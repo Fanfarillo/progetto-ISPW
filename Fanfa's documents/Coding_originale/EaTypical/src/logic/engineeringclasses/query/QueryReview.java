@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class QueryReview {
 	
-	private QueryReview(){};
+	private QueryReview(){throw new IllegalStateException("Utility class");};
 	
 	public static ResultSet selectReviews(Statement stmt, String restaurantName) throws SQLException
 	{
