@@ -31,11 +31,11 @@ import logic.engineeringclasses.others.Session;
  *
  */
 
-public class ControllerGuiNotificationsView extends OwnerBaseGuiController {
+public class ControllerGuiSchedulingNotificationsView extends OwnerBaseGuiController {
 	
 	private BeanListNotificationsScheduling beanListNotificationsScheduling;
 	private String username;
-	public ControllerGuiNotificationsView(BeanListNotificationsScheduling beanListNotificationsScheduling, String username,Session bs) {
+	public ControllerGuiSchedulingNotificationsView(BeanListNotificationsScheduling beanListNotificationsScheduling, String username,Session bs) {
 		super(bs);
 		this.beanListNotificationsScheduling = beanListNotificationsScheduling;
 		this.username = username;
