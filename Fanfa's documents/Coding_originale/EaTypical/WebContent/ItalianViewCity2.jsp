@@ -152,26 +152,26 @@
 		
 		<div class="box-2">
 			<img id="fotoItalia" src="Cartina.jpg" alt="cartina"/>
-		    <img id="AO_img" class="city" name="Aosta" src="placeicon.png" alt="city">
-			<img id="TO_img" class="city"  name="Torino"  src="placeicon.png" alt="city">
-			<img id="GE_img" class="city"  name="Genova"  src="placeicon.png" alt="city">
-			<img id="MI_img" class="city"  name="Milano"  src="placeicon.png" alt="city">
-			<img id="TN_img" class="city"  name="Trento"  src="placeicon.png" alt="city">
-			<img id="VE_img" class="city"  name="Venezia"  src="placeicon.png" alt="city">
-			<img id="TR_img" class="city"  name="Trieste" src="placeicon.png" alt="city">
-			<img id="BO_img" class="city"  name="Bologna"  src="placeicon.png" alt="city">
-			<img id="FI_img" class="city"  name="Firenze"  src="placeicon.png" alt="city">
-			<img id="AN_img" class="city"  name="Ancona" src="placeicon.png" alt="city">
-			<img id="PG_img" class="city"  name="Perugia"  src="placeicon.png" alt="city">
-			<img id="RM_img" class="city"  name="Roma"  src="placeicon.png" alt="city">
-			<img id="AQ_img" class="city"  name="LAquila" src="placeicon.png" alt="city">
-			<img id="CB_img" class="city"  name="Campobasso"  src="placeicon.png" alt="city">
-			<img id="NA_img" class="city"  name="Napoli" src="placeicon.png" alt="city">
-			<img id="PZ_img" class="city"  name="Potenza"  src="placeicon.png" alt="city">
-			<img id="BA_img" class="city"  name="Bari" src="placeicon.png" alt="city">
-			<img id="CZ_img" class="city"  name="Catanzaro"  src="placeicon.png" alt="city">
-			<img id="PA_img" class="city"  name="Palermo"  src="placeicon.png" alt="city">
-			<img id="CG_img" class="city"  name="Cagliari"  src="placeicon.png" alt="city">		
+		    <img id="AO_img" class="city" src="placeicon.png" alt="city">
+			<img id="TO_img" class="city"  src="placeicon.png" alt="city">
+			<img id="GE_img" class="city"  src="placeicon.png" alt="city">
+			<img id="MI_img" class="city"  src="placeicon.png" alt="city">
+			<img id="TN_img" class="city"    src="placeicon.png" alt="city">
+			<img id="VE_img" class="city"  src="placeicon.png" alt="city">
+			<img id="TR_img" class="city"  src="placeicon.png" alt="city">
+			<img id="BO_img" class="city"  src="placeicon.png" alt="city">
+			<img id="FI_img" class="city"  src="placeicon.png" alt="city">
+			<img id="AN_img" class="city"  src="placeicon.png" alt="city">
+			<img id="PG_img" class="city"  src="placeicon.png" alt="city">
+			<img id="RM_img" class="city"  src="placeicon.png" alt="city">
+			<img id="AQ_img" class="city"  src="placeicon.png" alt="city">
+			<img id="CB_img" class="city"  src="placeicon.png" alt="city">
+			<img id="NA_img" class="city" src="placeicon.png" alt="city">
+			<img id="PZ_img" class="city"  src="placeicon.png" alt="city">
+			<img id="BA_img" class="city"  src="placeicon.png" alt="city">
+			<img id="CZ_img" class="city"  src="placeicon.png" alt="city">
+			<img id="PA_img" class="city"  src="placeicon.png" alt="city">
+			<img id="CG_img" class="city"  src="placeicon.png" alt="city">		
 
 		</div>
 		
