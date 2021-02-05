@@ -16,18 +16,14 @@ import logic.model.Restaurant;
 import logic.model.TouristNotification;
 
 public class NotificationsDAO {
-    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Monte_2020.&serverTimezone=UTC";
-    //private static String connectionString = "jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&password=Kp*d.!>3&serverTimezone=UTC";
-    
     
     //get a list with user notifications
     public static List<TouristNotification> findTouristNotifications(String user) throws ClassNotFoundException, SQLException  {
         Statement stmt = null;
         Connection conn = null;
         List<TouristNotification> listOfNotifications = new ArrayList<>();
-        String driverClassName = "com.mysql.jdbc.Driver";
+        
         try {
-            Class.forName(driverClassName);
            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -60,7 +56,6 @@ public class NotificationsDAO {
     
     //eliminare questo metodo perchè non serve più
     public static List<OwnerSchedulingNotification> findOwnerNotifications(Restaurant rest) throws ClassNotFoundException, SQLException {
-    	String driverClassName = "com.mysql.jdbc.Driver";
         Statement stmt = null;
         Connection conn = null;
         List<OwnerSchedulingNotification> listOfNotifications = new ArrayList<OwnerSchedulingNotification>();
@@ -69,7 +64,6 @@ public class NotificationsDAO {
         boolean isLunch;
         
         try {
-            Class.forName(driverClassName);
             //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             
             conn = Connect.getInstance().getDBConnection();
@@ -101,7 +95,6 @@ public class NotificationsDAO {
     }
     
 public BeanListNotificationsScheduling selectOwnerSchedulingNotifications(String username) throws ClassNotFoundException {
-		String driverClassName = "com.mysql.jdbc.Driver";
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
@@ -111,7 +104,6 @@ public BeanListNotificationsScheduling selectOwnerSchedulingNotifications(String
 		try {
 			
 			//loading dinamico del driver del DBMS scelto
-			Class.forName(driverClassName);
 			
 			//apro la connssione verso il DBMS
 			conn = Connect.getInstance().getDBConnection();

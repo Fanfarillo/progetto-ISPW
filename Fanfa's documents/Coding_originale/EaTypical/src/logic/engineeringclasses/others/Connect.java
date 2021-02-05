@@ -11,6 +11,7 @@ public class Connect {
 	String a="jdbc:mysql://localhost:3308/progettoispwfinaledatabase?";
 	String b="user=root&password=password";
 	private static Connect instance=null;
+	public static final String DRIVER = "com.mysql.jdbc.Driver";
 	private Connection conn=null;
 	
 	protected Connect() {}
@@ -22,8 +23,9 @@ public class Connect {
 		return Connect.instance;
 	}
 	
-	public Connection getDBConnection() throws SQLException {
+	public Connection getDBConnection() throws SQLException, ClassNotFoundException {
 		if(this.conn==null) {
+			Class.forName(DRIVER);
 			//this.conn = DriverManager.getConnection(this.connectionString);
 			this.conn=DriverManager.getConnection(a+b);
 		}

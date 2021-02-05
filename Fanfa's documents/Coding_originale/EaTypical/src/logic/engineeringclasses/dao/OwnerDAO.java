@@ -20,7 +20,6 @@ public class OwnerDAO {
 
     public static User selectOwner(String user, String pw) throws ClassNotFoundException, SQLException, LoginDBException 
     {
-    	String driverClassName = "com.mysql.jdbc.Driver";
         Statement stmt = null;
         Connection conn = null;
         User owner;
@@ -28,7 +27,6 @@ public class OwnerDAO {
         String surname;
         String username;
         try {
-            Class.forName(driverClassName);
 			conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -57,11 +55,8 @@ public class OwnerDAO {
     public static void insertOwner(User user, String pw) throws ClassNotFoundException, SQLException, AlreadyInUseUsernameException {
         Statement stmt = null;
         Connection conn = null;
-        String driverClassName = "com.mysql.jdbc.Driver";
         
-        try {
-        	
-            Class.forName(driverClassName);            
+        try {            
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);

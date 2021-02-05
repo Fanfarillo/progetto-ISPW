@@ -18,7 +18,6 @@ import logic.model.Tourist;
 
 public class ReviewsDAO {
 
-	public static final String DRIVER = "com.mysql.jdbc.Driver";
 	public static final String CONTENUTO = "Contenuto";
 	
 	private ReviewsDAO(){
@@ -30,8 +29,7 @@ public class ReviewsDAO {
         Statement stmt = null;
         Connection conn = null;
         List<Review> listOfReviews = new ArrayList<>();
-        try {
-            Class.forName(DRIVER);
+        try {            
 
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -68,7 +66,6 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
         Statement stmt = null;
         Connection conn = null;
         String name=rest.getName();
-        Class.forName(DRIVER);
         conn = Connect.getInstance().getDBConnection();
 
         stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -96,7 +93,6 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
         
         Review rev;
         
-            Class.forName(DRIVER);
 
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -124,7 +120,6 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
         String content=review.getText();
         
         int vote=review.getVote();        
-            Class.forName(DRIVER);
             conn = Connect.getInstance().getDBConnection();
 
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -150,7 +145,6 @@ public static void updateAvgVote(Restaurant rest) throws ClassNotFoundException,
         BeanListReviews beanListReviews; 
         
         try {
-            Class.forName(DRIVER);
 
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

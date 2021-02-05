@@ -25,14 +25,12 @@ public class FavouriteRestDAO {
 
     public static List<Restaurant> findFavourites(String tourist) throws SQLException, ClassNotFoundException {
         // STEP 1: dichiarazioni
-    	String driverClassName = "com.mysql.jdbc.Driver";
         Statement stmt = null;
         Statement stmt2 = null;
         Connection conn = null;
         List<Restaurant> listOfRestaurants = new ArrayList<>();
         
         try {
-            Class.forName(driverClassName);
 
             conn = Connect.getInstance().getDBConnection();
             // STEP 4: creazione ed esecuzione della query
@@ -62,7 +60,7 @@ public class FavouriteRestDAO {
             
                 if (stmt != null)
                     stmt.close(); 
-		if (stmt2 != null)
+                if (stmt2 != null)
                     stmt2.close();
         }
 
@@ -71,12 +69,8 @@ public class FavouriteRestDAO {
 
     public static void insertFavourite(String rest, String tourist) throws ClassNotFoundException, SQLException {
         Statement stmt = null;
-        Connection conn = null;
-        String driverClassName = "com.mysql.jdbc.Driver";
-        
-        try {
-            
-            Class.forName(driverClassName);
+        Connection conn = null;       
+        try {           
 
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

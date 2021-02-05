@@ -17,13 +17,10 @@ public class TouristDAO {
 
 	    
 	    public static User selectTourist(String user, String pw) throws ClassNotFoundException, SQLException,LoginDBException   {
-	    	String driverClassName = "com.mysql.jdbc.Driver";
 	        Statement stmt = null;
 	        Connection conn = null;	 
 	        User tourist;
 	        try {
-	        	
-	            Class.forName(driverClassName);
 	            conn = Connect.getInstance().getDBConnection();
 	            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 	                    ResultSet.CONCUR_READ_ONLY);
@@ -37,9 +34,7 @@ public class TouristDAO {
 	            String name=rs.getString("Nome");
 	            String surname=rs.getString("Cognome");
 	            String username=rs.getString("Username");
-	            System.out.println("pippo");
 	            tourist=TouristCreatorFacade.getInstance().getTourist(name, surname, username);		//compose the tourist entity   
-	            System.out.println("pippo");
 	            rs.close();	
 	        	}
 	                
@@ -57,14 +52,8 @@ public class TouristDAO {
 
 	        Statement stmt = null;
 	        Connection conn = null;
-	        String driverClassName = "com.mysql.jdbc.Driver";
-	        //String driverClassName = "oracle.jdbc.driver.OracleDriver";
 	        
-	        try {
-	        	
-	            Class.forName(driverClassName);
-	            
-	            //TimeUnit.SECONDS.sleep(5);
+	        try {            
 	            conn = Connect.getInstance().getDBConnection();	
 	            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 	                    ResultSet.CONCUR_READ_ONLY);	            
