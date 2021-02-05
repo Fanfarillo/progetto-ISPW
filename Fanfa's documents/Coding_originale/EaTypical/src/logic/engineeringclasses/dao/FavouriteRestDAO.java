@@ -1,6 +1,3 @@
-// DA FIXARE
-
-
 
 package logic.engineeringclasses.dao;
 
@@ -39,12 +36,12 @@ public class FavouriteRestDAO {
             stmt2=conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = QueryFavouriteRest.selectFavourites(stmt,tourist); //ask for the favourite restaurants
-            
+            ResultSet rs2;
             if(rs.first())		//if there is something
             {
 	            do{			//for each restaurant									
 	                String restaurant = rs.getString("NomeRistorante");		//get his name
-	                ResultSet rs2=QueryRestByName.selectRestaurants(stmt2, restaurant);		//look for the restaurant infos
+	                rs2=QueryRestByName.selectRestaurants(stmt2, restaurant);		//look for the restaurant infos
 	                rs2.first();
 	                String name=rs2.getString("Nome");
 	                String address=rs2.getString("Indirizzo");
@@ -53,17 +50,17 @@ public class FavouriteRestDAO {
 	                Restaurant r=new Restaurant(name,address,city,avgVote);		//make a new restaurant
 	                listOfRestaurants.add(r);		//add the restaurant in the list
 	            }while(rs.next());
+	            rs2.close();
             }
             rs.close();
-	    rs2.close();
+
         	} finally {
             
             
                 if(stmt!=null) stmt.close();
-		if(stmt2!=null) stmt2.close;
-		} 
-                
-        }
+		if(stmt2!=null) stmt2.close();
+		}                 
+        
 
         return listOfRestaurants;
     }
