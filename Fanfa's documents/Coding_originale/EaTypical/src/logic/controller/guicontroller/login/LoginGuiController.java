@@ -103,7 +103,6 @@ public class LoginGuiController extends UserBaseGuiController {
 	    	//   call the homepage and pass the user	    	
 	      	this.bs.setUser(loggedUser);
 	      	this.bs.setFirstPage(isOwner);
-	      	this.bs.setOwner(isOwner);
 	      	FXMLLoader loader = new FXMLLoader(getClass().getResource(this.bs.getFirstPage()));
 	      	if(isOwner) {
 	        	loader.setControllerFactory(c ->  new ControllerGuiHomePageOwner(this.bs));
@@ -113,15 +112,15 @@ public class LoginGuiController extends UserBaseGuiController {
 	      	Parent rootParent = loader.load();
         	myAnchorPane.getChildren().setAll(rootParent);
     	}
-    	catch(DataException de)		//when username or password fields are empty
-    	{
-    		setErrorLabelText(de.getCode());
-    		
-    	}
     	catch(WrongUsernameOrPasswordException we)			//when username or password or both are wrong
     	{
     		this.dataError.setText(we.getMessage());
     		this.dataError.setVisible(true);
+    	}
+    	catch(DataException de)		//when username or password fields are empty
+    	{
+    		setErrorLabelText(de.getCode());
+    		
     	}
     	catch (Exception e) {				//other unexpected exception that may occur
     		this.genericError.setText("Please try again later");

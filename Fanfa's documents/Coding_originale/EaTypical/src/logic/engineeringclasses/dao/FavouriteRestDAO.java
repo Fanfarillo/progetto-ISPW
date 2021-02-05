@@ -52,7 +52,6 @@ public class FavouriteRestDAO {
 	                String address=rs2.getString("Indirizzo");
 	                String city=rs2.getString("Citta");
 	                double avgVote=rs2.getDouble("VotoMedio");
-	                rs2.close();
 	                Restaurant r=new Restaurant(name,address,city,avgVote);		//make a new restaurant
 	                listOfRestaurants.add(r);		//add the restaurant in the list
 	            }while(rs.next());
@@ -63,6 +62,8 @@ public class FavouriteRestDAO {
             
                 if (stmt != null)
                     stmt.close(); 
+		if (stmt2 != null)
+                    stmt2.close();
         }
 
         return listOfRestaurants;

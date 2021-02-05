@@ -119,7 +119,6 @@ public class RegisterGuiController extends UserBaseGuiController {
 	    		
 	    		this.bs.setUser(user);
 	    		this.bs.setFirstPage(isOwner);
-	    		this.bs.setOwner(isOwner);
 	    		FXMLLoader loader = new FXMLLoader(getClass().getResource(this.bs.getFirstPage()));
 		      	if(isOwner) {	    		
 		        	loader.setControllerFactory(c ->  new ControllerGuiHomePageOwner(this.bs));

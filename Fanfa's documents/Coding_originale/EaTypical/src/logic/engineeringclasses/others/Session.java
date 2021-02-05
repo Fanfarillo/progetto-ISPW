@@ -55,7 +55,7 @@ public class Session {
 		{
 			this.firstPage=this.homeTourist;
 		}
-			
+		setOwner(isOwner);	
 	}
 
 	public User getUser() {
