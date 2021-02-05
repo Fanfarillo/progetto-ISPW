@@ -55,6 +55,7 @@ public class FavouriteRestDAO {
 	            }while(rs.next());
             }
             rs.close();
+	    rs2.close();
         	} finally {
             
             
