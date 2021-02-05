@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
 import logic.engineeringclasses.exceptions.DishAlreadyExists;
 import logic.engineeringclasses.exceptions.InvalidDishDelete;
 import logic.engineeringclasses.exceptions.InvalidDishModify;
@@ -26,6 +24,7 @@ public class RecipeDAO {
 	
 	/**
 	 * Instaura la connessione al DBMS e richiede la lettura dei possibili piatti tipici
+	 * non necessariamente della sua citta
 	 * @param username 
 	 * @throws ClassNotFoundException 
 	 * 
@@ -36,7 +35,7 @@ public class RecipeDAO {
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
-		ArrayList<String> obs = new ArrayList<>();
+		ArrayList<String> recipeNames = new ArrayList<>();
 		
 		
 		try {
@@ -59,7 +58,7 @@ public class RecipeDAO {
 			String recipe;
 			do {
 				recipe = rs.getString(1);
-				obs.add(recipe);
+				recipeNames.add(recipe);
 			}
 			while(rs.next());
 				
@@ -77,7 +76,7 @@ public class RecipeDAO {
             }
 		}
 		
-		return obs;
+		return recipeNames;
 	}
 	
 	/**
@@ -144,7 +143,7 @@ public class RecipeDAO {
 			
 		} catch (SQLException e) {		
 			
-			//lancio l'eccezione per dire che il piatto ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato giÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  inserito in precedenza
+			//lancio l'eccezione per dire che il piatto ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato giÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  inserito in precedenza
 			throw new DishAlreadyExists(recipe.getDishName());
 			
 		}
@@ -152,7 +151,7 @@ public class RecipeDAO {
 	}
 	
 	/**
-	 * Instaura la connessione al DBMS e richiede la lettura delle ricette dei ristoranti di un proprietario
+	 * Instaura la connessione al DBMS e richiede la lettura delle ricette dei ristoranti del proprietario
 	 * @param nomeRistorante
 	 * @param nomePiatto
 	 * @throws ClassNotFoundException 
@@ -211,7 +210,7 @@ public class RecipeDAO {
 	}
 	
 	
-	public void updateDishes(BeanAddDish beanAddDish) throws ClassNotFoundException,  InvalidDishModify
+	public void updateDishes(Recipe recipe) throws ClassNotFoundException,  InvalidDishModify
 	{
 		Connection conn = null;	
 		
@@ -224,14 +223,14 @@ public class RecipeDAO {
 			conn = Connect.getInstance().getDBConnection();
 			
 		
-			QueryRecipe.updateDishes(beanAddDish.getContenuto(),beanAddDish.getRistorante(),conn,beanAddDish.getPiatto(),beanAddDish.getPrezzo(),beanAddDish.isVegano(),beanAddDish.isCeliaco());
+			QueryRecipe.updateDishes(recipe.getContenuto(),recipe.getRestaurant(),conn,recipe.getDishName(),recipe.getPrice(),recipe.isVegan(),recipe.isCeliac());
 			
 			
 			
 			
 		} catch (SQLException e) {			
 			//eccezione piatto non esistente
-			throw new InvalidDishModify(beanAddDish.getPiatto(), beanAddDish.getRistorante());
+			throw new InvalidDishModify(recipe.getDishName(), recipe.getRestaurant());
 			
 		}
 	}
@@ -240,12 +239,12 @@ public class RecipeDAO {
 	 * OTTIENE LE RICETTA CHE NON SONO TRATTATE DAI RISTORANTI DELLO USER
 	 */
 	
-	public List<String> selectNoRecipe(String username) throws ClassNotFoundException
+	public List<Recipe> selectAllOtherRecipes(String username) throws ClassNotFoundException
 	{
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
-		ArrayList<String> obs = new ArrayList<>();
+		ArrayList<Recipe> recipes = new ArrayList<>();
 		
 		
 		try {
@@ -262,14 +261,14 @@ public class RecipeDAO {
                     ResultSet.CONCUR_READ_ONLY);	
 			
 			
-			rs = QueryRecipe.selectNoDish(stmt,username);
+			rs = QueryRecipe.selectAllOtherRecipesWithMinimumPrice(stmt,username);
 				
 			//scansiono i risultati
 			rs.first();
-			String recipeMancante;
+			Recipe recipe;
 			do {
-				recipeMancante = rs.getString(1);
-				obs.add(recipeMancante);
+				recipe = new Recipe(rs.getString(1), rs.getString(3), rs.getString(2), rs.getBoolean(4), rs.getBoolean(5), rs.getDouble(6));				
+				recipes.add(recipe);
 			}
 			while(rs.next());
 				
@@ -287,7 +286,7 @@ public class RecipeDAO {
             }
 		}
 		
-		return obs;
+		return recipes;
 	}
 	
 }

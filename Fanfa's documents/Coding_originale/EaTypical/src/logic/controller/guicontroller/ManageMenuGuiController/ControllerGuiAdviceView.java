@@ -54,7 +54,7 @@ public class ControllerGuiAdviceView  extends OwnerBaseGuiController{
     void done(ActionEvent event) throws IOException {
     	//carico la gerarchia dei nodi
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));    	
-    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,bs));
+    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(bs));
     	Parent rootParent = loader.load();
     	//cambio scena
     	myAnchorPane.getChildren().setAll(rootParent);
@@ -75,8 +75,8 @@ public class ControllerGuiAdviceView  extends OwnerBaseGuiController{
         
         StringBuilder bld = new StringBuilder();
         bld.append("Possibili piatti tipici da poter aggiungere ai menu dei tuoi ristoranti:");
-        for(int i = 0; i < beanAdvice.getPiattiMancanti().size();i++) {        	
-        	bld.append("\nPiatto " + i + ": " + beanAdvice.getPiattiMancanti().get(i));
+        for(int i = 0; i < beanAdvice.getDishes().size();i++) {        	
+        	bld.append("\nDish " + i + ": " + beanAdvice.getDishes().get(i)+"\u0009Minimum price: "+beanAdvice.getPrices().get(i));
         }
         labelUtente.setText(username);
         

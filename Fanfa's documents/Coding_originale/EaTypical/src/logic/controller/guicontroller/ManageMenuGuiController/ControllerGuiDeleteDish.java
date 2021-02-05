@@ -30,15 +30,13 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
 
 	private List<String> obs1;
 	private List<String> obs2;
-	private String username;
 	private BeanErrorDish beanErrorDish;
 	private int errorePiatto = -1;
 	
-	public ControllerGuiDeleteDish(String username,List<String> obs1, List<String> obs2,int errorePiatto,BeanErrorDish beanErrorDish,Session bs) {
+	public ControllerGuiDeleteDish(List<String> obs1, List<String> obs2,int errorePiatto,BeanErrorDish beanErrorDish,Session bs) {
 		super(bs);
 		this.obs1 = obs1;
     	this.obs2 = obs2;
-		this.username = username;
 		this.beanErrorDish = beanErrorDish;
 		this.errorePiatto = errorePiatto;
 	}
@@ -99,7 +97,7 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
     	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
     	BeanDeleteDish beanDeleteDish = new BeanDeleteDish(ristorante, piatto,2);
-    	loader.setControllerFactory(c -> new ControllerGuiConfirmMessageView(username,beanDeleteDish,bs));
+    	loader.setControllerFactory(c -> new ControllerGuiConfirmMessageView(beanDeleteDish,bs));
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }
@@ -125,7 +123,7 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
         for(int i = 0; i<this.obs2.size();i++) {
         	scegliRistorante.getItems().add(this.obs2.get(i));
         }
-        nomeUtente.setText(username);
+        nomeUtente.setText(bs.getUser().getUsername());
         
         if(this.errorePiatto==2) {
         	this.errorePiattoLabel.setText(beanErrorDish.getMess());

@@ -14,13 +14,15 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiNotificationsView;
 import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiReviewNotificationsView;
+import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiSchedulingNotificationsView;
 import logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling;
 import logic.engineeringclasses.bean.manageMenu.BeanListReviews;
 import logic.engineeringclasses.dao.NotificationsDAO;
@@ -58,6 +60,9 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
     
     @FXML
     private Button bottoneNotifiche;
+    
+    @FXML
+    private Button logoutButton;
 
     public void goToNotificationsView() throws ClassNotFoundException, IOException {
     	NotificationsDAO notificationsDAO = new NotificationsDAO();
@@ -67,11 +72,20 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
  	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/NotificationsRestaurantViewScheduling.fxml"));
    	    	
  	   //setto il nuovo controller grafico
- 	   loader.setControllerFactory(c -> new ControllerGuiNotificationsView(beanListNotificationsScheduling,"liuk",bs));
+ 	   loader.setControllerFactory(c -> new ControllerGuiSchedulingNotificationsView(beanListNotificationsScheduling,bs.getUser().getUsername(),bs));
  	   Parent rootParent = loader.load();    	
    	
    	//cambio scena
    	myAnchorPane.getChildren().setAll(rootParent);
+    }
+    
+    @FXML
+    public void logout(ActionEvent e) throws IOException {
+    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageTouristView.fxml"));
+    	loader.setControllerFactory(c -> new ControllerGuiHomePageTourist(new Session(false)));
+    	Parent root=loader.load();
+    	myAnchorPane.getChildren().setAll(root);
     }
     
     @FXML
@@ -103,6 +117,7 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
         assert labelBenvenuto != null : "fx:id=\"labelBenvenuto\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert bottoneNotifiche != null : "fx:id=\"bottoneNotifiche\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert bottoneNotificheRecensione != null : "fx:id=\"bottoneNotificheRecensione\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
+        assert logoutButton != null : "fx:id=\"logoutButton\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         labelBenvenuto.setText(this.bs.getUser().getName());
         nomeUtenteLabel.setText(this.bs.getUser().getUsername());
     }

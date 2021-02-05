@@ -7,8 +7,8 @@ package logic.controller.guicontroller.ManageMenuGuiController;
 
 import logic.controller.applicationcontroller.ManageMenu;
 import logic.controller.guicontroller.OwnerBaseGuiController;
-import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
 import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
+import logic.engineeringclasses.bean.manageMenu.BeanDish;
 import logic.engineeringclasses.exceptions.DishAlreadyExists;
 import logic.engineeringclasses.exceptions.InvalidDishDelete;
 import logic.engineeringclasses.exceptions.InvalidDishModify;
@@ -34,21 +34,18 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 	
 	private static final String DESTINATION = "/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml";
 	private BeanDeleteDish beanDeleteDish;
-	private BeanAddDish beanAddDish;		
-	private String username;
+	private BeanDish beanDish;	
 	
 	
-	public ControllerGuiConfirmMessageView(String username,BeanDeleteDish beanDeleteDish,Session bs) {
+	public ControllerGuiConfirmMessageView(BeanDeleteDish beanDeleteDish,Session bs) {
 		super(bs);
-		this.username = username;
 		this.beanDeleteDish = beanDeleteDish;
 		
 	}
 	
-	public ControllerGuiConfirmMessageView(String username,BeanAddDish beanAddDish,Session bs) {
+	public ControllerGuiConfirmMessageView(BeanDish beanDish,Session bs) {
 		super(bs);
-		this.beanAddDish = beanAddDish;
-		this.username = username;
+		this.beanDish = beanDish;
 		
 	}
 
@@ -82,7 +79,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     	
     	//scarto tutte le opzioni e ritorno al menu iniziale
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,bs));
+    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(bs));
     	Parent root = loader.load();
     	myAnchorPane.getChildren().setAll(root);
     }
@@ -98,14 +95,14 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     void done(ActionEvent event) throws ClassNotFoundException, IOException {
     	ManageMenu manageMenu = new ManageMenu();
     	//E' diverso da null se e' stata richiesta la modifica di un piatto o l'inserimento di un piatto
-    	if(beanAddDish!=null) {
+    	if(beanDish!=null) {
     		//verifico se e' stata richiesta una scrittura
-    		if(beanAddDish.getTipoModifica()==0) {
+    		if(beanDish.getTypeChange()==0) {
     			try {
-    				manageMenu.addDish(beanAddDish);
+    				manageMenu.addDish(beanDish);
 				} catch (DishAlreadyExists e) {
 					FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-		        	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,0,e.getMess(),bs));
+		        	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(0,e.getMess(),bs));
 		        	Parent root = loader.load();
 		        	myAnchorPane.getChildren().setAll(root);
 		        	return;
@@ -114,10 +111,10 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     			
     		}else {
     			try {
-    				manageMenu.modifyDishes(beanAddDish);
+    				manageMenu.modifyDishes(beanDish);
 				} catch (InvalidDishModify e) {
 					FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-		        	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,1, e.getMess(),bs));
+		        	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(1, e.getMess(),bs));
 		        	Parent root = loader.load();
 		        	myAnchorPane.getChildren().setAll(root);
 		        	return;
@@ -132,7 +129,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     			manageMenu.deleteDish(beanDeleteDish);
 			} catch (InvalidDishDelete e) {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-	        	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,2, e.getMess(),bs));
+	        	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(2, e.getMess(),bs));
 	        	Parent root = loader.load();
 	        	myAnchorPane.getChildren().setAll(root);
 	        	return;
@@ -141,8 +138,8 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     	}
     	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-		//se vale -1 allora non c'ÃƒÆ’Ã‚Â¨ stato alcun errore
-    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,bs));
+		//se vale -1 allora non c'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨ stato alcun errore
+    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(bs));
     	Parent root = loader.load();
     	myAnchorPane.getChildren().setAll(root);
     	
@@ -157,7 +154,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     @FXML
     void keepManagingMenu(ActionEvent event) throws IOException {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,bs));
+    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(bs));
     	Parent root = loader.load();
     	myAnchorPane.getChildren().setAll(root);
     }
@@ -173,6 +170,6 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
         assert doneButton != null : "fx:id=\"doneButton\" was not injected: check your FXML file 'ConfirmMessageView.fxml'.";
         assert discardAllTheChangesButton != null : "fx:id=\"discardAllTheChangesButton\" was not injected: check your FXML file 'ConfirmMessageView.fxml'.";
         assert keepManagingMenuButton != null : "fx:id=\"keepManagingMenuButton\" was not injected: check your FXML file 'ConfirmMessageView.fxml'.";
-        nomeUtenteLabel.setText(username);
+        nomeUtenteLabel.setText(bs.getUser().getUsername());
     }
 }

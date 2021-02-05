@@ -16,8 +16,11 @@ public class QueryRecipe {
 
 	private QueryRecipe() {}
 	
-	public static ResultSet selectNoDish(Statement stmt,String username) throws SQLException {
-		String sql = "select * from piattotipico where NomePiatto <> all (select NomePiatto from piatto join ristorante on piatto.NomeRistorante = ristorante.Nome where ristorante.UsernameProprietario = '"+username+"');";
+	public static ResultSet selectAllOtherRecipesWithMinimumPrice(Statement stmt,String username) throws SQLException {
+		String sql = "select NomePiatto,NomeRistorante,Contenuto,Vegano,Celiaco, min(Prezzo)\r\n"
+				+ "from piatto join ristorante on piatto.NomeRistorante = ristorante.Nome \r\n"
+				+ "where ristorante.UsernameProprietario <> '"+username+"'\r\n"
+				+ "group by NomePiatto";
 		return stmt.executeQuery(sql);
 	}
 	

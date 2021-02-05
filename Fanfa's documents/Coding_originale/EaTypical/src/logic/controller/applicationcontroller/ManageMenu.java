@@ -1,10 +1,9 @@
 package logic.controller.applicationcontroller;
 
-import java.util.ArrayList;
 
-import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
-import logic.engineeringclasses.bean.manageMenu.BeanAdvice;
+
 import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
+import logic.engineeringclasses.bean.manageMenu.BeanDish;
 import logic.engineeringclasses.dao.RecipeDAO;
 import logic.engineeringclasses.exceptions.DishAlreadyExists;
 import logic.engineeringclasses.exceptions.InvalidDishDelete;
@@ -20,10 +19,10 @@ import logic.model.Recipe;
 public class ManageMenu {
 
 	
-	public void addDish(BeanAddDish beanAddDish) throws ClassNotFoundException, DishAlreadyExists
+	public void addDish(BeanDish beanAddDish) throws ClassNotFoundException, DishAlreadyExists
 	{
 		//creo la entity recipe
-		Recipe recipe = new Recipe(beanAddDish.getPiatto(), beanAddDish.getContenuto(), beanAddDish.getRistorante(), beanAddDish.isVegano(), beanAddDish.isCeliaco(), beanAddDish.getPrezzo());
+		Recipe recipe = new Recipe(beanAddDish.getDish(), beanAddDish.getContent(), beanAddDish.getRestaurant(), beanAddDish.isVegano(), beanAddDish.isCeliac(), beanAddDish.getPrice());
 		
 		//richiedo la persistenza nel db
 		
@@ -32,14 +31,15 @@ public class ManageMenu {
 		
 	}
 	
-	public void modifyDishes(BeanAddDish beanAddDish) throws ClassNotFoundException, InvalidDishModify
+	public void modifyDishes(BeanDish beanModifyDish) throws ClassNotFoundException, InvalidDishModify
 	{
 
 		//CREA LA ENTITY !! --------------------------------------------------------------------------
 		//istanzio una DAO per modificare tuple della tabella
 		RecipeDAO recipeDAO = new RecipeDAO();
+		Recipe recipe = new Recipe(beanModifyDish.getDish(),beanModifyDish.getContent(),beanModifyDish.getRestaurant(),beanModifyDish.isVegano(),beanModifyDish.isCeliac(),beanModifyDish.getPrice());
 		
-		recipeDAO.updateDishes(beanAddDish);
+		recipeDAO.updateDishes(recipe);
 	}
 	
 	public void deleteDish(BeanDeleteDish beanDeleteDish) throws ClassNotFoundException, InvalidDishDelete {

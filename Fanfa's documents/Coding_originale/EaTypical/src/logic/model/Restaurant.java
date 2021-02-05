@@ -14,6 +14,13 @@ public class Restaurant {
 	private List<User> clients = null;
 	private boolean[][] openingHours;
 	
+	public Restaurant(Owner owner, String city, String address, String name, double avgVote) {
+		this.owner = owner;				
+		this.city = city;
+		this.address =address;
+		this.name = name;
+		this.avgVote = avgVote;
+	}
 	public Restaurant(Owner owner, String city, Menu menu, String address, String name, double avgVote, List<Review> reviews, List<User> clients, boolean[][] openingHours) {
 		this.owner = owner;				//DA rivedere: clients e reviews che non servono
 		this.city = city;

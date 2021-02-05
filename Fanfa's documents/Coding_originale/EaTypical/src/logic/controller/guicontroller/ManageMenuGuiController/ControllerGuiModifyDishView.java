@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import logic.controller.guicontroller.OwnerBaseGuiController;
-import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
+import logic.engineeringclasses.bean.manageMenu.BeanDish;
 import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
 import logic.engineeringclasses.others.Session;
 
@@ -31,15 +31,14 @@ import logic.engineeringclasses.others.Session;
 
 public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
 
-	private String username;
+
 	private List<String> obs;
 	private List<String> obs2;
 	private int errorePiatto = -1;
 	private BeanErrorDish beanErrorDish;
 	
-	public ControllerGuiModifyDishView(String username, List<String> obs,List<String> obs2,int errorePiatto, BeanErrorDish beanErrorDish,Session bs) {
+	public ControllerGuiModifyDishView(List<String> obs,List<String> obs2,int errorePiatto, BeanErrorDish beanErrorDish,Session bs) {
 		super(bs);
-		this.username = username;
 		this.obs = obs;
 		this.obs2 = obs2;
 		this.errorePiatto = errorePiatto;
@@ -142,8 +141,8 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
     	
     	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
-    	BeanAddDish beanAddDish = new BeanAddDish(piatto, ristorante, contenuto, vegano, celiaco, prezzo, 1);
-    	loader.setControllerFactory(c -> new ControllerGuiConfirmMessageView(username,beanAddDish,bs));
+    	BeanDish beanModifyDish = new BeanDish(piatto, ristorante, contenuto, vegano, celiaco, prezzo, 1);
+    	loader.setControllerFactory(c -> new ControllerGuiConfirmMessageView(beanModifyDish,bs));
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
     }
@@ -168,7 +167,7 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
         assert campoMancantePrezzo != null : "fx:id=\"nuovoContenuto\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert errorePiattoLabel != null : "fx:id=\"errorePiattoLabel\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         
-        nomeUtenteLabel.setText(username);
+        nomeUtenteLabel.setText(bs.getUser().getUsername());
         
         for(int i = 0; i<this.obs.size();i++) {
         	choiseBox.getItems().add(this.obs.get(i));
