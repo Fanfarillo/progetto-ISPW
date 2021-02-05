@@ -5,7 +5,7 @@
 package logic.controller.guicontroller.ManageMenuGuiController;
 
 
-import logic.controller.applicationcontroller.ManageMenu;
+import logic.controller.applicationcontroller.GetAdvice;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import java.io.IOException;
 import java.net.URL;
@@ -111,7 +111,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     /**
      * ottiene i piatti e le ricette di tutti i ristoranti dell'utente
-     * Li passa al controller grafico della view successiva in cui l'utente potrÃƒÆ’Ã‚Â  fare la selezione
+     * Li passa al controller grafico della view successiva in cui l'utente potrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  fare la selezione
      * @param event
      * @throws IOException
      * @throws ClassNotFoundException
@@ -149,8 +149,10 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     void getAdvice(ActionEvent event) throws IOException, ClassNotFoundException {
     	
     	//chiamo l'applicativo per ottenere la lista di suggerimenti da farmi dare
-    	ManageMenu manageMenu = new ManageMenu();
-    	BeanAdvice beanAdvices = manageMenu.advice(username);
+    	//ManageMenu manageMenu = new ManageMenu();
+    	//BeanAdvice beanAdvices = manageMenu.advice(username);
+    	GetAdvice getAdvice = new GetAdvice();
+    	BeanAdvice beanAdvices = getAdvice.advice(username);
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AdviceView.fxml"));    	
     	loader.setControllerFactory(c -> new ControllerGuiAdviceView(username,beanAdvices,bs));
     	Parent rootParent = loader.load();
@@ -161,7 +163,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     /**
      * Vengono caricati i ristoranti e i piatti dell'utente per poi passarli
-     * alla view successiva tramite cui l'utente potrÃƒÆ’Ã‚Â  cancellarli
+     * alla view successiva tramite cui l'utente potrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â  cancellarli
      * @param event
      * @throws IOException
      * @throws ClassNotFoundException
@@ -203,7 +205,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
         
         nomeUtenteLabel.setText(this.username);
         
-        //se si ÃƒÆ’Ã‚Â¨ verificato un errore all'atto dell'inserimento del piatto l'utente viene reindirizzato alla pagina 
+        //se si ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨ verificato un errore all'atto dell'inserimento del piatto l'utente viene reindirizzato alla pagina 
         //per l'inserimento e viene avvisato dell'errore
         if(this.errorePiatto == 0 ) {
         	this.addADish(null);
