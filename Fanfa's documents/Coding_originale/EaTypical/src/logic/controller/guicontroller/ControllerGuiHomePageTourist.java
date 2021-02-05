@@ -74,8 +74,6 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     			BeanConverter converter = new BeanConverter();
     			BeanOutputSchedule[] scheduling = converter.convertScheduling(bs.getUser());
     			String city = converter.getCityFromScheduling(bs.getUser());
-    		
-    			this.bs.getSizedStack().push(this.seeTripPage);
     			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.seeTripPage));
     			loader.setControllerFactory(c -> new ControllerGuiSeeTrip(city, scheduling, bs));
     			Parent root=loader.load();
@@ -105,7 +103,7 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     	}
     	else {
     		Session bs=new Session(false);
-    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.homePageTourist));
+    		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.bs.getFirstPage()));
         	loader.setControllerFactory(c -> new ControllerGuiHomePageTourist(bs));
         	Parent root=loader.load();
         	myAnchorPane.getChildren().setAll(root);

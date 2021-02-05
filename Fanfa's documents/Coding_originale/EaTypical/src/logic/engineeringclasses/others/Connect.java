@@ -24,8 +24,8 @@ public class Connect {
 	
 	public Connection getDBConnection() throws SQLException {
 		if(this.conn==null) {
-			this.conn = DriverManager.getConnection(this.connectionString);
-			//this.conn=DriverManager.getConnection(a+b);
+			//this.conn = DriverManager.getConnection(this.connectionString);
+			this.conn=DriverManager.getConnection(a+b);
 		}
 		return this.conn;
 	}

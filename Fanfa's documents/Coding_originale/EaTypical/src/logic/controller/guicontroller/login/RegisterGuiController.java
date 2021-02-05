@@ -118,19 +118,16 @@ public class RegisterGuiController extends UserBaseGuiController {
 	    		
 	    		
 	    		this.bs.setUser(user);
-	    		this.bs.getSizedStack().setFirstPage(isOwner);
+	    		this.bs.setFirstPage(isOwner);
 	    		this.bs.setOwner(isOwner);
-	    		if(isOwner) {
-		    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageOwnerView.fxml"));
-		        	loader.setControllerFactory(c -> new ControllerGuiHomePageOwner(this.bs));
-		        	Parent rootParent = loader.load();
-		        	myAnchorPane.getChildren().setAll(rootParent);
+	    		FXMLLoader loader = new FXMLLoader(getClass().getResource(this.bs.getFirstPage()));
+		      	if(isOwner) {	    		
+		        	loader.setControllerFactory(c ->  new ControllerGuiHomePageOwner(this.bs));
 		    	}else {
-		    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageTouristView.fxml"));
-		        	loader.setControllerFactory(c -> new ControllerGuiHomePageTourist(this.bs));
-		        	Parent rootParent = loader.load();
-		        	myAnchorPane.getChildren().setAll(rootParent);
+		        	loader.setControllerFactory(c ->  new ControllerGuiHomePageTourist(this.bs));	        	
 		    	}
+		      	Parent rootParent = loader.load();
+	        	myAnchorPane.getChildren().setAll(rootParent);
     		}
     		catch(DataException de)				//one or more fields are empty
     		{
@@ -188,7 +185,6 @@ public class RegisterGuiController extends UserBaseGuiController {
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'RegisterView.fxml'.";
         assert scheduleTripButton != null : "fx:id=\"scheduleTripButton\" was not injected: check your FXML file 'RegisterView.fxml'.";
         assert chooseRestaurantButton != null : "fx:id=\"chooseRestaurantButton\" was not injected: check your FXML file 'RegisterView.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'RegisterView.fxml'.";
         assert nameField != null : "fx:id=\"nameField\" was not injected: check your FXML file 'RegisterView.fxml'.";
         assert surnameField != null : "fx:id=\"surnameField\" was not injected: check your FXML file 'RegisterView.fxml'.";
         assert usernameField != null : "fx:id=\"usernameField\" was not injected: check your FXML file 'RegisterView.fxml'.";

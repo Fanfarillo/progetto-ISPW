@@ -66,7 +66,6 @@ public class TouristDAO {
 	            
 	            //TimeUnit.SECONDS.sleep(5);
 	            conn = Connect.getInstance().getDBConnection();	
-	            System.out.println("Dragonball conn");
 	            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 	                    ResultSet.CONCUR_READ_ONLY);	            
 	            

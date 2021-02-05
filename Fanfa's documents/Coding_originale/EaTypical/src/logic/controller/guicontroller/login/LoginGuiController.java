@@ -102,19 +102,16 @@ public class LoginGuiController extends UserBaseGuiController {
 	    	loggedUser=loginAppContr.loginMethod(bu);		//try to login
 	    	//   call the homepage and pass the user	    	
 	      	this.bs.setUser(loggedUser);
-	      	this.bs.getSizedStack().setFirstPage(isOwner);
+	      	this.bs.setFirstPage(isOwner);
 	      	this.bs.setOwner(isOwner);
-	      	if(isOwner) {
-	    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageOwnerView.fxml"));
+	      	FXMLLoader loader = new FXMLLoader(getClass().getResource(this.bs.getFirstPage()));
+	      	if(isOwner) {	    		
 	        	loader.setControllerFactory(c ->  new ControllerGuiHomePageOwner(this.bs));
-	        	Parent rootParent = loader.load();
-	        	myAnchorPane.getChildren().setAll(rootParent);
 	    	}else {
-	    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/HomePageTouristView.fxml"));
-	        	loader.setControllerFactory(c ->  new ControllerGuiHomePageTourist(this.bs));
-	        	Parent rootParent = loader.load();
-	        	myAnchorPane.getChildren().setAll(rootParent);
+	        	loader.setControllerFactory(c ->  new ControllerGuiHomePageTourist(this.bs));	        	
 	    	}
+	      	Parent rootParent = loader.load();
+        	myAnchorPane.getChildren().setAll(rootParent);
     	}
     	catch(DataException de)		//when username or password fields are empty
     	{
@@ -160,7 +157,6 @@ public class LoginGuiController extends UserBaseGuiController {
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert scheduleTripButton != null : "fx:id=\"scheduleTripButton\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert chooseRestaurantButton != null : "fx:id=\"chooseRestaurantButton\" was not injected: check your FXML file 'LoginView.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert passwordField != null : "fx:id=\"passwordField\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert usernameField != null : "fx:id=\"usernameField\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'LoginView.fxml'.";

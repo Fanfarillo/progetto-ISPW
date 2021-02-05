@@ -35,7 +35,6 @@ public  class UserBaseGuiController extends BaseGuiController {
 	@FXML
 	void goToChooseRestaurantPage(ActionEvent event) throws IOException {	//The Choose Restaurant Page button onAction method
 	
-	bs.getSizedStack().push(this.chooseRestPage);
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.chooseRestPage));
     	loader.setControllerFactory(c -> new ControllerGuiItalianViewCityCR(bs));
     	Parent root=loader.load();
@@ -45,7 +44,6 @@ public  class UserBaseGuiController extends BaseGuiController {
     @FXML
     void goToScheduleTripPage(ActionEvent event) throws IOException {		//The Schedule Trip Page button onAction method	
     	if(bs.getUser()!=null) {
-    		bs.getSizedStack().push(this.scheduleTripPage);
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.scheduleTripPage));
     		loader.setControllerFactory(c -> new ControllerGuiItalianViewCity(bs));
     		Parent root=loader.load();

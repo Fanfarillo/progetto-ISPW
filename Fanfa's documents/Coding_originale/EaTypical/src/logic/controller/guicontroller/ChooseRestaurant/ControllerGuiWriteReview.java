@@ -113,7 +113,6 @@ public class ControllerGuiWriteReview extends UserBaseGuiController {
 
     @FXML 
     void initialize() {
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'WriteReviewView.fxml'.";
         assert chooseRestaurantButton != null : "fx:id=\"chooseRestButton\" was not injected: check your FXML file 'WriteReviewView.fxml'.";
         assert scheduleTripButton != null : "fx:id=\"scheduleButton\" was not injected: check your FXML file 'WriteReviewView.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'WriteReviewView.fxml'.";

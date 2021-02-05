@@ -71,7 +71,6 @@ public class ControllerGuiReadReviews extends UserBaseGuiController{
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ReadReviewsView.fxml'.";
         assert chooseRestaurantButton != null : "fx:id=\"chooseRestButton\" was not injected: check your FXML file 'ReadReviewsView.fxml'.";
         assert scheduleTripButton != null : "fx:id=\"scheduleButton\" was not injected: check your FXML file 'ReadReviewsView.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'ReadReviewsView.fxml'.";
