@@ -39,7 +39,7 @@ public class QueryNotifications {
 	}
 	
 	public static void insertSchedulingNotification(Statement stmt, String usernameOwner, String usernameTourist, String restaurant, String strDate, String itaHour) throws SQLException {
-		stmt.executeUpdate("INSERT INTO Notificascheduling VALUES('" +usernameOwner+ "', '" +usernameTourist+ "', '" +restaurant+ "', '" +strDate+ "', '" +itaHour+ "')");
+		stmt.executeUpdate("INSERT INTO NotificaScheduling VALUES('" +usernameOwner+ "', '" +usernameTourist+ "', '" +restaurant+ "', '" +strDate+ "', '" +itaHour+ "', '0')");
 	}
 	
 }

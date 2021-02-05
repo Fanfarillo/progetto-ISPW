@@ -14,8 +14,10 @@ import logic.engineeringclasses.query.QueryRestaurantScheduleTrip;
 import logic.engineeringclasses.others.Connect;
 
 public class ScheduleTripRestaurantDAO {
+	
+	private ScheduleTripRestaurantDAO() {}
 
-	public List<Restaurant> select(String city, boolean vegan, boolean celiac) throws NoResultException, ClassNotFoundException, SQLException {
+	public static List<Restaurant> select(String city, boolean vegan, boolean celiac) throws NoResultException, ClassNotFoundException, SQLException {
 		// Step 1: declarations
 		Statement stmt=null;
 		Connection conn=null;

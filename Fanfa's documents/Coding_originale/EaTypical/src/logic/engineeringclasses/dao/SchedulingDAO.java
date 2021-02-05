@@ -11,7 +11,9 @@ import logic.model.Tourist;
 
 public class SchedulingDAO {
 	
-	public void delete(Tourist tourist) throws ClassNotFoundException, SQLException {
+	private SchedulingDAO() {}
+	
+	public static void delete(Tourist tourist) throws ClassNotFoundException, SQLException {
 		// Step 1: declarations
 		Statement stmt=null;
 		Connection conn=null;
@@ -40,12 +42,12 @@ public class SchedulingDAO {
 		
 	}
 	
-	public void delete(String username) throws ClassNotFoundException, SQLException {
+	public static void delete(String username) throws ClassNotFoundException, SQLException {
 		Tourist tourist = new Tourist(null, null, username, null, null, null);
 		delete(tourist);
 	}
 	
-	public void insert(Scheduling schedEntity) throws ClassNotFoundException, SQLException {
+	public static void insert(Scheduling schedEntity) throws ClassNotFoundException, SQLException {
 		// Step 1: declarations
 		Statement stmt=null;
 		Connection conn=null;

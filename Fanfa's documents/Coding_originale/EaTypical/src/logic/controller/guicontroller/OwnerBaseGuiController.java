@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiRestaurantMenuView;
-import logic.controller.guicontroller.SponsorRestaurant.ControllerGuiCreatingRestaurant;
+import logic.controller.guicontroller.sponsoryourrestaurant.ControllerGuiCreatingRestaurant;
 import logic.engineeringclasses.others.Session;
 
 public abstract class OwnerBaseGuiController extends BaseGuiController {

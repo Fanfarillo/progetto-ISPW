@@ -84,8 +84,7 @@ public class ScheduleTrip {
 	
 	public List<Restaurant> callDAO(String city, boolean isVegan, boolean isCeliac) throws ClassNotFoundException, NoResultException, SQLException {
 		// Query of the restaurants that are in the selected city and satisfy tourist's eventual food requirements
-		ScheduleTripRestaurantDAO dao = new ScheduleTripRestaurantDAO();
-		return dao.select(city, isVegan, isCeliac);		// List of restaurants that satisfy the most important conditions given by the tourist.	
+		return ScheduleTripRestaurantDAO.select(city, isVegan, isCeliac);		// List of restaurants that satisfy the most important conditions given by the tourist.	
 	}
 	
 	// Computation of number of days of the trip
@@ -396,13 +395,12 @@ public class ScheduleTrip {
 	
 	
 	public void saveScheduleTrip(ConvertedBeanSchedule[] scheduling, String username) throws ClassNotFoundException, SQLException {
-		SchedulingDAO dao = new SchedulingDAO();
 		Tourist tourist = new Tourist(null, null, username, null, null, null);	
 		double doubleAvgPrice;
 		double doubleAvgVote;
 		boolean atLunch;
 
-		dao.delete(tourist);
+		SchedulingDAO.delete(tourist);
 		
 		for(int i=0; i<scheduling.length; i++) {
 			doubleAvgPrice = Double.parseDouble(scheduling[i].getStrAvgPrice());
@@ -416,7 +414,7 @@ public class ScheduleTrip {
 			else atLunch=false;
 			
 			Scheduling schedEntity = new Scheduling(tourist, scheduling[i].getStrDate(), atLunch, r);
-			dao.insert(schedEntity);
+			SchedulingDAO.insert(schedEntity);
 			
 			sendNotification(schedEntity);
 			
@@ -425,8 +423,7 @@ public class ScheduleTrip {
 	}
 	
 	private void sendNotification(Scheduling sched) throws ClassNotFoundException, SQLException {
-		NotificationsDAO dao = new NotificationsDAO();
-		dao.insertOwnerSchedulingNotification(sched);
+		 NotificationsDAO.insertOwnerSchedulingNotification(sched);
 	}
 	
 }

@@ -70,19 +70,16 @@ public class RestaurantDAO {
 		return obs;
 	}
 	
-	public void insertRestaurant(String name, String address, String city, String owner, boolean[][] openingHours) throws SQLException, AlreadyInUseRestaurantNameException, ClassNotFoundException {
+	public static void insertRestaurant(String name, String address, String city, String owner, boolean[][] openingHours) throws SQLException, AlreadyInUseRestaurantNameException, ClassNotFoundException {
 		// Step 1: declarations
 		Statement stmt=null;
 		Connection conn=null;
 		
 		try {
-			// Step 2: dinamic loading of sql driver
-			Class.forName(driverclassname);
-			
-			// Step 3: connection opening
+			// Step 2: connection opening
 			conn = Connect.getInstance().getDBConnection();
 			
-			// Step 4: creation and execution of a preliminary query which is useful to check if the restaurant already exists in the system
+			// Step 3: creation and execution of a preliminary query which is useful to check if the restaurant already exists in the system
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = QueryRestaurant.selectRestaurant(stmt, name);
 			
@@ -90,7 +87,7 @@ public class RestaurantDAO {
 				throw new AlreadyInUseRestaurantNameException("This restaurant has already been sponsored.");
 			}
 			
-			// Step 4.2: creation and execution of insertion
+			// Step 3.2: creation and execution of insertion
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			QueryRestaurant.insertNewRestaurant(stmt, name, address, city, owner, openingHours);
 			

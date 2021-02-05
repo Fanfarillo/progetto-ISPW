@@ -55,8 +55,7 @@ public class ControllerGuiSeeTrip extends SchedulingBaseGuiController {
     @FXML
     void deleteScheduling(ActionEvent event) throws IOException {
     	try {
-    		SchedulingDAO dao = new SchedulingDAO();
-    		dao.delete(this.bs.getUser().getUsername());
+    		 SchedulingDAO.delete(this.bs.getUser().getUsername());
     	
     		FXMLLoader loader=new FXMLLoader(getClass().getResource(this.seeTripPage));
     		loader.setControllerFactory(c -> new ControllerGuiSeeTrip(this.city, null, bs));

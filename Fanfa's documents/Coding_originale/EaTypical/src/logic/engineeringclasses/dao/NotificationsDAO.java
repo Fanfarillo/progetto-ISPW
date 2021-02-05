@@ -147,7 +147,7 @@ public class NotificationsDAO {
 		return notifications;
 	}
 
-	public void insertOwnerSchedulingNotification(Scheduling sched) throws ClassNotFoundException, SQLException {
+	public static void insertOwnerSchedulingNotification(Scheduling sched) throws ClassNotFoundException, SQLException {
 		// Step 1: declarations
 		Statement stmt=null;
 		Connection conn=null;

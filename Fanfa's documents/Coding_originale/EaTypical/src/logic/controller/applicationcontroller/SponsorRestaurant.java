@@ -9,8 +9,7 @@ import logic.engineeringclasses.exceptions.AlreadyInUseRestaurantNameException;
 public class SponsorRestaurant {
 
 	public void saveRestaurant(BeanNewRestaurant bnr) throws SQLException, AlreadyInUseRestaurantNameException, ClassNotFoundException {
-		RestaurantDAO dao = new RestaurantDAO();
-		dao.insertRestaurant(bnr.getName(), bnr.getAddress(), bnr.getCity(), bnr.getUsernameOwner(), bnr.getOpeningHours());
+		 RestaurantDAO.insertRestaurant(bnr.getName(), bnr.getAddress(), bnr.getCity(), bnr.getUsernameOwner(), bnr.getOpeningHours());
 		
 	}
 	
