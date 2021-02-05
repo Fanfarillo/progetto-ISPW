@@ -4,6 +4,7 @@
 
 
 package logic.controller.guicontroller.ManageMenuGuiController;
+
 import logic.controller.applicationcontroller.ManageMenu;
 import logic.controller.guicontroller.OwnerBaseGuiController;
 import logic.engineeringclasses.bean.manageMenu.BeanAddDish;
@@ -122,13 +123,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 		        	return;
 				}    			
     		}
-    		
-    		   		
-    		FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-    		//se vale -1 allora non c'ÃƒÂ¨ stato alcun errore
-        	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,bs));
-        	Parent root = loader.load();
-        	myAnchorPane.getChildren().setAll(root);
+    	
     	}
     	
     	//E' diversa da null se e' stata richiesta l'eliminazione di un piatto
@@ -142,13 +137,14 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 	        	myAnchorPane.getChildren().setAll(root);
 	        	return;
 			}
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-			//se vale -1 allora non c'ÃƒÂ¨ stato alcun errore
-	    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,bs));
-	    	Parent root = loader.load();
-	    	myAnchorPane.getChildren().setAll(root);
 			
     	}
+    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
+		//se vale -1 allora non c'ÃƒÆ’Ã‚Â¨ stato alcun errore
+    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(username,bs));
+    	Parent root = loader.load();
+    	myAnchorPane.getChildren().setAll(root);
     	
     }
 
