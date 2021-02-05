@@ -50,18 +50,6 @@ public class ManageMenu {
 		recipeDAO.deleteRecipe(beanDeleteDish.getRistorante(), beanDeleteDish.getPiatto());
 	}
 	
-	public BeanAdvice advice(String username) throws ClassNotFoundException {
-		
-		// istanzio la DAO affinchÃ¨ possa ottenere i piatti tipici che il ristorante non offre ai clienti
-		RecipeDAO recipeDAO = new RecipeDAO();
-		ArrayList<String> piattiMancanti = (ArrayList<String>) recipeDAO.selectNoRecipe(username);
-		
-		//impacchetto i piatti 'mancanti' all'interno di una Bean che verrÃ  passata al controller grafico chiamante
-		new BeanAdvice(piattiMancanti);
-		
-		
-		return new BeanAdvice(piattiMancanti);
-		
-	}
+	
 	
 }
