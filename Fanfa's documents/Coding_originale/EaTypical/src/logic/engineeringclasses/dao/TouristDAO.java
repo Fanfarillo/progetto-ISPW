@@ -33,13 +33,13 @@ public class TouristDAO {
 	            {
 	            	throw new LoginDBException(0);		
 	            }
-	            
+	            rs.first();
 	            String name=rs.getString("Nome");
 	            String surname=rs.getString("Cognome");
 	            String username=rs.getString("Username");
-	            
+	            System.out.println("pippo");
 	            tourist=TouristCreatorFacade.getInstance().getTourist(name, surname, username);		//compose the tourist entity   
-           
+	            System.out.println("pippo");
 	            rs.close();	
 	        	}
 	                

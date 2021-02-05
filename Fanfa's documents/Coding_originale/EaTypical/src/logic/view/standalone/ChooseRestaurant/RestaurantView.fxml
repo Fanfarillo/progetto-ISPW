@@ -93,5 +93,6 @@
          </font>
       </Label>
       <Label fx:id="genericError" layoutX="332.0" layoutY="179.0" textFill="RED" visible="false" />
+      <Label fx:id="successLabel" layoutX="249.0" layoutY="506.0" textFill="#25f800" visible="false" />
    </children>
 </AnchorPane>

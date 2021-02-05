@@ -33,13 +33,6 @@
     		}
     	}
     	
-    	if(request.getParameter("Back ivc2")!=null) {
-
-%>
-				<jsp:forward page="HomePageTouristView.jsp"/>
-<%
-			
-    	}
     	if(request.getParameter("Continue ivc2")!=null) {
     		String city=request.getParameter("Scroll");    		
     		if(city!=null)
@@ -115,7 +108,6 @@
 		<input id="home" type="submit" name="Home ivc2" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip ivc2" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ivc2" value="Choose Restaurant" disabled>
-		<input id="back" type="submit" name="Back ivc2" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="userphoto"/>
 		
 		<label id="nomeUtente"><%=userString %></label>

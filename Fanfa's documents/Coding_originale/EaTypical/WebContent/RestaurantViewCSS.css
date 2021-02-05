@@ -41,15 +41,6 @@ body {
 	top: 4.71%;
 }
 
-#back {
-	width: 9.29%;
-	height: 6.43%;
-	position: absolute;
-	left: 4.29%;
-	top: 13.14%;
-	cursor: pointer;
-}
-
 
 #saveFavourite {
 	width:24.5%;
@@ -170,6 +161,12 @@ body {
 	left: 40%;
 	top: 75%;
 	color: red;
+}
+#successLabel {
+	position: absolute;
+	left: 20%;
+	top: 75%;
+	color: green;
 }
 
 #nomeUtente {

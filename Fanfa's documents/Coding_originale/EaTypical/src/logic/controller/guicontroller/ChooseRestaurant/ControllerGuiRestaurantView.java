@@ -37,6 +37,7 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
 	private String writeReviewPage="/logic/view/standalone/ChooseRestaurant/WriteReviewView.fxml";
 	private String readReviewsPage="/logic/view/standalone/ChooseRestaurant/ReadReviewsView.fxml";
 	private String genericErrortext="Please try again!";
+	private String successString="This is one of your favourites restaurants now.";
     private ChooseRestaurant cr;
     private String city;
 	
@@ -67,6 +68,9 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
 
     @FXML
     private CheckBox veganCheck;
+    
+    @FXML
+    private Label successLabel;
     
     @FXML
     private Label noSelection;
@@ -159,6 +163,8 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
 	    		String restaurant = restChoice.getSelectionModel().getSelectedItem();
 	    		String username=this.bs.getUser().getUsername();
 	    		FavouriteRestDAO.insertFavourite(restaurant,username);
+	    		this.successLabel.setText(this.successString);
+	    		this.successLabel.setVisible(true);
 	    	}
     	}
     	catch(Exception e)
@@ -286,6 +292,8 @@ public class ControllerGuiRestaurantView extends UserBaseGuiController{
         assert veganCheck != null : "fx:id=\"veganCheck\" was not injected: check your FXML file 'RestaurantView.fxml'.";
         assert noSelection != null : "fx:id=\"noSelection\" was not injected: check your FXML file 'RestaurantView.fxml'.";
         assert genericError != null : "fx:id=\"genericError\" was not injected: check your FXML file 'RestaurantView.fxml'.";
+        assert successLabel != null : "fx:id=\"sucessLabel\" was not injected: check your FXML file 'RestaurantView.fxml'.";
+
         if(this.bs.getUser()!=null)
         	nomeUtenteLabel.setText(this.bs.getUser().getUsername());
         else

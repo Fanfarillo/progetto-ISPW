@@ -27,6 +27,7 @@ public class FavouriteRestDAO {
         // STEP 1: dichiarazioni
     	String driverClassName = "com.mysql.jdbc.Driver";
         Statement stmt = null;
+        Statement stmt2 = null;
         Connection conn = null;
         List<Restaurant> listOfRestaurants = new ArrayList<>();
         
@@ -37,23 +38,25 @@ public class FavouriteRestDAO {
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            
+            stmt2=conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = QueryFavouriteRest.selectFavourites(stmt,tourist); //ask for the favourite restaurants
+            
             if(rs.first())		//if there is something
             {
 	            do{			//for each restaurant									
 	                String restaurant = rs.getString("NomeRistorante");		//get his name
-	                ResultSet rs2=QueryRestByName.selectRestaurants(stmt, restaurant);		//look for the restaurant infos
+	                ResultSet rs2=QueryRestByName.selectRestaurants(stmt2, restaurant);		//look for the restaurant infos
+	                rs2.first();
 	                String name=rs2.getString("Nome");
 	                String address=rs2.getString("Indirizzo");
-	                String city=rs2.getString("Città");
-	                double avgVote=rs2.getDouble("VotoMedio");		
+	                String city=rs2.getString("Citta");
+	                double avgVote=rs2.getDouble("VotoMedio");
+	                rs2.close();
 	                Restaurant r=new Restaurant(name,address,city,avgVote);		//make a new restaurant
 	                listOfRestaurants.add(r);		//add the restaurant in the list
 	            }while(rs.next());
-	            
             }
-            
             rs.close();
         	} finally {
             

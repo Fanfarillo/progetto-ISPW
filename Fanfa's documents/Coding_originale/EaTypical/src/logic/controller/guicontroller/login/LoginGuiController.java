@@ -105,7 +105,7 @@ public class LoginGuiController extends UserBaseGuiController {
 	      	this.bs.setFirstPage(isOwner);
 	      	this.bs.setOwner(isOwner);
 	      	FXMLLoader loader = new FXMLLoader(getClass().getResource(this.bs.getFirstPage()));
-	      	if(isOwner) {	    		
+	      	if(isOwner) {
 	        	loader.setControllerFactory(c ->  new ControllerGuiHomePageOwner(this.bs));
 	    	}else {
 	        	loader.setControllerFactory(c ->  new ControllerGuiHomePageTourist(this.bs));	        	

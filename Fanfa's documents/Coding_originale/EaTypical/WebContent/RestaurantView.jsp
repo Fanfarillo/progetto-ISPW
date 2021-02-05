@@ -26,6 +26,7 @@
 	 boolean notSelectedRest=false;
 	 boolean celiacs=false;
 	 boolean vegans=false;
+	 boolean success=false;
 	 String name;
 	 List<ArrayList<String>> allRestaurants=new ArrayList<ArrayList<String>>();
 	 List<ArrayList<String>> celiacRestaurants=new ArrayList<ArrayList<String>>();
@@ -63,6 +64,34 @@
 			<jsp:forward page="ItalianViewCity2.jsp"/>
 <%
     	}
+    			
+		if(request.getParameter("Save Restaurant into Favourite restv")!=null) {
+		if(bs==null||bs.getUser()==null){
+			loginError=true;}
+		else if(request.getParameter("restScroll")==null)
+		{
+			notSelectedRest=true;
+		}
+		else{
+			try{
+			String user=bs.getUser().getUsername();
+			String restaurant=request.getParameter("restScroll");
+			System.out.println("pippo3");
+			FavouriteRestDAO.insertFavourite(restaurant,user);
+			success=true;
+			System.out.println("pippo3");
+			}
+			catch(Exception e)
+			{
+				genericError=true;
+			}
+		%>
+		<%
+		}
+%>
+		
+<%
+	}
     	if(request.getParameter("Schedule Trip restv")!=null) {
     		if(bs!=null&&bs.getUser()!=null){
     			
@@ -74,16 +103,6 @@
     	else{
     		loginError=true;
     	    }
-    	}
-    		
-    		
-    		
-    	if(request.getParameter("Back restv")!=null) {
-
-%>
-				<jsp:forward page="HomePageTouristView.jsp"/>
-<%
-			
     	}
     	if(request.getParameter("Update Rest val")!=null) {
     		celiacs= (request.getParameterValues("celFilter")!=null&&request.getParameterValues("celFilter")[0].equals("forCeliacs"));
@@ -104,30 +123,7 @@
     		   	   }
     	}
     	
-    	if(request.getParameter("save Restaurant into Favourites restv")!=null) {
-    		if(bs!=null||bs.getUser()==null){
-				loginError=true;}
-			else if(request.getParameter("restScroll")==null)
-			{
-				notSelectedRest=true;
-			}
-			else{
-				try{
-				String user=bs.getUser().getUsername();
-				String restaurant=request.getParameter("restScroll");
-				FavouriteRestDAO.insertFavourite(restaurant,user);
-				}
-				catch(Exception e)
-				{
-					genericError=true;
-				}
-    		%>
-    		<%
-			}
-%>
-			
-<%
-    	}
+    	
     	if(request.getParameter("Read Reviews restv")!=null) {
     		if(request.getParameter("restScroll")==null)
 			{
@@ -179,12 +175,15 @@
 			<input id="home" class="button" type="submit" name="Home restv" value="Home">
 			<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip restv" value="Schedule Trip">
 			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant restv" value="Choose Restaurant">
-			<input id="back" class="button" type="submit" name="Back restv" value="Back">
 			<input id="saveFavourite" class="button" type="submit" name="Save Restaurant into Favourite restv" value="Save Restaurant into Favourites">
 			<input id="readReviews" class="button" type="submit" name="Read Reviews restv" value="Read Reviews">
 			<input id="writeReview" class="button" type="submit" name="Write Review restv" value="Write Review">
 			<img id="fotoUtente" src="utente.jpg" alt="user"/>
 			<label id="nomeUtente"><%=userString%></label>
+			
+
+			
+			
 			
 			<input type="checkbox" id="celFilter" name="celFilter" value="forCeliacs">
 			<input type="checkbox" id="vegFilter" name="vegFilter" value="forVegans">
@@ -213,6 +212,8 @@
 				%><label id="loginError">You must be logged to use this function!</label><%				
 			}
 			%>
+			<%if(success){
+			%><label id="successLabel">This is one of your favourites restaurants now.</label><%}%>
 			
 			<select id="restaurantsScroll" name="restScroll">
 			

@@ -46,13 +46,6 @@
 			<jsp:forward page="ItalianViewCity.jsp"/>
 <%
     	}
-    	if(request.getParameter("Back rr")!=null) {
-
-%>
-				<jsp:forward page="HomePageTouristView.jsp"/>
-<%
-			
-    	}
     	if(request.getParameter("Submit Review ww")!=null) {
     		
     		try
@@ -95,7 +88,6 @@
 			<input id="home" class="button" type="submit" name="Home ww" value="Home">
 			<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip ww" value="Schedule Trip">
 			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant ww" value="Choose Restaurant">
-			<input id="back" class="button" type="submit" name="Back ww" value="Back">
 			<input id="submitReview" class="button" type="submit" name="Submit Review ww" value="Submit Review">
 			<img id="fotoUtente" src="utente.jpg" alt="user"/>
 			<label id="nomeUtente"><%=userString%></label>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@page import="logic.engineeringclasses.others.SizedStack" %>
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="java.text.ParseException" %>
 <%@page import="logic.engineeringclasses.others.BeanConverter" %>

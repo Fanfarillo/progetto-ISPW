@@ -38,7 +38,7 @@ public class OwnerDAO {
             {
             	throw new LoginDBException(0);		
             }
-            
+            rs.first();
             name=rs.getString("Nome");
             surname=rs.getString("Cognome");
             username=rs.getString("Username");   

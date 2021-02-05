@@ -96,7 +96,6 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert myAnchorPane != null : "fx:id=\"myAnchorPane\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert sponsorRestaurantButton != null : "fx:id=\"sponsorRestaurantButton\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert manageMenuButton != null : "fx:id=\"manageMenuButton\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'HomePageOwnerView.fxml'.";

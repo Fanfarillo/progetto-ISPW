@@ -37,12 +37,6 @@
 <%
     	}
     	
-    	if(request.getParameter("Back rg")!=null) {
-
-%>
-				<jsp:forward page="HomePageTouristView.jsp"/>
-<%			
-    	}
     	if(request.getParameter("registerrg")!=null||request.getParameter("registerfbrg")!=null)
     	{
     		try
@@ -73,7 +67,7 @@
 	    		
 	    		
 	    		bs.setUser(user);
-	    		bs.getSizedStack().setFirstPage(isOwner);
+	    		bs.setFirstPage(isOwner);
 	    		bs.setOwner(isOwner);
 	    		session.setAttribute("session", bs);
 	    		if(isOwner) {
@@ -120,7 +114,6 @@
 		<input id="home" type="submit" name="Home rg" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip rg" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant rg" value="Choose Restaurant" disabled>
-		<input id="back" type="submit" name="Back rg" value="Back">
 		<img id="fotoUtente" src="utente.jpg"  alt="user"/>
 		<label id="nomeUtente">nomeUtente</label>
 		

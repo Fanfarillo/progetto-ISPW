@@ -74,13 +74,6 @@
 <%
     		}
     	}
-    	if(request.getParameter("Back rr")!=null) {
-
-%>
-				<jsp:forward page="HomePageTouristView.jsp"/>
-<%
-			
-    	}
     	
 %>   
 <!DOCTYPE html>
@@ -96,7 +89,6 @@
 			<input id="home" class="button" type="submit" name="Home rr" value="Home">
 			<input id="scheduleTrip" class="button" type="submit" name="Schedule Trip rr" value="Schedule Trip">
 			<input id="chooseRestaurant" class="button" type="submit" name="Choose Restaurant rr" value="Choose Restaurant">
-			<input id="back" class="button" type="submit" name="Back rr" value="Back">
 			<img id="fotoUtente" src="utente.jpg" alt="user"/>
 			<label id="nomeUtente"><%=userString%></label>
 			
