@@ -37,9 +37,7 @@ public  class UserBaseGuiController extends BaseGuiController {
 	
 	bs.getSizedStack().push(this.chooseRestPage);
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.chooseRestPage));
-    	System.out.println("giorgio");
     	loader.setControllerFactory(c -> new ControllerGuiItalianViewCityCR(bs));
-    	System.out.println("giorgiol");
     	Parent root=loader.load();
     	myAnchorPane.getChildren().setAll(root);
     }
