@@ -16,8 +16,8 @@ import logic.controller.guicontroller.scheduleatrip.*;
 public  class UserBaseGuiController extends BaseGuiController {
 	
 	protected String mustLoginMessage = "You must login to use this function.";
-	protected String chooseRestPage = "/logic/view/standalone/ChooseRestaurant/ItalianViewCity.fxml";
-	protected String scheduleTripPage = "/logic/view/standalone/ScheduleTrip/ItalianViewCity.fxml";
+	protected String chooseRestPage = "/logic/view/standalone/chooserestaurant/ItalianViewCity.fxml";
+	protected String scheduleTripPage = "/logic/view/standalone/scheduleatrip/ItalianViewCity.fxml";
 	
 	protected UserBaseGuiController(Session bs) {
 		super(bs);

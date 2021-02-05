@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
 
 public class ControllerGuiItalianViewCity extends ItalianViewBaseGuiController {	
 	
-	private String tripSettingsPage = "/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml";
+	private String tripSettingsPage = "/logic/view/standalone/scheduleatrip/TripSettingsView.fxml";
 	private String errorMessage="";
 	
 	public ControllerGuiItalianViewCity(Session bs) {

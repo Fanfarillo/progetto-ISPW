@@ -21,8 +21,8 @@ import javafx.scene.control.Label;
 
 public class ControllerGuiScheduling extends SchedulingBaseGuiController {
 	
-	private String schedulingPage = "/logic/view/standalone/ScheduleTrip/SchedulingView.fxml";
-	private String tripSettingsPage = "/logic/view/standalone/ScheduleTrip/TripSettingsView.fxml";
+	private String schedulingPage = "/logic/view/standalone/scheduleatrip/SchedulingView.fxml";
+	private String tripSettingsPage = "/logic/view/standalone/scheduleatrip/TripSettingsView.fxml";
 	private String savedMessage = "Scheduling saved successfully.";
 	
 	public ControllerGuiScheduling(String city, BeanOutputSchedule[] scheduling, Session bs) {

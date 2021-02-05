@@ -42,4 +42,8 @@ public class QueryNotifications {
 		stmt.executeUpdate("INSERT INTO NotificaScheduling VALUES('" +usernameOwner+ "', '" +usernameTourist+ "', '" +restaurant+ "', '" +strDate+ "', '" +itaHour+ "', '0')");
 	}
 	
+	public static void deleteSchedulingNotification(Statement stmt, String usernameTourist) throws SQLException {
+		stmt.executeUpdate("DELETE FROM NotificaScheduling WHERE UsernameTurista = '" +usernameTourist+ "'");
+	}
+	
 }

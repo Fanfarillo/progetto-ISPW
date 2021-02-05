@@ -25,7 +25,7 @@ import javafx.scene.control.TextField;
 
 public class ControllerGuiCreatingRestaurant extends OwnerBaseGuiController {
 	private String errorMessage;
-	private String openingHoursPage = "/logic/view/standalone/SponsorRestaurant/SetOpeningHoursView.fxml";
+	private String openingHoursPage = "/logic/view/standalone/sponsoryourrestaurant/SetOpeningHoursView.fxml";
 	
 	public ControllerGuiCreatingRestaurant(Session bs) {
 		super(bs);

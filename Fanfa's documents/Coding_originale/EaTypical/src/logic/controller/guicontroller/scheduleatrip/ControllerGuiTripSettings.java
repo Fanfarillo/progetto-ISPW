@@ -34,7 +34,7 @@ import javafx.scene.control.ToggleGroup;
 public class ControllerGuiTripSettings extends UserBaseGuiController {
 	ObservableList<String> list = FXCollections.observableArrayList();
 	
-	private String schedulingPage = "/logic/view/standalone/ScheduleTrip/SchedulingView.fxml";
+	private String schedulingPage = "/logic/view/standalone/scheduleatrip/SchedulingView.fxml";
 	private String city;
 	private String message;
 	

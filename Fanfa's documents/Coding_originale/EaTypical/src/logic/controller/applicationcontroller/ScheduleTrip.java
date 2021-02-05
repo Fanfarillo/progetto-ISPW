@@ -423,7 +423,8 @@ public class ScheduleTrip {
 	}
 	
 	private void sendNotification(Scheduling sched) throws ClassNotFoundException, SQLException {
-		 NotificationsDAO.insertOwnerSchedulingNotification(sched);
+		NotificationsDAO.deleteOwnerSchedulingNotification(sched.getTourist());
+		NotificationsDAO.insertOwnerSchedulingNotification(sched);
 	}
 	
 }

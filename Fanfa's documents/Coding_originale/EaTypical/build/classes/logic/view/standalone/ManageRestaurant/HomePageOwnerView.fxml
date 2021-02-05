@@ -14,11 +14,7 @@
             <Image url="@..\restaurant-mural-wallpaper_23-2148707022.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="backButton" layoutX="214.0" layoutY="501.0" mnemonicParsing="false" onAction="#goToBackPage" prefHeight="60.0" prefWidth="280.0" text="Logout">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
+      
       <Button fx:id="sponsorRestaurantButton" layoutX="212.0" layoutY="400.0" mnemonicParsing="false" onAction="#goToSponsorRestaurant" prefHeight="60.0" prefWidth="280.0" text="Sponsor Restaurant">
          <font>
             <Font name="System Bold" size="24.0" />

@@ -23,7 +23,7 @@ import logic.engineeringclasses.others.Session;
 public class ControllerGuiSetOpeningHours extends OwnerBaseGuiController {
 	private BeanNewRestaurant bnr;
 	private String savedMessage = "Restaurant saved successfully.";
-	private String creatingRestPage = "/logic/view/standalone/SponsorRestaurant/CreatingRestaurantView.fxml";
+	private String creatingRestPage = "/logic/view/standalone/sponsoryourrestaurant/CreatingRestaurantView.fxml";
 	
 	public ControllerGuiSetOpeningHours(BeanNewRestaurant bnr, Session bs) {
 		super(bs);

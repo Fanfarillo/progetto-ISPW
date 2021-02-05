@@ -14,6 +14,7 @@ import logic.engineeringclasses.query.QueryNotifications;
 import logic.model.OwnerSchedulingNotification;
 import logic.model.Restaurant;
 import logic.model.Scheduling;
+import logic.model.Tourist;
 import logic.model.TouristNotification;
 
 public class NotificationsDAO {
@@ -179,4 +180,33 @@ public class NotificationsDAO {
 		}
 		
 	}
+	
+	public static void deleteOwnerSchedulingNotification(Tourist tourist) throws ClassNotFoundException, SQLException {
+		// Step 1: declarations
+		Statement stmt=null;
+		Connection conn=null;
+		
+		try {
+			// Step 2: connection opening
+			conn = Connect.getInstance().getDBConnection();
+			
+			// Step 3: creation and execution of query
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			QueryNotifications.deleteSchedulingNotification(stmt, tourist.getUsername());
+			
+		}
+		
+		finally {
+			try {
+				if(stmt!=null) {
+					stmt.close();
+				}
+			}
+			catch(SQLException se) {
+				se.printStackTrace();
+			}
+			
+		}
+	}
+	
 }
