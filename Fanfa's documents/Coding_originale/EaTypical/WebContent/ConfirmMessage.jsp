@@ -1,3 +1,4 @@
+<%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.dao.RestaurantDAO"%>
 <%@page import="logic.engineeringclasses.dao.RecipeDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -17,6 +18,10 @@
  <%@page import="logic.engineeringclasses.others.SizedStack" %>
 
 <%
+
+	Session s;
+	s = (Session)session.getAttribute("session");
+	
 	if(request.getParameter("home3")!=null) {
 		//SizedStack.getSizedStack(true).clearStack();
 		%>
@@ -74,14 +79,14 @@
 			}catch(DishAlreadyExists e){
 				//System.out.print("Gia esiste\n");
 				RestaurantDAO restaurantDAO = new RestaurantDAO();		
-				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
+				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant(s.getUser().getUsername());
 				//setto i ristoranti
 				session.setAttribute("listaRistoranti", obs2);
 				RecipeDAO recipeDAO = new RecipeDAO();
-				//setto le ricette
-				ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
+				ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe(s.getUser().getUsername()); //setto le ricette
 				session.setAttribute("listaPiatti", obs1);
 				session.setAttribute("errore", "S");
+				session.setAttribute("session", s);
 				%>
 				<jsp:forward page="AddDishView.jsp"></jsp:forward>
 				<%
@@ -93,16 +98,14 @@
 			try{
 				m.modifyDishes(beanAddDish);
 			}catch(InvalidDishModify e2){
-				System.out.print("Non esiste\n");				
-				RecipeDAO recipeDAO = new RecipeDAO();
-				//setto le ricette
-				ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
-				session.setAttribute("listaPiatti", obs1);
-				session.setAttribute("errore", "S");
+				session.setAttribute("session", s);
+				RecipeDAO recipeDAO = new RecipeDAO(); 
+				ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe(s.getUser().getUsername());
+				session.setAttribute("listaPiatti", obs1); //setto le ricette
+				session.setAttribute("errore", "S");	//comunico l'errore
 				RestaurantDAO restaurantDAO = new RestaurantDAO();		
-				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
-				//setto i ristoranti
-				session.setAttribute("listaRistoranti", obs2);
+				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant(s.getUser().getUsername());
+				session.setAttribute("listaRistoranti", obs2); //setto i ristoranti
 				%>
 				<jsp:forward page="ModifyDishView.jsp"></jsp:forward>
 				<%
@@ -113,15 +116,13 @@
 			try{
 				m.deleteDish(beanDeleteDish);
 			}catch(InvalidDishDelete e3){
-				//System.out.println("Non esiste da eliminare");
-				session.setAttribute("errore", "S");
+				session.setAttribute("errore", "S");	//comunico l'errore
 				RestaurantDAO restaurantDAO = new RestaurantDAO();		
-				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
-				//setto i ristoranti
-				session.setAttribute("listaRistoranti", obs2);
+				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant(s.getUser().getUsername());
+				session.setAttribute("listaRistoranti", obs2); //setto i ristoranti
+				session.setAttribute("session", s);
 				RecipeDAO recipeDAO = new RecipeDAO();
-				//setto le ricette
-				ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
+				ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe(s.getUser().getUsername()); //setto le ricette
 				session.setAttribute("listaPiatti", obs1);
 				%>
 				<jsp:forward page="DeleteDishView.jsp"></jsp:forward>
@@ -136,7 +137,7 @@
 
 <%
 	if(request.getParameter("keep")!=null) {	
-		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		session.setAttribute("session", s);
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%		
@@ -147,7 +148,7 @@
 <html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Home page tourist</title>
+	<title>Confirm action</title>
 	<link rel="stylesheet" type="text/css" href="confirmMessage.css">
 	
 </head>
@@ -166,7 +167,7 @@
 			
 		<img id="fotoUtente" alt="fotoUtente" src="utente.jpg"/>
 		
-		<label id="nomeUtente">nomeUtente</label>
+		<label id="nomeUtente" style="font-size:20px"><%out.print(s.getUser().getUsername()); %></label>
 <%
 session.setAttribute("beanrefresh", request.getAttribute("bean"));
 

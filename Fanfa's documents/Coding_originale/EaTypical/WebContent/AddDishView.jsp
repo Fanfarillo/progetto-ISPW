@@ -1,3 +1,4 @@
+<%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.bean.manageMenu.BeanDishWeb"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="logic.engineeringclasses.bean.manageMenu.BeanAddDish"%>
@@ -11,7 +12,9 @@
 	ArrayList<String> obs2;
 	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); 
 	String errore = "N";
-	errore = (String)session.getAttribute("errore");%>
+	errore = (String)session.getAttribute("errore");
+	Session s;
+	s = (Session)session.getAttribute("session");%>
 <%
 	
 	if(request.getParameter("home1")!=null) {
@@ -124,7 +127,7 @@
 			<input id="back" type="submit" name="back1" value="Back">
 			
 			<img id="fotoUtente" alt="fotoUtente" src="utente.jpg"/>
-			<label id="nomeUtente">NomeUtente</label>  
+			<label id="nomeUtente" style="font-size:20px"><%out.print(s.getUser().getUsername()); %></label>  
 			
 			
 			

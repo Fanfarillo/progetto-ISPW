@@ -14,7 +14,7 @@
 <%
 	Session s;
 	s = (Session)session.getAttribute("session");
-	System.out.println("AAAaaaa   "+s.getUser().getUsername());
+
 	
 	if(request.getParameter("manage6")!=null) {
 		
@@ -39,7 +39,7 @@
 		NotificationsDAO notificationsDAO = new NotificationsDAO();
 	 	BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications("liuk");
 		session.setAttribute("beanScheduling", beanListNotificationsScheduling);
-
+		session.setAttribute("session", s);
 		%>
 		<jsp:forward page="SchedulingOwnerNotification.jsp"></jsp:forward>
 		<%
@@ -48,6 +48,7 @@
 
 <%
 	if(request.getParameter("review")!=null){
+		session.setAttribute("session", s);
 		BeanListReviews beanListReviews = ReviewsDAO.findOwnerReviews("liuk");
 		session.setAttribute("beanReviews", beanListReviews);
 		%>
@@ -58,9 +59,9 @@
 
 <%
 	if(request.getParameter("logout")!=null) {
-		//SizedStack.getSizedStack(true).push("HomePageOwner.jsp");
+		session.removeAttribute("session");
 		%>
-		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
+		<jsp:forward page="HomePageTouristView.jsp"></jsp:forward>
 		<%
 	}
 %>
@@ -82,9 +83,9 @@
 <div class="container">
 	<form action="HomePageOwner.jsp" name="myform" method="get">
 		<img id="fotoUtente" alt="" src="utente.jpg"/>
-		<label id="nomeUtente">nomeUtente</label>
+		<label id="nomeUtente" style="font-size:20px"><%out.print(s.getUser().getUsername()); %></label>
 		<div class="box">
-			<p>Hi!</p>
+			<p>Hi <%out.print(s.getUser().getName()); %>!</p>
 		</div>
 		<input id="Manage" class="button" type="submit" name="manage6" value="Manage Menu">
  	<input id="schedulingNotifications" class="button" type="submit" name="scheduling" value="See Scheduling Notifications"> 

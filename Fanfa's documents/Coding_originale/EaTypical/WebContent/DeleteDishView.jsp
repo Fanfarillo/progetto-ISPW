@@ -1,3 +1,4 @@
+<%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.bean.manageMenu.BeanDishWeb"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -11,7 +12,9 @@
 	ArrayList<String> obs2;
 	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); 
 	String errore = "N";
-	errore = (String)session.getAttribute("errore");%>
+	errore = (String)session.getAttribute("errore");
+	Session s;
+	s = (Session)session.getAttribute("session");%>
 	
 
 <%
@@ -76,7 +79,7 @@
 
 <link rel="stylesheet" type="text/css" href="StyleDeleteDish.css">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Delete Dish</title>
 </head>
 <body>
 
@@ -92,7 +95,7 @@
 			
 			<img id="fotoUtente" alt="image" src="utente.jpg"/>
 			
-			<label id="n">NomeUtente</label>
+			<label id="n" style="font-size:20px"><%out.print(s.getUser().getUsername()); %></label>
 			
 			
 			

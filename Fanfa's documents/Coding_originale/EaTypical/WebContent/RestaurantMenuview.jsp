@@ -1,4 +1,5 @@
 
+<%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.dao.RecipeDAO"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -9,8 +10,11 @@
  <%@page import="logic.engineeringclasses.others.SizedStack" %>
 
 <%
-	//Session sessione = (Session)session.getAttribute("sessione");
-	//System.out.print(sessione.getUser());
+	Session s;
+	s = (Session)session.getAttribute("session");
+%>
+<%
+	
 	if(request.getParameter("home5")!=null) {
 		
 		%>
@@ -50,13 +54,14 @@
 <%
 	if(request.getParameter("delete")!=null) {
 		session.setAttribute("errore", "N");
+		session.setAttribute("session", s);
 		RestaurantDAO restaurantDAO = new RestaurantDAO();		
-		ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
+		ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant(s.getUser().getUsername());
 		//setto i ristoranti
 		session.setAttribute("listaRistoranti", obs2);
 		RecipeDAO recipeDAO = new RecipeDAO();
 		//setto le ricette
-		ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
+		ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe(s.getUser().getUsername());
 		session.setAttribute("listaPiatti", obs1);
 		%>
 		<jsp:forward page="DeleteDishView.jsp"></jsp:forward>
@@ -68,11 +73,12 @@
 	if(request.getParameter("add")!=null) {
 		
 		RestaurantDAO restaurantDAO = new RestaurantDAO();		
-		ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
+		ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant(s.getUser().getUsername());
 		//setto i ristoranti
 		session.setAttribute("listaRistoranti", obs2);
 		RecipeDAO recipeDAO = new RecipeDAO();
 		//setto le ricette
+		session.setAttribute("session", s);
 		ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectAllRecipe();
 		session.setAttribute("listaPiatti", obs1);
 		session.setAttribute("errore", "N");
@@ -87,14 +93,15 @@
 	if(request.getParameter("modify")!=null) {
 		
 		RestaurantDAO restaurantDAO = new RestaurantDAO();		
-		ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant("liuk");
+		ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant(s.getUser().getUsername());
 		//setto i ristoranti
 		session.setAttribute("listaRistoranti", obs2);
 		RecipeDAO recipeDAO = new RecipeDAO();
 		//setto le ricette
-		ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe("liuk");
+		ArrayList<String> obs1 = (ArrayList<String>)recipeDAO.selectOwnRecipe(s.getUser().getUsername());
 		session.setAttribute("listaPiatti", obs1);
 		session.setAttribute("errore", "N");
+		session.setAttribute("session", s);
 		%>
 		<jsp:forward page="ModifyDishView.jsp"></jsp:forward>
 		<%
@@ -115,7 +122,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="styleRestaurantMenuView.css">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Restaurant Menu</title>
 </head>
 <body>
 
@@ -130,7 +137,7 @@
 			
 			<img id="fotoUtente" alt="image" src="utente.jpg"/>
 			
-			<label id="n">NomeUtente</label>
+			<label id="n" style="font-size:20px" ><%out.print(s.getUser().getUsername());%></label>
 			
 			
 			

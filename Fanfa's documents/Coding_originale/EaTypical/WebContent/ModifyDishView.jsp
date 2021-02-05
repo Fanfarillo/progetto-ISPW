@@ -1,3 +1,4 @@
+<%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -12,6 +13,8 @@
 <%	ArrayList<String> obs1;
 	obs1=(ArrayList<String>) session.getAttribute("listaPiatti");
 	ArrayList<String> obs2;
+	Session s;
+	s = (Session)session.getAttribute("session");
 	obs2=(ArrayList<String>) session.getAttribute("listaRistoranti"); 
 	String errore = "N";
 	errore = (String)session.getAttribute("errore");%>
@@ -107,7 +110,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="StyleModifyDish.css">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Modify Dish</title>
 </head>
 <body>
 	<div class="container">
@@ -119,7 +122,7 @@
 			<input id="back" type="submit" name="back4" value="Back">
 			
 			<img id="fotoUtente" alt="fotoUtente" src="utente.jpg"/>
-			<label id="nomeUtente">NomeUtente</label>  
+			<label id="nomeUtente" style="font-size:20px" ><%out.print(s.getUser().getUsername()); %></label>  
 			
 			
 			
