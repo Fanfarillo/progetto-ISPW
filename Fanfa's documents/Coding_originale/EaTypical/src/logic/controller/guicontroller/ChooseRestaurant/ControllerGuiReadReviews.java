@@ -90,17 +90,12 @@ public class ControllerGuiReadReviews extends UserBaseGuiController{
         
         try
 		{		
-        	System.out.println("pippo");
-			ReadReviews rv=new ReadReviews();
-			System.out.println("pippo");
-			BeanReadReviews b=rv.findReviews(this.restaurant);
-			System.out.println("pippo");
-			this.reviews=b.getReviews();
-			System.out.println("pippo");
-			this.nomeRistLabel.setText(restaurant);
-			System.out.println("pippo");
-			writeReviews();
-			System.out.println("pippo");
+        	
+			ReadReviews rv=new ReadReviews();			
+			BeanReadReviews b=rv.findReviews(this.restaurant);			
+			this.reviews=b.getReviews();			
+			this.nomeRistLabel.setText(restaurant);			
+			writeReviews();			
 		}
 		catch(Exception e)
 		{
