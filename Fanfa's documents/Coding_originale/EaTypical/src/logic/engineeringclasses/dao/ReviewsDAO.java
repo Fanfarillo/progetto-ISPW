@@ -20,8 +20,7 @@ public class ReviewsDAO {
 
 	public static final String CONTENUTO = "Contenuto";
 	
-	private ReviewsDAO(){
-			throw new IllegalStateException("Utility class");
+	private ReviewsDAO(){			
 	}
 
 

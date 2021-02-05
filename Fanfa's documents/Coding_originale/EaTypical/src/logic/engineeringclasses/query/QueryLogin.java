@@ -7,7 +7,7 @@ import logic.model.User;
 
 
 public class QueryLogin {
-	private QueryLogin(){throw new IllegalStateException("Utility class");};
+	private QueryLogin(){}
 	//look for a tourist account in the database, by username and password
 	public static ResultSet loginTourist(Statement stmt, String user, String pw) throws SQLException
 	{

@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class QueryReview {
 	
-	private QueryReview(){throw new IllegalStateException("Utility class");};
+	private QueryReview(){}
 	
 	public static ResultSet selectReviews(Statement stmt, String restaurantName) throws SQLException
 	{
@@ -31,7 +31,7 @@ public class QueryReview {
 	}
 	
 	public static int insertAvg(Statement stmt, Double vote, String name) throws SQLException {
-		String insertStatement=String.format("UPDATE Ristorante SET VotoMedio = "+vote+" WHERE Nome='"+name+"';");
+		String insertStatement="UPDATE Ristorante SET VotoMedio = "+vote+" WHERE Nome='"+name+"';";
 		return stmt.executeUpdate(insertStatement);
 	}
 	 

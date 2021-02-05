@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 
 public class QueryFavouriteRest {
-	private QueryFavouriteRest(){throw new IllegalStateException("Utility class");};
+	private QueryFavouriteRest(){}
 	//get a result set with the favourite restaurants of an user from the database
 	public static ResultSet selectFavourites(Statement stmt, String tourist) throws SQLException
 	{
