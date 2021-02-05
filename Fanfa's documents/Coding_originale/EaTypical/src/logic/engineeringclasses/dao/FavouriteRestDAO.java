@@ -58,10 +58,10 @@ public class FavouriteRestDAO {
         	} finally {
             
             
-                if (stmt != null){
-                    stmt.close();} 
-                if (stmt2 != null){
-                    stmt2.close();}
+                if (stmt != null|| stmt2!=null){
+                    stmt.close();
+		    stmt2.close();} 
+                
         }
 
         return listOfRestaurants;
