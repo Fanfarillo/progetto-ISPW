@@ -22,7 +22,7 @@ public class ChooseRestaurantBean {
 			restInfo.add(rest.getAddress());
 			restInfo.add(Double.toString(rest.getAvgVote()));
 			result.add((ArrayList<String>) restInfo);
-			restInfo= new ArrayList<String>();
+			restInfo= new ArrayList<>();
 		}
 		return result;
 	}
@@ -44,7 +44,7 @@ public class ChooseRestaurantBean {
 			restInfo.add(rest.getAddress());
 			restInfo.add(Double.toString(rest.getAvgVote()));
 			result.add((ArrayList<String>) restInfo);
-			restInfo= new ArrayList<String>();
+			restInfo= new ArrayList<>();
 		}
 		return result;
 	}
@@ -66,7 +66,7 @@ public class ChooseRestaurantBean {
 			restInfo.add(rest.getAddress());
 			restInfo.add(Double.toString(rest.getAvgVote()));
 			result.add((ArrayList<String>) restInfo);
-			restInfo= new ArrayList<String>();
+			restInfo= new ArrayList<>();
 		}
 		return result;
 	}
@@ -88,7 +88,7 @@ public class ChooseRestaurantBean {
 			restInfo.add(rest.getAddress());
 			restInfo.add(Double.toString(rest.getAvgVote()));
 			result.add((ArrayList<String>) restInfo);
-			restInfo= new ArrayList<String>();
+			restInfo= new ArrayList<>();
 		}
 		return result;
 	}
