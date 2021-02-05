@@ -1,4 +1,3 @@
-// DA FIXARE
 
 
 
@@ -36,12 +35,14 @@ public class FavouriteRestDAO {
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            stmt2=conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = QueryFavouriteRest.selectFavourites(stmt,tourist); //ask for the favourite restaurants
             ResultSet rs2;
             if(rs.first())		//if there is something
             {
+		    try{
+
+            		stmt2=conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    	ResultSet.CONCUR_READ_ONLY);
 	            do{			//for each restaurant									
 	                String restaurant = rs.getString("NomeRistorante");		//get his name
 	                rs2=QueryRestByName.selectRestaurants(stmt2, restaurant);		//look for the restaurant infos
@@ -54,6 +55,8 @@ public class FavouriteRestDAO {
 	                listOfRestaurants.add(r);		//add the restaurant in the list
 	            }while(rs.next());
 	            rs2.close();
+		   }
+		   finally{if(stmt2!=null) stmt2.close();}
             }
             rs.close();
 
@@ -61,7 +64,6 @@ public class FavouriteRestDAO {
             
             
                 if(stmt!=null) stmt.close();
-		if(stmt2!=null) stmt2.close();
 		}                 
         
 
@@ -84,6 +86,4 @@ public class FavouriteRestDAO {
                     stmt.close();
         }
     }
-
-    
 }
