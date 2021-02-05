@@ -24,7 +24,7 @@ public class NotificationsDAO {
         List<TouristNotification> listOfNotifications = new ArrayList<>();
         
         try {
-           //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+           
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -58,13 +58,13 @@ public class NotificationsDAO {
     public static List<OwnerSchedulingNotification> findOwnerNotifications(Restaurant rest) throws ClassNotFoundException, SQLException {
         Statement stmt = null;
         Connection conn = null;
-        List<OwnerSchedulingNotification> listOfNotifications = new ArrayList<OwnerSchedulingNotification>();
+        List<OwnerSchedulingNotification> listOfNotifications = new ArrayList<>();
         String usernameTourist;
         String date;
         boolean isLunch;
         
         try {
-            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            
             
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
