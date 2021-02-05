@@ -202,7 +202,7 @@
 											"top": 754,
 											"width": 367.4658203125,
 											"height": 13,
-											"text": "+addDish(bean: String)",
+											"text": "+addDish(bean: BeanDish)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -21034,7 +21034,9 @@
 										"$ref": "AAAAAAF2M5/eG9jn/Gg="
 									},
 									"name": "bean",
-									"type": "String"
+									"type": {
+										"$ref": "AAAAAAF2NRnqpNq5fzg="
+									}
 								}
 							]
 						},

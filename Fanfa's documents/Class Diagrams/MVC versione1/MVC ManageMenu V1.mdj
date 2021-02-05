@@ -151,7 +151,7 @@
 											"top": 709,
 											"width": 367.4658203125,
 											"height": 13,
-											"text": "+modifyDish(bean: BeanDish)",
+											"text": "+modifyDish(dish: Dish)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -185,7 +185,7 @@
 											"top": 739,
 											"width": 367.4658203125,
 											"height": 13,
-											"text": "+deleteDish(bean: BeanDish)",
+											"text": "+deleteDish(dish: Dish)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -202,7 +202,7 @@
 											"top": 754,
 											"width": 367.4658203125,
 											"height": 13,
-											"text": "+addDish(bean: String)",
+											"text": "+addDish(dish: Dish)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -14776,8 +14776,10 @@
 									"_parent": {
 										"$ref": "AAAAAAF2MwneH8WdqhE="
 									},
-									"name": "bean",
-									"type": "BeanDish"
+									"name": "dish",
+									"type": {
+										"$ref": "AAAAAAF2Mw2+BcZs4/Q="
+									}
 								}
 							]
 						},
@@ -14814,8 +14816,10 @@
 									"_parent": {
 										"$ref": "AAAAAAF2M5/VXNg5cxY="
 									},
-									"name": "bean",
-									"type": "BeanDish"
+									"name": "dish",
+									"type": {
+										"$ref": "AAAAAAF2Mw2+BcZs4/Q="
+									}
 								}
 							]
 						},
@@ -14833,8 +14837,10 @@
 									"_parent": {
 										"$ref": "AAAAAAF2M5/eG9jn/Gg="
 									},
-									"name": "bean",
-									"type": "String"
+									"name": "dish",
+									"type": {
+										"$ref": "AAAAAAF2Mw2+BcZs4/Q="
+									}
 								}
 							]
 						},
