@@ -19,37 +19,39 @@ public class ScheduleTripAdapter implements ChooseSpecificRestaurants{
 	
 	public List<Restaurant> findAllRestaurants(String city) throws ClassNotFoundException, SQLException
 	{
-		List<Restaurant> rest= new ArrayList<>();
+		List<Restaurant> rest;
 		try {
 		rest= this.st.callDAO(city,false,false);
-		}catch(NoResultException ne) {}
+		}catch(NoResultException ne) {
+			rest=new ArrayList<>();
+		}
 		return rest;
 	}
 	
 	public List<Restaurant> findCeliacRestaurants(String city) throws ClassNotFoundException, SQLException
 	{
-		List<Restaurant> rest= new ArrayList<>();
+		List<Restaurant> rest;
 		try {
 		rest= this.st.callDAO(city,false,true);
-		}catch(NoResultException ne) {}
+		}catch(NoResultException ne) {rest=new ArrayList<>();}
 		return rest;
 	}
 	
 	public List<Restaurant> findVeganRestaurants(String city) throws ClassNotFoundException, SQLException
 	{
-		List<Restaurant> rest= new ArrayList<>();
+		List<Restaurant> rest;
 		try {
 		rest= this.st.callDAO(city,true,false);
-		}catch(NoResultException ne) {}
+		}catch(NoResultException ne) {rest=new ArrayList<>();}
 		return rest;
 	}
 	
 	public List<Restaurant> findBothRestaurants(String city) throws ClassNotFoundException, SQLException
 	{
-		List<Restaurant> rest= new ArrayList<>();
+		List<Restaurant> rest;
 		try {
 		rest= this.st.callDAO(city,true,true);
-		}catch(NoResultException ne) {}
+		}catch(NoResultException ne) {rest=new ArrayList<>();}
 		return rest;
 	}
 }
