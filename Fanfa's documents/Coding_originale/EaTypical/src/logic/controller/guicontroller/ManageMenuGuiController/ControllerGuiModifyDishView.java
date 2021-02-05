@@ -155,7 +155,6 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert manageMenuButton != null : "fx:id=\"manageMenuButton\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert sponsorRestaurantButton != null : "fx:id=\"sponsorRestaurantButton\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert choiseBox != null : "fx:id=\"choiseBox\" was not injected: check your FXML file 'ModifyDishView.fxml'.";
         assert choiseRistoranti != null : "fx:id=\"choiseRistoranti\" was not injected: check your FXML file 'ModifyDishView.fxml'.";

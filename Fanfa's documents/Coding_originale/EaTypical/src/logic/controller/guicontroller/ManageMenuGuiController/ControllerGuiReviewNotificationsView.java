@@ -90,7 +90,6 @@ public class ControllerGuiReviewNotificationsView extends OwnerBaseGuiController
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'NotificationsRestaurantViewScheduling.fxml'.";
         assert manageMenuButton != null : "fx:id=\"manageMenuButton\" was not injected: check your FXML file 'NotificationsRestaurantViewScheduling.fxml'.";
         assert sponsorRestaurantButton != null : "fx:id=\"sponsorRestaurantButton\" was not injected: check your FXML file 'NotificationsRestaurantViewScheduling.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'NotificationsRestaurantViewScheduling.fxml'.";
         assert nomeUtente != null : "fx:id=\"nomeUtente\" was not injected: check your FXML file 'NotificationsRestaurantViewScheduling.fxml'.";
         
         nomeUtente.setText(bs.getUser().getUsername());

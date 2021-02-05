@@ -69,7 +69,6 @@ public class ControllerGuiAdviceView  extends OwnerBaseGuiController{
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'AdviceView.fxml'.";
         assert manageMenuButton != null : "fx:id=\"manageMenuButton\" was not injected: check your FXML file 'AdviceView.fxml'.";
         assert sponsorRestaurantButton != null : "fx:id=\"sponsorRestaurantButton\" was not injected: check your FXML file 'AdviceView.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'AdviceView.fxml'.";
         assert doneButton != null : "fx:id=\"doneButton\" was not injected: check your FXML file 'AdviceView.fxml'.";
         assert area != null : "fx:id=\"area\" was not injected: check your FXML file 'AdviceView.fxml'.";
         assert labelUtente != null : "fx:id=\"labelUtente\" was not injected: check your FXML file 'AdviceView.fxml'.";
