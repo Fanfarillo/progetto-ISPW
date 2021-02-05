@@ -59,9 +59,12 @@ public class FavouriteRestDAO {
         	} finally {
             
             
-                if (stmt != null&&stmt2!=null){
+                if (stmt != null||stmt2!=null){
+		   if(stmt!=null)
                     stmt.close();
-		    stmt2.close();} 
+		   else
+		    stmt2.close();
+		} 
                 
         }
 
