@@ -1,11 +1,15 @@
+<%@page import="logic.engineeringclasses.others.Session"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
 <%@page import="logic.engineeringclasses.others.SizedStack" %>
 
 <%
+	Session s;
+	s = (Session)session.getAttribute("session");
+	
 	if(request.getParameter("home2")!=null) {
-		SizedStack.getSizedStack(true).clearStack();
+		session.setAttribute("session", s);
 		%>
 		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
 		<%
@@ -14,7 +18,7 @@
 
 <%
 	if(request.getParameter("manageMenu2")!=null) {
-		SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
+		session.setAttribute("session", s);
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%
@@ -23,7 +27,7 @@
 
 <%
 	if(request.getParameter("sponsorRestaurant2")!=null) {
-		SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
+		session.setAttribute("session", s);
 		%>
 		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
 		<%
@@ -32,7 +36,7 @@
 
 <%
 	if(request.getParameter("continue2")!=null) {
-		SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
+		session.setAttribute("session", s);
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%
@@ -41,6 +45,7 @@
 
 <%
 	if(request.getParameter("back2")!=null) {		
+		session.setAttribute("session", s);
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%		
@@ -70,7 +75,7 @@
 			<input id="back" type="submit" name="back2" value="Back">
 			
 			<img id="fotoUtente" alt="foto_utente" src="utente.jpg"/>
-			<label id="nomeUtente">NomeUtente</label>  
+			<label id="nomeUtente" style="font-size:20px"><%out.print(s.getUser().getUsername()); %></label>  
 			
 			
 			<div>

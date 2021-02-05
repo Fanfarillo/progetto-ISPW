@@ -67,7 +67,7 @@
 			
 			
 			<table >
-				<caption>Scheduling</caption>
+				<caption></caption>
 				<tr>
 					<th id="thturista">Turista</th>
 					<th id="thristorante">Ristorante</th>
