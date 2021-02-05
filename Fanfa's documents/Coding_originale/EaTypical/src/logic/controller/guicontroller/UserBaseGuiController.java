@@ -9,8 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import logic.controller.guicontroller.ChooseRestaurant.ControllerGuiItalianViewCityCR;
 import logic.controller.guicontroller.ScheduleTrip.*;
+import logic.controller.guicontroller.chooserestaurant.ControllerGuiItalianViewCityCR;
 
 //The second layer of Graphic Controllers: every normal user has the ChooseResytaurant Button and the Schedule Trip Page button
 public  class UserBaseGuiController extends BaseGuiController {

@@ -1,4 +1,4 @@
-package logic.controller.guicontroller.ChooseRestaurant;
+package logic.controller.guicontroller.chooserestaurant;
 
 import java.io.IOException;
 import java.net.URL;
