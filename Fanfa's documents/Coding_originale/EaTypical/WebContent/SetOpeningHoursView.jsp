@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@page import="logic.engineeringclasses.others.SizedStack" %>
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.bean.sponsorrestaurant.BeanNewRestaurant" %>
 <%@page import="logic.controller.applicationcontroller.SponsorRestaurant" %>
@@ -24,12 +23,6 @@
     		session.setAttribute("session", bs);
 %>
 			<jsp:forward page="RestaurantMenuview.jsp"/>
-<%
-    	}
-    	if(request.getParameter("Back SR2")!=null) {
-    		session.setAttribute("session", bs);
-%>
-			<jsp:forward page="CreatingRestaurantView.jsp"/>
 <%
     	}
     	if(request.getParameter("OK")!=null) {
@@ -133,7 +126,6 @@
 		<input id="home" type="submit" name="Home SR2" value="Home">
 		<input id="sponsorRestaurant" type="submit" name="Sponsor Restaurant SR2" value="Sponsor Restaurant">
 		<input id="manageMenu" type="submit" name="Manage Menu SR2" value="Manage Menu">
-		<input id="back" type="submit" name="Back SR2" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
 		

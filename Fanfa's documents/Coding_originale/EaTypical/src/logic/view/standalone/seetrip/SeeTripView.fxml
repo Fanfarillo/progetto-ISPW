@@ -33,10 +33,6 @@
             <Image url="@../utente.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="backButton" layoutX="30.0" layoutY="92.0" mnemonicParsing="false" onAction="#goToBackPage" text="Back">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
       <Label fx:id="nomeUtenteLabel" layoutX="583.0" layoutY="143.0" text="nomeUtente" textFill="#eeeeee">
          <font>
             <Font name="System Bold" size="15.0" />

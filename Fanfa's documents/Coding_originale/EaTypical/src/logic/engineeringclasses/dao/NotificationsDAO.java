@@ -13,6 +13,7 @@ import logic.engineeringclasses.others.Connect;
 import logic.engineeringclasses.query.QueryNotifications;
 import logic.model.OwnerSchedulingNotification;
 import logic.model.Restaurant;
+import logic.model.Scheduling;
 import logic.model.TouristNotification;
 
 public class NotificationsDAO {
@@ -94,7 +95,7 @@ public class NotificationsDAO {
         return listOfNotifications;
     }
     
-public BeanListNotificationsScheduling selectOwnerSchedulingNotifications(String username) throws ClassNotFoundException {
+    public BeanListNotificationsScheduling selectOwnerSchedulingNotifications(String username) throws ClassNotFoundException {
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
@@ -144,5 +145,38 @@ public BeanListNotificationsScheduling selectOwnerSchedulingNotifications(String
 		}
 		
 		return notifications;
+	}
+
+	public void insertOwnerSchedulingNotification(Scheduling sched) throws ClassNotFoundException, SQLException {
+		// Step 1: declarations
+		Statement stmt=null;
+		Connection conn=null;
+		
+		try {
+			// Step 2: connection opening
+			conn = Connect.getInstance().getDBConnection();
+			
+			// Step 3: creation and execution of query
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			
+			String itaHour;
+			if(sched.isAtLunch()) itaHour="Pranzo";
+			else itaHour="Cena";
+			QueryNotifications.insertSchedulingNotification(stmt, sched.getRest().getOwner().getUsername(), sched.getTourist().getUsername(), sched.getRest().getName(), sched.getDate(), itaHour);
+			
+		}
+		
+		finally {
+			try {
+				if(stmt!=null) {
+					stmt.close();
+				}
+			}
+			catch(SQLException se) {
+				se.printStackTrace();
+			}
+			
+		}
+		
 	}
 }

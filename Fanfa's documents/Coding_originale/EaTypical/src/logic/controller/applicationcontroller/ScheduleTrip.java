@@ -12,10 +12,12 @@ import logic.engineeringclasses.bean.scheduletrip.BeanRestaurantSchedule;
 import logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputRestaurant;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
+import logic.engineeringclasses.dao.NotificationsDAO;
 import logic.engineeringclasses.dao.ScheduleTripRestaurantDAO;
 import logic.engineeringclasses.dao.SchedulingDAO;
 import logic.engineeringclasses.exceptions.NoResultException;
 import logic.model.Menu;
+import logic.model.Owner;
 import logic.model.Restaurant;
 import logic.model.Scheduling;
 import logic.model.Tourist;
@@ -406,16 +408,25 @@ public class ScheduleTrip {
 			doubleAvgPrice = Double.parseDouble(scheduling[i].getStrAvgPrice());
 			doubleAvgVote = Double.parseDouble(scheduling[i].getStrAvgVote());
 			
+			Owner owner = new Owner(null, null, scheduling[i].getUsernameOwner());
 			Menu menu = new Menu(null, doubleAvgPrice);
-			Restaurant r = new Restaurant(null, scheduling[i].getCity(), menu, scheduling[i].getAddress(), scheduling[i].getName(), doubleAvgVote, null, null, null);
+			Restaurant r = new Restaurant(owner, scheduling[i].getCity(), menu, scheduling[i].getAddress(), scheduling[i].getName(), doubleAvgVote, null, null, null);
 			
 			if(scheduling[i].getStrHour().equals("Lunch")) atLunch=true;
 			else atLunch=false;
 			
 			Scheduling schedEntity = new Scheduling(tourist, scheduling[i].getStrDate(), atLunch, r);
 			dao.insert(schedEntity);
+			
+			sendNotification(schedEntity);
+			
 		}
 		
+	}
+	
+	private void sendNotification(Scheduling sched) throws ClassNotFoundException, SQLException {
+		NotificationsDAO dao = new NotificationsDAO();
+		dao.insertOwnerSchedulingNotification(sched);
 	}
 	
 }

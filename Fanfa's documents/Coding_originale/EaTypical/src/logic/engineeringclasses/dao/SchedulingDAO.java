@@ -13,18 +13,14 @@ public class SchedulingDAO {
 	
 	public void delete(Tourist tourist) throws ClassNotFoundException, SQLException {
 		// Step 1: declarations
-		String driverClassName = "com.mysql.jdbc.Driver";
 		Statement stmt=null;
 		Connection conn=null;
 		
 		try {
-			// Step 2: dinamic loading of sql driver
-			Class.forName(driverClassName);
-			
-			// Step 3: connection opening
+			// Step 2: connection opening
 			conn = Connect.getInstance().getDBConnection();
 			
-			// Step 4: creation and execution of query
+			// Step 3: creation and execution of query
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			QueryScheduling.deleteScheduling(stmt, tourist.getUsername());
 			
@@ -51,18 +47,14 @@ public class SchedulingDAO {
 	
 	public void insert(Scheduling schedEntity) throws ClassNotFoundException, SQLException {
 		// Step 1: declarations
-		String driverClassName = "com.mysql.jdbc.Driver";
 		Statement stmt=null;
 		Connection conn=null;
 		
 		try {
-			// Step 2: dinamic loading of sql driver
-			Class.forName(driverClassName);
-			
-			// Step 3: connection opening
+			// Step 2: connection opening
 			conn = Connect.getInstance().getDBConnection();
 			
-			// Step 4: creation and execution of query
+			// Step 3: creation and execution of query
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			
 			String itaHour;

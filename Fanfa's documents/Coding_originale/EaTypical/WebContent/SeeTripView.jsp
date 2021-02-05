@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@page import="logic.engineeringclasses.others.SizedStack" %>
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule" %>
 <%@page import="logic.engineeringclasses.others.BeanConverter" %>
@@ -51,12 +50,6 @@
 			<jsp:forward page="ItalianViewCity2.jsp"/>
 <%
     	}
-    	if(request.getParameter("Back See")!=null) {
-    		session.setAttribute("session", bs);
-%>
-			<jsp:forward page="HomePageTouristView.jsp"/>
-<%    		
-    	}
     	if(request.getParameter("Delete Scheduling")!=null) {
     		try {
     			SchedulingDAO dao = new SchedulingDAO();
@@ -88,7 +81,6 @@
 		<input id="home" type="submit" name="Home See" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip See" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant See" value="Choose Restaurant">
-		<input id="back" type="submit" name="Back See" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente"><%=userString%></label>
 		<label id="citta"><%=city%></label>

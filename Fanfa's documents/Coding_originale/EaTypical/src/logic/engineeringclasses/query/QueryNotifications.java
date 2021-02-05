@@ -37,4 +37,9 @@ public class QueryNotifications {
 		sql = "SELECT * FROM notificascheduling WHERE UsernameProprietario = '"+ username + "';";
 		return stmt.executeQuery(sql);
 	}
+	
+	public static void insertSchedulingNotification(Statement stmt, String usernameOwner, String usernameTourist, String restaurant, String strDate, String itaHour) throws SQLException {
+		stmt.executeUpdate("INSERT INTO Notificascheduling VALUES('" +usernameOwner+ "', '" +usernameTourist+ "', '" +restaurant+ "', '" +strDate+ "', '" +itaHour+ "')");
+	}
+	
 }

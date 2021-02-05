@@ -144,7 +144,6 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     		ScheduleTrip scheduleTrip = new ScheduleTrip();
     		BeanOutputSchedule[] scheduling = scheduleTrip.generateScheduling(beanRestSched);
     		
-    		this.bs.getSizedStack().push(this.schedulingPage);
         	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.schedulingPage));
         	loader.setControllerFactory(c -> new ControllerGuiScheduling(this.city, scheduling, bs));
         	Parent root=loader.load();
@@ -177,7 +176,6 @@ public class ControllerGuiTripSettings extends UserBaseGuiController {
     void initialize() {
     	assert myAnchorPane != null : "fx:id=\"pane\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
     	assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert chooseRestaurantButton != null : "fx:id=\"chooseRestButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert scheduleTripButton != null : "fx:id=\"scheduleButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'TripSettingsView.fxml'.";

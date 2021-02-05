@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@page import="logic.engineeringclasses.others.SizedStack" %>
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.exceptions.EmptyFieldException" %>
 
@@ -22,13 +21,7 @@
 %>
 			<jsp:forward page="ItalianViewCity2.jsp"/>
 <%
-    	}
-    	if(request.getParameter("Back ST1")!=null) {
-    		session.setAttribute("session", bs);
-%>
-			<jsp:forward page="HomePageTouristView.jsp"/>
-<%		
-    	}
+    	}	
     	if(request.getParameter("Continue")!=null) {
     		try {	
     			String city = request.getParameter("Scroll");
@@ -64,7 +57,6 @@
 		<input id="home" type="submit" name="Home ST1" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip ST1" value="Schedule Trip" disabled>
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST1" value="Choose Restaurant">
-		<input id="back" type="submit" name="Back ST1" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente">Not logged</label>
 		<div class="box-1">

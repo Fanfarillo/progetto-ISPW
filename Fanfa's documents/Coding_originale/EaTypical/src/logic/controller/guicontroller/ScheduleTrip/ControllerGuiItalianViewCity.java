@@ -54,7 +54,6 @@ public class ControllerGuiItalianViewCity extends ItalianViewBaseGuiController {
 				throw new EmptyFieldException("There is no city selected.");
 			}
 		
-			this.bs.getSizedStack().push(this.tripSettingsPage);
 			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
 			loader.setControllerFactory(c -> new ControllerGuiTripSettings(city, bs));
 			Parent root=loader.load();
@@ -78,7 +77,6 @@ public class ControllerGuiItalianViewCity extends ItalianViewBaseGuiController {
         assert continueButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtente\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'ItalianViewCity.fxml'.";
         
         commonInitializeOperations();
         if(this.bs.getUser()!=null)

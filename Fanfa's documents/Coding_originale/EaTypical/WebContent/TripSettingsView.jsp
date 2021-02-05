@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@page import="logic.engineeringclasses.others.SizedStack" %>
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.exceptions.EmptyFieldException" %>
 <%@page import="logic.engineeringclasses.bean.scheduletrip.BeanSyntacticCheck" %>
@@ -36,12 +35,6 @@
 %>
 			<jsp:forward page="ItalianViewCity2.jsp"/>
 <%
-    	}
-    	if(request.getParameter("Back ST2")!=null) {
-    		session.setAttribute("session", bs);
-%>
-			<jsp:forward page="ItalianViewCity.jsp"/>
-<%    		
     	}
     	if(request.getParameter("Generate Scheduling")!=null) {
     		try {
@@ -134,7 +127,6 @@
 		<input id="home" type="submit" name="Home ST2" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip ST2" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST2" value="Choose Restaurant">
-		<input id="back" type="submit" name="Back ST2" value="Back">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente">Not logged</label>
 		<div class="box-1">

@@ -67,7 +67,6 @@ public class ControllerGuiScheduling extends SchedulingBaseGuiController {
     	for(int i=0; i<this.scheduling.length; i++) {
     		this.scheduling[i].setRestFromList();
     	}    	
-		this.bs.getSizedStack().push(this.schedulingPage);
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.schedulingPage));
     	loader.setControllerFactory(c -> new ControllerGuiScheduling(this.city, this.scheduling, bs));
     	Parent root=loader.load();
@@ -76,7 +75,6 @@ public class ControllerGuiScheduling extends SchedulingBaseGuiController {
 
     @FXML
     void goBackToTripSettingsPage(ActionEvent event) throws IOException {
-		this.bs.getSizedStack().push(this.tripSettingsPage);
     	FXMLLoader loader=new FXMLLoader(getClass().getResource(this.tripSettingsPage));
     	loader.setControllerFactory(c -> new ControllerGuiTripSettings(this.city, bs));
     	Parent root=loader.load();

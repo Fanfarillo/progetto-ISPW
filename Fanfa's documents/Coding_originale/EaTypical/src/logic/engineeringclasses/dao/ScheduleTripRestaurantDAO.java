@@ -17,19 +17,15 @@ public class ScheduleTripRestaurantDAO {
 
 	public List<Restaurant> select(String city, boolean vegan, boolean celiac) throws NoResultException, ClassNotFoundException, SQLException {
 		// Step 1: declarations
-		String driverClassName = "com.mysql.jdbc.Driver";
 		Statement stmt=null;
 		Connection conn=null;
 		List<Restaurant> listOfRestaurants = new ArrayList<>();
 		
 		try {
-			// Step 2: dinamic loading of sql driver
-			Class.forName(driverClassName);
-			
-			// Step 3: connection opening
+			// Step 2: connection opening
 			conn = Connect.getInstance().getDBConnection();
 			
-			// Step 4: creation and execution of query
+			// Step 3: creation and execution of query
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = QueryRestaurantScheduleTrip.selectRestaurantsForTrip(stmt, city, vegan, celiac);
 			
@@ -64,7 +60,7 @@ public class ScheduleTripRestaurantDAO {
 				
 			}	while(rs.next());
 			
-			// Step 5: clean-up
+			// Step 4: clean-up
 			rs.close();
 			
 		}

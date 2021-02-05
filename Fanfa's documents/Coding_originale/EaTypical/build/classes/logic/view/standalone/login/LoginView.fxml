@@ -37,16 +37,11 @@
             <Image url="@../utente.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="591.0" layoutY="150.0" text="NomeUtente" textFill="WHITE">
+      <Label fx:id="nomeUtente" layoutX="591.0" layoutY="150.0" text="NomeUtente" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="30.0" layoutY="92.0" mnemonicParsing="false" onAction="#goToBackPage" text="Back">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
       <Label layoutX="244.0" layoutY="237.0" prefHeight="31.0" prefWidth="122.0" text="Username" textFill="WHITE">
          <font>
             <Font name="System Italic" size="20.0" />
@@ -93,5 +88,6 @@
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </Label>
+      <Label fx:id="mustLoginLabel" layoutX="279.0" layoutY="92.0" text="Label" textFill="RED" visible="false" />
    </children>
 </AnchorPane>
