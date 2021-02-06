@@ -23,7 +23,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ControllerGuiTouristNotif extends UserBaseGuiController {
-	private ObservableList<BeanStringNotif> ol;
 	
 	private String homePageTourist = "/logic/view/standalone/HomePageTouristView.fxml";
 	private String touristNotifPage = "/logic/view/standalone/touristnotifications/TouristNotifView.fxml";
@@ -62,7 +61,7 @@ public class ControllerGuiTouristNotif extends UserBaseGuiController {
     private TableColumn<BeanStringNotif, String> notifColumn; // Value injected by FXMLLoader
 
     @FXML // fx:id="ContinueButton"
-    private Button ContinueButton; // Value injected by FXMLLoader
+    private Button continueButton; // Value injected by FXMLLoader
 
     @FXML // fx:id="errorLabel"
     private Label errorLabel; // Value injected by FXMLLoader
@@ -90,7 +89,7 @@ public class ControllerGuiTouristNotif extends UserBaseGuiController {
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'TouristNotifView.fxml'.";
         assert tabella != null : "fx:id=\"tabella\" was not injected: check your FXML file 'TouristNotifView.fxml'.";
         assert notifColumn != null : "fx:id=\"dateColumn\" was not injected: check your FXML file 'TouristNotifView.fxml'.";
-        assert ContinueButton != null : "fx:id=\"ContinueButton\" was not injected: check your FXML file 'TouristNotifView.fxml'.";
+        assert continueButton != null : "fx:id=\"ContinueButton\" was not injected: check your FXML file 'TouristNotifView.fxml'.";
         assert errorLabel != null : "fx:id=\"errorLabel\" was not injected: check your FXML file 'TouristNotifView.fxml'.";
         
         if(this.notifications==null) {
@@ -105,7 +104,7 @@ public class ControllerGuiTouristNotif extends UserBaseGuiController {
         else
         	nomeUtenteLabel.setText("Not logged");
         
-        ol = FXCollections.observableArrayList();
+        ObservableList<BeanStringNotif> ol = FXCollections.observableArrayList();
         for(int i=0; i<this.notifications.length; i++) {
         	ol.add(this.notifications[i]);
         }

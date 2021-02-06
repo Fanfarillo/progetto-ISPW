@@ -21,7 +21,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ControllerGuiFavRestaurants extends UserBaseGuiController {
-	private ObservableList<BeanFavRestaurant> ol;
 	
 	private String favRestPage = "/logic/view/standalone/favrestaurants/FavRestaurantsView.fxml";
 	private BeanFavRestaurant[] favRest;
@@ -114,7 +113,7 @@ public class ControllerGuiFavRestaurants extends UserBaseGuiController {
         
         errorLabel.setText(errorMessage);
         
-        ol = FXCollections.observableArrayList();
+        ObservableList<BeanFavRestaurant> ol = FXCollections.observableArrayList();
         for(int i=0; i<this.favRest.length; i++) {
         	ol.add(this.favRest[i]);
         }

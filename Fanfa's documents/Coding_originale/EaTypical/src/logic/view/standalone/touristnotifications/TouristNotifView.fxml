@@ -43,7 +43,7 @@
             <TableColumn fx:id="notifColumn" minWidth="640.0" prefWidth="640.0" text="Notifications" />
          </columns>
       </TableView>
-      <Button fx:id="ContinueButton" layoutX="200.0" layoutY="602.0" mnemonicParsing="false" onAction="#deleteNotifications" prefHeight="31.0" prefWidth="300.0" text="Continue">
+      <Button fx:id="continueButton" layoutX="200.0" layoutY="602.0" mnemonicParsing="false" onAction="#deleteNotifications" prefHeight="31.0" prefWidth="300.0" text="Continue">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
