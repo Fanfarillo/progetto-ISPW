@@ -73,7 +73,7 @@
 			
 			<div>
 				<textarea id="area" rows="20" cols="80" readonly><%StringBuilder bld = new StringBuilder();
-		        bld.append("Possibili piatti tipici da poter aggiungere ai menu dei tuoi ristoranti:");
+		        bld.append("Minimum prices:");
 		        for(int i = 0; i < beanAdvice.getDishes().size();i++) {        	
 		        	bld.append("\nDish " + i + ": " + beanAdvice.getDishes().get(i)+"\u0009Minimum price: "+beanAdvice.getPrices().get(i));
 		        } 
