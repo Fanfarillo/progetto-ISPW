@@ -5,7 +5,7 @@
     pageEncoding="ISO-8859-1"%>
     
     
-<%@page import="logic.engineeringclasses.others.SizedStack" %>
+
 
 <%	ArrayList<String> obs1;
 	obs1=(ArrayList<String>) session.getAttribute("listaPiatti");

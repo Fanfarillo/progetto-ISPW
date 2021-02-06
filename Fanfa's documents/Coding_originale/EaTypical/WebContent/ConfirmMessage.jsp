@@ -9,13 +9,12 @@
 <%@page import="logic.controller.applicationcontroller.ManageMenu"%>
 <%@page import="logic.engineeringclasses.bean.manageMenu.BeanDishWeb"%>
 <%@page import="com.mysql.cj.Session.SessionEventListener"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanAddDish"%>
+<%@page import="logic.engineeringclasses.bean.manageMenu.BeanDish"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
 
- 
- <%@page import="logic.engineeringclasses.others.SizedStack" %>
+
 
 <%
 
@@ -72,7 +71,7 @@
 		BeanDishWeb b = (BeanDishWeb)session.getAttribute("beanrefresh");
 		System.out.print(b.getTipoModifica());
 		if(b.getTipoModifica() == 0){
-			BeanAddDish beanAddDish = new BeanAddDish(b.getPiatto(),b.getRistorante(),b.getContenuto(),b.isVegano(),b.isCeliaco(),b.getPrezzo(),0);
+			BeanDish beanAddDish = new BeanDish(b.getPiatto(),b.getRistorante(),b.getContenuto(),b.isVegano(),b.isCeliaco(),b.getPrezzo(),0);
 			
 			try{
 				m.addDish(beanAddDish);
@@ -93,7 +92,7 @@
 				
 			}
 		}else if(b.getTipoModifica() == 1){
-			BeanAddDish beanAddDish = new BeanAddDish(b.getPiatto(),b.getRistorante(),b.getContenuto(),b.isVegano(),b.isCeliaco(),b.getPrezzo(),1);
+			BeanDish beanAddDish = new BeanDish(b.getPiatto(),b.getRistorante(),b.getContenuto(),b.isVegano(),b.isCeliaco(),b.getPrezzo(),1);
 			System.out.println(b.getPiatto()+b.getContenuto()+b.getRistorante());
 			try{
 				m.modifyDishes(beanAddDish);

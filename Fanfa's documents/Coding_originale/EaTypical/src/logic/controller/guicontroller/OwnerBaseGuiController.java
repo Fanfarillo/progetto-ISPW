@@ -35,7 +35,7 @@ public abstract class OwnerBaseGuiController extends BaseGuiController {
 	
 	@FXML
 	void goToSponsorRestaurant(ActionEvent e) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/SponsorRestaurant/CreatingRestaurantView.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/sponsoryourrestaurant/CreatingRestaurantView.fxml"));
 		loader.setControllerFactory(c -> new ControllerGuiCreatingRestaurant(bs));
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);

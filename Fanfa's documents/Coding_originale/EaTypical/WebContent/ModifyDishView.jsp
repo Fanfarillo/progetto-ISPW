@@ -3,11 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@page import="logic.engineeringclasses.others.SizedStack" %>
 <%@page import="logic.engineeringclasses.exceptions.DishAlreadyExists"%>
 <%@page import="logic.engineeringclasses.bean.manageMenu.BeanDishWeb"%>
 <%@page import="com.mysql.cj.Session.SessionEventListener"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanAddDish"%>
+<%@page import="logic.engineeringclasses.bean.manageMenu.BeanDish"%>
 
 
 <%	ArrayList<String> obs1;
@@ -74,7 +73,7 @@
 				perCeliaco=true;
 			}
 			if(request.getParameter("priceInput").equals("")){
-				//se ÃÂÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
+				//se ÃÂÃÂÃÂÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
 				prezzoNonInserito = true;
 			}else{
 				//setto a stringa vuota

@@ -1,11 +1,11 @@
 <%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.bean.manageMenu.BeanDishWeb"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanAddDish"%>
+<%@page import="logic.engineeringclasses.bean.manageMenu.BeanDish"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@page import="logic.engineeringclasses.others.SizedStack" %>
+
 
 <%	ArrayList<String> obs1;
 	obs1=(ArrayList<String>) session.getAttribute("listaPiatti");
@@ -73,7 +73,7 @@
 			celiaco=true;
 		}
 		if(request.getParameter("prezzo").equals("")){
-			//se ÃÂÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
+			//se ÃÂÃÂÃÂÃÂ¨ la stringa vuota significa che non ho inserito il prezzo
 			prezzoVuoto = true;
 		}else{
 			//setto a stringa vuota
@@ -182,7 +182,7 @@
 										out.print("Mancante");
 									}
 									if(refresh==false && errore.equals("S")){
-										out.print("Il piatto da modificare già appartiene al ristorante selezionato.");
+										out.print("Il piatto da modificare giÃ  appartiene al ristorante selezionato.");
 									}
 									%></label>
 			<label id="prezzovuoto"><%if(refresh) out.print("Mancante"); %></label>
