@@ -1,3 +1,4 @@
+<%@page import="logic.engineeringclasses.bean.manageMenu.BeanAdvice"%>
 <%@page import="logic.engineeringclasses.others.Session"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -7,6 +8,7 @@
 <%
 	Session s;
 	s = (Session)session.getAttribute("session");
+	BeanAdvice beanAdvice =  (BeanAdvice)session.getAttribute("beanAdvice");
 	
 	if(request.getParameter("home2")!=null) {
 		session.setAttribute("session", s);
@@ -79,7 +81,12 @@
 			
 			
 			<div>
-				<textarea id="area" rows="35" cols="120" readonly><% %></textarea>
+				<textarea id="area" rows="20" cols="80" readonly><%StringBuilder bld = new StringBuilder();
+		        bld.append("Possibili piatti tipici da poter aggiungere ai menu dei tuoi ristoranti:");
+		        for(int i = 0; i < beanAdvice.getDishes().size();i++) {        	
+		        	bld.append("\nDish " + i + ": " + beanAdvice.getDishes().get(i)+"\u0009Minimum price: "+beanAdvice.getPrices().get(i));
+		        } 
+		        out.print(bld);%></textarea>
 			</div>
 			
 			

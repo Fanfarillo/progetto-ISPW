@@ -1,4 +1,6 @@
 
+<%@page import="logic.engineeringclasses.bean.manageMenu.BeanAdvice"%>
+<%@page import="logic.controller.applicationcontroller.GetAdvice"%>
 <%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.dao.RecipeDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -109,6 +111,10 @@
 
 <%
 	if(request.getParameter("advice")!=null) {		
+		GetAdvice getAdvice = new GetAdvice();
+    	BeanAdvice beanAdvices = getAdvice.advice(s.getUser().getUsername());
+    	session.setAttribute("beanAdvice", beanAdvices);
+    	session.setAttribute("session", s);
 		%>
 		<jsp:forward page="AdviceView.jsp"></jsp:forward>
 		<%		
