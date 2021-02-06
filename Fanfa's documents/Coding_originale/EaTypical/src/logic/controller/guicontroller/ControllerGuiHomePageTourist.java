@@ -14,14 +14,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import logic.controller.guicontroller.favrestaurants.ControllerGuiFavRestaurants;
 import logic.controller.guicontroller.login.LoginGuiController;
 import logic.controller.guicontroller.seetrip.ControllerGuiSeeTrip;
+import logic.controller.guicontroller.touristnotifications.ControllerGuiTouristNotif;
+import logic.engineeringclasses.bean.BeanFavRestaurant;
+import logic.engineeringclasses.bean.BeanStringNotif;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
+import logic.engineeringclasses.exceptions.GenericException;
 import logic.engineeringclasses.others.BeanConverter;
 import logic.engineeringclasses.others.Session;
 
 public class ControllerGuiHomePageTourist extends UserBaseGuiController {
 	
+	private String favRestPage = "/logic/view/standalone/favrestaurants/FavRestaurantsView.fxml";
+	private String touristNotifPage = "/logic/view/standalone/touristnotifications/TouristNotifView.fxml";
 	private String seeTripPage = "/logic/view/standalone/seetrip/SeeTripView.fxml";
 	private String loginPage = "/logic/view/standalone/login/loginView.fxml";
 	private String errorMessage = "";
@@ -58,13 +65,46 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     private Label errorLabel; // Value injected by FXMLLoader
     
     @FXML
-    void goToNotificationsPage(ActionEvent event) {
-    	// To do
+    void goToNotificationsPage(ActionEvent event) throws IOException {
+    	try {
+    		if(this.bs.getUser()!=null) {
+    			BeanConverter converter = new BeanConverter();
+    			BeanStringNotif[] notifMsg = converter.convertNotif(bs.getUser());
+    			
+    			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.touristNotifPage));
+    			loader.setControllerFactory(c -> new ControllerGuiTouristNotif(notifMsg, bs));
+    			Parent root=loader.load();
+    			myAnchorPane.getChildren().setAll(root);   
+    			
+    		}
+        	else {
+        		mustLoginLabel.setText(mustLoginMessage);
+        		mustLoginLabel.setVisible(true);
+        	}
+    		
+    	}
+    	catch(GenericException e) {
+    		this.errorMessage = "An unknown error occurred. Please, try again later.";
+    		errorLabel.setText(this.errorMessage);    		
+    	}
     }
 
     @FXML
-    void goToFavouriteRestaurantsPage(ActionEvent event) {
-    	//To do
+    void goToFavouriteRestaurantsPage(ActionEvent event) throws IOException {
+    	if(this.bs.getUser()!=null) {
+    		BeanConverter converter = new BeanConverter();
+    		BeanFavRestaurant[] favRest = converter.convertFavRestaurants(bs.getUser());
+    		
+			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.favRestPage));
+			loader.setControllerFactory(c -> new ControllerGuiFavRestaurants(favRest, bs));
+			Parent root=loader.load();
+			myAnchorPane.getChildren().setAll(root);       		
+   		
+    	}
+    	else {
+    		mustLoginLabel.setText(mustLoginMessage);
+    		mustLoginLabel.setVisible(true);
+    	}
     }
 
     @FXML
@@ -74,6 +114,7 @@ public class ControllerGuiHomePageTourist extends UserBaseGuiController {
     			BeanConverter converter = new BeanConverter();
     			BeanOutputSchedule[] scheduling = converter.convertScheduling(bs.getUser());
     			String city = converter.getCityFromScheduling(bs.getUser());
+    			
     			FXMLLoader loader=new FXMLLoader(getClass().getResource(this.seeTripPage));
     			loader.setControllerFactory(c -> new ControllerGuiSeeTrip(city, scheduling, bs));
     			Parent root=loader.load();

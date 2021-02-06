@@ -46,4 +46,8 @@ public class QueryNotifications {
 		stmt.executeUpdate("DELETE FROM NotificaScheduling WHERE UsernameTurista = '" +usernameTourist+ "'");
 	}
 	
+	public static void deleteToutistNotifications(Statement stmt, String usernameTourist) throws SQLException {
+		stmt.executeUpdate("DELETE FROM ModificaMenuAggiornato WHERE UsernameTurista = '" +usernameTourist+ "'");
+	}
+	
 }

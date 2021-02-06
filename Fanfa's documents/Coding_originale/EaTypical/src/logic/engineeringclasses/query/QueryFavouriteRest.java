@@ -19,5 +19,9 @@ public class QueryFavouriteRest {
 		        String insertStatement = String.format("INSERT INTO Preferiti (NomeRistorante, UsernameTurista) VALUES ('%s','%s')", rest, tourist);		      
 		        return stmt.executeUpdate(insertStatement);		    
 	}
+	
+	public static int deleteFavourite(Statement stmt, String tourist) throws SQLException {
+		return stmt.executeUpdate("DELETE FROM Preferiti WHERE UsernameTurista = '" +tourist+ "'");
+	}
 	 
 }

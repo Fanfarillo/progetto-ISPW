@@ -4,6 +4,7 @@
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="java.text.ParseException" %>
 <%@page import="logic.engineeringclasses.others.BeanConverter" %>
+<%@page import="logic.engineeringclasses.exceptions.GenericException" %>
 
 <%
 Session bs;
@@ -26,7 +27,6 @@ else {
 }
 %>
 
-
 <%    	
     	if(request.getParameter("Logout")!=null) { 
     		if(bs!=null&&bs.getUser()!=null)
@@ -40,31 +40,63 @@ else {
     		}
 
     	}
+
 		if(request.getParameter("See Notifications")!=null) {
-			session.setAttribute("session", bs);
+    		try {
+    			if(bs.getUser()!=null) {
+    				BeanConverter converter = new BeanConverter();
+    			
+    				session.setAttribute("scheduling", converter.convertNotif(bs.getUser()));
+    				session.setAttribute("session", bs);
+%>
+					<jsp:forward page="TouristNotifView.jsp"/>
+<%
+    			}
+    			else {
+    				errorString = "You must login to use this function.";
+    			}
+    		}	
+    		catch(GenericException e) {
+    			errorString = "An unknown error occurred. Please, try again later.";
+    		}
 
 		}
+		
     	if(request.getParameter("Schedule Trip HT")!=null) {
-    		//if(bs.getUser()!=null) {	
+    		if(bs.getUser()!=null) {	
     			session.setAttribute("session", bs);
 %>
 				<jsp:forward page="ItalianViewCity.jsp"/>
 <%
-    		//}
-    		//else {
-    			//errorString = "You must login to use this function.";
-    		//}
+    		}
+    		else {
+    			errorString = "You must login to use this function.";
+    		}
     	}
+    	
     	if(request.getParameter("Choose Restaurant HT")!=null) {
     		session.setAttribute("session", bs);
 %>
 			<jsp:forward page="ItalianViewCity2.jsp"/>
 <%
     	}
+    	
     	if(request.getParameter("See Your Favourite Restaurants")!=null) {
-    		session.setAttribute("session", bs);
+    		if(bs.getUser()!=null) {
+    			BeanConverter converter = new BeanConverter();
+    			
+    			session.setAttribute("scheduling", converter.convertFavRestaurants(bs.getUser()));
+    			session.setAttribute("session", bs);
+%>
+				<jsp:forward page="FavRestaurantsView.jsp"/>
+<%
+    		}
+    		else {
+    			errorString = "You must login to use this function.";
+    		}
 
     	}
+    	
     	if(request.getParameter("See Your Trip")!=null) {
     		try {
     			if(bs.getUser()!=null) {

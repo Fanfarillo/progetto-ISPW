@@ -68,7 +68,7 @@
 
 <body>
 <div class="container">
-	<form action="CreatingRestaurantView" name="myform" method="get">
+	<form action="CreatingRestaurantView.jsp" name="myform" method="get">
 		<input id="home" type="submit" name="Home SR1" value="Home">
 		<input id="sponsorRestaurant" type="submit" name="Sponsor Restaurant SR1" value="Sponsor Restaurant" disabled>
 		<input id="manageMenu" type="submit" name="Manage Menu SR1" value="Manage Menu">

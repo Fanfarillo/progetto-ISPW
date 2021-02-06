@@ -52,8 +52,7 @@
     	}
     	if(request.getParameter("Delete Scheduling")!=null) {
     		try {
-    			SchedulingDAO dao = new SchedulingDAO();
-    			dao.delete(bs.getUser().getUsername());
+    			SchedulingDAO.delete(bs.getUser().getUsername());
     			session.setAttribute("session", bs);
     			session.setAttribute("city", city);
     			session.setAttribute("scheduling", null);

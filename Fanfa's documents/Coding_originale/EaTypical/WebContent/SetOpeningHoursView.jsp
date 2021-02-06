@@ -122,7 +122,7 @@
 
 <body>
 <div class="container">
-	<form action="SetOpeningHoursView" name="myform" method="get">
+	<form action="SetOpeningHoursView.jsp" name="myform" method="get">
 		<input id="home" type="submit" name="Home SR2" value="Home">
 		<input id="sponsorRestaurant" type="submit" name="Sponsor Restaurant SR2" value="Sponsor Restaurant">
 		<input id="manageMenu" type="submit" name="Manage Menu SR2" value="Manage Menu">

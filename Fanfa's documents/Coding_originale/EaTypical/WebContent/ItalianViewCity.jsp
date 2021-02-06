@@ -58,7 +58,7 @@
 		<input id="scheduleTrip" type="submit" name="Schedule Trip ST1" value="Schedule Trip" disabled>
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST1" value="Choose Restaurant">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
-		<label id="nomeUtente">Not logged</label>
+		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
 		<div class="box-1">
 			<p>Click on the map or select a city from the drop-down menu:</p>
 		</div>

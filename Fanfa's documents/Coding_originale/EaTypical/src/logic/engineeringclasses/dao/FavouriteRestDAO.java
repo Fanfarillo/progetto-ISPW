@@ -86,4 +86,20 @@ public class FavouriteRestDAO {
                     stmt.close();
         }
     }
+    
+    public static void delete(String tourist) throws ClassNotFoundException, SQLException {
+    	Statement stmt=null;
+    	Connection conn=null;
+    	
+    	try {
+    		conn = Connect.getInstance().getDBConnection();
+    		stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+    		QueryFavouriteRest.deleteFavourite(stmt, tourist);
+    	}
+    	finally {
+            if (stmt != null)
+                stmt.close();    		
+    	}
+    }
+    
 }

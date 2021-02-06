@@ -128,7 +128,7 @@
 		<input id="scheduleTrip" type="submit" name="Schedule Trip ST2" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST2" value="Choose Restaurant">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
-		<label id="nomeUtente">Not logged</label>
+		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
 		<div class="box-1">
 			<p>Choose the first day of your trip:</p>
 			<select class="scrollGiorni" name="FirstDay">

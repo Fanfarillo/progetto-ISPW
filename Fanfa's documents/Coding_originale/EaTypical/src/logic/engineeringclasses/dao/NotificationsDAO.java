@@ -209,4 +209,28 @@ public class NotificationsDAO {
 		}
 	}
 	
+	public static void deleteTouristNotification(String tourist) throws ClassNotFoundException, SQLException {
+		Statement stmt=null;
+		Connection conn=null;
+		
+		try {
+			conn = Connect.getInstance().getDBConnection();
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			QueryNotifications.deleteToutistNotifications(stmt, tourist);
+		}
+		
+		finally {
+			try {
+				if(stmt!=null) {
+					stmt.close();
+				}
+			}
+			catch(SQLException se) {
+				se.printStackTrace();
+			}
+			
+		}		
+		
+	}
+	
 }

@@ -6,12 +6,16 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import logic.engineeringclasses.bean.BeanFavRestaurant;
+import logic.engineeringclasses.bean.BeanStringNotif;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputRestaurant;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
 import logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule;
+import logic.engineeringclasses.exceptions.GenericException;
 import logic.model.Restaurant;
 import logic.model.Scheduling;
 import logic.model.Tourist;
+import logic.model.TouristNotification;
 import logic.model.User;
 
 public class BeanConverter {
@@ -57,6 +61,70 @@ public class BeanConverter {
 		Iterator<Scheduling> iter = tripList.iterator();
 		Scheduling schedEntity = iter.next();
 		return schedEntity.getRest().getCity();
+		
+	}
+	
+	public BeanFavRestaurant[] convertFavRestaurants(User user) {
+		Tourist tourist = (Tourist) user;
+		List<Restaurant> favRestList = tourist.getFavouriteRestaurants();
+		if(favRestList==null || favRestList.isEmpty()) return new BeanFavRestaurant[0];
+		
+		BeanFavRestaurant[] favRestArray = new BeanFavRestaurant[favRestList.size()];
+		Iterator<Restaurant> iter = favRestList.iterator();
+		
+		String strAvgVote;
+		BeanFavRestaurant beanRest;
+		
+		int i=0;		// Counter for array index
+		
+		while(iter.hasNext()) {
+			Restaurant rest = iter.next();
+			strAvgVote = Double.toString(rest.getAvgVote());
+			
+			beanRest = new BeanFavRestaurant(rest.getName(), rest.getAddress(), rest.getCity(), strAvgVote);
+			favRestArray[i] = beanRest;
+			i++;
+		}
+		
+		return favRestArray;
+		
+	}
+	
+	public BeanStringNotif[] convertNotif(User user) throws GenericException {
+		Tourist tourist = (Tourist) user;
+		List<TouristNotification> notifList = tourist.getNotifications();
+		if(notifList==null || notifList.isEmpty()) return new BeanStringNotif[0];
+		
+		BeanStringNotif[] notifArray = new BeanStringNotif[notifList.size()];
+		Iterator<TouristNotification> iter = notifList.iterator();
+		
+		BeanStringNotif beanNotif;
+		
+		String s1 = " has been ";
+		String s2;
+		String s3 = " menu of ";
+		
+		String typeModif;
+		
+		int i=0;		// Counter for array index
+		
+		while(iter.hasNext()) {
+			TouristNotification notif = iter.next();
+			
+			typeModif = notif.getNotificationType();
+			
+			if(typeModif.equals("0")) s2="added into";
+			else if(typeModif.equals("1")) s2 = "modified into";
+			else if(typeModif.equals("2")) s2 = "deleted from";
+			else throw new GenericException("An unknown error occurred. Please, try again later.");
+			
+			beanNotif = new BeanStringNotif(notif.getDish() + s1 + s2 + s3 + notif.getRestaurantName());
+			
+			notifArray[i]=beanNotif;
+			i++;
+		}
+		
+		return notifArray;
 		
 	}
 	

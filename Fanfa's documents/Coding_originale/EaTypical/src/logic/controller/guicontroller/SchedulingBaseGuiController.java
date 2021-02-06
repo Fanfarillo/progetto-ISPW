@@ -14,7 +14,6 @@ import logic.engineeringclasses.others.Session;
 public abstract class SchedulingBaseGuiController extends UserBaseGuiController {
 	protected ObservableList<ConvertedBeanSchedule> ol;
 	
-	protected String username;
 	protected String city;
 	protected BeanOutputSchedule[] scheduling;
 	protected ConvertedBeanSchedule[] convertedScheduling;

@@ -83,7 +83,7 @@
 		<input id="scheduleTrip" type="submit" name="Schedule Trip ST3" value="Schedule Trip">
 		<input id="chooseRestaurant" type="submit" name="Choose Restaurant ST3" value="Choose Restaurant">
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
-		<label id="nomeUtente">Not logged</label>
+		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
 		<label id="citta"><%=city%></label>		
 		<label id="errorMsg"><%=errorString%></label>
 		<label id="savedMsg"><%=savedScheduling%></label>
