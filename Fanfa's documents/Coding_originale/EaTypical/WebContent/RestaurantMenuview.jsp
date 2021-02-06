@@ -42,14 +42,7 @@
 		<%
 	}
 %>
-
-<%
-	if(request.getParameter("back5")!=null) {	
-		
-		
-		
-	}
-%>    
+ 
    
 
 <%
@@ -137,7 +130,6 @@
 			<input id="home" type="submit" name="home5" value="Home">
 			<input id="manageMenu" type="submit" name="manageMenu5" value="Manage Menu">
 			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant5" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back5" value="Back">
 			
 			
 			<img id="fotoUtente" alt="image" src="utente.jpg"/>

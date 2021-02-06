@@ -64,14 +64,6 @@
 	}
 %>
 
-<%
-	if(request.getParameter("back7")!=null) {		
-		%>
-		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
-		<%		
-	}
-%>    
-
 
 <!DOCTYPE html>
 <html lang="en">

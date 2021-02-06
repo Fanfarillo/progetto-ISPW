@@ -45,14 +45,6 @@
 	}
 %>
 
-<%
-	if(request.getParameter("back2")!=null) {		
-		session.setAttribute("session", s);
-		%>
-		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
-		<%		
-	}
-%>    
 
 
 
