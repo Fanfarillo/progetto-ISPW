@@ -97,13 +97,7 @@
 	}
 %>
 
-<%
-	if(request.getParameter("back1")!=null) {		
-		%>
-		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
-		<%		
-	}
-%>
+
 
 <!-- INIZIO CODICE HTML -->
 
@@ -124,7 +118,6 @@
 			<input id="home" type="submit" name="home1" value="Home">
 			<input id="manageMenu" type="submit" name="manageMenu1" value="Manage Menu">
 			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant1" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back1" value="Back">
 			
 			<img id="fotoUtente" alt="fotoUtente" src="utente.jpg"/>
 			<label id="nomeUtente" style="font-size:20px"><%out.print(s.getUser().getUsername()); %></label>  

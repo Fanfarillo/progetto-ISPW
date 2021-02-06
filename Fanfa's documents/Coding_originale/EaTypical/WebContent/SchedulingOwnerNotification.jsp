@@ -43,7 +43,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Scheduling Notifications</title>
 </head>
 
 <link rel="stylesheet" type="text/css" href="SchedulingOwnerNotificationsStyle.css">
@@ -55,7 +55,6 @@
 			<input id="home" type="submit" name="home11" value="Home">
 			<input id="manageMenu" type="submit" name="manageMenu11" value="Manage Menu">
 			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant11" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back11" value="Back">
 			
 			
 			

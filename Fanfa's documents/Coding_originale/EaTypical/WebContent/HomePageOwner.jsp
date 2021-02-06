@@ -71,7 +71,7 @@
 <html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Home page owner</title>
+	<title>Home page</title>
 	<link rel="stylesheet" type="text/css" href="HomePageOwnerStyle.css">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="js/jquery-3.5.1.min.js"></script>

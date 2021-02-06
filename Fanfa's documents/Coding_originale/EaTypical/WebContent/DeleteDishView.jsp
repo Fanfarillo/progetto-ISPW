@@ -89,7 +89,6 @@
 			<input id="home" type="submit" name="home7" value="Home">
 			<input id="manageMenu" type="submit" name="manageMenu7" value="Manage Menu">
 			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant7" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back7" value="Back">
 			
 			
 			

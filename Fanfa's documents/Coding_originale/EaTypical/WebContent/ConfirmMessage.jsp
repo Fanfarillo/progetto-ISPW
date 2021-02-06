@@ -162,7 +162,6 @@
 		<input id="home" type="submit" name="home3" value="Home">
 		<input id="manageMenu" type="submit" name="manageMenu3" value="Manage Menu">
 		<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant3" value="Sponsor Restaurant">
-		<input id="back" type="submit" name="back3" value="Back">
 			
 		<img id="fotoUtente" alt="fotoUtente" src="utente.jpg"/>
 		

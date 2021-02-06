@@ -43,7 +43,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Reviews</title>
 </head>
 <link rel="stylesheet" type="text/css" href="ReviewOwnerNotifications.css">
 
@@ -55,7 +55,6 @@
 			<input id="home" type="submit" name="home10" value="Home">
 			<input id="manageMenu" type="submit" name="manageMenu10" value="Manage Menu">
 			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant10" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back10" value="Back">
 			
 			
 			

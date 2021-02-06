@@ -64,7 +64,7 @@
 
 <link rel="stylesheet" type="text/css" href="styleAdviceView.css">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Get Advice</title>
 </head>
 <body>
 
@@ -74,7 +74,6 @@
 			<input id="home" type="submit" name="home2" value="Home">
 			<input id="manageMenu" type="submit" name="manageMenu2" value="Manage Menu">
 			<input id="sponsorRestaurant" type="submit" name="sponsorRestaurant2" value="Sponsor Restaurant">
-			<input id="back" type="submit" name="back2" value="Back">
 			
 			<img id="fotoUtente" alt="foto_utente" src="utente.jpg"/>
 			<label id="nomeUtente" style="font-size:20px"><%out.print(s.getUser().getUsername()); %></label>  
