@@ -21,8 +21,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiReviewNotificationsView;
-import logic.controller.guicontroller.ManageMenuGuiController.ControllerGuiSchedulingNotificationsView;
+import logic.controller.guicontroller.managemenu.ControllerGuiReviewNotificationsView;
+import logic.controller.guicontroller.managemenu.ControllerGuiSchedulingNotificationsView;
 import logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling;
 import logic.engineeringclasses.bean.manageMenu.BeanListReviews;
 import logic.engineeringclasses.dao.NotificationsDAO;
@@ -69,7 +69,7 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
  	   BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications(bs.getUser().getUsername());
  	   
  	   //carico la gerarchia dei nodi
- 	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/NotificationsRestaurantViewScheduling.fxml"));
+ 	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/NotificationsRestaurantViewScheduling.fxml"));
    	    	
  	   //setto il nuovo controller grafico
  	   loader.setControllerFactory(c -> new ControllerGuiSchedulingNotificationsView(beanListNotificationsScheduling,bs.getUser().getUsername(),bs));
@@ -95,7 +95,7 @@ public class ControllerGuiHomePageOwner extends OwnerBaseGuiController {
 
 
     	//carico la gerarchia dei nodi
-  	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ReviewNotificationsView.fxml"));
+  	   FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/ReviewNotificationsView.fxml"));
     	    	
   	   //setto il nuovo controller grafico
   	   loader.setControllerFactory(c -> new ControllerGuiReviewNotificationsView(bs,beanListReviews));

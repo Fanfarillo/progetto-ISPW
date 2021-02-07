@@ -141,14 +141,14 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     		campoMancantePiatto.setText("");
     	}
     	
-    	//verifico se vi ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨ almeno un campo che non ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨ stato riempito
+    	//verifico se vi ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ almeno un campo che non ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato riempito
     	if(count>0) return;
     	
     	//faccio la conversione del prezzo essendo sicuramente diverso da empty string
     	double prezzo = Double.parseDouble(prezzoString);
     	
     	//cambio scena settando i giusti valori
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/ConfirmMessageView.fxml"));
     	BeanDish beanAddDish = new BeanDish(piatto, ristorante, contenuto, vegano, celiaco, prezzo, 0);
     	loader.setControllerFactory(c -> new ControllerGuiConfirmMessageView(beanAddDish,bs));
     	Parent rootParent = loader.load();
@@ -178,11 +178,11 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'AddDish.fxml'.";
         
-        //carico i piatti che puÃƒÆ’Ã‚Â² scegliere
+        //carico i piatti che puÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â² scegliere
         for(int i = 0; i<this.listaP.size();i++) {
         	scegliPiattoBox.getItems().add(this.listaP.get(i));
         }
-        //carico i ristoranti che puÃƒÆ’Ã‚Â² scegliere
+        //carico i ristoranti che puÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â² scegliere
         for(int i = 0; i<this.listaR.size();i++) {
         	scegliRistorante.getItems().add(this.listaR.get(i));
         }

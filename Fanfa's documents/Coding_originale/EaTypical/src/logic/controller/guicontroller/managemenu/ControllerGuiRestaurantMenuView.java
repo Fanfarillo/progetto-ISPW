@@ -96,7 +96,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	ArrayList<String> obs2 = (ArrayList<String>) restaurantDAO.selectOwnRestaurant(bs.getUser().getUsername());
     	
     	//carico la gerarchia dei nodi
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AddDish.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/AddDish.fxml"));
     	    	
     	//setto il nuovo controller grafico
     	loader.setControllerFactory(c -> new ControllerGuiAddDishView(obs1,obs2,this.errorePiatto,this.beanErrorDishAlreadyExists,bs));
@@ -108,7 +108,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     /**
      * ottiene i piatti e le ricette di tutti i ristoranti dell'utente
-     * Li passa al controller grafico della view successiva in cui l'utente potrÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  fare la selezione
+     * Li passa al controller grafico della view successiva in cui l'utente potrÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  fare la selezione
      * @param event
      * @throws IOException
      * @throws ClassNotFoundException
@@ -127,7 +127,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	ArrayList<String> obs2 = (ArrayList<String>) restaurantDAO.selectOwnRestaurant(nomeUtenteLabel.getText());
     	
     	//FXMLLoader e setto il nuovo controller grafico
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/DeleteDishView.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/DeleteDishView.fxml"));
     	loader.setControllerFactory(c -> new ControllerGuiDeleteDish(obs1,obs2,this.errorePiatto,this.beanErrorDish,bs));
     	Parent rootParent = loader.load();    	
     	
@@ -148,7 +148,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	//chiamo l'applicativo per ottenere la lista di suggerimenti da farmi dare
     	GetAdvice getAdvice = new GetAdvice();
     	BeanAdvice beanAdvices = getAdvice.advice(bs.getUser().getUsername());
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/AdviceView.fxml"));    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/AdviceView.fxml"));    	
     	loader.setControllerFactory(c -> new ControllerGuiAdviceView(bs.getUser().getUsername(),beanAdvices,bs));
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
@@ -158,7 +158,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
 
     /**
      * Vengono caricati i ristoranti e i piatti dell'utente per poi passarli
-     * alla view successiva tramite cui l'utente potrÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  cancellarli
+     * alla view successiva tramite cui l'utente potrÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  cancellarli
      * @param event
      * @throws IOException
      * @throws ClassNotFoundException
@@ -178,7 +178,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
     	ArrayList<String> obs2 = (ArrayList<String>) restaurantDAO.selectOwnRestaurant(bs.getUser().getUsername());
     
     	//FXMLLoader e setto il nuovo controller grafico
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ModifyDishView.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/ModifyDishView.fxml"));
     	loader.setControllerFactory(c -> new ControllerGuiModifyDishView(obs,obs2,this.errorePiatto,this.beanErrorDish,bs));
     	Parent rootParent = loader.load();      	
     	
@@ -199,7 +199,7 @@ public class ControllerGuiRestaurantMenuView  extends OwnerBaseGuiController{
         
         nomeUtenteLabel.setText(this.bs.getUser().getUsername());
         
-        //se si ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ verificato un errore all'atto dell'inserimento del piatto l'utente viene reindirizzato alla pagina 
+        //se si ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ verificato un errore all'atto dell'inserimento del piatto l'utente viene reindirizzato alla pagina 
         //per l'inserimento e viene avvisato dell'errore
         if(this.errorePiatto == 0 ) {
         	this.addADish(null);

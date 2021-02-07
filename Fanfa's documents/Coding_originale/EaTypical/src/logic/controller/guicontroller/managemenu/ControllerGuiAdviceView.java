@@ -53,7 +53,7 @@ public class ControllerGuiAdviceView  extends OwnerBaseGuiController{
     @FXML
     void done(ActionEvent event) throws IOException {
     	//carico la gerarchia dei nodi
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml"));    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/RestaurantMenuView.fxml"));    	
     	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(bs));
     	Parent rootParent = loader.load();
     	//cambio scena

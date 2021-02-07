@@ -140,7 +140,7 @@ public class ControllerGuiModifyDishView  extends OwnerBaseGuiController{
     	double prezzo = Double.parseDouble(priceText.getText());
     	
     	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/ConfirmMessageView.fxml"));
     	BeanDish beanModifyDish = new BeanDish(piatto, ristorante, contenuto, vegano, celiaco, prezzo, 1);
     	loader.setControllerFactory(c -> new ControllerGuiConfirmMessageView(beanModifyDish,bs));
     	Parent rootParent = loader.load();

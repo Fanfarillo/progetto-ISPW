@@ -95,7 +95,7 @@ public class ControllerGuiDeleteDish  extends OwnerBaseGuiController{
     	if(count>0) return;
     	
     	//ottengo il nodo radice fxml e vado a settare il controller grafico della nuova GUI
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/ManageRestaurant/ConfirmMessageView.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/ConfirmMessageView.fxml"));
     	BeanDeleteDish beanDeleteDish = new BeanDeleteDish(ristorante, piatto,2);
     	loader.setControllerFactory(c -> new ControllerGuiConfirmMessageView(beanDeleteDish,bs));
     	Parent rootParent = loader.load();

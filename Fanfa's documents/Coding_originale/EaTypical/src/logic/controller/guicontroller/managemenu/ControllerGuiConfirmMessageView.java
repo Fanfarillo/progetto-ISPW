@@ -32,7 +32,7 @@ import javafx.scene.control.Label;
 
 public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
 	
-	private static final String DESTINATION = "/logic/view/standalone/ManageRestaurant/RestaurantMenuView.fxml";
+	private static final String DESTINATION = "/logic/view/standalone/managemenu/RestaurantMenuView.fxml";
 	private BeanDeleteDish beanDeleteDish;
 	private BeanDish beanDish;	
 	
@@ -138,7 +138,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     	}
     	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-		//se vale -1 allora non c'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨ stato alcun errore
+		//se vale -1 allora non c'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato alcun errore
     	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(bs));
     	Parent root = loader.load();
     	myAnchorPane.getChildren().setAll(root);
