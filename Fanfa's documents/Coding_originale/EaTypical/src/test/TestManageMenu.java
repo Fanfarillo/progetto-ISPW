@@ -40,18 +40,18 @@ public class TestManageMenu {
 	 */
 	@Test
 	public void testAddDishNewDish() throws ClassNotFoundException {
-		ManageMenu manageMenu = new ManageMenu();
-		int code;
+		ManageMenu manageMenu1 = new ManageMenu();
+		int code1;
 		
 		try {
-			manageMenu.addDish(new BeanDish("cacio e pepe", "da romeo", "ow", false, false, 10, 0));
-			code = 0;
-		}catch(DishAlreadyExists exists) {	//l'eccezione non si verifica
-			exists.printStackTrace();
-			code = 1;
+			manageMenu1.addDish(new BeanDish("cacio e pepe", "da romeo", "ow", false, false, 10, 0));
+			code1 = 0;
+		}catch(DishAlreadyExists exists1) {	//l'eccezione non si verifica
+			exists1.printStackTrace();
+			code1 = 1;
 		}
 		
-		assertEquals(0, code);
+		assertEquals(0, code1);
 	}
 	
 	/*
@@ -61,18 +61,18 @@ public class TestManageMenu {
 	 */
 	@Test
 	public void testDeleteDishNotExists() throws ClassNotFoundException {
-		ManageMenu manageMenu = new ManageMenu();
-		int code;
+		ManageMenu manageMenu2 = new ManageMenu();
+		int code2;
 		
 		try {
-			manageMenu.deleteDish(new BeanDeleteDish("da luca", "cicoria", 2));
-			code = 0;
+			manageMenu2.deleteDish(new BeanDeleteDish("da luca", "cicoria", 2));
+			code2 = 0;
 		}catch( InvalidDishDelete invalidDish) {	//l'eccezione si verifica
 			invalidDish.printStackTrace();
-			code = 1;
+			code2 = 1;
 		}
 		
-		assertEquals(1, code);
+		assertEquals(1, code2);
 	}
 	
 	/*
@@ -81,18 +81,18 @@ public class TestManageMenu {
 	 */
 	@Test
 	public void testDeleteDishExists() throws ClassNotFoundException {
-		ManageMenu manageMenu = new ManageMenu();
-		int code;
+		ManageMenu manageMenu3 = new ManageMenu();
+		int code3;
 		
 		try {
-			manageMenu.deleteDish(new BeanDeleteDish("da luca3", "amatriciana", 2));
-			code = 0;
+			manageMenu3.deleteDish(new BeanDeleteDish("da luca3", "amatriciana", 2));
+			code3 = 0;
 		}catch( InvalidDishDelete invalidDish) {	//l'eccezione non si verifica
 			invalidDish.printStackTrace();
-			code = 1;
+			code3 = 1;
 		}
 		
-		assertEquals(0, code);
+		assertEquals(0, code3);
 	}
 	
 	
