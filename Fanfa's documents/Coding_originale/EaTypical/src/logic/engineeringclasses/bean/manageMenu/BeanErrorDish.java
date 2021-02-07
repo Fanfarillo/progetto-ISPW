@@ -1,4 +1,4 @@
-package logic.engineeringclasses.bean.manageMenu;
+package logic.engineeringclasses.bean.managemenu;
 
 public class BeanErrorDish {
 	

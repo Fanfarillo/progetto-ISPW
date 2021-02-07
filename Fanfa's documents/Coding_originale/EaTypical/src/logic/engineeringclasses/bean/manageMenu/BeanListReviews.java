@@ -1,4 +1,4 @@
-package logic.engineeringclasses.bean.manageMenu;
+package logic.engineeringclasses.bean.managemenu;
 
 import java.util.ArrayList;
 import java.util.List;
