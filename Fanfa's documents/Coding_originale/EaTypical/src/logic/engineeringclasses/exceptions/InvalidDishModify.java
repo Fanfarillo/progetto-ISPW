@@ -1,7 +1,7 @@
 package logic.engineeringclasses.exceptions;
 
 
-import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanErrorDish;
 
 /**
  * L'utente ha la possibilità di modificare un piatto che viene cucinato in un suo ristorante

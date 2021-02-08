@@ -1,6 +1,6 @@
 package logic.engineeringclasses.exceptions;
 
-import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanErrorDish;
 
 /**
  * 

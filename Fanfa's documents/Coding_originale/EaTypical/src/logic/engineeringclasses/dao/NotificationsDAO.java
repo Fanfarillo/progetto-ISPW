@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling;
-import logic.engineeringclasses.bean.manageMenu.BeanSchedulingNotification;
+import logic.engineeringclasses.bean.managerestaurant.BeanListNotificationsScheduling;
+import logic.engineeringclasses.bean.managerestaurant.BeanSchedulingNotification;
 import logic.engineeringclasses.others.Connect;
 import logic.engineeringclasses.query.QueryNotifications;
 import logic.model.OwnerSchedulingNotification;

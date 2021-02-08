@@ -7,9 +7,9 @@
 <%@page import="logic.engineeringclasses.exceptions.InvalidDishModify"%>
 <%@page import="logic.engineeringclasses.exceptions.DishAlreadyExists"%>
 <%@page import="logic.controller.applicationcontroller.ManageMenu"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanDishWeb"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDishWeb"%>
 <%@page import="com.mysql.cj.Session.SessionEventListener"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanDish"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDish"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     

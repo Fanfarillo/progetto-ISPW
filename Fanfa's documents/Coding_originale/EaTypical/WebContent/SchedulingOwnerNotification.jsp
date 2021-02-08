@@ -1,6 +1,6 @@
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanListReviews"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanReview"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanListNotificationsScheduling"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanListReviews"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanReview"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     

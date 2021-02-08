@@ -1,5 +1,5 @@
 
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanAdvice"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanAdvice"%>
 <%@page import="logic.controller.applicationcontroller.GetAdvice"%>
 <%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.dao.RecipeDAO"%>

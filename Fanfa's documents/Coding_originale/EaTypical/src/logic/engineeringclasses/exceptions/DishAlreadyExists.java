@@ -1,6 +1,6 @@
 package logic.engineeringclasses.exceptions;
 
-import logic.engineeringclasses.bean.manageMenu.BeanErrorDishAlreadyExists;
+import logic.engineeringclasses.bean.managerestaurant.BeanErrorDishAlreadyExists;
 
 /**
  * 

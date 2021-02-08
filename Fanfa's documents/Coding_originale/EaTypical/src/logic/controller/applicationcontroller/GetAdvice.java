@@ -2,7 +2,7 @@ package logic.controller.applicationcontroller;
 
 import java.util.ArrayList;
 
-import logic.engineeringclasses.bean.manageMenu.BeanAdvice;
+import logic.engineeringclasses.bean.managerestaurant.BeanAdvice;
 import logic.engineeringclasses.dao.RecipeDAO;
 import logic.model.Recipe;
 

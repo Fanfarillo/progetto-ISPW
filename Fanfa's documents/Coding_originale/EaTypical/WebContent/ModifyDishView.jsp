@@ -4,9 +4,9 @@
     pageEncoding="ISO-8859-1"%>
     
 <%@page import="logic.engineeringclasses.exceptions.DishAlreadyExists"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanDishWeb"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDishWeb"%>
 <%@page import="com.mysql.cj.Session.SessionEventListener"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanDish"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDish"%>
 
 
 <%	ArrayList<String> obs1;

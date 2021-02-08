@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import logic.engineeringclasses.bean.manageMenu.BeanListReviews;
+import logic.engineeringclasses.bean.managerestaurant.BeanListReviews;
 import logic.engineeringclasses.others.Connect;
 import logic.engineeringclasses.query.QueryRestaurant;
 import logic.engineeringclasses.query.QueryReview;

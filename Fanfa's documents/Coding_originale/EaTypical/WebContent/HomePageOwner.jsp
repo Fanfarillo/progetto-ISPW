@@ -2,9 +2,9 @@
 <%@page import="logic.controller.guicontroller.OwnerBaseGuiController"%>
 <%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.dao.NotificationsDAO"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanListNotificationsScheduling"%>
 <%@page import="logic.engineeringclasses.dao.ReviewsDAO"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanListReviews"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanListReviews"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
