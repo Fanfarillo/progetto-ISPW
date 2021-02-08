@@ -113,7 +113,7 @@
 	<form action="RegisterView.jsp" name="myform" method="get">
 		<input id="home" type="submit" name="Home rg" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip rg" value="Schedule Trip">
-		<input id="chooseRestaurant" type="submit" name="Choose Restaurant rg" value="Choose Restaurant" disabled>
+		<input id="chooseRestaurant" type="submit" name="Choose Restaurant rg" value="Choose Restaurant" >
 		<img id="fotoUtente" src="utente.jpg"  alt="user"/>
 		<label id="nomeUtente">nomeUtente</label>
 		
