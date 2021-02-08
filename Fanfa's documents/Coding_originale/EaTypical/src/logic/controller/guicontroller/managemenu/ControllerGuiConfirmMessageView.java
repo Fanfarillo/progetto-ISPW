@@ -7,8 +7,8 @@ package logic.controller.guicontroller.managemenu;
 
 import logic.controller.applicationcontroller.ManageMenu;
 import logic.controller.guicontroller.OwnerBaseGuiController;
-import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
-import logic.engineeringclasses.bean.manageMenu.BeanDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanDeleteDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanDish;
 import logic.engineeringclasses.exceptions.DishAlreadyExists;
 import logic.engineeringclasses.exceptions.InvalidDishDelete;
 import logic.engineeringclasses.exceptions.InvalidDishModify;

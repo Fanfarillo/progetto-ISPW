@@ -21,8 +21,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import logic.controller.guicontroller.ControllerGuiHomePageOwner;
 import logic.controller.guicontroller.OwnerBaseGuiController;
-import logic.engineeringclasses.bean.manageMenu.BeanListNotificationsScheduling;
-import logic.engineeringclasses.bean.manageMenu.BeanSchedulingNotification;
+import logic.engineeringclasses.bean.managerestaurant.BeanListNotificationsScheduling;
+import logic.engineeringclasses.bean.managerestaurant.BeanSchedulingNotification;
 import logic.engineeringclasses.others.Session;
 
 /**

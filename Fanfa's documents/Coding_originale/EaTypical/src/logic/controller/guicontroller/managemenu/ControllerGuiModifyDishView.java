@@ -19,8 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import logic.controller.guicontroller.OwnerBaseGuiController;
-import logic.engineeringclasses.bean.manageMenu.BeanDish;
-import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanErrorDish;
 import logic.engineeringclasses.others.Session;
 
 /**

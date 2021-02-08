@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import logic.controller.guicontroller.OwnerBaseGuiController;
-import logic.engineeringclasses.bean.manageMenu.BeanAdvice;
+import logic.engineeringclasses.bean.managerestaurant.BeanAdvice;
 import logic.engineeringclasses.others.Session;
 
 public class ControllerGuiAdviceView  extends OwnerBaseGuiController{

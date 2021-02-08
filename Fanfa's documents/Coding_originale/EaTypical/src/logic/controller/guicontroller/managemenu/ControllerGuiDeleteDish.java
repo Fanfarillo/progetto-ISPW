@@ -4,8 +4,8 @@
 
 package logic.controller.guicontroller.managemenu;
 import logic.controller.guicontroller.OwnerBaseGuiController;
-import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
-import logic.engineeringclasses.bean.manageMenu.BeanErrorDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanDeleteDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanErrorDish;
 import logic.engineeringclasses.others.Session;
 
 import java.io.IOException;

@@ -20,8 +20,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import logic.controller.guicontroller.ControllerGuiHomePageOwner;
 import logic.controller.guicontroller.OwnerBaseGuiController;
-import logic.engineeringclasses.bean.manageMenu.BeanListReviews;
-import logic.engineeringclasses.bean.manageMenu.BeanReview;
+import logic.engineeringclasses.bean.managerestaurant.BeanListReviews;
+import logic.engineeringclasses.bean.managerestaurant.BeanReview;
 import logic.engineeringclasses.others.Session;
 
 public class ControllerGuiReviewNotificationsView extends OwnerBaseGuiController{

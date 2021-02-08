@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import logic.engineeringclasses.bean.manageMenu.*;
+import logic.engineeringclasses.bean.managerestaurant.*;
 import logic.engineeringclasses.others.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
