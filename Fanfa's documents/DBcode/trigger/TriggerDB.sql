@@ -19,6 +19,10 @@ BEGIN
     update menu set totale = 3*new_all_dishes_price/numdishes where NomeRistorante = old.NomeRistorante;
 END!
 
+delimiter ;
+
+delimiter !
+
 CREATE TRIGGER `progettoispwfinaledatabase`.`trigger_add_dish` AFTER UPDATE ON `piatto` FOR EACH ROW
 BEGIN
 	declare prezzo float;
@@ -37,6 +41,9 @@ BEGIN
     
     update menu set totale = 3*new_all_dishes_price/new_num_dishes where NomeRistorante = old.NomeRistorante;
 END!
+
+delimiter ;
+delimiter !
 
 CREATE TRIGGER `progettoispwfinaledatabase`.`trigger_delete_dish` AFTER UPDATE ON `piatto` FOR EACH ROW
 BEGIN
@@ -60,3 +67,5 @@ BEGIN
 		update menu set totale = 0 where NomeRistorante = old.NomeRistorante;
 	end if;
 END!
+
+delimiter ;

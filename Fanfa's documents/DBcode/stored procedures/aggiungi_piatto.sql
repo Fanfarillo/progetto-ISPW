@@ -1,3 +1,5 @@
+delimiter !
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `aggiungi_piatto4`(IN nomeRistorante varchar(45), IN nomePiatto varchar(45), IN contenuto varchar(10000), IN prezzo double, IN vegano boolean, IN celiaco boolean)
 BEGIN
 -- DICHIARAZIONE DELLE VARIABILI DA UTILIZZARE
@@ -28,4 +30,6 @@ BEGIN
             
 		end loop;
         close cur;   
-END
+END!
+
+delimiter ;
