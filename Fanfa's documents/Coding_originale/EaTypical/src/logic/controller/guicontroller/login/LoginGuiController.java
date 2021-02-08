@@ -168,7 +168,7 @@ public class LoginGuiController extends UserBaseGuiController {
         assert registerButton != null : "fx:id=\"registerButton\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert nomeUtente != null : "fx:id=\"nomeUtente\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert mustLoginLabel != null : "fx:id=\"mustLoginLabel\" was not injected: check your FXML file 'LoginView.fxml'.";
-
+        nomeUtente.setText("not logged");
         
     }
 }

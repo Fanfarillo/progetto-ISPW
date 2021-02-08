@@ -22,6 +22,8 @@ public class View extends Application {
 		loader.setControllerFactory(c -> new ControllerGuiHomePageTourist(session));
 		Parent rootParent = loader.load();
 		Scene scene = new Scene(rootParent);
+		arg0.setTitle(" EaTypical- Eat,Drink and Sleep");
+		arg0.getIcons().add(new Image("/logic/view/standalone/utente.jpg"));
 		arg0.setScene(scene);
 		arg0.show();		
 	}

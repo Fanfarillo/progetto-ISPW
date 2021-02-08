@@ -198,6 +198,6 @@ public class RegisterGuiController extends UserBaseGuiController {
         assert genericError != null : "fx:id=\"genericError\" was not injected: check your FXML file 'RegisterView.fxml'.";
         assert nomeUtente != null : "fx:id=\"nomeUtente\" was not injected: check your FXML file 'RegisterView.fxml'.";
         assert mustLoginLabel != null : "fx:id=\"mustLoginLabel\" was not injected: check your FXML file 'RegisterView.fxml'.";
-        
+        nomeUtente.setText("not logged");
     }
 }
