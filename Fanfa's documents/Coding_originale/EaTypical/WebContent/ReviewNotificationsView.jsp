@@ -56,7 +56,7 @@
 			
 			<img id="fotoUtente" alt="image" src="utente.jpg"/>
 			
-			<label id="n">out.print(s.getUser().getUsername())</label>
+			<label id="n"><%out.print(s.getUser().getUsername()); %></label>
 			
 <%BeanListReviews beanListReviews = (BeanListReviews)session.getAttribute("beanReviews"); %>
 			

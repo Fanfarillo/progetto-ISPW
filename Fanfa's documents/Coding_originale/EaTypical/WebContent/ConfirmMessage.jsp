@@ -46,7 +46,6 @@
 
 <%
 	if(request.getParameter("Discard")!=null) {
-		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%
