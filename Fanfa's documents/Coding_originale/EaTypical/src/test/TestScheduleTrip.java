@@ -66,7 +66,7 @@ public class TestScheduleTrip {
 	
 	@Test
 	public void testCheckOpeningHours() {
-		String city = "Torino";
+		String city = "Milano";
 		List<Restaurant> list = new ArrayList<>();
 		
 		String name1 = "Uno";
@@ -130,7 +130,7 @@ public class TestScheduleTrip {
 			
 			for(int i=0; i<3; i++) {
 				for(int j=0; j<2; j++) {
-					if(r.getOpeningHours()[i][j] == true) isOk=true;
+					if(r.getOpeningHours()[i][j]) isOk=true;
 				}
 			}			
 			if(isOk) okCount++;			
@@ -219,7 +219,7 @@ public class TestScheduleTrip {
 	
 	@Test
 	public void testDeleteRestaurantsWithTooLowVote() {
-		String city = "Torino";
+		String city = "Venezia";
 		List<Restaurant> list = new ArrayList<>();
 		
 		String name1 = "Sei";
