@@ -59,22 +59,24 @@ public class SchedulesDAO {
             for( List<String> eachSchedule: schedules ) {
             	
             	rs=QueryRestaurant.selectRestaurant(stmt, eachSchedule.get(0));               
-                rs.first();
+                if(rs.first()) {
             	
-                ristName=rs.getString("Nome");
-                address=rs.getString("Indirizzo");
-                city=rs.getString("Citta");
-                vote=rs.getDouble("VotoMedio");
-                price=rs.getDouble("Totale");
-                rest=new Restaurant(ristName,address,city,vote);
-                menu=new Menu(null,price);
-                rest.setMenu(menu);
+                	ristName=rs.getString("Nome");
+                	address=rs.getString("Indirizzo");
+                	city=rs.getString("Citta");
+                	vote=rs.getDouble("VotoMedio");
+                	price=rs.getDouble("Totale");
+                	rest=new Restaurant(ristName,address,city,vote);
+                	menu=new Menu(null,price);
+                	rest.setMenu(menu);
                 
 
-                date=eachSchedule.get(1);
-                atLunch=(eachSchedule.get(2).equals("Pranzo"));
-                sched=new Scheduling(date,atLunch,rest);
-                scheduling.add(sched);	//create a notification and add it to the list			
+                	date=eachSchedule.get(1);
+                	atLunch=(eachSchedule.get(2).equals("Pranzo"));
+                	sched=new Scheduling(date,atLunch,rest);
+                	scheduling.add(sched);	//create a notification and add it to the list
+                	
+                }
             	
             }
 

@@ -103,7 +103,7 @@ public class ScheduleTrip {
 	}
 	
 	// Computation of number of meals of the trip
-	private int getNumMeals(BeanRestaurantSchedule beanCRS, int numDays) {
+	public int getNumMeals(BeanRestaurantSchedule beanCRS, int numDays) {
 		int numMeals;
 		
 		if((beanCRS.isAtLunch1() && !beanCRS.isAtLunch2()) || (!beanCRS.isAtLunch1() && beanCRS.isAtLunch2())) {
@@ -156,7 +156,7 @@ public class ScheduleTrip {
 		return requiredMealsWeek;
 	}
 	
-	private List<Restaurant> checkOpeningHours(List<Restaurant> listOfRestaurants, boolean[][] requiredMealsWeek) {
+	public List<Restaurant> checkOpeningHours(List<Restaurant> listOfRestaurants, boolean[][] requiredMealsWeek) {
 		Iterator<Restaurant> iter = listOfRestaurants.iterator();
 		boolean isOk;
 		
@@ -284,7 +284,7 @@ public class ScheduleTrip {
 		return temporaryList;
 	}
 	
-	private List<Restaurant> deleteRestaurantsWithTooLowVote(List<Restaurant> temporaryList, double minVote) {
+	public List<Restaurant> deleteRestaurantsWithTooLowVote(List<Restaurant> temporaryList, double minVote) {
 		Iterator<Restaurant> iter = temporaryList.iterator();	
 		while(iter.hasNext()) {
 			Restaurant r = iter.next();
@@ -416,7 +416,8 @@ public class ScheduleTrip {
 			Scheduling schedEntity = new Scheduling(tourist, scheduling[i].getStrDate(), atLunch, r);
 			SchedulingDAO.insert(schedEntity);
 			
-			sendNotification(schedEntity);
+			if(scheduling[i].getUsernameOwner() != "")
+				sendNotification(schedEntity);
 			
 		}
 		
