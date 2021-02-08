@@ -6,7 +6,6 @@
     
     <%
 	if(request.getParameter("home11")!=null) {
-		//SizedStack.getSizedStack(true).clearStack();
 		%>
 		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
 		<%
@@ -14,7 +13,6 @@
 %>
  <%
 	if(request.getParameter("continue11")!=null) {
-		//SizedStack.getSizedStack(true).clearStack();
 		%>
 		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
 		<%
@@ -23,7 +21,6 @@
 
 <%
 	if(request.getParameter("manageMenu11")!=null) {
-		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%
@@ -32,7 +29,6 @@
 
 <%
 	if(request.getParameter("sponsorRestaurant11")!=null) {
-		//SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 		%>
 		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
 		<%
@@ -60,7 +56,7 @@
 			
 			<img id="fotoUtente" alt="image" src="utente.jpg"/>
 			
-			<label id="n">NomeUtente</label>
+			<label id="n">out.print(s.getUser().getUsername())</label>
 			
 <%BeanListNotificationsScheduling beanListNotificationsScheduling = (BeanListNotificationsScheduling)session.getAttribute("beanScheduling"); %>
 			

@@ -27,7 +27,6 @@
 
 <%
 	if(request.getParameter("sponsorRestaurant5")!=null) {
-		//SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 		%>
 		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
 		<%

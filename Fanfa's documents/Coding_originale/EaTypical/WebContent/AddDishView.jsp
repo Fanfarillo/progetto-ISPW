@@ -37,7 +37,6 @@
 
 <%
 	if(request.getParameter("sponsorRestaurant1")!=null) {
-		//SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 		//mi porto a spasso l'utente e le altre informazioni sulla sessione
 		%>
 		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>

@@ -22,7 +22,6 @@
 	s = (Session)session.getAttribute("session");
 	
 	if(request.getParameter("home3")!=null) {
-		//SizedStack.getSizedStack(true).clearStack();
 		%>
 		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
 		<%
@@ -31,7 +30,6 @@
 
 <%
 	if(request.getParameter("manageMenu3")!=null) {
-		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%
@@ -40,7 +38,6 @@
 
 <%
 	if(request.getParameter("sponsorRestaurant3")!=null) {
-		//SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 		%>
 		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
 		<%

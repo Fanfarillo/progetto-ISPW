@@ -20,7 +20,6 @@
 	
 <%
 	if(request.getParameter("home4")!=null) {
-		//SizedStack.getSizedStack(true).clearStack();
 		%>
 		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
 		<%
@@ -29,7 +28,6 @@
 
 <%
 	if(request.getParameter("manageMenu4")!=null) {
-		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
 		<%
@@ -38,7 +36,6 @@
 
 <%
 	if(request.getParameter("sponsorRestaurant4")!=null) {
-		//SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 		%>
 		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
 		<%
@@ -52,7 +49,6 @@
 		//int count=0;
 		boolean prezzoNonInserito = false;
 		if(request.getParameter("continue4")!=null) {
-			//SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
 			//mi porto appresso le informazioni per l'inserimento del piatto
 			
 			/*-----------------------------------------------*/

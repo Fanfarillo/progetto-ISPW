@@ -26,7 +26,6 @@
 
 <%
 	if(request.getParameter("sponsor6")!=null) {
-		//SizedStack.getSizedStack(true).push("CreatingRestaurantView.jsp");
 		%>
 		<jsp:forward page="CreatingRestaurantView.jsp"></jsp:forward>
 		<%
@@ -36,7 +35,7 @@
 <%
 	if(request.getParameter("scheduling")!=null){
 		NotificationsDAO notificationsDAO = new NotificationsDAO();
-	 	BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications("liuk");
+	 	BeanListNotificationsScheduling beanListNotificationsScheduling = notificationsDAO.selectOwnerSchedulingNotifications(s.getUser().getUsername());
 		session.setAttribute("beanScheduling", beanListNotificationsScheduling);
 		session.setAttribute("session", s);
 		%>
@@ -48,7 +47,7 @@
 <%
 	if(request.getParameter("review")!=null){
 		session.setAttribute("session", s);
-		BeanListReviews beanListReviews = ReviewsDAO.findOwnerReviews("liuk");
+		BeanListReviews beanListReviews = ReviewsDAO.findOwnerReviews(s.getUser().getUsername());
 		session.setAttribute("beanReviews", beanListReviews);
 		%>
 		<jsp:forward page="ReviewNotificationsView.jsp"></jsp:forward>
