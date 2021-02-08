@@ -57,7 +57,7 @@ public class ScheduleTripRestaurantDAO {
 				
 				rs.previous();
 				
-				Restaurant rest = new Restaurant(owner, city, menu, address, name, avgVote, null, null, openingHours);
+				Restaurant rest = new Restaurant(owner, city, menu, address, name, avgVote, openingHours);
 				listOfRestaurants.add(rest);
 				
 			}	while(rs.next());

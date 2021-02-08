@@ -408,7 +408,7 @@ public class ScheduleTrip {
 			
 			Owner owner = new Owner(null, null, scheduling[i].getUsernameOwner());
 			Menu menu = new Menu(null, doubleAvgPrice);
-			Restaurant r = new Restaurant(owner, scheduling[i].getCity(), menu, scheduling[i].getAddress(), scheduling[i].getName(), doubleAvgVote, null, null, null);
+			Restaurant r = new Restaurant(owner, scheduling[i].getCity(), menu, scheduling[i].getAddress(), scheduling[i].getName(), doubleAvgVote, null);
 			
 			if(scheduling[i].getStrHour().equals("Lunch")) atLunch=true;
 			else atLunch=false;

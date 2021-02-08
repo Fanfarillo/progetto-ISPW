@@ -1,6 +1,5 @@
 package logic.model;
 
-import java.util.List;
 
 public class Restaurant {
 	
@@ -10,8 +9,6 @@ public class Restaurant {
 	private String address;
 	private String name;
 	private double avgVote;
-	private List<Review> reviews = null;
-	private List<User> clients = null;
 	private boolean[][] openingHours;
 	
 	public Restaurant(Owner owner, String city, String address, String name, double avgVote) {
@@ -21,15 +18,13 @@ public class Restaurant {
 		this.name = name;
 		this.avgVote = avgVote;
 	}
-	public Restaurant(Owner owner, String city, Menu menu, String address, String name, double avgVote, List<Review> reviews, List<User> clients, boolean[][] openingHours) {
+	public Restaurant(Owner owner, String city, Menu menu, String address, String name, double avgVote, boolean[][] openingHours) {
 		this.owner = owner;				//DA rivedere: clients e reviews che non servono
 		this.city = city;
 		this.menu = menu;
 		this.address =address;
 		this.name = name;
 		this.avgVote = avgVote;
-		this.reviews = reviews;
-		this.clients = clients;
 		this.openingHours = openingHours;
 	}
 	
@@ -89,22 +84,6 @@ public class Restaurant {
 		this.avgVote = avgVote;
 	}
 
-	public List<Review> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(List<Review> reviews) {
-		this.reviews = reviews;
-	}
-
-	public List<User> getClients() {
-		return clients;
-	}
-
-	public void setClients(List<User> clients) {
-		this.clients = clients;
-	}
-
 	public boolean[][] getOpeningHours() {
 		return openingHours;
 	}
@@ -116,3 +95,4 @@ public class Restaurant {
 	
 	
 }
+
