@@ -31,7 +31,8 @@ public class SeleniumScheduleTrip {
 		driver.findElement(By.xpath("//*[@id=\"continue\"]")).click();
 		driver.findElement(By.xpath("//*[@id=\"generate\"]")).click();
 		
-		WebElement labelContent = driver.findElement(By.xpath("//*[@id=\"errorMsg\"]"));
+		WebElement labelPath = driver.findElement(By.xpath("//*[@id=\"errorMsg\"]"));
+		String labelContent = labelPath.getText();
 		
 		assertEquals("You need to specify both the first day of your trip and the last day of your trip.", labelContent);
 		driver.close();
