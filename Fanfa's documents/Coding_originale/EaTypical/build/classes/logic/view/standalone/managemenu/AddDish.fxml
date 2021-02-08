@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="myAnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.controller.guicontroller.managemenu.ControllerGuiAddDishView">
    <children>
-      <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true">
+      <ImageView fitHeight="700.0" fitWidth="700.0" layoutX="6.0" pickOnBounds="true">
          <image>
             <Image url="@..\restaurant-mural-wallpaper_23-2148707022.jpg" />
          </image>
@@ -61,10 +61,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </CheckBox>
-      <Button fx:id="okButton" layoutX="297.0" layoutY="540.0" mnemonicParsing="false" onAction="#goToConfirmMessageView" prefHeight="51.0" prefWidth="106.0" text="OK">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
+      <Button fx:id="okButton" layoutX="297.0" layoutY="540.0" mnemonicParsing="false" onAction="#goToConfirmMessageView" prefHeight="51.0" prefWidth="106.0" text="OK" />
       <ChoiceBox fx:id="scegliRistorante" layoutX="433.0" layoutY="255.0" prefWidth="150.0" />
       <TextArea fx:id="contenutoRicetta" layoutX="84.0" layoutY="316.0" prefHeight="200.0" prefWidth="259.0" />
       <Label fx:id="campoMancantePiatto" layoutX="473.0" layoutY="206.0" textFill="WHITE">

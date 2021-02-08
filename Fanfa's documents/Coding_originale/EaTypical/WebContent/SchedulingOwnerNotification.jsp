@@ -1,6 +1,7 @@
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanListNotificationsScheduling"%>
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanListReviews"%>
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanReview"%>
+<%@page import="logic.engineeringclasses.others.Session" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
