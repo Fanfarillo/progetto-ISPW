@@ -14,9 +14,18 @@
             <Image url="@..\restaurant-mural-wallpaper_23-2148707022.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="homeButton" layoutX="30.0" layoutY="47.0" mnemonicParsing="false" onAction="#goHomePage" prefHeight="31.0" prefWidth="140.0" text="Home" />
-      <Button fx:id="manageMenuButton" layoutX="190.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToManageMenu" prefHeight="31.0" prefWidth="230.0" text="Manage Menu" />
-      <Button fx:id="sponsorRestaurantButton" layoutX="440.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToSponsorRestaurant" prefHeight="31.0" prefWidth="230.0" text="Sponsor Restaurant" />
+      <Button fx:id="homeButton" layoutX="30.0" layoutY="47.0" mnemonicParsing="false" onAction="#goHomePage" prefHeight="31.0" prefWidth="140.0" text="Home">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="manageMenuButton" layoutX="190.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToManageMenu" prefHeight="31.0" prefWidth="230.0" text="Manage Menu">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button fx:id="sponsorRestaurantButton" layoutX="440.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToSponsorRestaurant" prefHeight="31.0" prefWidth="230.0" text="Sponsor Restaurant">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
      
       <ImageView fitHeight="51.0" fitWidth="86.0" layoutX="584.0" layoutY="92.0" pickOnBounds="true">
          <image>
@@ -50,5 +59,3 @@
       </Label>
    </children>
 </AnchorPane>
-
-
