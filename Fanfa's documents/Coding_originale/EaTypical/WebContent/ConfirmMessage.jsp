@@ -3,7 +3,7 @@
 <%@page import="logic.engineeringclasses.dao.RecipeDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="logic.engineeringclasses.exceptions.InvalidDishDelete"%>
-<%@page import="logic.engineeringclasses.bean.manageMenu.BeanDeleteDish"%>
+<%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDeleteDish"%>
 <%@page import="logic.engineeringclasses.exceptions.InvalidDishModify"%>
 <%@page import="logic.engineeringclasses.exceptions.DishAlreadyExists"%>
 <%@page import="logic.controller.applicationcontroller.ManageMenu"%>
