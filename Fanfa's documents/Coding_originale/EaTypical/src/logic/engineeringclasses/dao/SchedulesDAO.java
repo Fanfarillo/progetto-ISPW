@@ -16,16 +16,15 @@ import logic.model.Scheduling;
 
 public class SchedulesDAO {
 
-    
+    private SchedulesDAO(){}
     public static List<Scheduling> findTouristScheduling(String user) throws ClassNotFoundException, SQLException {
         Statement stmt = null;
         Connection conn = null;
         String driverClassName = "com.mysql.jdbc.Driver";
-        List<Scheduling> scheduling = new ArrayList<Scheduling>();
+        List<Scheduling> scheduling = new ArrayList<>();
         
         try {
             Class.forName(driverClassName);
-            //conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             conn = Connect.getInstance().getDBConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
