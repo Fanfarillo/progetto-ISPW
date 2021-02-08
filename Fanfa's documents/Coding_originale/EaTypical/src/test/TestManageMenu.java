@@ -2,8 +2,8 @@ package test;
 import org.junit.Test;
 
 import logic.controller.applicationcontroller.ManageMenu;
-import logic.engineeringclasses.bean.manageMenu.BeanDeleteDish;
-import logic.engineeringclasses.bean.manageMenu.BeanDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanDeleteDish;
+import logic.engineeringclasses.bean.managerestaurant.BeanDish;
 import logic.engineeringclasses.exceptions.DishAlreadyExists;
 import logic.engineeringclasses.exceptions.InvalidDishDelete;
 
