@@ -115,7 +115,7 @@
 	<form action="LoginView.jsp" name="myform" method="get">
 		<input id="home" type="submit" name="Home lg" value="Home">
 		<input id="scheduleTrip" type="submit" name="Schedule Trip lg" value="Schedule Trip">
-		<input id="chooseRestaurant" type="submit" name="Choose Restaurant lg" value="Choose Restaurant" disabled>
+		<input id="chooseRestaurant" type="submit" name="Choose Restaurant lg" value="Choose Restaurant" >
 		<img id="fotoUtente" src="utente.jpg" alt="user"/>
 		<label id="nomeUtente"><%if(bs!=null&&bs.getUser()!=null){
 					%>=bs.getUser().getUsername()<%
