@@ -40,11 +40,7 @@ public class BeanSchedulingNotification {
 	}
 
 	public void setPranzoVsCena(String pranzoVsCena) {
-		if(pranzoVsCena.equals("0")) {
-			this.pranzoVsCena = "Pranzo";
-		}else {
-			this.pranzoVsCena= "Cena";
-		}
+		this.pranzoVsCena=pranzoVsCena;
 	}
 	
 	

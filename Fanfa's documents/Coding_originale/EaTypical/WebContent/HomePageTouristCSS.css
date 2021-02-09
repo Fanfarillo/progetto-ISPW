@@ -23,10 +23,10 @@ body {
 }
 
 .box {
-	width: 8%;
-	height: 7%;
+	width: 16%;
+	height: 10%;
 	position: absolute;
-	left: 46%;
+	left: 42%;
 	top: 13.14%;
 	background-color: rgba(0,0,0,0.7);
 }

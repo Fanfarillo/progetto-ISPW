@@ -401,6 +401,7 @@ public class ScheduleTrip {
 		boolean atLunch;
 
 		SchedulingDAO.delete(tourist);
+		NotificationsDAO.deleteOwnerSchedulingNotification(tourist);
 		
 		for(int i=0; i<scheduling.length; i++) {
 			doubleAvgPrice = Double.parseDouble(scheduling[i].getStrAvgPrice());
@@ -417,15 +418,10 @@ public class ScheduleTrip {
 			SchedulingDAO.insert(schedEntity);
 			
 			if(scheduling[i].getUsernameOwner() != "")
-				sendNotification(schedEntity);
+				NotificationsDAO.insertOwnerSchedulingNotification(schedEntity);
 			
 		}
 		
-	}
-	
-	private void sendNotification(Scheduling sched) throws ClassNotFoundException, SQLException {
-		NotificationsDAO.deleteOwnerSchedulingNotification(sched.getTourist());
-		NotificationsDAO.insertOwnerSchedulingNotification(sched);
 	}
 	
 }
