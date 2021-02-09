@@ -16,7 +16,7 @@ public class BeanDishWeb {
 		this.recipe = recipe;
 		this.vegan = vegan;
 		this.celiac = celiac;
-		this.prezzo = price;
+		this.price = price;
 		this.typeModify = typeModify;
 		
 	}
@@ -50,7 +50,7 @@ public class BeanDishWeb {
 	}
 
 	public void setVegan(boolean vegan) {
-		this.perVegano = vegan;
+		this.vegan = vegan;
 	}
 
 	public boolean isCeliac() {
@@ -66,7 +66,7 @@ public class BeanDishWeb {
 	}
 
 	public void setPrice(double price) {
-		this.prezzo = price;
+		this.price = price;
 	}
 
 	public int getTypeModify() {

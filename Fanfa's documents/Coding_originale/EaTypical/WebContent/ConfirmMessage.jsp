@@ -58,9 +58,9 @@
 	if(request.getParameter("Done")!=null) {
 		ManageMenu m = new ManageMenu();
 		BeanDishWeb b = (BeanDishWeb)session.getAttribute("beanrefresh");
-		System.out.print(b.getTipoModifica());
-		if(b.getTipoModifica() == 0){
-			BeanDish beanAddDish = new BeanDish(b.getPiatto(),b.getRistorante(),b.getContenuto(),b.isVegano(),b.isCeliaco(),b.getPrezzo(),0);
+		System.out.print(b.getTypeModify());
+		if(b.getTypeModify() == 0){
+			BeanDish beanAddDish = new BeanDish(b.getDish(),b.getRestaurant(),b.getRecipe(),b.isVegan(),b.isCeliac(),b.getPrice(),0);
 			
 			try{
 				m.addDish(beanAddDish);
@@ -79,9 +79,9 @@
 				<%
 				
 			}
-		}else if(b.getTipoModifica() == 1){
-			BeanDish beanAddDish = new BeanDish(b.getPiatto(),b.getRistorante(),b.getContenuto(),b.isVegano(),b.isCeliaco(),b.getPrezzo(),1);
-			System.out.println(b.getPiatto()+b.getContenuto()+b.getRistorante());
+		}else if(b.getTypeModify() == 1){
+			BeanDish beanAddDish = new BeanDish(b.getDish(),b.getRestaurant(),b.getRecipe(),b.isVegan(),b.isCeliac(),b.getPrice(),1);
+			System.out.println(b.getDish()+b.getRecipe()+b.getRestaurant());
 			try{
 				m.modifyDishes(beanAddDish);
 			}catch(InvalidDishModify e2){
@@ -97,8 +97,8 @@
 				<jsp:forward page="ModifyDishView.jsp"></jsp:forward>
 				<%
 			}
-		}else if(b.getTipoModifica() == 2){
-			BeanDeleteDish beanDeleteDish = new BeanDeleteDish(b.getRistorante(),b.getPiatto(),2);
+		}else if(b.getTypeModify() == 2){
+			BeanDeleteDish beanDeleteDish = new BeanDeleteDish(b.getRestaurant(),b.getDish(),2);
 			
 			try{
 				m.deleteDish(beanDeleteDish);

@@ -79,7 +79,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="campoMancantePrezzo" layoutX="414.0" layoutY="533.0" prefHeight="21.0" prefWidth="13.0" textFill="#eb0404">
+      <Label fx:id="campoMancantePrezzo" layoutX="337.0" layoutY="533.0" prefHeight="21.0" prefWidth="13.0" textFill="#eb0404">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
