@@ -2,15 +2,15 @@ package logic.engineeringclasses.bean.managerestaurant;
 
 public class BeanErrorDish {
 	
-	private String piatto;
+	private String dish;
 	private String ristorante;
 	
-	public BeanErrorDish(String piatto,String ristorante) {
-		this.piatto = piatto;
-		this.ristorante = ristorante;
+	public BeanErrorDish(String dish,String restaurant) {
+		this.dish = dish;
+		this.restaurant = restaurant;
 	}
 	
 	public String getMess() {
-		return "Il piatto ** "+piatto+" ** non è presente nel ristorante ** " + ristorante + " **";
+		return "the selected dish ** "+dish+" ** is not in the restaurant selected ** " + restaurant + " **";
 	}
 }

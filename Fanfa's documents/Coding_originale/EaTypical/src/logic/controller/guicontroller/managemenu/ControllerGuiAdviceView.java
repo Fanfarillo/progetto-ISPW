@@ -74,7 +74,7 @@ public class ControllerGuiAdviceView  extends OwnerBaseGuiController{
         assert labelUtente != null : "fx:id=\"labelUtente\" was not injected: check your FXML file 'AdviceView.fxml'.";
         
         StringBuilder bld = new StringBuilder();
-        bld.append("Possibili piatti tipici da poter aggiungere ai menu dei tuoi ristoranti:");
+        bld.append("Minimum prices of dishes:");
         for(int i = 0; i < beanAdvice.getDishes().size();i++) {        	
         	bld.append("\nDish " + i + ": " + beanAdvice.getDishes().get(i)+"\u0009Minimum price: "+beanAdvice.getPrices().get(i));
         }

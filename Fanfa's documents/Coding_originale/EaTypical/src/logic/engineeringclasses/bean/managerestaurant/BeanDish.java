@@ -25,8 +25,8 @@ public class BeanDish {
 		return dish;
 	}
 
-	public void setDish(String piatto) {
-		this.dish = piatto;
+	public void setDish(String dish) {
+		this.dish = dish;
 	}
 
 	public String getRestaurant() {

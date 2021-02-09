@@ -9,38 +9,38 @@ package logic.engineeringclasses.bean.managerestaurant;
 
 public class BeanDeleteDish {
 	
-	private String ristorante;
-	private String piatto;
-	private int tipoModifica;
+	private String restaurant;
+	private String dish;
+	private int typeModify;
 	
-	public BeanDeleteDish(String ristorante, String piatto,int tipoModifica) {
-		this.ristorante = ristorante;
-		this.piatto = piatto;
-		this.tipoModifica = tipoModifica;
+	public BeanDeleteDish(String restaurant, String dish,int tipoModifica) {
+		this.restaurant = restaurant;
+		this.dish = dish;
+		this.typeModify = typeModify;
 	}
 
-	public int getTipoModifica() {
-		return tipoModifica;
+	public int getTypeModify() {
+		return typeModify;
 	}
 
-	public void setTipoModifica(int tipoModifica) {
-		this.tipoModifica = tipoModifica;
+	public void setTypeModify(int tipoModifica) {
+		this.typeModify = typeModify;
 	}
 
-	public String getRistorante() {
-		return ristorante;
+	public String getRestaurant() {
+		return restaurant;
 	}
 
-	public void setRistorante(String ristorante) {
-		this.ristorante = ristorante;
+	public void setRestaurant(String restaurant) {
+		this.restaurant = restaurant;
 	}
 
-	public String getPiatto() {
-		return piatto;
+	public String getDish() {
+		return dish;
 	}
 
-	public void setPiatto(String piatto) {
-		this.piatto = piatto;
+	public void setDish(String dish) {
+		this.dish = dish;
 	}
 	
 	

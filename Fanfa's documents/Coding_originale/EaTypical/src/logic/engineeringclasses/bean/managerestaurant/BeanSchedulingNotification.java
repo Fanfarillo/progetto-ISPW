@@ -7,7 +7,7 @@ package logic.engineeringclasses.bean.managerestaurant;
  */
 public class BeanSchedulingNotification {
 	private String username;
-	private String ristorante;
+	private String restaurant;
 	private String data;
 	private String pranzoVsCena;
 
@@ -20,11 +20,11 @@ public class BeanSchedulingNotification {
 	}
 
 	public String getRistorante() {
-		return ristorante;
+		return restaurant;
 	}
 
-	public void setRistorante(String ristorante) {
-		this.ristorante = ristorante;
+	public void setRistorante(String restaurant) {
+		this.restaurant = restaurant;
 	}
 
 	public String getData() {
