@@ -3,7 +3,7 @@ package logic.engineeringclasses.bean.managerestaurant;
 public class BeanErrorDish {
 	
 	private String dish;
-	private String ristorante;
+	private String restaurant;
 	
 	public BeanErrorDish(String dish,String restaurant) {
 		this.dish = dish;

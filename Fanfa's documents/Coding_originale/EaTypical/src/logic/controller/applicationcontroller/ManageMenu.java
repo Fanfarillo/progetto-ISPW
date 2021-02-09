@@ -47,7 +47,7 @@ public class ManageMenu {
 		//istanzio una DAO per eliminare la tupla richiesta dalla tabella
 		RecipeDAO recipeDAO = new RecipeDAO();
 		
-		recipeDAO.deleteRecipe(beanDeleteDish.getRistorante(), beanDeleteDish.getPiatto());
+		recipeDAO.deleteRecipe(beanDeleteDish.getRestaurant(), beanDeleteDish.getDish());
 	}
 	
 	

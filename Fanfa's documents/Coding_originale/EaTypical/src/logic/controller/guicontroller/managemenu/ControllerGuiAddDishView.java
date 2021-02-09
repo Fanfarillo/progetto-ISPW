@@ -33,14 +33,14 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
 	
 	private List<String> listaP;
 	private List<String> listaR;
-	private int errorePiatto;
+	private int errorDish;
 	private BeanErrorDishAlreadyExists beanErrorDishAlreadyExists;
 	
-	public ControllerGuiAddDishView(List<String> listP, List<String> listR,int errorePiatto, BeanErrorDishAlreadyExists beanErrorDishAlreadyExists,Session bs) {
+	public ControllerGuiAddDishView(List<String> listP, List<String> listR,int errorDish, BeanErrorDishAlreadyExists beanErrorDishAlreadyExists,Session bs) {
     	super(bs);
 		this.listaP = listP;
     	this.listaR = listR;
-    	this.errorePiatto = errorePiatto;
+    	this.errorDish = errorDish;
     	this.beanErrorDishAlreadyExists =  beanErrorDishAlreadyExists;
     }
 
@@ -99,12 +99,12 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     	int count = 0;
     	
     	//definisco ed inizializzo i parametri del costruttore del controller grafico della view successiva
-    	String contenuto = contenutoRicetta.getText();
-    	String ristorante = scegliRistorante.getValue();
-    	String piatto = scegliPiattoBox.getValue(); 
+    	String content = contenutoRicetta.getText();
+    	String restaurant = scegliRistorante.getValue();
+    	String dish = scegliPiattoBox.getValue(); 
     	String prezzoString = priceTextField.getText();    	
-    	boolean vegano = veganCheckBox.isSelected();
-    	boolean celiaco = celiacCheckBox.isSelected();
+    	boolean vegan = veganCheckBox.isSelected();
+    	boolean celiac = celiacCheckBox.isSelected();
     	
     	
     	if(prezzoString.equals(""))
@@ -117,7 +117,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     	}
     		
     	
-    	if(contenuto.equals(""))
+    	if(content.equals(""))
     	{    		
     		campoMancanteRicetta.setText(MANCANTE);
     		count++;
@@ -126,14 +126,14 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     		
     	}
     	
-    	if(ristorante==null)
+    	if(restaurant==null)
     	{
     		campoMancanteRistorante.setText(MANCANTE);
     		count++;
     	}else {
     		campoMancanteRistorante.setText("");
     	}
-    	if(piatto==null)
+    	if(dish==null)
     	{
     		campoMancantePiatto.setText(MANCANTE);
     		count++;
@@ -141,7 +141,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     		campoMancantePiatto.setText("");
     	}
     	
-    	//verifico se vi ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ almeno un campo che non ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato riempito
+    	//verifico se vi ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ almeno un campo che non ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato riempito
     	if(count>0) return;
     	
     	//faccio la conversione del prezzo essendo sicuramente diverso da empty string
@@ -149,7 +149,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
     	
     	//cambio scena settando i giusti valori
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/logic/view/standalone/managemenu/ConfirmMessageView.fxml"));
-    	BeanDish beanAddDish = new BeanDish(piatto, ristorante, contenuto, vegano, celiaco, prezzo, 0);
+    	BeanDish beanAddDish = new BeanDish(dish, restaurant, content, vegan, celiac, prezzo, 0);
     	loader.setControllerFactory(c -> new ControllerGuiConfirmMessageView(beanAddDish,bs));
     	Parent rootParent = loader.load();
     	myAnchorPane.getChildren().setAll(rootParent);
@@ -178,11 +178,11 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
         assert homeButton != null : "fx:id=\"homeButton\" was not injected: check your FXML file 'AddDish.fxml'.";
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'AddDish.fxml'.";
         
-        //carico i piatti che puÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â² scegliere
+        //carico i piatti che puÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â² scegliere
         for(int i = 0; i<this.listaP.size();i++) {
         	scegliPiattoBox.getItems().add(this.listaP.get(i));
         }
-        //carico i ristoranti che puÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â² scegliere
+        //carico i ristoranti che puÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â² scegliere
         for(int i = 0; i<this.listaR.size();i++) {
         	scegliRistorante.getItems().add(this.listaR.get(i));
         }
@@ -190,7 +190,7 @@ public class ControllerGuiAddDishView extends OwnerBaseGuiController{
         nomeUtenteLabel.setText(bs.getUser().getUsername());
         
         //verifico se provengo da un errore di inserimento
-        if(this.errorePiatto == 0) {
+        if(this.errorDish == 0) {
         	errorePiattoLabel.setText(this.beanErrorDishAlreadyExists.getMess());
         }
     }

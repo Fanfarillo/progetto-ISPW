@@ -138,7 +138,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     	}
     	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-		//se vale -1 allora non c'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato alcun errore
+		//se vale -1 allora non c'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato alcun errore
     	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(bs));
     	Parent root = loader.load();
     	myAnchorPane.getChildren().setAll(root);
@@ -146,18 +146,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     }
 
     
-    /**
-     * Reindirizzo al menu principale
-     * @param event
-     * @throws IOException
-     */
-    @FXML
-    void keepManagingMenu(ActionEvent event) throws IOException {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-    	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(bs));
-    	Parent root = loader.load();
-    	myAnchorPane.getChildren().setAll(root);
-    }
+    
 
     
 
@@ -169,7 +158,6 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
         assert nomeUtenteLabel != null : "fx:id=\"nomeUtenteLabel\" was not injected: check your FXML file 'ConfirmMessageView.fxml'.";
         assert doneButton != null : "fx:id=\"doneButton\" was not injected: check your FXML file 'ConfirmMessageView.fxml'.";
         assert discardAllTheChangesButton != null : "fx:id=\"discardAllTheChangesButton\" was not injected: check your FXML file 'ConfirmMessageView.fxml'.";
-        assert keepManagingMenuButton != null : "fx:id=\"keepManagingMenuButton\" was not injected: check your FXML file 'ConfirmMessageView.fxml'.";
         nomeUtenteLabel.setText(bs.getUser().getUsername());
     }
 }
