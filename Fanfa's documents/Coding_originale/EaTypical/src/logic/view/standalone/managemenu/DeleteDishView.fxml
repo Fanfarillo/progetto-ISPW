@@ -50,17 +50,17 @@
          </font>
       </Button>
       <ChoiceBox fx:id="scegliRistorante" layoutX="443.0" layoutY="368.0" prefWidth="150.0" />
-      <Label fx:id="campoMancantePiatto" layoutX="501.0" layoutY="251.0" textFill="WHITE">
+      <Label fx:id="campoMancantePiatto" layoutX="501.0" layoutY="251.0" textFill="#eb0404">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="campoMancanteRistorante" layoutX="501.0" layoutY="411.0" textFill="WHITE">
+      <Label fx:id="campoMancanteRistorante" layoutX="501.0" layoutY="411.0" textFill="#eb0404">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="errorePiattoLabel" layoutX="107.0" layoutY="458.0" textFill="WHITE">
+      <Label fx:id="errorePiattoLabel" layoutX="107.0" layoutY="458.0" textFill="#eb0404">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

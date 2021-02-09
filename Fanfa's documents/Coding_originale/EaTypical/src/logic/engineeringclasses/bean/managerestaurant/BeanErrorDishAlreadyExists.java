@@ -9,7 +9,7 @@ public class BeanErrorDishAlreadyExists {
 	}
 
 	public String getMess() {
-		return "Il piatto ** "+dish+" ** già è stato inserito";
+		return "The dish ** "+dish+" ** has already been inserted";
 	}
 
 	

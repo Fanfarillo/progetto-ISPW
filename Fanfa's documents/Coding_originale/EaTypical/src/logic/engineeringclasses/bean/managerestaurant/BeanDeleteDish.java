@@ -13,7 +13,7 @@ public class BeanDeleteDish {
 	private String dish;
 	private int typeModify;
 	
-	public BeanDeleteDish(String restaurant, String dish,int tipoModifica) {
+	public BeanDeleteDish(String restaurant, String dish,int typeModify) {
 		this.restaurant = restaurant;
 		this.dish = dish;
 		this.typeModify = typeModify;
@@ -23,7 +23,7 @@ public class BeanDeleteDish {
 		return typeModify;
 	}
 
-	public void setTypeModify(int tipoModifica) {
+	public void setTypeModify(int typeModify) {
 		this.typeModify = typeModify;
 	}
 
