@@ -65,7 +65,6 @@
 			try{
 				m.addDish(beanAddDish);
 			}catch(DishAlreadyExists e){
-				//System.out.print("Gia esiste\n");
 				RestaurantDAO restaurantDAO = new RestaurantDAO();		
 				ArrayList<String> obs2 = (ArrayList<String>)restaurantDAO.selectOwnRestaurant(s.getUser().getUsername());
 				//setto i ristoranti

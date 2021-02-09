@@ -18,7 +18,6 @@
 <%
 	
 	if(request.getParameter("home1")!=null) {
-		//SizedStack.getSizedStack(true).clearStack();
 		%>
 		<jsp:forward page="HomePageOwner.jsp"></jsp:forward>
 		<%
@@ -27,7 +26,6 @@
 
 <%
 	if(request.getParameter("manageMenu1")!=null) {
-		//SizedStack.getSizedStack(true).push("RestaurantMenuview.jsp");
 		//mi porto a spasso l'utente e le altre informazioni sulla sessione
 		%>
 		<jsp:forward page="RestaurantMenuview.jsp"></jsp:forward>
@@ -48,7 +46,7 @@
 	boolean refresh = false;
 	
 	if(request.getParameter("continue1")!=null) {
-		boolean ricettaVuota = false;
+		boolean emptyRecipe = false;
 		//int count=0;
 		boolean prezzoVuoto = false;
 		//SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
@@ -79,11 +77,11 @@
 		}
 		if(request.getParameter("ricetta").equals("")){
 			// se la stringa vuota allora non ha inserito nessuna ricetta
-			ricettaVuota = true;
+			emptyRecipe = true;
 		}
 		
 		
-		if(ricettaVuota==false && prezzoVuoto ==false){
+		if(emptyRecipe==false && prezzoVuoto ==false){
 			BeanDishWeb beanWebDish = new BeanDishWeb(piatto,ristorante,(String)request.getParameter("ricetta"),vegano,celiaco,Double.parseDouble(request.getParameter("prezzo")),0);
 			request.setAttribute("bean", beanWebDish);
 		%>
@@ -170,16 +168,16 @@
 			</div>
 	
 			
-			<label id="campovuoto"><%if(refresh){
-										out.print("Mancante");
+			<label id="campovuoto" style="color:red"><%if(refresh){
+										out.print("Missing");
 									}
 									if(refresh==false && errore.equals("S")){
 										out.print("Il piatto da modificare giÃ  appartiene al ristorante selezionato.");
 									}
 									%></label>
-			<label id="prezzovuoto"><%if(refresh) out.print("Mancante"); %></label>
-			<label id="piattomancante"><%if(refresh) out.print("Mancante"); %></label>
-			<label id="ristorantemancante"><%if(refresh) out.print("Mancante"); %></label>
+			<label id="prezzovuoto" style="color:red"><%if(refresh) out.print("Missing"); %></label>
+			<label id="piattomancante" style="color:red"><%if(refresh) out.print("Missing"); %></label>
+			<label id="ristorantemancante" style="color:red"><%if(refresh) out.print("Missing"); %></label>
 			
 			<div id="price">
 				<input type="text" id="priceInput" name="prezzo" value="">
@@ -193,7 +191,7 @@
 			</div>
 			
 			<div>
-				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Scrivi ricetta..."></textarea>
+				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Write recipe..."></textarea>
 			</div>
 			
 			<div>

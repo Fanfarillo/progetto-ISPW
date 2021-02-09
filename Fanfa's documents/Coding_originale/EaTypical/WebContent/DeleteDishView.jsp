@@ -124,7 +124,7 @@
 				</select>
 			</div>	
 			
-			<label id="errore"><% if(errore.equals("S"))out.print("Il piatto inserito non appartiene al ristorante");%></label>
+			<label id="errore" style="color:red"><% if(errore.equals("S"))out.print("the inserted dish does not belong to the selected restaurant");%></label>
 			
 			<input id="delete" name="delete2" value="DELETE" type="submit">
 			

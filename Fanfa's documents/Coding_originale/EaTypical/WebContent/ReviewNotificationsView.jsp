@@ -70,10 +70,10 @@
 			<table >
 			<caption></caption>
 				<tr>
-					<th id="turistath">Turista</th>
-					<th id="ristoranteth">Ristorante</th>
-					<th id="recensioneth">Leggi recensione</th>
-					<th id="vototh">Voto</th>
+					<th id="turistath">Tourist</th>
+					<th id="ristoranteth">Restaurant</th>
+					<th id="recensioneth">Review</th>
+					<th id="vototh">Vote</th>
 				</tr>
 <%
 			BeanReview beanReview;
@@ -85,7 +85,7 @@
 					<th id="riga1"><%=beanReview.getTourist() %></th>
 					<th id="riga2"><%=beanReview.getRestaurant() %></th>
 					<th id="riga3"><%=beanReview.getContent() %></th>
-					<th id="riga4"><%=beanReview.getVoto() %></th>
+					<th id="riga4"><%=beanReview.getVote() %></th>
 				</tr>
 				<%
 			}

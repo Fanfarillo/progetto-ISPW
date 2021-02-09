@@ -70,10 +70,10 @@
 			<table >
 				<caption></caption>
 				<tr>
-					<th id="thturista">Turista</th>
-					<th id="thristorante">Ristorante</th>
+					<th id="thturista">Tourist</th>
+					<th id="thristorante">Restaurant</th>
 					<th id="thdata">Data</th>
-					<th id="thgiornata">Momento giornata</th>
+					<th id="thgiornata">Lunch or Dinner</th>
 				</tr>
 <%
 			BeanReview beanReview;

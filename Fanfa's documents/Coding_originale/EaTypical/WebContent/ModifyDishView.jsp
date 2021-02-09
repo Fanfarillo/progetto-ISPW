@@ -152,7 +152,7 @@
 			</div>
 			
 			<div>
-				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Scrivi la nuova ricetta..."></textarea>	
+				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Write new recipe..."></textarea>	
 			</div>
 			
 			<div id="check">
@@ -166,17 +166,17 @@
 				<input type="submit" id="continue" value="CONTINUE" name="continue4">
 			</div>
 			
-			<label id="campovuoto"><%if(refresh){
-										out.print("Mancante");
+			<label id="campovuoto" style="color:red"><%if(refresh){
+										out.print("Missing");
 									}
 									if(refresh!=true && errore.equals("S")){
-										out.print("Il piatto da modificare non appartiene al ristorante selezionato.");
+										out.print("the dish to be modified does not belong to the selected restaurant.");
 									}
 									%></label>
 			}
-			<label id="prezzovuoto"><%if(refresh) out.print("Mancante"); %></label>
-			<label id="piattomancante"><%if(refresh) out.print("Mancante"); %></label>
-			<label id="ristorantemancante"><%if(refresh) out.print("Mancante"); %></label>
+			<label id="prezzovuoto" style="color:red"><%if(refresh) out.print("Missing"); %></label>
+			<label id="piattomancante" style="color:red"><%if(refresh) out.print("Missing"); %></label>
+			<label id="ristorantemancante" style="color:red"><%if(refresh) out.print("Missing"); %></label>
 			
 		</form>
 		
