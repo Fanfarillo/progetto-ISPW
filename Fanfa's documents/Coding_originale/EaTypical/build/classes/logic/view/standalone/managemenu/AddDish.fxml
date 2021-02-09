@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="myAnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.controller.guicontroller.managemenu.ControllerGuiAddDishView">
    <children>
-      <ImageView fitHeight="700.0" fitWidth="700.0" layoutX="6.0" pickOnBounds="true">
+      <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true">
          <image>
             <Image url="@..\restaurant-mural-wallpaper_23-2148707022.jpg" />
          </image>
