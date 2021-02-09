@@ -96,7 +96,7 @@ public class ControllerGuiReviewNotificationsView extends OwnerBaseGuiController
         turistaColonna.setCellValueFactory(new PropertyValueFactory<>("tourist"));
         ristoranteColonna.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
         contenutoColonna.setCellValueFactory(new PropertyValueFactory<>("content"));
-        votoColonna.setCellValueFactory(new PropertyValueFactory<>("voto"));
+        votoColonna.setCellValueFactory(new PropertyValueFactory<>("vote"));
         BeanReview beanReview;
         
         ObservableList<BeanReview> observableList = FXCollections.observableArrayList();
