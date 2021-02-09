@@ -172,7 +172,7 @@
 										out.print("Missing");
 									}
 									if(refresh==false && errore.equals("S")){
-										out.print("Il piatto da modificare giÃ  appartiene al ristorante selezionato.");
+										out.print("the dish you want to insert already belongs to the restaurant");
 									}
 									%></label>
 			<label id="prezzovuoto" style="color:red"><%if(refresh) out.print("Missing"); %></label>
