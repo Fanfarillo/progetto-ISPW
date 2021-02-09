@@ -121,7 +121,7 @@
 					%>=bs.getUser().getUsername()<%
 		}
 		else{
-		%>not logged<%		}	%></label>
+		%>Not logged<%		}	%></label>
 		
 		<% if(wrongData)
 			{
