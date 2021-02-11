@@ -74,22 +74,22 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="campoMancanteRistorante" layoutX="478.0" layoutY="311.0" textFill="WHITE">
+      <Label fx:id="campoMancanteRistorante" layoutX="478.0" layoutY="311.0" textFill="#eb0404">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="campoMancantePrezzo" layoutX="457.0" layoutY="554.0" textFill="WHITE">
+      <Label fx:id="campoMancantePrezzo" layoutX="337.0" layoutY="533.0" prefHeight="21.0" prefWidth="13.0" textFill="#eb0404">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="campoMancateContenuto" layoutX="65.0" layoutY="499.0" textFill="WHITE">
+      <Label fx:id="campoMancateContenuto" layoutX="65.0" layoutY="499.0" textFill="#eb0404">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="errorePiattoLabel" layoutX="64.0" layoutY="533.0" textFill="WHITE">
+      <Label fx:id="errorePiattoLabel" layoutX="64.0" layoutY="533.0" textFill="#eb0404">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

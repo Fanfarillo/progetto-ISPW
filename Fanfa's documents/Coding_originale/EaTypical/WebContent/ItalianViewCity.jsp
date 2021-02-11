@@ -25,7 +25,7 @@
     	if(request.getParameter("Continue")!=null) {
     		try {	
     			String city = request.getParameter("Scroll");
-        		if(city.equals("")) {
+        		if(city==null) {
     				throw new EmptyFieldException("There is no city selected.");
         		}
     			session.setAttribute("session", bs);

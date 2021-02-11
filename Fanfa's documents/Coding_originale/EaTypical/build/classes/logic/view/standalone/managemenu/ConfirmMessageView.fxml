@@ -46,12 +46,7 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
-      </Button>
-      <Button fx:id="keepManagingMenuButton" layoutX="235.0" layoutY="503.0" mnemonicParsing="false" onAction="#keepManagingMenu" prefWidth="230.0" text="Keep Managing Menu">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
+      </Button>      
       <Label layoutX="197.0" layoutY="198.0" opacity="0.8" style="-fx-background-color: black;" text="What would you like to do?" textFill="#eeeeee">
          <font>
             <Font name="System Bold" size="24.0" />

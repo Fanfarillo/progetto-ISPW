@@ -27,14 +27,12 @@ public class SeleniumScheduleTrip {
 		driver.findElement(By.xpath("//*[@id=\"passtx\"]")).sendKeys("1");
 		driver.findElement(By.xpath("//*[@id=\"login\"]")).click();
 		driver.findElement(By.xpath("//*[@id=\"scheduleTrip\"]")).click();
-		driver.findElement(By.xpath("//*[@id=\"TorinoImg\"]")).click();
 		driver.findElement(By.xpath("//*[@id=\"continue\"]")).click();
-		driver.findElement(By.xpath("//*[@id=\"generate\"]")).click();
 		
 		WebElement labelPath = driver.findElement(By.xpath("//*[@id=\"errorMsg\"]"));
 		String labelContent = labelPath.getText();
 		
-		assertEquals("You need to specify both the first day of your trip and the last day of your trip.", labelContent);
+		assertEquals("There is no city selected.", labelContent);
 		driver.close();
 		
 	}

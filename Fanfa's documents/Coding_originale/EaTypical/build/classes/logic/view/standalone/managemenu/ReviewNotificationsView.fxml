@@ -41,10 +41,10 @@
       </Label>
       <TableView fx:id="tabellaNotifiche" layoutX="50.0" layoutY="199.0" prefHeight="361.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="turistaColonna" prefWidth="150.0" text="Turista" />
-          <TableColumn fx:id="ristoranteColonna" prefWidth="150.0" text="Ristorante" />
-            <TableColumn fx:id="contenutoColonna" prefWidth="150.0" text="Leggi recensione" />
-            <TableColumn fx:id="votoColonna" prefWidth="150.0" text="Voto" />
+          <TableColumn fx:id="turistaColonna" prefWidth="150.0" text="Tourist" />
+          <TableColumn fx:id="ristoranteColonna" prefWidth="150.0" text="Restaurant" />
+            <TableColumn fx:id="contenutoColonna" prefWidth="150.0" text="Review" />
+            <TableColumn fx:id="votoColonna" prefWidth="150.0" text="Vote" />
         </columns>
       </TableView>
       <Button fx:id="continueButton" layoutX="250.0" layoutY="593.0" mnemonicParsing="false" onAction="#goToHome" prefHeight="60.0" prefWidth="200.0" text="Continue">
