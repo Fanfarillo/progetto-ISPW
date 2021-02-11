@@ -2,7 +2,7 @@
   "id": "1fe911bf-b758-4823-ad15-db98ad47b047",
   "version": "2.0",
   "name": "SeleniumManageMenu",
-  "url": "http://localhost:8080/EaT_10_02_2021_1/HomePageTouristView.jsp",
+  "url": "http://localhost:8080",
   "tests": [{
     "id": "6a5d1e73-7246-4867-8f2f-26f29352e5b7",
     "name": "manageMenu",
@@ -10,7 +10,7 @@
       "id": "744fd35f-e069-4302-9cef-a9ab58734d47",
       "comment": "",
       "command": "open",
-      "target": "http://localhost:8080/EaT_10_02_2021_1/HomePageTouristView.jsp",
+      "target": "/EaT_10_02_2021_1/HomePageTouristView.jsp",
       "targets": [],
       "value": ""
     }, {
