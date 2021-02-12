@@ -4,6 +4,7 @@
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.model.User" %>
 <%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanLoggedUser" %>
 <%@page import="logic.controller.applicationcontroller.Login" %>
 
 <%@page import="logic.engineeringclasses.exceptions.DataException" %>
@@ -48,7 +49,7 @@
 	
     	}
     	if(request.getParameter("loginlg")!=null||request.getParameter("loginfblg")!=null){
-    		User loggedUser;
+    		BeanLoggedUser loggedUser;
     		String username=request.getParameter("usernametx");
     		String pw=request.getParameter("passtx");
     		boolean isOwner= (request.getParameterValues("ownercb")!=null&&request.getParameterValues("ownercb")[0].equals("isOwner"));

@@ -16,13 +16,11 @@ import logic.controller.applicationcontroller.Login;
 import logic.controller.guicontroller.ControllerGuiHomePageOwner;
 import logic.controller.guicontroller.ControllerGuiHomePageTourist;
 import logic.controller.guicontroller.UserBaseGuiController;
+import logic.engineeringclasses.bean.login.BeanLoggedUser;
 import logic.engineeringclasses.bean.login.BeanUser;
 import logic.engineeringclasses.exceptions.AlreadyInUseUsernameException;
 import logic.engineeringclasses.exceptions.DataException;
 import logic.engineeringclasses.others.Session;
-import logic.model.Owner;
-import logic.model.Tourist;
-import logic.model.User;
 
 public class RegisterGuiController extends UserBaseGuiController {
 	
@@ -90,6 +88,7 @@ public class RegisterGuiController extends UserBaseGuiController {
 
     @FXML
     void registerMethod(ActionEvent event) {
+    	BeanLoggedUser blu;
     		try
     		{
 	    		String username=this.usernameField.getText();
@@ -104,20 +103,8 @@ public class RegisterGuiController extends UserBaseGuiController {
 	    		bu.setPassword(pw);   		
 	    		bu.setOwner(isOwner);
 	    		Login registerAppCont= new Login();	
-	    		registerAppCont.registerMethod(bu);						//try to register
-	    		User user;
-	    		if(isOwner)
-	    		{
-	    			user=new Owner(name, surname, username);
-	    			
-	    		}
-	    		else
-	    		{
-	    			user=new Tourist(name, surname, username, null, null,null);
-	    		}			//create the correct user entity
-	    		
-	    		
-	    		this.bs.setUser(user);
+	    		blu=registerAppCont.registerMethod(bu);						//try to register
+	    		this.bs.setUser(blu);
 	    		this.bs.setFirstPage(isOwner);
 	    		FXMLLoader loader = new FXMLLoader(getClass().getResource(this.bs.getFirstPage()));
 		      	if(isOwner) {	    		

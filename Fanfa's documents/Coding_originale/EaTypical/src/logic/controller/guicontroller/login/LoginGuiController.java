@@ -15,11 +15,11 @@ import logic.controller.applicationcontroller.Login;
 import logic.controller.guicontroller.ControllerGuiHomePageOwner;
 import logic.controller.guicontroller.ControllerGuiHomePageTourist;
 import logic.controller.guicontroller.UserBaseGuiController;
+import logic.engineeringclasses.bean.login.BeanLoggedUser;
 import logic.engineeringclasses.bean.login.BeanUser;
 import logic.engineeringclasses.exceptions.DataException;
 import logic.engineeringclasses.exceptions.WrongUsernameOrPasswordException;
 import logic.engineeringclasses.others.Session;
-import logic.model.User;
 
 public class LoginGuiController extends UserBaseGuiController {
 	
@@ -86,7 +86,7 @@ public class LoginGuiController extends UserBaseGuiController {
     @FXML
     void loginMethod() throws IOException {
     	
-    	User loggedUser;
+    	BeanLoggedUser loggedUser;
     	boolean isOwner=ownerCheckbox.isSelected();
     	String username= usernameField.getText();
     	String pw=passwordField.getText();

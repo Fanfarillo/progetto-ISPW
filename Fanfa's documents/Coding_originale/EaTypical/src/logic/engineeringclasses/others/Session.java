@@ -1,10 +1,11 @@
 package logic.engineeringclasses.others;
 
-import logic.model.User;
+import logic.engineeringclasses.bean.login.BeanLoggedUser;
+
 
 public class Session {
 
-	private User user;
+	private BeanLoggedUser user;
 	private boolean isOwner;
 	private boolean isWeb;
 	private String firstPage;
@@ -54,11 +55,11 @@ public class Session {
 			
 	}
 
-	public User getUser() {
+	public BeanLoggedUser getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(BeanLoggedUser user) {
 		this.user = user;
 	}
 	

@@ -7,6 +7,7 @@ import logic.model.User;
 
 import java.sql.SQLException;
 
+import logic.engineeringclasses.bean.login.BeanLoggedUser;
 import logic.engineeringclasses.bean.login.BeanUser;
 import logic.engineeringclasses.dao.OwnerDAO;
 import logic.engineeringclasses.dao.TouristDAO;
@@ -20,19 +21,30 @@ public class Login {
 	
 	
 	
-	public User loginMethod(BeanUser loggingUser) throws  LoginDBException,WrongUsernameOrPasswordException,SQLException, ClassNotFoundException
-	{		
-		User user;
+	public BeanLoggedUser loginMethod(BeanUser loggingUser) throws  LoginDBException,WrongUsernameOrPasswordException,SQLException, ClassNotFoundException
+	{				
+		BeanLoggedUser loggedUser=new BeanLoggedUser();
 		
 		try		
 		{
 			if(loggingUser.isOwner())
 			{
-				user=OwnerDAO.selectOwner(loggingUser.getUsername(),loggingUser.getPassword());
+				Owner user;
+				user=(Owner)OwnerDAO.selectOwner(loggingUser.getUsername(),loggingUser.getPassword());
+				loggedUser.setUsername(user.getUsername());
+				loggedUser.setName(user.getName());
+				return loggedUser;
 			}
 			else
 			{
-				user=TouristDAO.selectTourist(loggingUser.getUsername(),loggingUser.getPassword());
+				Tourist user;
+				user=(Tourist) TouristDAO.selectTourist(loggingUser.getUsername(),loggingUser.getPassword());
+				loggedUser.setUsername(user.getUsername());
+				loggedUser.setName(user.getName());
+				loggedUser.setFavouriteRestaurants(user.getFavouriteRestaurants());
+				loggedUser.setNotifications(user.getNotifications());
+				loggedUser.setTrip(user.getTrip());
+				return loggedUser;
 			}
 		}
 		catch(LoginDBException dbe)		//exception came from the db: the username or the password are wrong
@@ -44,15 +56,15 @@ public class Login {
 			e.printStackTrace();
 			throw new SQLException("Please try again!");
 		}
-		return user;
 	}
 	
-	public void registerMethod(BeanUser loggingUser) throws GenericException, AlreadyInUseUsernameException
+	public BeanLoggedUser registerMethod(BeanUser loggingUser) throws GenericException, AlreadyInUseUsernameException
 	{
 		String name=loggingUser.getName();
 		String surname=loggingUser.getSurname();
 		String username=loggingUser.getUsername();
 		String password=loggingUser.getPassword();
+		BeanLoggedUser blu=new BeanLoggedUser();
 		try
 		{
 			if(loggingUser.isOwner())
@@ -64,6 +76,9 @@ public class Login {
 				User newTourist=new Tourist(name, surname, username, null, null, null);
 				TouristDAO.insertTourist(newTourist, password);
 			}
+			blu.setUsername(username);
+			blu.setName(name);
+			return blu;
 		}
 		catch(AlreadyInUseUsernameException ae)			//exception came form the db: the username that the user want to use is already is use by someone
 		{

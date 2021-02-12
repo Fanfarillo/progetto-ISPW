@@ -8,22 +8,18 @@ import java.util.List;
 
 import logic.engineeringclasses.bean.BeanFavRestaurant;
 import logic.engineeringclasses.bean.BeanStringNotif;
+import logic.engineeringclasses.bean.login.BeanLoggedUser;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputRestaurant;
 import logic.engineeringclasses.bean.scheduletrip.BeanOutputSchedule;
 import logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule;
 import logic.engineeringclasses.exceptions.GenericException;
 import logic.model.Restaurant;
 import logic.model.Scheduling;
-import logic.model.Tourist;
 import logic.model.TouristNotification;
-import logic.model.User;
-
 public class BeanConverter {
 
-	public BeanOutputSchedule[] convertScheduling(User user) throws ParseException {
-		
-		Tourist tourist = (Tourist) user;
-		List<Scheduling> tripList = tourist.getTrip();
+	public BeanOutputSchedule[] convertScheduling(BeanLoggedUser user) throws ParseException {
+		List<Scheduling> tripList = user.getTrip();
 		if(tripList==null || tripList.isEmpty()) return new BeanOutputSchedule[0];
 		
 		BeanOutputSchedule[] tripArray = new BeanOutputSchedule[tripList.size()];
@@ -53,9 +49,8 @@ public class BeanConverter {
 		
 	}
 	
-	public String getCityFromScheduling(User user) {
-		Tourist tourist = (Tourist) user;
-		List<Scheduling> tripList = tourist.getTrip();
+	public String getCityFromScheduling(BeanLoggedUser user) {
+		List<Scheduling> tripList = user.getTrip();
 		if(tripList==null || tripList.isEmpty()) return "";
 		
 		Iterator<Scheduling> iter = tripList.iterator();
@@ -64,9 +59,8 @@ public class BeanConverter {
 		
 	}
 	
-	public BeanFavRestaurant[] convertFavRestaurants(User user) {
-		Tourist tourist = (Tourist) user;
-		List<Restaurant> favRestList = tourist.getFavouriteRestaurants();
+	public BeanFavRestaurant[] convertFavRestaurants(BeanLoggedUser user) {
+		List<Restaurant> favRestList = user.getFavouriteRestaurants();
 		if(favRestList==null || favRestList.isEmpty()) return new BeanFavRestaurant[0];
 		
 		BeanFavRestaurant[] favRestArray = new BeanFavRestaurant[favRestList.size()];
@@ -90,9 +84,8 @@ public class BeanConverter {
 		
 	}
 	
-	public BeanStringNotif[] convertNotif(User user) throws GenericException {
-		Tourist tourist = (Tourist) user;
-		List<TouristNotification> notifList = tourist.getNotifications();
+	public BeanStringNotif[] convertNotif(BeanLoggedUser user) throws GenericException {
+		List<TouristNotification> notifList = user.getNotifications();
 		if(notifList==null || notifList.isEmpty()) return new BeanStringNotif[0];
 		
 		BeanStringNotif[] notifArray = new BeanStringNotif[notifList.size()];

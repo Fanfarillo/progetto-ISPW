@@ -8,6 +8,7 @@
 <%@page import="logic.model.User" %>
 <%@page import="logic.model.Tourist" %>
 <%@page import="logic.model.Owner" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanLoggedUser" %>
 
 <%@page import="logic.engineeringclasses.exceptions.DataException" %>
 <%@page import="logic.engineeringclasses.exceptions.AlreadyInUseUsernameException" %>
@@ -41,6 +42,7 @@
     	{
     		try
     		{
+    			BeanLoggedUser blu;
 	    		String username=request.getParameter("usernametx");
 	    		String name=request.getParameter("nametx");
 	    		String surname=request.getParameter("surnametx");
@@ -53,20 +55,10 @@
 	    		bu.setPassword(pw);   		
 	    		bu.setOwner(isOwner);
 	    		Login registerAppCont= new Login();	
-	    		registerAppCont.registerMethod(bu);						//try to register
-	    		User user;
-	    		if(isOwner)
-	    		{
-	    			user=new Owner(name, surname,username);
-	    			
-	    		}
-	    		else
-	    		{
-	    			user=new Tourist(name, surname, username, null, null,null);
-	    		}			//create the correct user entity
+	    		blu=registerAppCont.registerMethod(bu);						//try to register
 	    		
 	    		
-	    		bs.setUser(user);
+	    		bs.setUser(blu);
 	    		bs.setFirstPage(isOwner);
 	    		bs.setOwner(isOwner);
 	    		session.setAttribute("session", bs);
