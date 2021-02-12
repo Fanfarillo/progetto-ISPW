@@ -34,7 +34,7 @@ public class SeleniumManageMenu {
 	    TimeUnit.SECONDS.sleep(1);
 	    driver.findElement(By.id("Manage")).click();
 	    TimeUnit.SECONDS.sleep(1);
-	    driver.findElement(By.xpath("//*[@id=\"delete\"]")).click();;    
+	    driver.findElement(By.xpath("//*[@id=\"delete\"]")).click();  
 	    TimeUnit.SECONDS.sleep(1);
 	    driver.findElement(By.xpath("//*[@id=\"delete\"]")).click();
 	    TimeUnit.SECONDS.sleep(1);
