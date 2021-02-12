@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SeleniumManageMenu {
 	
-	public static void main(String arg[]) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 		SeleniumManageMenu seleniumManageMenu = new SeleniumManageMenu();
 		seleniumManageMenu.seleniumTest();
 	}
