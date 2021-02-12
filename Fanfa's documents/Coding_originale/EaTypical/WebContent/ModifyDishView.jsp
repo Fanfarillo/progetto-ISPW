@@ -148,7 +148,7 @@
 			</div>
 			
 			<div id="price">
-				<input type="text" id="priceInput" name="priceInput" >
+				<input type="text" id="priceInput" placeholder="insert price" name="priceInput" >
 			</div>
 			
 			<div>

@@ -180,7 +180,7 @@
 			<label id="ristorantemancante" style="color:red"><%if(refresh) out.print("Missing"); %></label>
 			
 			<div id="price">
-				<input type="text" id="priceInput" name="prezzo" value="">
+				<input type="text" id="priceInput" name="prezzo" placeholder="insert price" value="">
 			</div>
 			
 			<div id="check">
