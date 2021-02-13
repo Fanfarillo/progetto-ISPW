@@ -36,8 +36,10 @@ public class SeleniumChooseRestaurant {
 		driver.findElement(By.xpath("//*[@id=\"updateInfo\"]")).click();
 		TimeUnit.SECONDS.sleep(1);
 		WebElement txtBoxContent= driver.findElement(By.xpath("//*[@id=\"addrtx\"]"));
-		String addressContent= txtBoxContent.getAttribute("value");
-		
+		String addressContent= txtBoxContent.getAttribute("value");		
+		driver.findElement(By.xpath("//*[@id=\"home\"]")).click();
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElement(By.xpath("//*[@id=\"logout\"]")).click();
 		assertEquals("IndirizzoTre", addressContent);
 		driver.close();
 		}
