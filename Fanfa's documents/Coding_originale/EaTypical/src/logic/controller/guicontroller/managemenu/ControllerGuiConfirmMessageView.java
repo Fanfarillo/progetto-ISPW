@@ -138,7 +138,7 @@ public class ControllerGuiConfirmMessageView  extends OwnerBaseGuiController{
     	}
     	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource(DESTINATION));
-		//se vale -1 allora non c'ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¨ stato alcun errore
+		//se vale -1 allora non vi e' stato alcun errore
     	loader.setControllerFactory(c -> new ControllerGuiRestaurantMenuView(bs));
     	Parent root = loader.load();
     	myAnchorPane.getChildren().setAll(root);
