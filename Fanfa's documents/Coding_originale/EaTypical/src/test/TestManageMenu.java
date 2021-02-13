@@ -23,7 +23,7 @@ public class TestManageMenu {
 		int code;
 		
 		try {
-			manageMenu.addDish(new BeanDish("carbonara", "da luca4", "ow", false, false, 10, 0));
+			manageMenu.addDish(new BeanDish("Carbonara", "Uno", "ow", false, false, 10, 0));
 			code = 0;
 		}catch(DishAlreadyExists exists) {	//l'eccezione si verifica
 			exists.printStackTrace();
@@ -44,7 +44,7 @@ public class TestManageMenu {
 		int code1;
 		
 		try {
-			manageMenu1.addDish(new BeanDish("cacio e pepe", "da romeo", "ow", false, false, 10, 0));
+			manageMenu1.addDish(new BeanDish("Cacio e pepe", "Due", "ow", false, false, 10, 0));
 			code1 = 0;
 		}catch(DishAlreadyExists exists1) {	//l'eccezione non si verifica
 			exists1.printStackTrace();
@@ -65,7 +65,7 @@ public class TestManageMenu {
 		int code2;
 		
 		try {
-			manageMenu2.deleteDish(new BeanDeleteDish("da luca", "cicoria", 2));
+			manageMenu2.deleteDish(new BeanDeleteDish("Uno", "Cannelloni", 2));
 			code2 = 0;
 		}catch( InvalidDishDelete invalidDish) {	//l'eccezione si verifica
 			invalidDish.printStackTrace();
@@ -85,7 +85,7 @@ public class TestManageMenu {
 		int code3;
 		
 		try {
-			manageMenu3.deleteDish(new BeanDeleteDish("da luca3", "amatriciana", 2));
+			manageMenu3.deleteDish(new BeanDeleteDish("Quattro", "Carbonara", 2));
 			code3 = 0;
 		}catch( InvalidDishDelete invalidDish) {	//l'eccezione non si verifica
 			invalidDish.printStackTrace();
