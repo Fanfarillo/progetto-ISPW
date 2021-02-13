@@ -4,6 +4,7 @@
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.exceptions.EmptyFieldException" %>
 <%@page import="logic.engineeringclasses.bean.sponsorrestaurant.BeanNewRestaurant" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 <%
 	Session bs = (Session)session.getAttribute("session");
@@ -75,7 +76,7 @@
 		<img id="fotoUtente" src="utente.jpg" alt="Photo"/>
 		<label id="nomeUtente"><%=bs.getUser().getUsername()%></label>
 		<div class="box-1">
-			<p>Please, insert name, address and city of your restaurant:</p>
+			<p>Please, insert name, address and city of your restaurant (apostrophe is not allowed):</p>
 		</div>
 		<div class="box-2">
 			<p>Click here to set the opening hours:</p>

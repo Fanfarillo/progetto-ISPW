@@ -28,8 +28,8 @@ public class Connect {
 	public synchronized Connection getDBConnection() throws SQLException, ClassNotFoundException {
 		if(this.conn==null) {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			//this.conn = DriverManager.getConnection(this.connectionString);
-			this.conn=DriverManager.getConnection(a+b);
+			this.conn = DriverManager.getConnection(this.connectionString);
+			//this.conn=DriverManager.getConnection(a+b);
 		}
 		return this.conn;
 	}

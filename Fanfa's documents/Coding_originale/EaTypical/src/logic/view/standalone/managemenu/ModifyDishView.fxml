@@ -68,7 +68,7 @@
          </font>
       </Button>
       <ChoiceBox fx:id="choiseRistoranti" layoutX="366.0" layoutY="247.0" prefWidth="150.0" />
-      <TextArea fx:id="nuovoContenuto" layoutX="65.0" layoutY="274.0" prefHeight="200.0" prefWidth="250.0" promptText="inserisci nuovo contenuto..." />
+      <TextArea fx:id="nuovoContenuto" layoutX="65.0" layoutY="274.0" prefHeight="200.0" prefWidth="250.0" promptText="write new recipe (apostrophe is not allowed)" />
       <Label fx:id="campoMancantePiatto" layoutX="474.0" layoutY="225.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />

@@ -4,13 +4,14 @@
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.bean.BeanStringNotif" %>
 <%@page import="logic.engineeringclasses.dao.NotificationsDAO" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 <%
 	Session bs = (Session)session.getAttribute("session");
 	BeanStringNotif[] notifications = (BeanStringNotif[])session.getAttribute("notif");
 	String errorString = "";
 	
-	if(notifications==null) {
+	if(notifications==null || notifications.length==0) {
 		notifications = new BeanStringNotif[1];
 		notifications[0] = new BeanStringNotif("There is no notification");
 	}

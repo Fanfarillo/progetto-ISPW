@@ -3,6 +3,7 @@
     
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.exceptions.EmptyFieldException" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 <%
 	Session bs = (Session)session.getAttribute("session");

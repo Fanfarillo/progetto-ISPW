@@ -1,6 +1,7 @@
 <%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDishWeb"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDish"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -47,9 +48,7 @@
 	
 	if(request.getParameter("continue1")!=null) {
 		boolean emptyRecipe = false;
-		//int count=0;
 		boolean prezzoVuoto = false;
-		//SizedStack.getSizedStack(true).push("ConfirmMessage.jsp");
 		//mi porto appresso le informazioni per l'inserimento del piatto
 		
 		/*-----------------------------------------------*/
@@ -129,10 +128,8 @@
 				<select id="select" name="piatto">
 <%
 		
-		
-		
-		
-			 //session.setAttribute("listaPiattiR",obs1); 
+
+
 		
 		String value1;
 		for(String elem: obs1){
@@ -152,8 +149,7 @@
 <%
 					
 						
-		
-			//ArrayList<String> obs2 = (ArrayList<String>)request.getAttribute("listaRistoranti");
+
 			String value2;
 			for(String elem : obs2){
 				%>
@@ -191,7 +187,7 @@
 			</div>
 			
 			<div>
-				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Write recipe..."></textarea>
+				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Write recipe (apostrophe is not allowed)"></textarea>
 			</div>
 			
 			<div>

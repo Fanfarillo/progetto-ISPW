@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 <%@page import="logic.engineeringclasses.others.Session" %>
+
  <%Session bs;
   bs=(Session)session.getAttribute("session"); 
   String userString;

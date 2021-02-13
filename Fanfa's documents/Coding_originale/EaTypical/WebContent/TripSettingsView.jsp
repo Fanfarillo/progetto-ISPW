@@ -10,6 +10,7 @@
 <%@page import="logic.engineeringclasses.exceptions.InvalidDateException" %>
 <%@page import="logic.engineeringclasses.exceptions.NoResultException" %>
 <%@page import="java.text.ParseException" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 <%
 	Session bs = (Session)session.getAttribute("session");

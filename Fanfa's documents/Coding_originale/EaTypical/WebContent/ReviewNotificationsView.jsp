@@ -1,6 +1,7 @@
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanReview"%>
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanListReviews"%>
 <%@page import="logic.engineeringclasses.others.Session" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -79,7 +80,6 @@
 			BeanReview beanReview;
 			for(int i=0;i<beanListReviews.getRestaurants().size();i++){
 				beanReview = new BeanReview(beanListReviews.getTourists().get(i), beanListReviews.getRestaurants().get(i), beanListReviews.getContents().get(i), beanListReviews.getVotes().get(i));
-				System.out.print(beanListReviews.getTourists().get(i) +beanListReviews.getRestaurants().get(i)+ beanListReviews.getContents().get(i)+ beanListReviews.getVotes().get(i));
 				%>
 				<tr>
 					<th id="riga1"><%=beanReview.getTourist() %></th>

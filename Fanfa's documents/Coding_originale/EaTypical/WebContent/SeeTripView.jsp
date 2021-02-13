@@ -6,6 +6,7 @@
 <%@page import="logic.engineeringclasses.others.BeanConverter" %>
 <%@page import="logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule" %>
 <%@page import="logic.engineeringclasses.dao.SchedulingDAO" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 <%
 	Session bs = (Session)session.getAttribute("session");
@@ -56,6 +57,7 @@
     			session.setAttribute("session", bs);
     			session.setAttribute("city", city);
     			session.setAttribute("scheduling", null);
+    			convertedScheduling = converter.emptyScheduling();
     		}
     		catch(Exception e) {
     			errorString="An unknown error occurred. Please, try again later.";

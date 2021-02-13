@@ -10,6 +10,7 @@
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDishWeb"%>
 <%@page import="com.mysql.cj.Session.SessionEventListener"%>
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDish"%>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -81,7 +82,7 @@
 			}
 		}else if(b.getTypeModify() == 1){
 			BeanDish beanAddDish = new BeanDish(b.getDish(),b.getRestaurant(),b.getRecipe(),b.isVegan(),b.isCeliac(),b.getPrice(),1);
-			System.out.println(b.getDish()+b.getRecipe()+b.getRestaurant());
+
 			try{
 				m.modifyDishes(beanAddDish);
 			}catch(InvalidDishModify e2){

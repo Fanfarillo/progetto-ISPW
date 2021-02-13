@@ -7,6 +7,7 @@
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDishWeb"%>
 <%@page import="com.mysql.cj.Session.SessionEventListener"%>
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDish"%>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 
 <%	ArrayList<String> obs1;
@@ -152,7 +153,7 @@
 			</div>
 			
 			<div>
-				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Write new recipe..."></textarea>	
+				<textarea id = "area" rows="15" cols="76" name="ricetta" placeholder="Write new recipe (apostrophe is not allowed)"></textarea>	
 			</div>
 			
 			<div id="check">

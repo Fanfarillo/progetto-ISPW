@@ -6,7 +6,7 @@
  <%@page import="logic.engineeringclasses.bean.chooserestaurant.BeanNewReview" %>  
  <%@page import="logic.engineeringclasses.exceptions.EmptyReviewFieldException" %> 
  <%@page import="logic.engineeringclasses.exceptions.GenericException" %>
-  
+ <%@page import="logic.engineeringclasses.bean.login.BeanUser" %> 
   
     
  <%@page import="logic.engineeringclasses.others.Session" %>
@@ -91,6 +91,7 @@
 			<input id="submitReview" class="button" type="submit" name="Submit Review ww" value="Submit Review">
 			<img id="fotoUtente" src="utente.jpg" alt="user"/>
 			<label id="nomeUtente"><%=userString%></label>
+		
 			
 			<% if(genericError){
 				%><label id="genericError">please try again!</label><%
@@ -105,7 +106,7 @@
 			%>
 			
 			<% if(success){
-				%><label id="successLabel">Review successfully saved</label><%
+				%><label id="successLabel">Review successfully saved.</label><%
 			}
 				
 			%>
@@ -118,7 +119,7 @@
 			<option value="5">5 stars</option>
 			</select>
 				
-			<textarea id="writeReview" name="Write Review" rows="12"></textarea>
+			<textarea id="writeReview" name="Write Review" rows="12" placeholder="Apostrophe is not allowed"></textarea>
 		</form>
 	</div>
 

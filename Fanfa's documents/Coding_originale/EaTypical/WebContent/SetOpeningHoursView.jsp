@@ -5,6 +5,7 @@
 <%@page import="logic.engineeringclasses.bean.sponsorrestaurant.BeanNewRestaurant" %>
 <%@page import="logic.controller.applicationcontroller.SponsorRestaurant" %>
 <%@page import="logic.engineeringclasses.exceptions.AlreadyInUseRestaurantNameException" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
     
 <%
 	Session bs = (Session)session.getAttribute("session");

@@ -6,6 +6,7 @@
 <%@page import="logic.controller.applicationcontroller.ScheduleTrip" %>
 <%@page import="logic.engineeringclasses.others.BeanConverter" %>
 <%@page import="logic.engineeringclasses.bean.scheduletrip.ConvertedBeanSchedule" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 <%
 	Session bs = (Session)session.getAttribute("session");
@@ -47,11 +48,8 @@
     	if(request.getParameter("Generate New Scheduling")!=null) {
     		for(int i=0; i<scheduling.length; i++) {
     			scheduling[i].setRestFromList();
-    		}   		
-    		session.setAttribute("session", bs);
-    		session.setAttribute("city", city);
-    		session.setAttribute("trip", scheduling);
-    		
+    		}
+    		convertedScheduling = converter.convertDataType(scheduling, city);		
     	}
     	if(request.getParameter("Save Scheduling")!=null) {
     		try {

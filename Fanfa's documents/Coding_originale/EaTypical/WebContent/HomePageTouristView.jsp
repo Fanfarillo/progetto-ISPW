@@ -5,6 +5,7 @@
 <%@page import="java.text.ParseException" %>
 <%@page import="logic.engineeringclasses.others.BeanConverter" %>
 <%@page import="logic.engineeringclasses.exceptions.GenericException" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 <%
 Session bs;
@@ -46,7 +47,7 @@ else {
     			if(bs.getUser()!=null) {
     				BeanConverter converter = new BeanConverter();
     			
-    				session.setAttribute("scheduling", converter.convertNotif(bs.getUser()));
+    				session.setAttribute("notif", converter.convertNotif(bs.getUser()));
     				session.setAttribute("session", bs);
 %>
 					<jsp:forward page="TouristNotifView.jsp"/>
@@ -85,7 +86,7 @@ else {
     		if(bs.getUser()!=null) {
     			BeanConverter converter = new BeanConverter();
     			
-    			session.setAttribute("scheduling", converter.convertFavRestaurants(bs.getUser()));
+    			session.setAttribute("favRest", converter.convertFavRestaurants(bs.getUser()));
     			session.setAttribute("session", bs);
 %>
 				<jsp:forward page="FavRestaurantsView.jsp"/>

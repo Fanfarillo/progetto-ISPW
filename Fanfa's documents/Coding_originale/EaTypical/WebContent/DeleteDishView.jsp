@@ -1,6 +1,7 @@
 <%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.bean.managerestaurant.BeanDishWeb"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     

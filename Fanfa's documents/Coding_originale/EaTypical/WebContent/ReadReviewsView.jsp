@@ -6,7 +6,7 @@
 
 <%@page import="logic.controller.applicationcontroller.ReadReviews" %> 
 <%@page import="logic.engineeringclasses.bean.chooserestaurant.BeanReadReviews" %> 
-  
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>  
 <%@page import="logic.engineeringclasses.others.Session" %>
  <%Session bs;
   bs=(Session)session.getAttribute("session"); 

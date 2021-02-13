@@ -41,9 +41,9 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="84.0" layoutY="208.0" opacity="0.8" prefHeight="154.0" prefWidth="259.0" style="-fx-background-color: black;" text="Please, insert name, address and city of your restaurant:" textFill="#eeeeee" wrapText="true">
+      <Label layoutX="84.0" layoutY="208.0" opacity="0.8" prefHeight="154.0" prefWidth="259.0" style="-fx-background-color: black;" text="Please, insert name, address and city of your restaurant (apostrophe is not allowed):" textFill="#eeeeee" wrapText="true">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
       <Label layoutX="84.0" layoutY="417.0" opacity="0.8" prefHeight="119.0" prefWidth="259.0" style="-fx-background-color: black;" text="Click here to set the opening hours:" textFill="#eeeeee" wrapText="true">

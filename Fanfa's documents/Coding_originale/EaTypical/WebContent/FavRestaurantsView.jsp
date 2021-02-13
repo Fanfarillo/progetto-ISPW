@@ -4,13 +4,14 @@
 <%@page import="logic.engineeringclasses.others.Session" %>
 <%@page import="logic.engineeringclasses.bean.BeanFavRestaurant" %>
 <%@page import="logic.engineeringclasses.dao.FavouriteRestDAO" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 <%
 	Session bs = (Session)session.getAttribute("session");
 	BeanFavRestaurant[] favRest = (BeanFavRestaurant[])session.getAttribute("favRest");
 	String errorString = "";
 	
-	if(favRest==null) {
+	if(favRest==null || favRest.length==0) {
 		favRest = new BeanFavRestaurant[1];
 		favRest[0] = new BeanFavRestaurant("There is no restaurant", "", "", "");
 	}
@@ -46,6 +47,8 @@
     	if(request.getParameter("Delete All")!=null) {
     		try {
     			FavouriteRestDAO.delete(bs.getUser().getUsername());
+    			favRest = new BeanFavRestaurant[1];
+    			favRest[0] = new BeanFavRestaurant("There is no restaurant", "", "", "");
     			session.setAttribute("session", bs);
     			session.setAttribute("favRest", null);
     		}

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myAnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.controller.guicontroller.chooserestaurant.ControllerGuiWriteReview">
+<AnchorPane fx:id="myAnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.controller.guicontroller.chooserestaurant.ControllerGuiWriteReview">
    <children>
       <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true">
          <image>
@@ -61,5 +61,10 @@
       <Label fx:id="emptyText" layoutX="280.0" layoutY="265.0" textFill="RED" visible="false" />
       <Label fx:id="genericError" layoutX="291.0" layoutY="220.0" textFill="RED" visible="false" />
       <Label fx:id="successLabel" layoutX="252.0" layoutY="594.0" textFill="#00ff15" visible="false" />
+      <Label layoutX="467.0" layoutY="261.0" opacity="0.8" style="-fx-background-color: black;" text="Apostrophe is not allowed." textFill="#f6ff00">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

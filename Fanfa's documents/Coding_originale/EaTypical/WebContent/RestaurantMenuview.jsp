@@ -4,6 +4,7 @@
 <%@page import="logic.engineeringclasses.others.Session"%>
 <%@page import="logic.engineeringclasses.dao.RecipeDAO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
 
 <%@page import="logic.engineeringclasses.dao.RestaurantDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

@@ -8,7 +8,9 @@
 <%@page import="logic.controller.applicationcontroller.ChooseRestaurant"%>
 <%@page import="logic.engineeringclasses.bean.chooserestaurant.ChooseRestaurantBean"%>
 <%@page import="logic.engineeringclasses.dao.FavouriteRestDAO"%>
- <%@page import="logic.engineeringclasses.others.Session" %>
+<%@page import="logic.engineeringclasses.others.Session" %>
+<%@page import="logic.engineeringclasses.bean.login.BeanUser" %>
+ 
  <%Session bs;
  bs=(Session)session.getAttribute("session"); 
  String userString;
@@ -76,10 +78,8 @@
 			try{
 			String user=bs.getUser().getUsername();
 			String restaurant=request.getParameter("restScroll");
-			System.out.println("pippo3");
 			FavouriteRestDAO.insertFavourite(restaurant,user);
 			success=true;
-			System.out.println("pippo3");
 			}
 			catch(Exception e)
 			{
