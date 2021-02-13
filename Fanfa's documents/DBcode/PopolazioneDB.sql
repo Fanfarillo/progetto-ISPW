@@ -121,6 +121,4 @@
 	insert into apertura values ('Dieci', '5', '1', '0');
 	insert into apertura values ('Dieci', '6', '1', '1');
 	insert into apertura values ('Dieci', '7', '1', '0');
-	insert into piatto values('Due','Cacio e pepe','.','21','0','0');
-	insert into piatto values('Due','Cacio e pepe','.','21','0','0');
 	insert into piatto values('Tre','Cannelloni','.','24','0','0');
