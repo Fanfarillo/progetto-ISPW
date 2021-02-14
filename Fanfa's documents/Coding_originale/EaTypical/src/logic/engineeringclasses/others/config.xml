@@ -1,0 +1,6 @@
+<config>
+	<DbLuca>jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&amp;password=Monte_2020.&amp;serverTimezone=UTC</DbLuca>
+	<DbAdrian>jdbc:mysql://localhost:3308/progettoispwfinaledatabase?user=root&amp;password=password</DbAdrian>
+	<DbMatteo>jdbc:mysql://localhost:3306/progettoispwfinaledatabase?user=root&amp;password=Kp*d.!>3&amp;serverTimezone=UTC</DbMatteo>
+	<Driver>com.mysql.cj.jdbc.Driver</Driver>
+</config>
