@@ -21,12 +21,14 @@ import logic.engineeringclasses.exceptions.WrongUsernameOrPasswordException;
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
+import java.util.Random;
 
 public class TestLogin {
 	
 	private String username="Pazizo";
 	StringBuilder bld = new StringBuilder();
-	char alphabet[]= {'a','b','c','d','e','f','g','h','i','l','m','n','o','p','q','r','s','t','u','v','w','z'};
+	char[] alphabet= {'a','b','c','d','e','f','g','h','i','l','m','n','o','p','q','r','s','t','u','v','w','z'};
+	Random random=new Random();
 	
 	@Test
 	public void testRegisterMethodUserAlreadyExists()
@@ -61,10 +63,9 @@ public class TestLogin {
 		String randomUser;
 		do {
 				badUsername=false;
-				randomUser="";
 				for(int i=0;i<6;i++)
 				{
-					rand=(int)(Math.random() * 22 );
+					rand=this.random.nextInt(22);
 					bld.append(alphabet[rand]);					
 				}
 				randomUser=bld.toString();
