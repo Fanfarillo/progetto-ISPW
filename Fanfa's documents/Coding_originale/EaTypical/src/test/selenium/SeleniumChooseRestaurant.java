@@ -10,6 +10,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+/**
+ * 
+ * @author Adrian Baba
+ *
+ */
+
+
 public class SeleniumChooseRestaurant {
 
 	
