@@ -7,12 +7,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+/**
+ * @author Luca Capotombolo
+ */
+
 public class SeleniumManageMenu {
 	
-	public static void main(String[] args) throws InterruptedException {
-		SeleniumManageMenu seleniumManageMenu = new SeleniumManageMenu();
-		seleniumManageMenu.seleniumTest();
-	}
+	
 
 	@Test
 	public void seleniumTest() throws InterruptedException {

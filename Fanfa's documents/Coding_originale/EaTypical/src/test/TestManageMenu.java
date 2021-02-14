@@ -9,6 +9,10 @@ import logic.engineeringclasses.exceptions.InvalidDishDelete;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Luca Capotombolo
+ */
+
 
 public class TestManageMenu {
 
