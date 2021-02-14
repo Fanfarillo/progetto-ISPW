@@ -1,12 +1,18 @@
 package test;
 import org.junit.Test;
-/*test cases: Baba adrian
+/*
  * 
  * 1) Try to register with an username that already exists, that will result in an exception
  * 2) Try to register using a random (and not already used) username
  * 3) Try to login with the correct username and password 
  * 4) Try to login using the wrong password, that will result in an exception
  * 
+ */
+
+/**
+ * 
+ * @author Adrian baba
+ *
  */
 
 import logic.controller.applicationcontroller.Login;
