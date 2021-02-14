@@ -37,6 +37,10 @@ public class SeleniumManageMenu {
 	    TimeUnit.SECONDS.sleep(1);
 	    driver.findElement(By.xpath("//*[@id=\"delete\"]")).click();  
 	    TimeUnit.SECONDS.sleep(1);
+	    driver.findElement(By.xpath("//*[@id=\"select\"]")).sendKeys("Cotoletta alla milanese");
+	    TimeUnit.SECONDS.sleep(1);
+	    driver.findElement(By.name("ristorante")).sendKeys("Quattro");
+	    TimeUnit.SECONDS.sleep(1);
 	    driver.findElement(By.xpath("//*[@id=\"delete\"]")).click();
 	    TimeUnit.SECONDS.sleep(1);
 	    driver.findElement(By.xpath("//*[@id=\"Done\"]")).click();
