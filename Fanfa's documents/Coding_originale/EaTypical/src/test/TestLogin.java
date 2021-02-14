@@ -21,9 +21,12 @@ import logic.engineeringclasses.exceptions.WrongUsernameOrPasswordException;
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
-import java.util.Random;
 
 public class TestLogin {
+	
+	private String username="Pazizo";
+	StringBuilder bld = new StringBuilder();
+	char alphabet[]= {'a','b','c','d','e','f','g','h','i','l','m','n','o','p','q','r','s','t','u','v','w','z'};
 	
 	@Test
 	public void testRegisterMethodUserAlreadyExists()
@@ -32,7 +35,7 @@ public class TestLogin {
 		BeanUser bu=new BeanUser();
 		Login login=new Login();
 		try {
-		bu.setUsername("Pazizo");
+		bu.setUsername(username);
 		bu.setName("testName");
 		bu.setSurname("testSurname");
 		bu.setPassword("1");
@@ -51,7 +54,6 @@ public class TestLogin {
 	public void testRegisterMethodrandomData()
 	{
 		BeanLoggedUser blu=new BeanLoggedUser();
-		Random random=new Random();
 		int code=-1;
 		int rand;
 		boolean badUsername;
@@ -62,33 +64,10 @@ public class TestLogin {
 				randomUser="";
 				for(int i=0;i<6;i++)
 				{
-					rand=random.nextInt(22);
-					switch(rand) {
-					case 0: randomUser+="a"; break;
-					case 1: randomUser+="b"; break;
-					case 2: randomUser+="c"; break;
-					case 3: randomUser+="d"; break;
-					case 4: randomUser+="e"; break;
-					case 5: randomUser+="f"; break;
-					case 6: randomUser+="g"; break;
-					case 7: randomUser+="h"; break;
-					case 8: randomUser+="i"; break;
-					case 9: randomUser+="l"; break;
-					case 10: randomUser+="m"; break;
-					case 11: randomUser+="n"; break;
-					case 12: randomUser+="o"; break;
-					case 13: randomUser+="p"; break;
-					case 14: randomUser+="q"; break;
-					case 15: randomUser+="r"; break;
-					case 16: randomUser+="s"; break;
-					case 17: randomUser+="t"; break;
-					case 18: randomUser+="u"; break;
-					case 19: randomUser+="v"; break;
-					case 20: randomUser+="w"; break;
-					case 21: randomUser+="z"; break;
-					default: randomUser+="Aa"; 
-					}
+					rand=(int)(Math.random() * 22 );
+					bld.append(alphabet[rand]);					
 				}
+				randomUser=bld.toString();
 				BeanUser bu=new BeanUser();
 				Login login=new Login();
 				try {
@@ -118,13 +97,13 @@ public class TestLogin {
 		BeanUser bu=new BeanUser();		
 		Login login=new Login();
 		try {
-		bu.setUsername("Pazizo");
+		bu.setUsername(username);
 		bu.setPassword("1");
 		blu=login.loginMethod(bu);
 		} catch (ClassNotFoundException | LoginDBException | WrongUsernameOrPasswordException | SQLException | DataException e) {
 			code=1;			
 		}
-		boolean correctLogin=(blu.getUsername().equals("Pazizo")&&code==-1);
+		boolean correctLogin=(blu.getUsername().equals(username)&&code==-1);
 		assertEquals(true, correctLogin);
 		
 	}
@@ -136,11 +115,11 @@ public class TestLogin {
 		BeanUser bu=new BeanUser();		
 		Login login=new Login();
 		try {
-		bu.setUsername("Pazizo");
+		bu.setUsername(username);
 		bu.setPassword("testWrongPassword");
 		login.loginMethod(bu);
 		} catch (ClassNotFoundException | LoginDBException | SQLException | DataException e) {
-			code=1;			
+			code=0;			
 		}
 		catch(WrongUsernameOrPasswordException we) {
 			code=1;
