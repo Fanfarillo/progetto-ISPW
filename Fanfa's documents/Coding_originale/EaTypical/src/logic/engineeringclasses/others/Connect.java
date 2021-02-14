@@ -3,6 +3,8 @@ package logic.engineeringclasses.others;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -27,6 +29,8 @@ public class Connect {
 		if(this.conn==null) {
 			try {
 				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, ""); 
+				factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); 
 				DocumentBuilder builder = factory.newDocumentBuilder();
 				Document document = builder.parse(new File("./src/logic/engineeringclasses/others/config.xml"));
 				String connectionString = document.getElementsByTagName("DbLuca").item(0).getTextContent();
@@ -42,6 +46,10 @@ public class Connect {
 	}
 
 }
+
+
+
+
 
 
 
