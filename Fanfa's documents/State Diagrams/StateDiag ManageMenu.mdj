@@ -2324,7 +2324,7 @@
 										"$ref": "AAAAAAF2MpKQ9YnZkEk="
 									},
 									"edgePosition": 1,
-									"text": "click [button==\"Keep Managing Menu\"] / null"
+									"text": "click [button==\"Discard change\"] / null"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -2938,7 +2938,7 @@
 							"target": {
 								"$ref": "AAAAAAF2Bu9ZMjdZ5xA="
 							},
-							"guard": "button==\"Keep Managing Menu\"",
+							"guard": "button==\"Discard change\"",
 							"triggers": [
 								{
 									"_type": "UMLEvent",
