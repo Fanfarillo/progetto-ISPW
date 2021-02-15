@@ -1,27 +1,27 @@
 {
-  "id": "6c7fd23b-bd6b-4f9d-89aa-62bd58020ab9",
+  "id": "bd6a1b4f-6ee5-4097-9f64-5b371952b2db",
   "version": "2.0",
   "name": "SeleniumIDEChooseRestaurant",
-  "url": "http://localhost:8080",
+  "url": "http://localhost:8080/EaTypical/HomePageTouristView.jsp",
   "tests": [{
-    "id": "834cc0af-acb6-4176-b900-3fcfa3665966",
-    "name": "Untitled",
+    "id": "237d66b2-0417-456b-916f-6bbc100614dd",
+    "name": "SeleniumIDEChooseRestaurant",
     "commands": [{
-      "id": "8955e644-5a67-4b39-8c79-be54d3541ee2",
+      "id": "e0dc4efd-1d21-4d32-9639-215c1e4e3459",
       "comment": "",
       "command": "open",
-      "target": "/EaTypical/HomePageTouristView.jsp",
+      "target": "http://localhost:8080/EaTypical/HomePageTouristView.jsp",
       "targets": [],
       "value": ""
     }, {
-      "id": "315ca3e2-5bff-4566-8cba-83bcfec5a0dc",
+      "id": "f8c9c6a6-ba8d-4de8-bf83-0a8e5499db9d",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1374x724",
+      "target": "1536x824",
       "targets": [],
       "value": ""
     }, {
-      "id": "0a87c514-a9ab-4dbf-8e91-331a61c46c3b",
+      "id": "7d930613-e375-429a-a199-0100458842a0",
       "comment": "",
       "command": "click",
       "target": "id=chooseRestaurant",
@@ -34,7 +34,7 @@
       ],
       "value": ""
     }, {
-      "id": "a0c1a236-04e4-49d5-9284-aa1fde21f147",
+      "id": "bd3911e5-6808-4b8f-8f24-04058a7e122e",
       "comment": "",
       "command": "click",
       "target": "id=TO_img",
@@ -47,7 +47,7 @@
       ],
       "value": ""
     }, {
-      "id": "736d58f6-a919-4920-bc26-fd5d0ca7ec2a",
+      "id": "492ffa54-5c81-4ef9-99ee-f2e3f742f654",
       "comment": "",
       "command": "click",
       "target": "id=continue",
@@ -60,7 +60,7 @@
       ],
       "value": ""
     }, {
-      "id": "ef7f79cf-a25b-4ed3-ab1c-a051c5b7c6e9",
+      "id": "d2a3b9ba-7a7e-41e6-abef-cfb632a86c0d",
       "comment": "",
       "command": "click",
       "target": "id=restaurantsScroll",
@@ -73,14 +73,14 @@
       ],
       "value": ""
     }, {
-      "id": "eeb2db86-db8d-43ac-9f66-2bbd0084dca1",
+      "id": "75cc41fc-2a4e-4411-ba0d-da0239efc147",
       "comment": "",
       "command": "select",
       "target": "id=restaurantsScroll",
       "targets": [],
       "value": "label=Tre"
     }, {
-      "id": "999f5f83-cc5f-448b-b3c6-b773bd0824ba",
+      "id": "1650ee7a-c44f-414d-bad7-01e1d8a84ead",
       "comment": "",
       "command": "click",
       "target": "id=restaurantsScroll",
@@ -93,59 +93,33 @@
       ],
       "value": ""
     }, {
-      "id": "be703be9-5800-4878-b63e-8cd4917cfb14",
+      "id": "e76ac8b0-4ca4-4d1d-8527-5f6eea9ec813",
       "comment": "",
       "command": "click",
-      "target": "id=readReviews",
+      "target": "id=writeReview",
       "targets": [
-        ["id=readReviews", "id"],
-        ["name=Read Reviews restv", "name"],
-        ["css=#readReviews", "css:finder"],
-        ["xpath=//input[@id='readReviews']", "xpath:attributes"],
-        ["xpath=//input[5]", "xpath:position"]
+        ["id=writeReview", "id"],
+        ["name=Write Review restv", "name"],
+        ["css=#writeReview", "css:finder"],
+        ["xpath=//input[@id='writeReview']", "xpath:attributes"],
+        ["xpath=//input[6]", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "d7ffed28-7c0e-45f3-a18c-e6b2cb2a71c1",
+      "id": "d605fae0-d5ec-4ad4-89fa-5d2b7bacb167",
       "comment": "",
       "command": "verifyText",
-      "target": "id=readReviews",
+      "target": "id=loginError",
       "targets": [
-        ["id=readReviews", "id"],
-        ["name=Read reviews", "name"],
-        ["css=#readReviews", "css:finder"],
-        ["xpath=//textarea[@id='readReviews']", "xpath:attributes"],
-        ["xpath=//textarea", "xpath:position"]
+        ["id=loginError", "id"],
+        ["css=#loginError", "css:finder"],
+        ["xpath=//label[@id='loginError']", "xpath:attributes"],
+        ["xpath=//label[6]", "xpath:position"],
+        ["xpath=//label[contains(.,'You must be logged to use this function!')]", "xpath:innerText"]
       ],
-      "value": "User : Pazizo  Vote : 5\\nThis user said: extra bello"
+      "value": "You must be logged to use this function!"
     }, {
-      "id": "a277b437-eff2-4d17-b6ca-871889c36fc0",
-      "comment": "",
-      "command": "click",
-      "target": "id=home",
-      "targets": [
-        ["id=home", "id"],
-        ["name=Home rr", "name"],
-        ["css=#home", "css:finder"],
-        ["xpath=//input[@id='home']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "2edc578e-b9cc-484e-ad96-ab20fed9d9d3",
-      "comment": "",
-      "command": "click",
-      "target": "id=logout",
-      "targets": [
-        ["id=logout", "id"],
-        ["name=Logout", "name"],
-        ["css=#logout", "css:finder"],
-        ["xpath=//input[@id='logout']", "xpath:attributes"],
-        ["xpath=//input[5]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "f10e4bc8-9189-4ddd-bd61-dcb4628d4b11",
+      "id": "a968e6a6-641c-48b7-b914-aa9185df79fc",
       "comment": "",
       "command": "close",
       "target": "",
@@ -154,13 +128,13 @@
     }]
   }],
   "suites": [{
-    "id": "6689091c-b4a1-4f4a-b132-4958512760c4",
+    "id": "e6ca30db-09b4-47c8-b8a4-60aaaaead19f",
     "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["834cc0af-acb6-4176-b900-3fcfa3665966"]
+    "tests": ["237d66b2-0417-456b-916f-6bbc100614dd"]
   }],
-  "urls": ["http://localhost:8080/"],
+  "urls": ["http://localhost:8080/EaTypical/HomePageTouristView.jsp"],
   "plugins": []
 }
