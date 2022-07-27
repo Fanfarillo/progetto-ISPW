@@ -1,1 +1,1 @@
-# missing-name
+# EaTypical
